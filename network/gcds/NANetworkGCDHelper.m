@@ -8,7 +8,7 @@
 
 #import "NANetworkGCDHelper.h"
 
-#import "NSOperationQueue+nashibao.h"
+#import "NSOperationQueue+na.h"
 
 @implementation NANetworkGCDHelper
 

@@ -6,9 +6,9 @@
 //  Copyright (c) 2012年 s-cubism. All rights reserved.
 //
 
-#import "NSOperationQueue+nashibao.h"
+#import "NSOperationQueue+na.h"
 
-@implementation NSOperationQueue (nashibao)
+@implementation NSOperationQueue (na)
 
 + (id)globalBackgroundQueue{
     static NSOperationQueue *__background__queue__nashibao__ = nil;

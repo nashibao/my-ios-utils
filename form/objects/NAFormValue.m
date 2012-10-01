@@ -85,4 +85,10 @@
     return @"";
 }
 
+- (void)appendQuery:(NSMutableDictionary *)queries{
+    if(_name && self.value){
+        queries[_name] = self.value;
+    }
+}
+
 @end

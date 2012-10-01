@@ -38,4 +38,6 @@
 
 - (void)highlight;
 
+- (void)appendQuery:(NSMutableDictionary *)queries;
+
 @end

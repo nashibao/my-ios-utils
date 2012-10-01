@@ -10,6 +10,8 @@
 
 @implementation NASelectFormValue
 
+@synthesize value = _value;
+
 - (id)init{
     self = [super init];
     if(self){
@@ -25,6 +27,27 @@
     return self.selectedLabel;
 }
 
+- (void)setValue:(id)value{
+    _value = value;
+    if(value){
+        id selectedObject = nil;
+        for(id val in self.selects){
+            if([value isEqual:val[self.value_key]]){
+                selectedObject = val;
+                break;
+            }
+        }
+        if(selectedObject){
+            _selectedIndexPath = [NSIndexPath indexPathForRow:[self.selects indexOfObject:selectedObject] inSection:0];
+            _selectedLabel = selectedObject[self.label_key];
+        }else{
+            _selectedLabel = nil;
+            _selectedIndexPath = nil;
+        
+        }
+    }
+}
+
 - (void)setSelectedIndexPath:(NSIndexPath *)selectedIndexPath{
     _selectedIndexPath = selectedIndexPath;
     id val = nil;
@@ -33,10 +56,10 @@
     }
     if(val){
         _selectedLabel = val[self.label_key];
-        self.value = val[self.value_key];
+        _value = val[self.value_key];
     }else{
         _selectedLabel = @"";
-        self.value = nil;
+        _value = nil;
     }
 }
 

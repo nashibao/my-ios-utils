@@ -35,4 +35,10 @@
     return temp;
 }
 
+- (void)appendQuery:(NSMutableDictionary *)queries{
+    for(NAFormValue *formValue in self.formValues){
+        [formValue appendQuery:queries];
+    }
+}
+
 @end

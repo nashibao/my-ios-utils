@@ -39,7 +39,7 @@ NSString *__domain__ = nil;
     return __domain__;
 }
 
-+ (void)sendAsynchronousRequestByEndPoint:(NSString *)endpoint data:(NSDictionary *)data isPost:(BOOL)isPost encoding:(NSStringEncoding)encoding jsonOption:(NSJSONReadingOptions)jsonOption returnMain:(BOOL)returnMain successHandler:(void(^)(NSURLResponse *resp, id data))successHandler errorHandler:(void(^)(NSURLResponse *resp, NSError *err))errorHandler{
++ (void)sendAsynchronousRequestByEndPoint:(NSString *)endpoint data:(NSDictionary *)data isPost:(BOOL)isPost encoding:(NSStringEncoding)encoding returnEncoding:(NSStringEncoding)returnEncoding jsonOption:(NSJSONReadingOptions)jsonOption returnMain:(BOOL)returnMain successHandler:(void(^)(NSURLResponse *resp, id data))successHandler errorHandler:(void(^)(NSURLResponse *resp, NSError *err))errorHandler{
     
     NSString *urlstring = [NSString stringWithFormat:@"%@%@", [self getDomain], endpoint];
 	urlstring = [urlstring stringByAddingPercentEscapesUsingEncoding:encoding];
@@ -68,7 +68,8 @@ NSString *__domain__ = nil;
                     _result = result;
                 }
             }else{
-                _result = data;
+                NSString *result = [[NSString alloc] initWithData:data encoding:returnEncoding];
+                _result = result;
             }
         }else{
             _err = err;

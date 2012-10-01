@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+/*
+ helper class to fetch or create predicates.
+ */
 @interface NAFetchHelper : NSObject
 
 + (NSPredicate *)predicateForProps:(NSDictionary *)props;

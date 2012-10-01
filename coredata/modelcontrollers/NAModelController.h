@@ -10,16 +10,38 @@
 
 #import "NAFetchHelper.h"
 
+/*
+ model controller class.
+ which includes "model", "coordinator", "mainContext".
+ setup function made them all.
+ 
+ "mainContext" is a context in the main thread. then don't use it for 
+ heavy tasks! you can create new context in background thread.
+ */
 @interface NAModelController : NSObject
 
 @property (strong, nonatomic) NSManagedObjectModel *model;
 @property (strong, nonatomic) NSPersistentStoreCoordinator *coordinator;
 @property (strong, nonatomic) NSManagedObjectContext *mainContext;
 
-//初期化
+/*
+ setup function.
+ 
+ <args>
+ name: should be xcdatamodeld name.
+ (ex)
+ if model file is "hoge.xcdatamodeld",
+ hoge.sqlite will be created.
+ "name" should be @"hoge".
+ 
+ if you added hoge.sqlite in mainbundle, it will be copied to app doc directory
+ and used as initial sqlite database.
+ */
 - (void)setup:(NSString *)name;
 
-//マイグレーション
+/*
+ migrations
+ */
 //- (void)migrate:(NSString *)newpath newversion:(NSInteger)newversion;
 
 @end

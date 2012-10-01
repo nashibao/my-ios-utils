@@ -8,6 +8,9 @@
 
 #import <CoreData/CoreData.h>
 
+/*
+ NSManagedObjectContext category to add utility functions to get/create/delete mo.
+ */
 @interface NSManagedObjectContext (na)
 
 - (NSManagedObject *)getObject:(NSString *)entityName props:(NSDictionary *)props;

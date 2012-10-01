@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#import "NATableViewController.h"
+
 /*
  template tableviewcontroller class which use with a frc.
  
@@ -17,12 +19,10 @@
  self.fetchedResultsController = frc;
  frc.delegate = self;
  */
-@interface NAFRCTableViewController : UITableViewController <NSFetchedResultsControllerDelegate>
+@interface NAFRCTableViewController : NATableViewController <NSFetchedResultsControllerDelegate>
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 
-@property (nonatomic) UITableViewCellStyle cellStyle;
-
-@property (strong, nonatomic) NSIndexPath *selectedIndexPath;
+- (void)updateCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withMO:(NSManagedObject *)mo;
 
 @end

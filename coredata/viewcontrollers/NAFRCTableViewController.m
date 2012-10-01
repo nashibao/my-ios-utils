@@ -14,13 +14,9 @@
 
 @implementation NAFRCTableViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        self.cellStyle = UITableViewCellStyleDefault;
-    }
-    return self;
+- (void)initialize{
+    self.isStaticTable = NO;
+    self.cellStyle = UITableViewCellStyleDefault;
 }
 
 #pragma mark - Table view data source
@@ -53,13 +49,17 @@
         cell = [[UITableViewCell alloc] initWithStyle:self.cellStyle reuseIdentifier:CellIdentifier];
     }
     
-    NSManagedObject *mo = [self.fetchedResultsController objectAtIndexPath:indexPath];
-	[self updateCell:cell withmo:mo withIndexPath:indexPath];
+    [self updateCell:cell atIndexPath:indexPath];
     
     return cell;
 }
 
-- (void)updateCell:(UITableViewCell *)cell withmo:(NSManagedObject *)mo withIndexPath:(NSIndexPath *)indexPath{
+- (void)updateCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath{
+    NSManagedObject *mo = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    [self updateCell:cell atIndexPath:indexPath withMO:mo];
+}
+
+- (void)updateCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath withMO:(NSManagedObject *)mo{
     [cell.textLabel setText:[NSString stringWithFormat:@"%@",mo]];
 }
 
@@ -119,9 +119,9 @@
             [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
             break;
         case NSFetchedResultsChangeUpdate:{
-            NSManagedObject *mo = anObject;//[controller objectAtIndexPath:indexPath];
+            NSManagedObject *mo = anObject;
             UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-            [self updateCell:cell withmo:mo withIndexPath:indexPath];
+            [self updateCell:cell atIndexPath:indexPath withMO:mo];
             break;
         }
             

@@ -19,7 +19,7 @@
  self.fetchedResultsController = frc;
  frc.delegate = self;
  */
-@interface NAFRCTableViewController : NATableViewController <NSFetchedResultsControllerDelegate>
+@interface NAFRCTableViewController : NATableViewController
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 

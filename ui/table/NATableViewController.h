@@ -20,6 +20,10 @@
 
 @property (nonatomic) UITableViewCellStyle cellStyle;
 
+@property (strong, nonatomic) Class cellClass;
+
+@property (strong, nonatomic) NSString *cellIdentifier;
+
 @property (strong, nonatomic) NSIndexPath *selectedIndexPath;
 
 - (void)updateCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;

@@ -18,6 +18,8 @@
 //initialization -------------------------
 - (void)initialize{
     self.isStaticTable = NO;
+    self.cellClass = [UITableViewCell class];
+    self.cellIdentifier = @"Cell";
     /*
      implementation
      */
@@ -89,10 +91,9 @@
     if(self.isStaticTable){
         cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
     }else{
-        static NSString *CellIdentifier = @"Cell";
-        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        cell = [tableView dequeueReusableCellWithIdentifier:self.cellIdentifier];
         if(!cell){
-            cell = [[UITableViewCell alloc] initWithStyle:self.cellStyle reuseIdentifier:CellIdentifier];
+            cell = [[self.cellClass alloc] initWithStyle:self.cellStyle reuseIdentifier:self.cellIdentifier];
         }
     }
     
@@ -100,10 +101,5 @@
     
     return cell;
 }
-
-//- (void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
-//    [self updateCell:cell atIndexPath:indexPath];
-//}
-
 
 @end

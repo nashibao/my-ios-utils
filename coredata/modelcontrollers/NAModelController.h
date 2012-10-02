@@ -10,6 +10,8 @@
 
 #import "NAFetchHelper.h"
 
+#import "NSManagedObjectContext+na.h"
+
 /*
  model controller class.
  which includes "model", "coordinator", "mainContext".

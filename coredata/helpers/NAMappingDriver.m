@@ -14,7 +14,7 @@
     self = [super init];
     if(self){
         self.jsonKeys = @{
-        @"pk": @"pk",
+        @"id": @"pk",
         @"is_active": @"is_active",
         @"created_at": @"created_at",
         @"updated_at": @"updated_at",

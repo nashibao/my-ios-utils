@@ -21,6 +21,7 @@
 @property (strong, nonatomic) NSDictionary *queryKeys;
 @property (strong, nonatomic) NSDictionary *uniqueKeys;
 @property (strong, nonatomic) NARestDriver *restDriver;
+@property (strong, nonatomic) NSManagedObjectContext *mainContext;
 
 - (NSDictionary *)mo2query:(NSManagedObject *)mo;
 - (NSDictionary *)json2dictionary:(NSDictionary *)json;

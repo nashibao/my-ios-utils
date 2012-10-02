@@ -14,19 +14,22 @@
 
 #import "NARestDriver.h"
 
+#import "SyncModel+sync.h"
+
 @implementation NASyncHelper
 
 + (void)syncFilter:(NSDictionary *)query driver:(NAMappingDriver *)driver handler:(void(^)(NSArray *mos, NSError *err))handler saveHandler:(void(^)())saveHandler{
     NSString *url = [driver.restDriver filterURLByModel:driver.modelName endpoint:driver.endpoint];
     NANetworkProtocol protocol = [driver.restDriver filterProtocolByModel:driver.modelName];
     [NANetworkGCDHelper sendAsynchronousRequestByEndPoint:url data:query protocol:protocol encoding:driver.restDriver.encoding returnEncoding:driver.restDriver.returnEncoding jsonOption:NSJSONReadingAllowFragments returnMain:NO successHandler:^(NSURLResponse *resp, id data) {
-        NSLog(@"%s|%@", __PRETTY_FUNCTION__, data);
         NSManagedObjectContext *context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
         [context setPersistentStoreCoordinator:driver.coordinator];
         [[NSNotificationCenter defaultCenter] addObserverForName:NSManagedObjectContextDidSaveNotification object:context queue:nil usingBlock:^(NSNotification *note) {
             [driver.mainContext mergeChangesFromContextDidSaveNotification:note];
-            if(saveHandler)
-                saveHandler();
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if(saveHandler)
+                    saveHandler();
+            });
         }];
         NSArray *items = nil;
         if(driver.callbackName){
@@ -37,6 +40,11 @@
         NSMutableArray *temp = [@[] mutableCopy];
         for(NSDictionary *d in items){
             NSManagedObject *mo = [context getOrCreateObject:[driver entityName] props:[driver json2uniqueDictionary:d]];
+            [mo setValuesForKeysWithDictionary:[driver json2dictionary:d]];
+            if([mo isKindOfClass:[SyncModel class]]){
+                SyncModel *sm = (SyncModel *)mo;
+                [sm setData:d];
+            }
             [temp addObject:mo];
         }
         [context save:nil];

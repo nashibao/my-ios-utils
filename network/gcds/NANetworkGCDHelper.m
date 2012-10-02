@@ -39,13 +39,30 @@ NSString *__domain__ = nil;
     return __domain__;
 }
 
-+ (void)sendAsynchronousRequestByEndPoint:(NSString *)endpoint data:(NSDictionary *)data isPost:(BOOL)isPost encoding:(NSStringEncoding)encoding returnEncoding:(NSStringEncoding)returnEncoding jsonOption:(NSJSONReadingOptions)jsonOption returnMain:(BOOL)returnMain successHandler:(void(^)(NSURLResponse *resp, id data))successHandler errorHandler:(void(^)(NSURLResponse *resp, NSError *err))errorHandler{
++ (void)sendAsynchronousRequestByEndPoint:(NSString *)endpoint data:(NSDictionary *)data protocol:(NANetworkProtocol)protocol encoding:(NSStringEncoding)encoding returnEncoding:(NSStringEncoding)returnEncoding jsonOption:(NSJSONReadingOptions)jsonOption returnMain:(BOOL)returnMain successHandler:(void(^)(NSURLResponse *resp, id data))successHandler errorHandler:(void(^)(NSURLResponse *resp, NSError *err))errorHandler{
     
     NSString *urlstring = [NSString stringWithFormat:@"%@%@", [self getDomain], endpoint];
 	urlstring = [urlstring stringByAddingPercentEscapesUsingEncoding:encoding];
     NSMutableString *requestString = [[NSMutableString alloc] init];
     NSMutableURLRequest *req = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:urlstring]];
-    [req setHTTPMethod:isPost?@"POST":@"GET"];
+    NSString *method = @"GET";
+    switch (protocol) {
+        case NANetworkProtocolGET:
+            method = @"GET";
+            break;
+        case NANetworkProtocolPOST:
+            method = @"POST";
+            break;
+        case NANetworkProtocolPUT:
+            method = @"PUT";
+            break;
+        case NANetworkProtocolDELETE:
+            method = @"DELETE";
+            break;
+        default:
+            break;
+    }
+    [req setHTTPMethod: method];
     [req setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"content-type"];
     if([data count] > 0){
         for(NSString *key in data){

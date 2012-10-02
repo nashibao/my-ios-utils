@@ -8,6 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+typedef enum NANetworkProtocol: NSUInteger{
+    NANetworkProtocolGET,
+    NANetworkProtocolPOST,
+    NANetworkProtocolPUT,
+    NANetworkProtocolDELETE,
+} NANetworkProtocol;
+
+
 @interface NANetworkGCDHelper : NSObject
 
 /*
@@ -37,6 +45,6 @@
  successHandler/errorHandler: blocks for callback
  
  */
-+ (void)sendAsynchronousRequestByEndPoint:(NSString *)endpoint data:(NSDictionary *)data isPost:(BOOL)isPost encoding:(NSStringEncoding)encoding returnEncoding:(NSStringEncoding)returnEncoding jsonOption:(NSJSONReadingOptions)jsonOption returnMain:(BOOL)returnMain successHandler:(void(^)(NSURLResponse *resp, id data))successHandler errorHandler:(void(^)(NSURLResponse *resp, NSError *err))errorHandler;
++ (void)sendAsynchronousRequestByEndPoint:(NSString *)endpoint data:(NSDictionary *)data protocol:(NANetworkProtocol)protocol encoding:(NSStringEncoding)encoding returnEncoding:(NSStringEncoding)returnEncoding jsonOption:(NSJSONReadingOptions)jsonOption returnMain:(BOOL)returnMain successHandler:(void(^)(NSURLResponse *resp, id data))successHandler errorHandler:(void(^)(NSURLResponse *resp, NSError *err))errorHandler;
 
 @end

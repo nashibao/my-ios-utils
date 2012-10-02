@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-#import "NAViewController.h"
+#import "NAViewControllerProtocol.h"
 
-@interface NATableViewController : UITableViewController<NAViewController>
+@interface NATableViewController : UITableViewController<NAViewControllerProtocol>
 
 /*
  default: NO

@@ -8,9 +8,7 @@
 
 #import "SyncModel.h"
 
-#import "SyncModelProtocol.h"
-
-@interface SyncModel (sync) <SyncModelProtocol>
+@interface SyncModel (sync)
 
 /*
  upload中かどうか
@@ -27,17 +25,5 @@
  default: YES
  */
 + (BOOL)is_manual_edit_management;
-
-/*
- エンドポイント
- ex: /api/event/
- */
-+ (NSString *)endpoint;
-
-+ (void)as_filter:(NSDictionary *)query handler:(void(^)(NSArray *mos, NSError *err))handler;
-+ (void)as_get:(NSDictionary *)query handler:(void(^)(NSManagedObject *mo, NSError *err))handler;
-+ (void)as_create:(NSDictionary *)query handler:(void(^)(NSManagedObject *mo, NSError *err))handler;
-- (void)as_upload:(void(^)(NSManagedObject *mo, NSError *err))handler;
-- (void)as_download:(void(^)(NSManagedObject *mo, NSError *err))handler;
 
 @end

@@ -40,10 +40,6 @@
     return YES;
 }
 
-+ (NSString *)endpoint{
-    return nil;
-}
-
 /*
  変更の検知はここで行う．
  */

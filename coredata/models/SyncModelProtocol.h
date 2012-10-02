@@ -24,15 +24,15 @@
  as_upload: edited=YESのものをまとめてupload
  */
 + (void)as_filter:(NSDictionary *)query handler:(void(^)(NSArray *mos, NSError *err))handler;
-+ (void)as_get:(NSDictionary *)query handler:(void(^)(NSManagedObject *mo, NSError *err))handle;
-+ (void)as_create:(NSDictionary *)query handler:(void(^)(NSManagedObject *mo, NSError *err))handle;
++ (void)as_get:(NSDictionary *)query handler:(void(^)(NSManagedObject *mo, NSError *err))handler;
++ (void)as_create:(NSDictionary *)query handler:(void(^)(NSManagedObject *mo, NSError *err))handler;
 //+ (void)as_sync:(void(^)(SyncModel *mo, NSError *err))handle;
 //+ (void)as_upload;
 
 /*
  インスタンスメソッド系REST API
  */
-- (void)as_upload:(void(^)(NSManagedObject *mo, NSError *err))handle;
-- (void)as_download:(void(^)(NSManagedObject *mo, NSError *err))handle;
+- (void)as_upload:(void(^)(NSManagedObject *mo, NSError *err))handler;
+- (void)as_download:(void(^)(NSManagedObject *mo, NSError *err))handler;
 
 @end

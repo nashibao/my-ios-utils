@@ -8,6 +8,22 @@
 
 #import <Foundation/Foundation.h>
 
+#import "NARestDriver.h"
+
 @interface NAMappingDriver : NSObject
+
+@property (strong, nonatomic) NSString *endpoint;
+@property (strong, nonatomic) NSPersistentStoreCoordinator *coordinator;
+@property (strong, nonatomic) NSString *modelName;
+@property (strong, nonatomic) NSString *entityName;
+@property (strong, nonatomic) NSString *callbackName;
+@property (strong, nonatomic) NSDictionary *jsonKeys;
+@property (strong, nonatomic) NSDictionary *queryKeys;
+@property (strong, nonatomic) NSDictionary *uniqueKeys;
+@property (strong, nonatomic) NARestDriver *restDriver;
+
+- (NSDictionary *)mo2query:(NSManagedObject *)mo;
+- (NSDictionary *)json2dictionary:(NSDictionary *)json;
+- (NSDictionary *)json2uniqueDictionary:(NSDictionary *)json;
 
 @end

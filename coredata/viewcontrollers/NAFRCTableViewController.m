@@ -15,6 +15,7 @@
 @implementation NAFRCTableViewController
 
 - (void)initialize{
+    [super initialize];
     self.isStaticTable = NO;
     self.cellStyle = UITableViewCellStyleDefault;
 }

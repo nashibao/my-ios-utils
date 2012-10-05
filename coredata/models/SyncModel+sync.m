@@ -61,6 +61,14 @@
     [super didChangeValueForKey:key];
 }
 
+- (NSString *)primaryKeyField{
+    return [[[self class] driver] primaryKey];
+}
+
+- (NSNumber *)primaryKey{
+    return [self valueForKey:[self primaryKeyField]];
+}
+
 + (NAMappingDriver *)driver{
 	@throw [NSException exceptionWithName:@"MUST_BE_OVERRIDED"
 								   reason:@"driver: MUST_BE_OVERRIDED"
@@ -77,7 +85,7 @@
 }
 
 - (void)sync_get:(void(^)())complete{
-    [NASyncHelper syncGet:[self pk] driver:[[self class] driver] handler:nil saveHandler:complete];
+    [NASyncHelper syncGet:[self primaryKey] driver:[[self class] driver] handler:nil saveHandler:complete];
 }
 
 + (void)sync_create:(NSDictionary *)query complete:(void(^)())complete{
@@ -93,7 +101,7 @@
     [NASyncHelper syncUpdate:query pk:pk driver:[self driver] handler:nil saveHandler:complete];
 }
 - (void)sync_update:(NSDictionary *)query complete:(void(^)())complete{
-    [NASyncHelper syncUpdate:query pk:[self pk] driver:[[self class] driver] handler:nil saveHandler:complete];
+    [NASyncHelper syncUpdate:query pk:[self primaryKey] driver:[[self class] driver] handler:nil saveHandler:complete];
 }
 
 @end

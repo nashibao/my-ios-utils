@@ -28,7 +28,10 @@
  */
 + (BOOL)is_manual_edit_management;
 
+#pragma mark TODO: 実際のcoredataのプロパティから切り離すために、こいつはカテゴリじゃなくてSyncModelの基底モデルにすべき． 
 + (NAMappingDriver *)driver;
+- (NSString *)primaryKeyField;
+- (NSNumber *)primaryKey;
 
 /*
  completeはmainthreadでsave後にmainthreadで帰ってくる

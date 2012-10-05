@@ -13,7 +13,7 @@
 - (id)init{
     self = [super init];
     if(self){
-        self.primaryKey = @{@"id" : @"pk"};
+        self.primaryKey = @"pk";
         self.jsonKeys = @{
         @"id": @"pk",
         @"is_active": @"is_active",

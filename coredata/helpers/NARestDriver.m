@@ -19,46 +19,53 @@
     return self;
 }
 
-
-- (NSString *)getURLByModel:(NSString*)modelname endpoint:(NSString *)endpoint pk:(NSInteger)pk{
-    return [NSString stringWithFormat:@"%@get/%@/%d/", endpoint, modelname, pk];
+- (NSString *)URLByType:(NARestType)type model:(NSString*)modelname endpoint:(NSString *)endpoint pk:(NSNumber *)_pk{
+    int pk = -1;
+    if(_pk)
+        pk = [_pk intValue];
+    switch (type) {
+        case NARestTypeGET:
+            return [NSString stringWithFormat:@"%@get/%@/%d/", endpoint, modelname, pk];
+            break;
+        case NARestTypeFILTER:
+            return [NSString stringWithFormat:@"%@filter/%@/", endpoint, modelname];
+            break;
+        case NARestTypeCREATE:
+            return [NSString stringWithFormat:@"%@create/%@/", endpoint, modelname];
+            break;
+        case NARestTypeUPDATE:
+            return [NSString stringWithFormat:@"%@update/%@/%d/", endpoint, modelname, pk];
+            break;
+        case NARestTypeDELETE:
+            return [NSString stringWithFormat:@"%@delete/%@/%d/", endpoint, modelname, pk];
+            break;
+            
+        default:
+            break;
+    }
 }
 
-- (NANetworkProtocol)getProtocolByModel:(NSString*)modelname{
-    return NANetworkProtocolGET;
-}
-
-- (NSString *)filterURLByModel:(NSString*)modelname endpoint:(NSString *)endpoint{
-    return [NSString stringWithFormat:@"%@filter/%@/", endpoint, modelname];
-}
-
-- (NANetworkProtocol)filterProtocolByModel:(NSString*)modelname{
-    return NANetworkProtocolGET;
-}
-
-- (NSString *)createURLByModel:(NSString*)modelname endpoint:(NSString *)endpoint{
-    return [NSString stringWithFormat:@"%@create/%@/", endpoint, modelname];
-}
-
-- (NANetworkProtocol)createProtocolByModel:(NSString*)modelname{
-    return NANetworkProtocolPOST;
-}
-
-- (NSString *)updateURLByModel:(NSString*)modelname endpoint:(NSString *)endpoint pk:(NSInteger)pk{
-    return [NSString stringWithFormat:@"%@update/%@/%d/", endpoint, modelname, pk];
-}
-
-- (NANetworkProtocol)updateProtocolByModel:(NSString*)modelname{
-    return NANetworkProtocolPOST;
-}
-
-
-- (NSString *)deleteURLByModel:(NSString*)modelname endpoint:(NSString *)endpoint pk:(NSInteger)pk{
-    return [NSString stringWithFormat:@"%@delete/%@/%d/", endpoint, modelname, pk];
-}
-
-- (NANetworkProtocol)deleteProtocolByModel:(NSString*)modelname{
-    return NANetworkProtocolPOST;
+- (NANetworkProtocol)ProtocolByType:(NARestType)type model:(NSString*)modelname{
+    switch (type) {
+        case NARestTypeGET:
+            return NANetworkProtocolGET;
+            break;
+        case NARestTypeFILTER:
+            return NANetworkProtocolGET;
+            break;
+        case NARestTypeCREATE:
+            return NANetworkProtocolPOST;
+            break;
+        case NARestTypeUPDATE:
+            return NANetworkProtocolPOST;
+            break;
+        case NARestTypeDELETE:
+            return NANetworkProtocolPOST;
+            break;
+            
+        default:
+            break;
+    }
 }
 
 @end

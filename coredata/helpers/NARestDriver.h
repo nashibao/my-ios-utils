@@ -10,24 +10,21 @@
 
 #import "NANetworkGCDHelper.h"
 
+typedef enum NARestType: NSUInteger{
+    NARestTypeGET,
+    NARestTypeFILTER,
+    NARestTypeCREATE,
+    NARestTypeUPDATE,
+    NARestTypeDELETE,
+} NARestType;
+
+
 @interface NARestDriver : NSObject
 
 @property (nonatomic) NSStringEncoding encoding;
 @property (nonatomic) NSStringEncoding returnEncoding;
 
-- (NSString *)getURLByModel:(NSString*)modelname endpoint:(NSString *)endpoint pk:(NSInteger)pk;
-- (NANetworkProtocol)getProtocolByModel:(NSString*)modelname;
-
-- (NSString *)filterURLByModel:(NSString*)modelname endpoint:(NSString *)endpoint;
-- (NANetworkProtocol)filterProtocolByModel:(NSString*)modelname;
-
-- (NSString *)createURLByModel:(NSString*)modelname endpoint:(NSString *)endpoint;
-- (NANetworkProtocol)createProtocolByModel:(NSString*)modelname;
-
-- (NSString *)updateURLByModel:(NSString*)modelname endpoint:(NSString *)endpoint pk:(NSInteger)pk;
-- (NANetworkProtocol)updateProtocolByModel:(NSString*)modelname;
-
-- (NSString *)deleteURLByModel:(NSString*)modelname endpoint:(NSString *)endpoint pk:(NSInteger)pk;
-- (NANetworkProtocol)deleteProtocolByModel:(NSString*)modelname;
+- (NSString *)URLByType:(NARestType)type model:(NSString*)modelname endpoint:(NSString *)endpoint pk:(NSNumber *)pk;
+- (NANetworkProtocol)ProtocolByType:(NARestType)type model:(NSString*)modelname;
 
 @end

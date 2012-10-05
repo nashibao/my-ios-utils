@@ -19,10 +19,8 @@
 @interface NASyncHelper : NSObject
 
 + (void)syncFilter:(NSDictionary *)query driver:(NAMappingDriver *)driver handler:(void(^)(NSArray *mos, NSError *err))handler saveHandler:(void(^)())saveHandler;
-//+ (void)syncGet:(NSDictionary *)query handler:(void(^)(NSManagedObject *mo, NSError *err))handler;
-//+ (void)syncCreate:(NSDictionary *)query handler:(void(^)(NSManagedObject *mo, NSError *err))handler;
-//
-//+ (void)syncUpdate:(void(^)(NSManagedObject *mo, NSError *err))handler;
-//+ (void)syncUpdate:(NSDictionary *)query handler:(void(^)(NSManagedObject *mo, NSError *err))handler;
++ (void)syncGet:(NSNumber *)pk driver:(NAMappingDriver *)driver handler:(void(^)(NSArray *mos, NSError *err))handler saveHandler:(void(^)())saveHandler;
++ (void)syncCreate:(NSDictionary *)query driver:(NAMappingDriver *)driver handler:(void(^)(NSArray *mos, NSError *err))handler saveHandler:(void(^)())saveHandler;
++ (void)syncUpdate:(NSDictionary *)query pk:(NSNumber *)pk driver:(NAMappingDriver *)driver handler:(void(^)(NSArray *mos, NSError *err))handler saveHandler:(void(^)())saveHandler;
 
 @end

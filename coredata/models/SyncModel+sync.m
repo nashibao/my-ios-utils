@@ -8,6 +8,8 @@
 
 #import "SyncModel+sync.h"
 
+#import "NASyncHelper.h"
+
 @implementation SyncModel (sync)
 
 @dynamic is_uploading;
@@ -57,6 +59,41 @@
         }
     }
     [super didChangeValueForKey:key];
+}
+
++ (NAMappingDriver *)driver{
+	@throw [NSException exceptionWithName:@"MUST_BE_OVERRIDED"
+								   reason:@"driver: MUST_BE_OVERRIDED"
+								 userInfo:nil];
+    return nil;
+}
+
++ (void)sync_filter:(NSDictionary *)query handler:(void(^)())handler{
+    [NASyncHelper syncFilter:query driver:[self driver] handler:nil saveHandler:handler];
+}
+
++ (void)sync_get:(NSNumber *)pk handler:(void(^)())handler{
+    [NASyncHelper syncGet:pk driver:[self driver] handler:nil saveHandler:handler];
+}
+
+- (void)sync_get:(void(^)())handler{
+    [NASyncHelper syncGet:[self pk] driver:[[self class] driver] handler:nil saveHandler:handler];
+}
+
++ (void)sync_create:(NSDictionary *)query handler:(void(^)())handler{
+    [NASyncHelper syncCreate:query driver:[self driver] handler:nil saveHandler:handler];
+}
+
+- (void)sync_create:(void(^)())handler{
+    NSDictionary *query = [[[self class] driver] mo2query:self];
+    [NASyncHelper syncCreate:query driver:[[self class] driver] handler:nil saveHandler:handler];
+}
+
++ (void)sync_update:(NSNumber *)pk query:(NSDictionary *)query handler:(void(^)())handler{
+    [NASyncHelper syncUpdate:query pk:pk driver:[self driver] handler:nil saveHandler:handler];
+}
+- (void)sync_update:(NSDictionary *)query handler:(void (^)())handler{
+    [NASyncHelper syncUpdate:query pk:[self pk] driver:[[self class] driver] handler:nil saveHandler:handler];
 }
 
 @end

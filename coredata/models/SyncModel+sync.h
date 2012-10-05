@@ -30,13 +30,15 @@
 
 + (NAMappingDriver *)driver;
 
-
-+ (void)sync_filter:(NSDictionary *)query handler:(void(^)())handler;
-+ (void)sync_get:(NSNumber *)pk handler:(void(^)())handler;
-- (void)sync_get:(void(^)())handler;
-+ (void)sync_create:(NSDictionary *)query handler:(void(^)())handler;
-- (void)sync_create:handler:(void(^)())handler;
-+ (void)sync_update:(NSNumber *)pk query:(NSDictionary *)query handler:(void(^)())handler;
-- (void)sync_update:(NSDictionary *)query handler:(void(^)())handler;
+/*
+ completeはmainthreadでsave後にmainthreadで帰ってくる
+ */
++ (void)sync_filter:(NSDictionary *)query complete:(void(^)())complete;
++ (void)sync_get:(NSNumber *)pk complete:(void(^)())complete;
+- (void)sync_get:(void(^)())complete;
++ (void)sync_create:(NSDictionary *)query complete:(void(^)())complete;
+- (void)sync_create:(void(^)())complete;
++ (void)sync_update:(NSNumber *)pk query:(NSDictionary *)query complete:(void(^)())complete;
+- (void)sync_update:(NSDictionary *)query complete:(void(^)())complete;
 
 @end

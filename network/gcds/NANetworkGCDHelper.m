@@ -44,7 +44,6 @@ NSString *__domain__ = nil;
     NSString *urlstring = [NSString stringWithFormat:@"%@%@", [self getDomain], endpoint];
 	urlstring = [urlstring stringByAddingPercentEscapesUsingEncoding:encoding];
     NSMutableString *requestString = [[NSMutableString alloc] init];
-    NSMutableURLRequest *req = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:urlstring]];
     NSString *method = @"GET";
     switch (protocol) {
         case NANetworkProtocolGET:
@@ -62,15 +61,23 @@ NSString *__domain__ = nil;
         default:
             break;
     }
-    [req setHTTPMethod: method];
-    [req setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"content-type"];
+    NSData *requestData = nil;
     if([data count] > 0){
         for(NSString *key in data){
             [requestString appendFormat:@"%@=%@&", key, data[key]];
         }
-        NSData *requestData = [requestString dataUsingEncoding:NSUTF8StringEncoding];
-        [req setHTTPBody:requestData];
+        if (protocol==NANetworkProtocolGET){
+            urlstring = [NSString stringWithFormat:@"%@?%@", urlstring, requestString];
+        }else{
+            requestData = [requestString dataUsingEncoding:NSUTF8StringEncoding];
+        }
     }
+    NSMutableURLRequest *req = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:urlstring]];
+    if(requestData)
+        [req setHTTPBody:requestData];
+    [req setHTTPMethod: method];
+    [req setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"content-type"];
+    NSLog(@"%s|%@", __PRETTY_FUNCTION__, urlstring);
     [self networkStart];
     [NSURLConnection sendAsynchronousRequest:req queue:[NSOperationQueue globalBackgroundQueue] completionHandler:^(NSURLResponse *resp, NSData *data, NSError *err) {
         NSError *_err = nil;
@@ -91,7 +98,9 @@ NSString *__domain__ = nil;
         }else{
             _err = err;
         }
-        if(_err){
+        if(_err || !_result){
+            NSString *result = [[NSString alloc] initWithData:data encoding:returnEncoding];
+            NSLog(@"%s|%@", __PRETTY_FUNCTION__, result);
             if(errorHandler){
                 if(returnMain){
                     dispatch_async(dispatch_get_main_queue(), ^{

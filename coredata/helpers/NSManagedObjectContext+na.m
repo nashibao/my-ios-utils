@@ -13,7 +13,7 @@
 @implementation NSManagedObjectContext (na)
 
 - (NSManagedObject *)getObject:(NSString *)entityName props:(NSDictionary *)props{
-    NSPredicate* pred = [NAFetchHelper predicateForProps:props];
+    NSPredicate* pred = [NAFetchHelper predicateForEqualProps:props];
 	
 	NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:entityName inManagedObjectContext:self];

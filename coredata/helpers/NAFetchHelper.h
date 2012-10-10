@@ -13,7 +13,15 @@
  */
 @interface NAFetchHelper : NSObject
 
-+ (NSPredicate *)predicateForProps:(NSDictionary *)props;
-+ (NSPredicate *)predicateForProps:(NSDictionary *)props withCustomPredicate:(NSArray *)customPredicate;
+/*
+ equalProps: dic
+  @{key : val} -> key == val
+ 
+ props: array
+ 
+ */
+
++ (NSPredicate *)predicateForEqualProps:(NSDictionary *)equalProps;
++ (NSPredicate *)predicateForProps:(NSArray *)props;
 
 @end

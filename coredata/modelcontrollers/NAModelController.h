@@ -12,6 +12,8 @@
 
 #import "NSManagedObjectContext+na.h"
 
+#import "NSFetchRequest+na.h"
+
 /*
  model controller class.
  which includes "model", "coordinator", "mainContext".

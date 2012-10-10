@@ -64,7 +64,11 @@ NSString *__domain__ = nil;
     NSData *requestData = nil;
     if([data count] > 0){
         for(NSString *key in data){
-            [requestString appendFormat:@"%@=%@&", key, data[key]];
+            id val = data[key];
+            if([val isKindOfClass:[NSString class]]){
+                val = [val stringByAddingPercentEscapesUsingEncoding:encoding];
+            }
+            [requestString appendFormat:@"%@=%@&", key, val];
         }
         if (protocol==NANetworkProtocolGET){
             urlstring = [NSString stringWithFormat:@"%@?%@", urlstring, requestString];

@@ -24,7 +24,10 @@ typedef enum NANetworkProtocol: NSUInteger{
 + (void)networkStart;
 + (void)networkEnd;
 
-+ (NSURLRequest *)requestTo:(NSString *)baseURL query:(NSDictionary *)query protocol:(NANetworkProtocol)protocol encoding:(NSStringEncoding)encoding;
++ (NSURLRequest *)requestTo:(NSString *)baseURL
+                      query:(NSDictionary *)query
+                   protocol:(NANetworkProtocol)protocol
+                   encoding:(NSStringEncoding)encoding;
 
 /*
  main function of this class.
@@ -40,8 +43,17 @@ typedef enum NANetworkProtocol: NSUInteger{
  
  */
 
-+ (void)sendJsonAsynchronousRequest:(NSURLRequest *)request jsonOption:(NSJSONReadingOptions)jsonOption returnEncoding:(NSStringEncoding)returnEncoding returnMain:(BOOL)returnMain successHandler:(void(^)(NSURLResponse *resp, id data))successHandler errorHandler:(void(^)(NSURLResponse *resp, NSError *err))errorHandler;
++ (void)sendJsonAsynchronousRequest:(NSURLRequest *)request
+                         jsonOption:(NSJSONReadingOptions)jsonOption
+                     returnEncoding:(NSStringEncoding)returnEncoding
+                         returnMain:(BOOL)returnMain
+                     successHandler:(void(^)(NSURLResponse *resp, id data))successHandler
+                       errorHandler:(void(^)(NSURLResponse *resp, NSError *err))errorHandler;
 
-+ (void)sendAsynchronousRequest:(NSURLRequest *)request returnEncoding:(NSStringEncoding)returnEncoding returnMain:(BOOL)returnMain successHandler:(void(^)(NSURLResponse *resp, id data))successHandler errorHandler:(void(^)(NSURLResponse *resp, NSError *err))errorHandler;
++ (void)sendAsynchronousRequest:(NSURLRequest *)request
+                 returnEncoding:(NSStringEncoding)returnEncoding
+                     returnMain:(BOOL)returnMain
+                 successHandler:(void(^)(NSURLResponse *resp, id data))successHandler
+                   errorHandler:(void(^)(NSURLResponse *resp, NSError *err))errorHandler;
 
 @end

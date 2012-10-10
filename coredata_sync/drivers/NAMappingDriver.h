@@ -19,9 +19,9 @@
 @property (strong, nonatomic) NSString *entityName;
 @property (strong, nonatomic) NSString *callbackName;
 @property (strong, nonatomic) NSString *primaryKey;
-@property (strong, nonatomic) NSDictionary *jsonKeys;
-@property (strong, nonatomic) NSDictionary *queryKeys;
-@property (strong, nonatomic) NSDictionary *uniqueKeys;
+@property (strong, nonatomic) NSMutableDictionary *jsonKeys;
+@property (strong, nonatomic) NSMutableDictionary *queryKeys;
+@property (strong, nonatomic) NSMutableDictionary *uniqueKeys;
 @property (strong, nonatomic) id<NARestDriverProtocol> restDriver;
 @property (strong, nonatomic) NSManagedObjectContext *mainContext;
 

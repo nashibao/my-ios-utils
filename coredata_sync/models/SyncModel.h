@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
-#import "SyncBaseModel.h"
+#import "SyncBaseModel+sync.h"
 
 
 @interface SyncModel : SyncBaseModel

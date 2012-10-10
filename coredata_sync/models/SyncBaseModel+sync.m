@@ -73,50 +73,32 @@
 
 
 
-+ (void)sync_filter:(NSDictionary *)query complete:(void(^)())complete{
-    [NASyncHelper syncFilter:query driver:[self driver] handler:nil saveHandler:complete];
++ (void)sync_filter:(NSDictionary *)query options:(NSDictionary *)options complete:(void(^)())complete{
+    [NASyncHelper syncFilter:query driver:[self driver] options:options handler:nil saveHandler:complete];
 }
 
-+ (void)sync_get:(NSNumber *)pk complete:(void(^)())complete{
-    [NASyncHelper syncGet:pk driver:[self driver] handler:nil saveHandler:complete];
++ (void)sync_get:(NSNumber *)pk options:(NSDictionary *)options complete:(void(^)())complete{
+    [NASyncHelper syncGet:pk driver:[self driver] options:options handler:nil saveHandler:complete];
 }
 
-- (void)sync_get:(void(^)())complete{
-    [NASyncHelper syncGet:[self primaryKey] driver:[[self class] driver] handler:nil saveHandler:complete];
+- (void)sync_get:(NSDictionary *)options complete:(void(^)())complete{
+    [NASyncHelper syncGet:[self primaryKey] driver:[[self class] driver] options:options handler:nil saveHandler:complete];
 }
 
-+ (void)sync_create:(NSDictionary *)query complete:(void(^)())complete{
-    [NASyncHelper syncCreate:query driver:[self driver] handler:nil saveHandler:complete];
++ (void)sync_create:(NSDictionary *)query options:(NSDictionary *)options complete:(void(^)())complete{
+    [NASyncHelper syncCreate:query driver:[self driver] options:options handler:nil saveHandler:complete];
 }
 
-- (void)sync_create:(void(^)())complete{
+- (void)sync_create:(NSDictionary *)options complete:(void(^)())complete{
     NSDictionary *query = [[self class]mo2query:self];
-    [NASyncHelper syncCreate:query driver:[[self class] driver] handler:nil saveHandler:complete];
+    [NASyncHelper syncCreate:query driver:[[self class] driver] options:options handler:nil saveHandler:complete];
 }
 
-+ (void)sync_update:(NSNumber *)pk query:(NSDictionary *)query complete:(void(^)())complete{
-    [NASyncHelper syncUpdate:query pk:pk driver:[self driver] handler:nil saveHandler:complete];
++ (void)sync_update:(NSNumber *)pk query:(NSDictionary *)query options:(NSDictionary *)options complete:(void(^)())complete{
+    [NASyncHelper syncUpdate:query pk:pk driver:[self driver] options:options handler:nil saveHandler:complete];
 }
-- (void)sync_update:(NSDictionary *)query complete:(void(^)())complete{
-    [NASyncHelper syncUpdate:query pk:[self primaryKey] driver:[[self class] driver] handler:nil saveHandler:complete];
-}
-
-
-
-static NSString *__network_identifier__ = nil;
-
-+ (void)set_network_identifier:(NSString *)networkIdentifier{
-    if([networkIdentifier isEqualToString:[self network_identifier]])
-        return;
-    __network_identifier__ = networkIdentifier;
-}
-
-+ (NSString *)network_identifier{
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        __network_identifier__ = nil;
-    });
-    return __network_identifier__;
+- (void)sync_update:(NSDictionary *)query options:(NSDictionary *)options complete:(void(^)())complete{
+    [NASyncHelper syncUpdate:query pk:[self primaryKey] driver:[[self class] driver] options:options handler:nil saveHandler:complete];
 }
 
 static BOOL __is_loading__;

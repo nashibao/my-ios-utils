@@ -28,13 +28,18 @@
 
 /*
  completeはmainthreadでsave後にmainthreadで帰ってくる
+ 
+ options:
+  identifier(on memory in an operation.): キャンセル用途
+  network_identifier(mo): frcの名前などを入れておく
+  network_cache_identifier(mo): 検索語などを入れておく
  */
-+ (void)sync_filter:(NSDictionary *)query complete:(void(^)())complete;
-+ (void)sync_get:(NSNumber *)pk complete:(void(^)())complete;
-- (void)sync_get:(void(^)())complete;
-+ (void)sync_create:(NSDictionary *)query complete:(void(^)())complete;
-- (void)sync_create:(void(^)())complete;
-+ (void)sync_update:(NSNumber *)pk query:(NSDictionary *)query complete:(void(^)())complete;
-- (void)sync_update:(NSDictionary *)query complete:(void(^)())complete;
++ (void)sync_filter:(NSDictionary *)query options:(NSDictionary *)options complete:(void(^)())complete;
++ (void)sync_get:(NSNumber *)pk options:(NSDictionary *)options complete:(void(^)())complete;
+- (void)sync_get:(NSDictionary *)options complete:(void(^)())complete;
++ (void)sync_create:(NSDictionary *)query options:(NSDictionary *)options complete:(void(^)())complete;
+- (void)sync_create:(NSDictionary *)options complete:(void(^)())complete;
++ (void)sync_update:(NSNumber *)pk query:(NSDictionary *)query options:(NSDictionary *)options complete:(void(^)())complete;
+- (void)sync_update:(NSDictionary *)query options:(NSDictionary *)options complete:(void(^)())complete;
 
 @end

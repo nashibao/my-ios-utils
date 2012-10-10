@@ -77,8 +77,8 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     if(self.selectedIndexPath){
-        UITableViewCell *cell = [self tableView:self.tableView cellForRowAtIndexPath:self.selectedIndexPath];
-        [self updateCell:cell atIndexPath:self.selectedIndexPath];
+        [self tableView:self.tableView cellForRowAtIndexPath:self.selectedIndexPath];
+//        [self updateCell:cell atIndexPath:self.selectedIndexPath];
     }
 }
 

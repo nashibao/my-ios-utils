@@ -82,8 +82,8 @@
 + (void)syncBaseByType:(NARestType)type query:(NSDictionary *)query pk:(NSNumber *)pk driver:(NAMappingDriver *)driver options:(NSDictionary *)options handler:(void(^)(NSArray *mos, NSError *err))handler saveHandler:(void(^)())saveHandler{
     NSString *url = [driver.restDriver URLByType:type model:driver.modelName endpoint:driver.endpoint pk:pk];
     NANetworkProtocol protocol = [driver.restDriver ProtocolByType:type model:driver.modelName];
-    
-    [NANetworkGCDHelper sendAsynchronousRequestByEndPoint:url data:query protocol:protocol encoding:driver.restDriver.encoding returnEncoding:driver.restDriver.returnEncoding jsonOption:NSJSONReadingAllowFragments returnMain:NO successHandler:^(NSURLResponse *resp, id data) {
+    NSURLRequest *req = [NANetworkGCDHelper requestTo:url query:query protocol:protocol encoding:driver.restDriver.encoding];
+    [NANetworkGCDHelper sendJsonAsynchronousRequest:req jsonOption:NSJSONReadingAllowFragments returnEncoding:driver.restDriver.returnEncoding returnMain:NO successHandler:^(NSURLResponse *resp, id data) {
         [self _success:driver response:resp data:data options:options handler:handler saveHandler:saveHandler];
     } errorHandler:^(NSURLResponse *resp, NSError *err) {
         NSLog(@"%s|%@", __PRETTY_FUNCTION__, err);

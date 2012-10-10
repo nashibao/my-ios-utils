@@ -10,6 +10,12 @@
 
 @implementation NADefaultRestDriver
 
++ (NSString *)domain{
+	@throw [NSException exceptionWithName:@"MUST_BE_OVERRIDED"
+								   reason:@"driver: MUST_BE_OVERRIDED"
+								 userInfo:nil];
+}
+
 - (id)init{
     self = [super init];
     if(self){
@@ -25,19 +31,19 @@
         pk = [_pk intValue];
     switch (type) {
         case NARestTypeGET:
-            return [NSString stringWithFormat:@"%@get/%@/%d/", endpoint, modelname, pk];
+            return [NSString stringWithFormat:@"%@%@get/%@/%d/", [[self class] domain], endpoint, modelname, pk];
             break;
         case NARestTypeFILTER:
-            return [NSString stringWithFormat:@"%@filter/%@/", endpoint, modelname];
+            return [NSString stringWithFormat:@"%@%@filter/%@/", [[self class] domain], endpoint, modelname];
             break;
         case NARestTypeCREATE:
-            return [NSString stringWithFormat:@"%@create/%@/", endpoint, modelname];
+            return [NSString stringWithFormat:@"%@%@create/%@/", [[self class] domain], endpoint, modelname];
             break;
         case NARestTypeUPDATE:
-            return [NSString stringWithFormat:@"%@update/%@/%d/", endpoint, modelname, pk];
+            return [NSString stringWithFormat:@"%@%@update/%@/%d/", [[self class] domain], endpoint, modelname, pk];
             break;
         case NARestTypeDELETE:
-            return [NSString stringWithFormat:@"%@delete/%@/%d/", endpoint, modelname, pk];
+            return [NSString stringWithFormat:@"%@%@delete/%@/%d/", [[self class] domain], endpoint, modelname, pk];
             break;
             
         default:

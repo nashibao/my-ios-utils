@@ -24,13 +24,7 @@ typedef enum NANetworkProtocol: NSUInteger{
 + (void)networkStart;
 + (void)networkEnd;
 
-#pragma mark TODO: use custom domains
-/*
- domains
- */
-+ (void)setDomain:(NSString *)domain;
-+ (NSString *)getDomain;
-
++ (NSURLRequest *)requestTo:(NSString *)baseURL query:(NSDictionary *)query protocol:(NANetworkProtocol)protocol encoding:(NSStringEncoding)encoding;
 
 /*
  main function of this class.
@@ -45,6 +39,9 @@ typedef enum NANetworkProtocol: NSUInteger{
  successHandler/errorHandler: blocks for callback
  
  */
-+ (void)sendAsynchronousRequestByEndPoint:(NSString *)endpoint data:(NSDictionary *)data protocol:(NANetworkProtocol)protocol encoding:(NSStringEncoding)encoding returnEncoding:(NSStringEncoding)returnEncoding jsonOption:(NSJSONReadingOptions)jsonOption returnMain:(BOOL)returnMain successHandler:(void(^)(NSURLResponse *resp, id data))successHandler errorHandler:(void(^)(NSURLResponse *resp, NSError *err))errorHandler;
+
++ (void)sendJsonAsynchronousRequest:(NSURLRequest *)request jsonOption:(NSJSONReadingOptions)jsonOption returnEncoding:(NSStringEncoding)returnEncoding returnMain:(BOOL)returnMain successHandler:(void(^)(NSURLResponse *resp, id data))successHandler errorHandler:(void(^)(NSURLResponse *resp, NSError *err))errorHandler;
+
++ (void)sendAsynchronousRequest:(NSURLRequest *)request returnEncoding:(NSStringEncoding)returnEncoding returnMain:(BOOL)returnMain successHandler:(void(^)(NSURLResponse *resp, id data))successHandler errorHandler:(void(^)(NSURLResponse *resp, NSError *err))errorHandler;
 
 @end

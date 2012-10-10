@@ -10,28 +10,16 @@
 
 #import "NSOperationQueue+na.h"
 
+#import "AFNetworkActivityIndicatorManager.h"
+
 @implementation NANetworkGCDHelper
 
 NSInteger __networking__count__ = 0;
 
-+ (void)networkStart{
-    __networking__count__ += 1;
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
-    });
-}
-+ (void)networkEnd{
-    __networking__count__ -= 1;
-    if(__networking__count__ == 0){
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-        });
-    }
-}
-
 + (void)_sendAsynchronousRequest:(NSURLRequest *)request returnEncoding:(NSStringEncoding)returnEncoding isJson:(BOOL)isJSON jsonOption:(NSJSONReadingOptions)jsonOption returnMain:(BOOL)returnMain successHandler:(void(^)(NSURLResponse *resp, id data))successHandler errorHandler:(void(^)(NSURLResponse *resp, NSError *err))errorHandler{
     
-    [self networkStart];
+    [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];
+    
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue globalBackgroundQueue] completionHandler:^(NSURLResponse *resp, NSData *data, NSError *err) {
         NSError *_err = nil;
         id _result = nil;
@@ -74,7 +62,7 @@ NSInteger __networking__count__ = 0;
                 }
             }
         }
-        [self networkEnd];
+        [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
     }];
 }
 

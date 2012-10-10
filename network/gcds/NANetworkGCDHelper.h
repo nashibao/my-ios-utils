@@ -8,12 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-typedef enum NANetworkProtocol: NSUInteger{
-    NANetworkProtocolGET,
-    NANetworkProtocolPOST,
-    NANetworkProtocolPUT,
-    NANetworkProtocolDELETE,
-} NANetworkProtocol;
+#import "NANetworkConfig.h"
 
 
 @interface NANetworkGCDHelper : NSObject
@@ -21,8 +16,6 @@ typedef enum NANetworkProtocol: NSUInteger{
 /*
  for managing statusbar indicator
  */
-+ (void)networkStart;
-+ (void)networkEnd;
 
 + (NSURLRequest *)requestTo:(NSString *)baseURL
                       query:(NSDictionary *)query

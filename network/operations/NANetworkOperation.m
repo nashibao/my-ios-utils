@@ -17,7 +17,7 @@
                                  successHandler:(void(^)(NANetworkOperation *op, id data))successHandler
                                    errorHandler:(void(^)(NANetworkOperation *op, NSError *err))errorHandler{
     NANetworkOperation *op = [[[self class] alloc] initWithRequest:request];
-    [op setCompletionBlockWithSuccess:successHandler failure:errorHandler isJson:YES jsonOption:jsonOption];
+    [op setCompletionBlockWithSuccess:successHandler failure:errorHandler isJson:YES jsonOption:jsonOption returnMain:returnMain];
     return op;
 }
 
@@ -27,38 +27,53 @@
                                  successHandler:(void(^)(NANetworkOperation *op, id data))successHandler
                                    errorHandler:(void(^)(NANetworkOperation *op, NSError *err))errorHandler{
     NANetworkOperation *op = [[[self class] alloc] initWithRequest:request];
-    [op setCompletionBlockWithSuccess:successHandler failure:errorHandler isJson:NO jsonOption:0];
+    [op setCompletionBlockWithSuccess:successHandler failure:errorHandler isJson:NO jsonOption:0 returnMain:returnMain];
     return op;
 }
 
 - (void)setCompletionBlockWithSuccess:(void (^)(NANetworkOperation *operation, id responseObject))success
-failure:(void (^)(NANetworkOperation *operation, NSError *error))failure isJson:(BOOL)isJson jsonOption:(NSJSONReadingOptions)jsonOption{
+failure:(void (^)(NANetworkOperation *operation, NSError *error))failure isJson:(BOOL)isJson jsonOption:(NSJSONReadingOptions)jsonOption returnMain:(BOOL)returnMain{
     __block __weak NANetworkOperation *wself = self;
     self.completionBlock = ^{
         if ([wself isCancelled]) {
             return;
         }
-        
+        NSError *_err = nil;
+        id response = nil;
         if (self.error) {
             if (failure) {
+                _err = wself.error;
                 dispatch_async(dispatch_get_main_queue(), ^{
                     failure(wself, wself.error);
                 });
             }
         } else {
             if (success) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    id response = wself.responseData;
-                    if(isJson){
-                        NSError *jsonErr = nil;
-                        response = [NSJSONSerialization JSONObjectWithData:response options:jsonOption error:&jsonErr];
-                        if(jsonErr){
-                            failure(wself, jsonErr);
-                            return;
-                        }
+                response = wself.responseData;
+                if(isJson){
+                    NSError *jsonErr = nil;
+                    response = [NSJSONSerialization JSONObjectWithData:response options:jsonOption error:&jsonErr];
+                    if(jsonErr){
+                        _err = jsonErr;
                     }
+                }
+            }
+        }
+        if(_err){
+            if(returnMain){
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    failure(wself, wself.error);
+                });
+            }else{
+                failure(wself, wself.error);
+            }
+        }else{
+            if(returnMain){
+                dispatch_async(dispatch_get_main_queue(), ^{
                     success(wself, response);
                 });
+            }else{
+                success(wself, response);
             }
         }
     };

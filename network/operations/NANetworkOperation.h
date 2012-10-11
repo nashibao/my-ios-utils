@@ -14,7 +14,7 @@
 typedef enum NANetworkOperationQueingOption: NSInteger {
     //キャンセルしてからaddOperation
     NANetworkOperationQueingOptionCancel = 2,
-    //一番最新を返すだけ
+    //古いのがあったら返すだけ
     NANetworkOperationQueingOptionReturnOld = 1,
     //先に入っているやつの終了を待つ
     //これはqueueの種類によって制御できる
@@ -48,6 +48,7 @@ typedef void (^FAIL_BLOCK)(id op, NSError *err);
                                  queueingOption:(NANetworkOperationQueingOption)queueingOption
                                      successHandler:(void(^)(NANetworkOperation *op, id data))successHandler
                                        errorHandler:(void(^)(NANetworkOperation *op, NSError *err))errorHandler;
+
 
 + (NANetworkOperation *)sendAsynchronousRequest:(NSURLRequest *)request
                                  returnEncoding:(NSStringEncoding)returnEncoding

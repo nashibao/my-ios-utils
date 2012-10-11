@@ -70,7 +70,7 @@ static NSMutableDictionary *_operations_with_id = nil;
     }
     
     op = [[[self class] alloc] initWithRequest:request];
-    [op setCompletionBlockWithSuccess:successHandler failure:errorHandler isJson:isJson jsonOption:jsonOption returnMain:returnMain];
+    [op setCompletionBlockWithSuccess:successHandler failure:errorHandler isJson:isJson jsonOption:jsonOption returnMain:returnMain returnEncoding:returnEncoding];
     NSOperationQueue *_queue = queue ?: [NSOperationQueue globalBackgroundQueue];
     [_queue addOperation:op];
     [op setIdentifier:identifier];
@@ -106,7 +106,7 @@ static NSMutableDictionary *_operations_with_id = nil;
 }
 
 - (void)setCompletionBlockWithSuccess:(void (^)(id operation, id responseObject))success
-failure:(void (^)(id operation, NSError *error))failure isJson:(BOOL)isJson jsonOption:(NSJSONReadingOptions)jsonOption returnMain:(BOOL)returnMain{
+failure:(void (^)(id operation, NSError *error))failure isJson:(BOOL)isJson jsonOption:(NSJSONReadingOptions)jsonOption returnMain:(BOOL)returnMain returnEncoding:(NSStringEncoding)returnEncoding{
     __block __weak NANetworkOperation *wself = self;
     self.success_block = success;
     self.fail_block = failure;
@@ -138,6 +138,8 @@ failure:(void (^)(id operation, NSError *error))failure isJson:(BOOL)isJson json
                     if(jsonErr){
                         _err = jsonErr;
                     }
+                }else{
+                    response = [[NSString alloc] initWithData:response encoding:returnEncoding];
                 }
             }
         }

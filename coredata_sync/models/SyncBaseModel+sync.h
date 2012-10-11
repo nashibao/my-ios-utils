@@ -10,6 +10,8 @@
 
 #import "NAMappingDriver.h"
 
+#import "NSManagedObject+na.h"
+
 @interface SyncBaseModel (sync)
 
 /*

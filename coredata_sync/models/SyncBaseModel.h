@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-
 @interface SyncBaseModel : NSManagedObject
 
 @property (nonatomic, retain) NSString * network_identifier;

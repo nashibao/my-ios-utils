@@ -29,42 +29,44 @@
                 saveHandler();
         });
     }];
-    NSString *network_identifier = @"";
-    NSString *network_cache_identifier = @"";
-    if(options){
-        if(options[@"network_identifier"])
-            network_identifier = options[@"network_identifier"];
-        if(options[@"network_cache_identifier"])
-            network_cache_identifier = options[@"network_cache_identifier"];
-    }
-    NSArray *items = nil;
-    if(driver.callbackName){
-        items = data[driver.callbackName];
-    }else{
-        items = data;
-    }
-    NSLog(@"%s|%@", __PRETTY_FUNCTION__, items);
-    NSMutableArray *temp = [@[] mutableCopy];
-    for(NSDictionary *d in items){
-        NSManagedObject *mo = [context getOrCreateObject:[driver entityName] props:[[driver syncModel] json2uniqueDictionary:d]];
-        BOOL updated = YES;
-        if([mo isKindOfClass:[SyncModel class]]){
-            SyncModel *sm = (SyncModel *)mo;
-            if(sm.sync_version < d[@"sync_version"]){
-                [sm setData:d];
-            }else{
-                updated = NO;
-            }
-            [sm setNetwork_identifier:network_identifier];
-            [sm setNetwork_cache_identifier:network_cache_identifier];
+    
+    [context performBlock:^{
+        NSString *network_identifier = @"";
+        NSString *network_cache_identifier = @"";
+        if(options){
+            if(options[@"network_identifier"])
+                network_identifier = options[@"network_identifier"];
+            if(options[@"network_cache_identifier"])
+                network_cache_identifier = options[@"network_cache_identifier"];
         }
-        if(updated)
-            [mo setValuesForKeysWithDictionary:[[driver syncModel] json2dictionary:d]];
-        [temp addObject:mo];
-    }
-    [context save:nil];
-    if(handler)
-        handler(temp, nil);
+        NSArray *items = nil;
+        if(driver.callbackName){
+            items = data[driver.callbackName];
+        }else{
+            items = data;
+        }
+        NSMutableArray *temp = [@[] mutableCopy];
+        for(NSDictionary *d in items){
+            NSManagedObject *mo = [context getOrCreateObject:[driver entityName] props:[[driver syncModel] json2uniqueDictionary:d]];
+            BOOL updated = YES;
+            if([mo isKindOfClass:[SyncModel class]]){
+                SyncModel *sm = (SyncModel *)mo;
+                if(sm.sync_version < d[@"sync_version"]){
+                    [sm setData:d];
+                }else{
+                    updated = NO;
+                }
+                [sm setNetwork_identifier:network_identifier];
+                [sm setNetwork_cache_identifier:network_cache_identifier];
+            }
+            if(updated)
+                [mo setValuesForKeysWithDictionary:[[driver syncModel] json2dictionary:d]];
+            [temp addObject:mo];
+        }
+        [context save:nil];
+        if(handler)
+            handler(temp, nil);
+    }];
 }
 
 /*

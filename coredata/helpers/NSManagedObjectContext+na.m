@@ -12,6 +12,29 @@
 
 @implementation NSManagedObjectContext (na)
 
+- (NSArray *)filterObjects:(NSString *)entityName props:(NSDictionary *)props{
+    NSPredicate* pred = [NAFetchHelper predicateForEqualProps:props];
+	
+	NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:entityName inManagedObjectContext:self];
+	[fetchRequest setPredicate:pred];
+	[fetchRequest setEntity:entity];
+	
+    @try {
+        NSError *error;
+        NSArray *arr = [self executeFetchRequest:fetchRequest error:&error];
+        if(arr && [arr count]>0){
+            return arr;
+        }
+    }
+    @catch (NSException *exception) {
+        NSLog(@"%s:%@",__FUNCTION__,exception);
+    }
+    @finally {
+    }
+	return nil;
+}
+
 - (NSManagedObject *)getObject:(NSString *)entityName props:(NSDictionary *)props{
     NSPredicate* pred = [NAFetchHelper predicateForEqualProps:props];
 	

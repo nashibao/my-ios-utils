@@ -13,6 +13,7 @@
  */
 @interface NSManagedObjectContext (na)
 
+- (NSArray *)filterObjects:(NSString *)entityName props:(NSDictionary *)props;
 - (NSManagedObject *)getObject:(NSString *)entityName props:(NSDictionary *)props;
 - (NSManagedObject *)createObject:(NSString *)entityName props:(NSDictionary *)props;
 - (NSManagedObject *)getOrCreateObject:(NSString *)entityName props:(NSDictionary *)props;

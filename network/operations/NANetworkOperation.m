@@ -8,34 +8,116 @@
 
 #import "NANetworkOperation.h"
 
+#import "NSOperationQueue+na.h"
+
 @implementation NANetworkOperation
+
+static NSMutableDictionary *_operations_with_id = nil;
+
++ (void)load{
+    [super load];
+    _operations_with_id = [[NSMutableDictionary alloc] init];
+}
 
 + (NANetworkOperation *)sendJsonAsynchronousRequest:(NSURLRequest *)request
                                          jsonOption:(NSJSONReadingOptions)jsonOption
-                                 returnEncoding:(NSStringEncoding)returnEncoding
-                                     returnMain:(BOOL)returnMain
-                                 successHandler:(void(^)(NANetworkOperation *op, id data))successHandler
-                                   errorHandler:(void(^)(NANetworkOperation *op, NSError *err))errorHandler{
-    NANetworkOperation *op = [[[self class] alloc] initWithRequest:request];
-    [op setCompletionBlockWithSuccess:successHandler failure:errorHandler isJson:YES jsonOption:jsonOption returnMain:returnMain];
-    return op;
+                                     returnEncoding:(NSStringEncoding)returnEncoding
+                                         returnMain:(BOOL)returnMain
+                                              queue:(NSOperationQueue *)queue
+                                         identifier:(NSString *)identifier
+                                 identifierMaxCount:(NSInteger)identifierMaxCount
+                                     queueingOption:(NANetworkOperationQueingOption)queueingOption
+                                     successHandler:(void(^)(NANetworkOperation *op, id data))successHandler
+                                       errorHandler:(void(^)(NANetworkOperation *op, NSError *err))errorHandler{
+    return [self _sendAsynchronousRequest:request isJson:YES jsonOption:jsonOption returnEncoding:returnEncoding returnMain:returnMain queue:queue identifier:identifier identifierMaxCount:identifierMaxCount queueingOption:queueingOption successHandler:successHandler errorHandler:errorHandler];
 }
 
 + (NANetworkOperation *)sendAsynchronousRequest:(NSURLRequest *)request
                                  returnEncoding:(NSStringEncoding)returnEncoding
                                      returnMain:(BOOL)returnMain
+                                          queue:(NSOperationQueue *)queue
+                                     identifier:(NSString *)identifier
+                             identifierMaxCount:(NSInteger)identifierMaxCount
+                                 queueingOption:(NANetworkOperationQueingOption)queueingOption
                                  successHandler:(void(^)(NANetworkOperation *op, id data))successHandler
                                    errorHandler:(void(^)(NANetworkOperation *op, NSError *err))errorHandler{
-    NANetworkOperation *op = [[[self class] alloc] initWithRequest:request];
-    [op setCompletionBlockWithSuccess:successHandler failure:errorHandler isJson:NO jsonOption:0 returnMain:returnMain];
+    return [self _sendAsynchronousRequest:request isJson:NO jsonOption:0 returnEncoding:returnEncoding returnMain:returnMain queue:queue identifier:identifier identifierMaxCount:identifierMaxCount queueingOption:queueingOption successHandler:successHandler errorHandler:errorHandler];
+}
+
++ (NANetworkOperation *)_sendAsynchronousRequest:(NSURLRequest *)request
+                                          isJson:(BOOL)isJson
+                                         jsonOption:(NSJSONReadingOptions)jsonOption
+                                     returnEncoding:(NSStringEncoding)returnEncoding
+                                         returnMain:(BOOL)returnMain
+                                              queue:(NSOperationQueue *)queue
+                                      identifier:(NSString *)identifier
+                              identifierMaxCount:(NSInteger)identifierMaxCount
+                                  queueingOption:(NANetworkOperationQueingOption)queueingOption
+                                     successHandler:(void(^)(NANetworkOperation *op, id data))successHandler
+                                       errorHandler:(void(^)(NANetworkOperation *op, NSError *err))errorHandler{
+    if(!identifierMaxCount)
+        identifierMaxCount = 1;
+    NANetworkOperation *op = nil;
+    NSMutableArray *operations = _operations_with_id[identifier];
+    if([operations count] > 0){
+        if(queueingOption == NANetworkOperationQueingOptionReturnOld){
+            op = [operations lastObject];
+            return op;
+        }else if(queueingOption == NANetworkOperationQueingOptionCancel){
+            if([operations count] >= identifierMaxCount)
+                [self cancelByIdentifier:identifier handler:nil];
+        }
+    }
+    
+    op = [[[self class] alloc] initWithRequest:request];
+    [op setCompletionBlockWithSuccess:successHandler failure:errorHandler isJson:isJson jsonOption:jsonOption returnMain:returnMain];
+    NSOperationQueue *_queue = queue ?: [NSOperationQueue globalBackgroundQueue];
+    [_queue addOperation:op];
+    [op setIdentifier:identifier];
+    operations = _operations_with_id[identifier] ?: [@[] mutableCopy];
+    [operations addObject:op];
+    _operations_with_id[identifier] = operations;
+    
     return op;
 }
 
-- (void)setCompletionBlockWithSuccess:(void (^)(NANetworkOperation *operation, id responseObject))success
-failure:(void (^)(NANetworkOperation *operation, NSError *error))failure isJson:(BOOL)isJson jsonOption:(NSJSONReadingOptions)jsonOption returnMain:(BOOL)returnMain{
++ (NSArray *)getOperationsByIdentifier:(NSString *)identifier{
+    return _operations_with_id[identifier];
+}
+
++ (NSArray *)cancelByIdentifier:(NSString *)identifier handler:(void (^)(void))handler{
+    NSArray *operations = [self getOperationsByIdentifier:identifier];
+    if(operations){
+        __block NSInteger cnt = 0;
+        NSInteger maxcnt = [operations count];
+        for (NANetworkOperation *op in operations) {
+            op.finish_block = ^{
+                cnt += 1;
+                if(maxcnt == cnt){
+                    NSLog(@"%s|%@", __PRETTY_FUNCTION__, @"cancelled!!");
+                    if(handler)
+                        handler();
+                }
+            };
+            [op cancel];
+        }
+    }
+    return operations;
+}
+
+- (void)setCompletionBlockWithSuccess:(void (^)(id operation, id responseObject))success
+failure:(void (^)(id operation, NSError *error))failure isJson:(BOOL)isJson jsonOption:(NSJSONReadingOptions)jsonOption returnMain:(BOOL)returnMain{
     __block __weak NANetworkOperation *wself = self;
+    self.success_block = success;
+    self.fail_block = failure;
     self.completionBlock = ^{
+        NSMutableArray *operations = _operations_with_id[wself.identifier];
+        [operations removeObject:wself];
         if ([wself isCancelled]) {
+            if(wself.cancel_block)
+                wself.cancel_block();
+            if(wself.finish_block)
+                wself.finish_block();
             return;
         }
         NSError *_err = nil;
@@ -60,22 +142,28 @@ failure:(void (^)(NANetworkOperation *operation, NSError *error))failure isJson:
             }
         }
         if(_err){
-            if(returnMain){
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    failure(wself, wself.error);
-                });
-            }else{
-                failure(wself, wself.error);
+            if(wself.fail_block){
+                if(returnMain){
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        wself.fail_block(wself, wself.error);
+                    });
+                }else{
+                    wself.fail_block(wself, wself.error);
+                }
             }
         }else{
-            if(returnMain){
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    success(wself, response);
-                });
-            }else{
-                success(wself, response);
+            if(wself.success_block){
+                if(returnMain){
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        wself.success_block(wself, response);
+                    });
+                }else{
+                    wself.success_block(wself, response);
+                }
             }
         }
+        if(wself.finish_block)
+            wself.finish_block();
     };
     
 }

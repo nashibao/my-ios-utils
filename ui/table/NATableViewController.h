@@ -26,6 +26,8 @@
 
 @property (strong, nonatomic) NSIndexPath *selectedIndexPath;
 
+@property (nonatomic) UITableViewCellAccessoryType cellAccessoryType;
+
 - (void)updateCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
 
 @end

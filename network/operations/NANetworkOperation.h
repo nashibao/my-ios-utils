@@ -8,6 +8,9 @@
 
 #import "NABaseNetworkOperation.h"
 
+#define NANetworkOperationIdentifierStart @"NANetworkOperationIdentifierStart"
+#define NANetworkOperationIdentifierEnd @"NANetworkOperationIdentifierEnd"
+
 #pragma mark TODO: 一部のparameterはpropertyにして関数を洗練しときたい．ショートカット
 #pragma mark TODO: operationを拡張できるようにしたい. factory pattern的な
 

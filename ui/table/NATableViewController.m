@@ -20,6 +20,7 @@
     self.isStaticTable = NO;
     self.cellClass = [UITableViewCell class];
     self.cellIdentifier = @"Cell";
+    self.cellAccessoryType = UITableViewCellAccessoryNone;
     /*
      implementation
      */
@@ -90,10 +91,12 @@
     
     if(self.isStaticTable){
         cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
+        [cell setAccessoryType:self.cellAccessoryType];
     }else{
         cell = [tableView dequeueReusableCellWithIdentifier:self.cellIdentifier];
         if(!cell){
             cell = [[self.cellClass alloc] initWithStyle:self.cellStyle reuseIdentifier:self.cellIdentifier];
+            [cell setAccessoryType:self.cellAccessoryType];
         }
     }
     

@@ -12,7 +12,6 @@
 
 + (NSPersistentStoreCoordinator *)coordinator;
 + (NSManagedObjectContext *)mainContext;
-+ (NSManagedObjectContext *)createPrivateContext;
 
 + (NSArray *)filter:(NSDictionary *)props options:(NSDictionary *)options;
 + (id)get:(NSDictionary *)props options:(NSDictionary *)options;
@@ -23,5 +22,12 @@
 + (void)get:(NSDictionary *)props options:(NSDictionary *)options complete:(void(^)(id mo))complete;
 + (void)create:(NSDictionary *)props options:(NSDictionary *)options complete:(void(^)(id mo))complete;
 + (void)get_or_create:(NSDictionary *)props options:(NSDictionary *)options complete:(void(^)(id mo))complete;
+
+#pragma mark frc用ショートカット
+
++ (NSFetchedResultsController *)controllerWithEqualProps:(NSDictionary *)equalProps sorts:(NSArray *)sorts context:(NSManagedObjectContext *)context options:(NSDictionary *)options;
++ (NSFetchRequest *)requestWithEqualProps:(NSDictionary *)equalProps sorts:(NSArray *)sorts options:(NSDictionary *)options;
++ (NSFetchedResultsController *)controllerWithProps:(NSArray *)props sorts:(NSArray *)sorts context:(NSManagedObjectContext *)context options:(NSDictionary *)options;
++ (NSFetchRequest *)requestWithProps:(NSArray *)props sorts:(NSArray *)sorts options:(NSDictionary *)options;
 
 @end

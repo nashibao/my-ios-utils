@@ -12,7 +12,7 @@
 
 #import "NSManagedObjectContext+na.h"
 
-#import "SyncModel+sync.h"
+#import "SyncBaseModel+sync.h"
 
 @implementation NASyncHelper
 
@@ -45,13 +45,14 @@
         }else{
             items = data;
         }
+        NSLog(@"%s|%d", __PRETTY_FUNCTION__, [items count]);
         NSMutableArray *temp = [@[] mutableCopy];
         for(NSDictionary *d in items){
             NSManagedObject *mo = [context getOrCreateObject:[driver entityName] props:[[driver syncModel] json2uniqueDictionary:d]];
             BOOL updated = YES;
-            if([mo isKindOfClass:[SyncModel class]]){
-                SyncModel *sm = (SyncModel *)mo;
-                if(sm.sync_version < d[@"sync_version"]){
+            if([mo isKindOfClass:[SyncBaseModel class]]){
+                SyncBaseModel *sm = (SyncBaseModel *)mo;
+                if([sm.sync_version integerValue] < [d[@"sync_version"] integerValue]){
                     [sm setData:d];
                 }else{
                     updated = NO;

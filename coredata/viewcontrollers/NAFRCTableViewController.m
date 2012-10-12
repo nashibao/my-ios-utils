@@ -47,6 +47,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:self.cellIdentifier];
     if(!cell){
         cell = [[self.cellClass alloc] initWithStyle:self.cellStyle reuseIdentifier:self.cellIdentifier];
+        [cell setAccessoryType:self.cellAccessoryType];
     }
     
     [self updateCell:cell atIndexPath:indexPath];

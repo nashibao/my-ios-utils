@@ -10,21 +10,33 @@
 
 #import "NASyncHelper.h"
 
+#import "NAFetchHelper.h"
+
+#import <objc/runtime.h>
+
+#import "NADefaultMappingDriver.h"
+
+#import "NADefaultRestDriver.h"
+
 @implementation SyncBaseModel (sync)
 
++ (NAMappingDriver *)driver{
+    static NADefaultMappingDriver *__mapping_driver__ = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        __mapping_driver__ = [[NADefaultMappingDriver alloc] init];
+        __mapping_driver__.syncModel = self;
+        __mapping_driver__.restDriver = [[NADefaultRestDriver alloc] init];
+    });
+    return __mapping_driver__;
+}
+
 + (NSString *)primaryKeyField{
-    return [[self driver] primaryKey];
+    return @"pk";
 }
 
 - (NSNumber *)primaryKey{
     return [self valueForKey:[[self class] primaryKeyField]];
-}
-
-+ (NAMappingDriver *)driver{
-	@throw [NSException exceptionWithName:@"MUST_BE_OVERRIDED"
-								   reason:@"driver: MUST_BE_OVERRIDED"
-								 userInfo:nil];
-    return nil;
 }
 
 /*
@@ -116,5 +128,57 @@ static BOOL __is_loading__;
         __is_loading__ = is_loading;
     }
 }
+
+@dynamic is_uploading;
+
+/*
+ 変更検知から外すkey
+ */
++ (NSArray *)exclude_edit_management_keys{
+    static NSArray *__exclude_keys__ = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        __exclude_keys__ = @[
+        @"network_cache_identifier",
+        @"network_identifier",
+        @"pk",
+        @"sync_version",
+        @"is_deleted",
+        @"is_edited",
+        @"data",
+        @"raw_data",
+        @"sync_error",
+        ];
+    });
+    return __exclude_keys__;
+}
+
+/*
+ 変更検知のマニュアル化
+ default: YES
+ */
++ (BOOL)is_manual_edit_management{
+    return YES;
+}
+
+/*
+ 変更の検知はここで行う．
+ */
+- (void)didChangeValueForKey:(NSString *)key{
+    if(![[self class] is_manual_edit_management]){
+        BOOL bl = YES;
+        for(NSString *ex_key in [[self class] exclude_edit_management_keys]){
+            if([key isEqualToString:ex_key]){
+                bl = NO;
+                break;
+            }
+        }
+        if(bl){
+            self.is_edited = @YES;
+        }
+    }
+    [super didChangeValueForKey:key];
+}
+
 
 @end

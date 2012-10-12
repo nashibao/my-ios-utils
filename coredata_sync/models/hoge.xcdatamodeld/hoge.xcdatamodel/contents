@@ -1,21 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1811" systemVersion="12C60" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="SyncBaseModel" representedClassName="SyncBaseModel" syncable="YES">
-        <attribute name="network_cache_identifier" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="network_identifier" optional="YES" attributeType="String" syncable="YES"/>
-    </entity>
-    <entity name="SyncModel" representedClassName="SyncModel" parentEntity="SyncBaseModel" syncable="YES">
         <attribute name="created_at" optional="YES" attributeType="Date" indexed="YES" syncable="YES"/>
         <attribute name="data" optional="YES" attributeType="Transformable" valueTransformerName="NSDictionaryTransformer" syncable="YES"/>
-        <attribute name="is_active" optional="YES" attributeType="Boolean" defaultValueString="YES" indexed="YES" syncable="YES"/>
-        <attribute name="is_edited" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="is_deleted" optional="YES" attributeType="Boolean" defaultValueString="NO" indexed="YES" syncable="YES"/>
+        <attribute name="is_edited" optional="YES" attributeType="Boolean" defaultValueString="NO" indexed="YES" syncable="YES"/>
+        <attribute name="network_cache_identifier" optional="YES" transient="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="network_identifier" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="pk" optional="YES" attributeType="Integer 32" defaultValueString="-1" indexed="YES" syncable="YES"/>
-        <attribute name="sync_date" optional="YES" attributeType="Date" indexed="YES" syncable="YES"/>
+        <attribute name="raw_data" optional="YES" attributeType="Transformable" valueTransformerName="NSDictionaryTransformer" syncable="YES"/>
+        <attribute name="sync_error" optional="YES" attributeType="Integer 32" defaultValueString="0" indexed="YES" syncable="YES"/>
         <attribute name="sync_version" optional="YES" attributeType="Integer 32" defaultValueString="0" indexed="YES" syncable="YES"/>
         <attribute name="updated_at" optional="YES" attributeType="Date" indexed="YES" syncable="YES"/>
     </entity>
     <elements>
-        <element name="SyncModel" positionX="-405" positionY="-216" width="128" height="163"/>
-        <element name="SyncBaseModel" positionX="-648" positionY="-189" width="128" height="73"/>
+        <element name="SyncBaseModel" positionX="-711" positionY="-202" width="198" height="208"/>
     </elements>
 </model>

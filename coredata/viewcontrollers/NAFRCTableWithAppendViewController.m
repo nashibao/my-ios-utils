@@ -129,7 +129,15 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:self.cellIdentifier];
     if(!cell){
         cell = [[self.cellClass alloc] initWithStyle:self.cellStyle reuseIdentifier:self.cellIdentifier];
+        [cell setAccessoryType:self.cellAccessoryType];
     }
+    id obj = nil;
+    if(pre){
+        obj = self.preAppendRows[_indexPath.section][_indexPath.row];
+    }else{
+        obj = self.postAppendRows[_indexPath.section][_indexPath.row];
+    }
+    [cell.textLabel setText:[NSString stringWithFormat:@"%@", obj]];
     return cell;
 }
 

@@ -77,6 +77,7 @@ static NSMutableDictionary *_operations_with_id = nil;
     operations = _operations_with_id[identifier] ?: [@[] mutableCopy];
     [operations addObject:op];
     _operations_with_id[identifier] = operations;
+    [op checkIdentifierStart];
     
     return op;
 }
@@ -113,6 +114,7 @@ failure:(void (^)(id operation, NSError *error))failure isJson:(BOOL)isJson json
     self.completionBlock = ^{
         NSMutableArray *operations = _operations_with_id[wself.identifier];
         [operations removeObject:wself];
+        [wself checkIdentifierFinish];
         if ([wself isCancelled]) {
             if(wself.cancel_block)
                 wself.cancel_block();
@@ -168,6 +170,24 @@ failure:(void (^)(id operation, NSError *error))failure isJson:(BOOL)isJson json
             wself.finish_block();
     };
     
+}
+
+- (void)checkIdentifierStart{
+    if(self.identifier){
+        NSMutableArray *operations = _operations_with_id[self.identifier];
+        if([operations count] == 1){
+            [[NSNotificationCenter defaultCenter] postNotificationName:NANetworkOperationIdentifierStart object:self.identifier];
+        }
+    }
+}
+
+- (void)checkIdentifierFinish{
+    if(self.identifier){
+        NSMutableArray *operations = _operations_with_id[self.identifier];
+        if([operations count] == 0){
+            [[NSNotificationCenter defaultCenter] postNotificationName:NANetworkOperationIdentifierEnd object:self.identifier];
+        }
+    }
 }
 
 @end

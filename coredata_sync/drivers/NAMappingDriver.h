@@ -14,15 +14,20 @@
 
 @property (strong, nonatomic) Class syncModel;
 @property (strong, nonatomic) NSString *endpoint;
-@property (strong, nonatomic) NSPersistentStoreCoordinator *coordinator;
 @property (strong, nonatomic) NSString *modelName;
-@property (strong, nonatomic) NSString *entityName;
+@property (readonly, nonatomic) NSString *entityName;
 @property (strong, nonatomic) NSString *callbackName;
 @property (strong, nonatomic) NSString *primaryKey;
 @property (strong, nonatomic) NSMutableDictionary *jsonKeys;
 @property (strong, nonatomic) NSMutableDictionary *queryKeys;
 @property (strong, nonatomic) NSMutableDictionary *uniqueKeys;
 @property (strong, nonatomic) id<NARestDriverProtocol> restDriver;
-@property (strong, nonatomic) NSManagedObjectContext *mainContext;
+
+@property (readonly, nonatomic) NSPersistentStoreCoordinator *coordinator;
+@property (readonly, nonatomic) NSManagedObjectContext *mainContext;
+
+- (NSDictionary *)mo2query:(NSManagedObject *)mo;
+- (NSDictionary *)json2dictionary:(NSDictionary *)json;
+- (NSDictionary *)json2uniqueDictionary:(NSDictionary *)json;
 
 @end

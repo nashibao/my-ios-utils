@@ -48,7 +48,7 @@
         NSLog(@"%s|%d", __PRETTY_FUNCTION__, [items count]);
         NSMutableArray *temp = [@[] mutableCopy];
         for(NSDictionary *d in items){
-            NSManagedObject *mo = [context getOrCreateObject:[driver entityName] props:[[driver syncModel] json2uniqueDictionary:d]];
+            NSManagedObject *mo = [context getOrCreateObject:[driver entityName] props:[driver json2uniqueDictionary:d]];
             BOOL updated = YES;
             if([mo isKindOfClass:[SyncBaseModel class]]){
                 SyncBaseModel *sm = (SyncBaseModel *)mo;
@@ -61,7 +61,7 @@
                 [sm setNetwork_cache_identifier:network_cache_identifier];
             }
             if(updated)
-                [mo setValuesForKeysWithDictionary:[[driver syncModel] json2dictionary:d]];
+                [mo setValuesForKeysWithDictionary:[driver json2dictionary:d]];
             [temp addObject:mo];
         }
         [context save:nil];

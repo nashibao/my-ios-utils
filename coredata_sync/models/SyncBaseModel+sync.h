@@ -88,20 +88,9 @@
 #pragma mark REST/Mappingの設定
 
 /*
- additional schemes
+ driver
  */
 + (NAMappingDriver *)driver;
-+ (NSString *)primaryKeyField;
-- (NSNumber *)primaryKey;
-
-/*
- mapping
- */
-+ (NSDictionary *)mo2query:(NSManagedObject *)mo;
-+ (NSDictionary *)json2dictionary:(NSDictionary *)json;
-+ (NSDictionary *)json2uniqueDictionary:(NSDictionary *)json;
-
-
 
 #pragma mark 同期用のショートカット
 

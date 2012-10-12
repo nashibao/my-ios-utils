@@ -31,58 +31,9 @@
     return __mapping_driver__;
 }
 
-+ (NSString *)primaryKeyField{
-    return @"pk";
-}
-
 - (NSNumber *)primaryKey{
-    return [self valueForKey:[[self class] primaryKeyField]];
+    return [self valueForKey:[[[self class] driver] primaryKey]];
 }
-
-/*
- mapping
- */
-+ (NSDictionary *)mo2query:(NSManagedObject *)mo{
-    NAMappingDriver *driver = [self driver];
-    NSMutableDictionary *temp = [@{} mutableCopy];
-    for(NSString *fromkey in [driver queryKeys]){
-        NSString *tokey = [driver queryKeys][fromkey];
-        id val = [mo valueForKey:fromkey];
-        if(val){
-            temp[tokey] = val;
-        }
-    }
-    return temp;
-}
-
-+ (NSDictionary *)json2dictionary:(NSDictionary *)json{
-    NAMappingDriver *driver = [self driver];
-    NSMutableDictionary *temp = [@{} mutableCopy];
-    for(NSString *fromkey in [driver jsonKeys]){
-        NSString *tokey = [driver jsonKeys][fromkey];
-        id val = json[fromkey];
-        if(val){
-            temp[tokey] = val;
-        }
-    }
-    return temp;
-}
-
-+ (NSDictionary *)json2uniqueDictionary:(NSDictionary *)json{
-    NAMappingDriver *driver = [self driver];
-    NSMutableDictionary *temp = [@{} mutableCopy];
-    for(NSString *fromkey in [driver jsonKeys]){
-        NSString *tokey = [driver jsonKeys][fromkey];
-        if([driver uniqueKeys][tokey]){
-            id val = json[fromkey];
-            if(val){
-                temp[tokey] = val;
-            }
-        }
-    }
-    return temp;
-}
-
 
 
 + (void)sync_filter:(NSDictionary *)query options:(NSDictionary *)options complete:(void(^)())complete{
@@ -102,7 +53,7 @@
 }
 
 - (void)sync_create:(NSDictionary *)options complete:(void(^)())complete{
-    NSDictionary *query = [[self class]mo2query:self];
+    NSDictionary *query = [[[self class] driver] mo2query:self];
     [NASyncHelper syncCreate:query driver:[[self class] driver] options:options handler:nil saveHandler:complete];
 }
 

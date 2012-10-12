@@ -18,20 +18,10 @@
         self.primaryKey = @"pk";
         self.uniqueKeys = [@{@"pk": @YES} mutableCopy];
         self.jsonKeys = [@{
-            @"id": @"pk",
-            @"is_active": @"is_active",
-            @"created_at": @"created_at",
-            @"updated_at": @"updated_at",
-            @"sync_date": @"sync_date",
-            @"sync_version": @"sync_version",
+            @"pk": @"pk",
         } mutableCopy];
         self.queryKeys = [@{
             @"pk": @"pk",
-            @"is_active": @"is_active",
-            @"created_at": @"created_at",
-            @"updated_at": @"updated_at",
-            @"sync_date": @"sync_date",
-            @"sync_version": @"sync_version",
         } mutableCopy];
     }
     return self;

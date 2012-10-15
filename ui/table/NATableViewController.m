@@ -8,6 +8,8 @@
 
 #import "NATableViewController.h"
 
+#import "NATableViewCell.h"
+
 @interface NATableViewController ()
 
 @end
@@ -53,10 +55,21 @@
 
 //update cells ---------------------------------
 
+- (void)initializeCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath reuseIdentifier:(NSString *)reuseIdentifier{
+    /*
+     implementation
+     */
+}
+
 - (void)updateCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath{
     /*
      implementation
      */
+    if([cell isKindOfClass:[NATableViewCell class]]){
+        NATableViewCell *ncell = (NATableViewCell *)cell;
+        ncell.indexPath = indexPath;
+        ncell.tableViewController = self;
+    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -97,6 +110,7 @@
         if(!cell){
             cell = [[self.cellClass alloc] initWithStyle:self.cellStyle reuseIdentifier:self.cellIdentifier];
             [cell setAccessoryType:self.cellAccessoryType];
+            [self initializeCell:cell atIndexPath:indexPath reuseIdentifier:self.cellIdentifier];
         }
     }
     

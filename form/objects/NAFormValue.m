@@ -14,12 +14,11 @@
 
 @implementation NAFormValue
 
-- (id)initWithValue:(id)value label:(NSString *)label name:(NSString *)name targetView:(UIView *)targetView validateRules:(NSDictionary *)validateRules options:(NSDictionary *)options{
+- (id)initWithValue:(id)value label:(NSString *)label name:(NSString *)name validateRules:(NSDictionary *)validateRules options:(NSDictionary *)options{
     self = [self init];
     self.value = value;
     self.label = label;
     self.name = name;
-    self.targetView = targetView;
     self.validatRules = validateRules;
     self.options = options;
     return self;
@@ -57,24 +56,23 @@
     NSMutableString *_temp = [@"" mutableCopy];
     for(NSString *_key in self.errors){
         NSString *message = self.errors[_key];
-        if([_temp length] > 0)
-            [_temp appendString:@", "];
-        [_temp appendString:message];
+        if(message && [message length] > 0){
+            if([_temp length] > 0)
+                [_temp appendString:@", "];
+            [_temp appendString:message];
+        }
     }
     return _temp;
 }
 
 - (void)highlight{
-    if(self.targetView){
-        if([self.targetView isKindOfClass:[UITableViewCell class]]){
-            UITableViewCell *cell = (UITableViewCell *)self.targetView;
-            if([self.errors count] > 0){
-                [cell setBackgroundColor:[[NATheme currentTheme] cellErrorHighlightBackgroundColor]];
-            }else{
-                [cell setBackgroundColor:[[NATheme currentTheme] cellBackgroundColor]];
-            }
-        }
-    }
+    if(_targetViewDelegate)
+        [_targetViewDelegate formValue:self highlighted:([self.errors count] > 0)];
+}
+
+- (void)focus:(BOOL)focusin{
+    if(_targetViewDelegate)
+        [_targetViewDelegate formValue:self focused:focusin];
 }
 
 - (NSString *)stringValue{

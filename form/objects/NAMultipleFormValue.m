@@ -16,7 +16,8 @@
     NSMutableDictionary *_temp = [@{} mutableCopy];
     for(NAFormValue *formValue in self.formValues){
         [formValue validate];
-        [_temp addEntriesFromDictionary:formValue.errors];
+        if(formValue.errors && [formValue.errors count] > 0)
+            [_temp addEntriesFromDictionary:formValue.errors];
     }
     self.errors = _temp;
     return [self.errors count] > 0;

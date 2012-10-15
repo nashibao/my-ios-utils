@@ -141,9 +141,11 @@ static NSDictionary *validate_settings = nil;
     NSMutableString *_temp = [@"" mutableCopy];
     for(NAFormValue *formValue in formValues){
         if([formValue errors] > 0){
-            if([_temp length] > 0)
-                [_temp appendString:@", "];
-            [_temp appendString:[formValue shortErrorMessage]];
+            NSString *val = [formValue shortErrorMessage];
+            if(val && [val length] > 0){
+                [_temp appendFormat:@"%@:", formValue.label];
+                [_temp appendString:val];
+            }
         }
     }
     return _temp;

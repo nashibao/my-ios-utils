@@ -12,6 +12,6 @@
 
 @interface NAFormTextFieldCell : NAFormCell <UITextFieldDelegate>
 
-@property (strong, nonatomic) UITextField *textField;
+@property (weak, nonatomic) IBOutlet UITextField *textField;
 
 @end

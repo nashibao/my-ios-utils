@@ -28,6 +28,7 @@
 
 @property (nonatomic) UITableViewCellAccessoryType cellAccessoryType;
 
+- (void)initializeCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath reuseIdentifier:(NSString *)reuseIdentifier;
 - (void)updateCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
 
 @end

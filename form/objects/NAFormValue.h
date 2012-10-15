@@ -8,10 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol NAFormValuTargetViewDelegate;
+
 @interface NAFormValue : NSObject
 
-//ハイライト用
-@property (weak, nonatomic) UIView *targetView;
+@property (weak, nonatomic) id<NAFormValuTargetViewDelegate> targetViewDelegate;
+
 @property (strong, nonatomic) id value;
 @property (strong, nonatomic) NSString *label;
 @property (strong, nonatomic) NSString *name;
@@ -30,7 +32,7 @@
 //indexPathはtableView用．．微妙か．
 @property (strong, nonatomic) NSIndexPath *indexPath;
 
-- (id)initWithValue:(id)value label:(NSString *)label name:(NSString *)name targetView:(UIView *)targetView validateRules:(NSDictionary *)validateRules options:(NSDictionary *)options;
+- (id)initWithValue:(id)value label:(NSString *)label name:(NSString *)name validateRules:(NSDictionary *)validateRules options:(NSDictionary *)options;
 
 - (BOOL)validate;
 
@@ -38,6 +40,20 @@
 
 - (void)highlight;
 
+- (void)focus:(BOOL)focusin;
+
 - (void)appendQuery:(NSMutableDictionary *)queries;
+
+@end
+
+@protocol NAFormValuTargetViewDelegate <NSObject>
+
+@required
+
+//フォーカス
+- (void)formValue:(NAFormValue *)formValue focused:(BOOL)focused;
+
+//エラーによるハイライト
+- (void)formValue:(NAFormValue *)formValue highlighted:(BOOL)highlighted;
 
 @end

@@ -18,6 +18,8 @@
         NSPredicate *p = [NSPredicate predicateWithFormat:@"%K == %@", key, val];
         [ps addObject:p];
     }
+    if([ps count]==0)
+        return nil;
     NSPredicate *pred = [NSCompoundPredicate andPredicateWithSubpredicates:ps];
     return pred;
 }
@@ -31,6 +33,8 @@
         NSPredicate *p = [NSPredicate predicateWithFormat:format argumentArray:vals];
         [ps addObject:p];
     }
+    if([ps count]==0)
+        return nil;
     NSPredicate *pred = [NSCompoundPredicate andPredicateWithSubpredicates:ps];
     return pred;
 }

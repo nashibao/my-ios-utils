@@ -108,8 +108,20 @@
     }];
 }
 
++ (void)delete_all{
+    [[self mainContext] deleteAllObjects:NSStringFromClass(self)];
+}
+
++ (NSError *)save{
+    NSError *err = nil;
+    [[self mainContext] save:&err];
+    return err;
+}
+
 + (NSFetchedResultsController *)controllerWithEqualProps:(NSDictionary *)equalProps sorts:(NSArray *)sorts context:(NSManagedObjectContext *)context options:(NSDictionary *)options{
     NSFetchRequest *req = [self requestWithEqualProps:equalProps sorts:sorts options:options];
+    if(!context)
+        context = [self mainContext];
     NSFetchedResultsController *frc = [[NSFetchedResultsController alloc] initWithFetchRequest:req managedObjectContext:context sectionNameKeyPath:nil cacheName:nil];
     return frc;
 }
@@ -123,7 +135,9 @@
         [_sorts addObject:sd];
     }
     [req setSortDescriptors:_sorts];
-    NSPredicate *pred = [NAFetchHelper predicateForEqualProps:equalProps];
+    NSPredicate *pred = nil;
+    if(equalProps && [equalProps count] > 0)
+        pred = [NAFetchHelper predicateForEqualProps:equalProps];
     if(pred)
         [req setPredicate:pred];
     return req;
@@ -144,7 +158,9 @@
         [_sorts addObject:sd];
     }
     [req setSortDescriptors:_sorts];
-    NSPredicate *pred = [NAFetchHelper predicateForProps:props];
+    NSPredicate *pred = nil;
+    if(props && [props count] > 0)
+        pred = [NAFetchHelper predicateForProps:props];
     if(pred)
         [req setPredicate:pred];
     return req;

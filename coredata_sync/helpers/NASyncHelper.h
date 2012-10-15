@@ -20,5 +20,6 @@
 + (void)syncGet:(NSNumber *)pk driver:(NAMappingDriver *)driver options:(NSDictionary *)options handler:(void(^)(NSArray *mos, NSError *err))handler saveHandler:(void(^)())saveHandler;
 + (void)syncCreate:(NSDictionary *)query driver:(NAMappingDriver *)driver options:(NSDictionary *)options handler:(void(^)(NSArray *mos, NSError *err))handler saveHandler:(void(^)())saveHandler;
 + (void)syncUpdate:(NSDictionary *)query pk:(NSNumber *)pk driver:(NAMappingDriver *)driver options:(NSDictionary *)options handler:(void(^)(NSArray *mos, NSError *err))handler saveHandler:(void(^)())saveHandler;
++ (void)syncRPC:(NSDictionary *)query rpcname:(NSString *)rpcname driver:(NAMappingDriver *)driver options:(NSDictionary *)options handler:(void(^)(NSArray *mos, NSError *err))handler saveHandler:(void(^)())saveHandler;
 
 @end

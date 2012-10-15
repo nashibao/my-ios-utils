@@ -23,6 +23,8 @@ NSInteger __networking__count__ = 0;
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue globalBackgroundQueue] completionHandler:^(NSURLResponse *resp, NSData *data, NSError *err) {
         NSError *_err = nil;
         id _result = nil;
+        NSString *resulttemp = [[NSString alloc] initWithData:data encoding:returnEncoding];
+        NSLog(@"%s|%@", __PRETTY_FUNCTION__, resulttemp);
         if([data length] > 0 && err == nil){
             if(isJSON){
                 NSError *jsonErr;

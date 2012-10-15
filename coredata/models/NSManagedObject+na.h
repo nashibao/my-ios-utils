@@ -23,6 +23,10 @@
 + (void)create:(NSDictionary *)props options:(NSDictionary *)options complete:(void(^)(id mo))complete;
 + (void)get_or_create:(NSDictionary *)props options:(NSDictionary *)options complete:(void(^)(id mo))complete;
 
++ (void)delete_all;
+
++ (NSError *)save;
+
 #pragma mark frc用ショートカット
 
 + (NSFetchedResultsController *)controllerWithEqualProps:(NSDictionary *)equalProps sorts:(NSArray *)sorts context:(NSManagedObjectContext *)context options:(NSDictionary *)options;

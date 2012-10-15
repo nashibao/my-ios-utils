@@ -110,6 +110,7 @@
 - (void)sync_create:(NSDictionary *)options complete:(void(^)())complete;
 + (void)sync_update:(NSNumber *)pk query:(NSDictionary *)query options:(NSDictionary *)options complete:(void(^)())complete;
 - (void)sync_update:(NSDictionary *)query options:(NSDictionary *)options complete:(void(^)())complete;
++ (void)sync_rpc:(NSDictionary *)query rpcname:(NSString *)rpcname options:(NSDictionary *)options complete:(void(^)())complete;
 
 
 #pragma mark 同期用設定

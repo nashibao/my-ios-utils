@@ -17,7 +17,8 @@
 	
 	NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:entityName inManagedObjectContext:self];
-	[fetchRequest setPredicate:pred];
+    if(pred)
+        [fetchRequest setPredicate:pred];
 	[fetchRequest setEntity:entity];
 	
     @try {
@@ -40,7 +41,8 @@
 	
 	NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:entityName inManagedObjectContext:self];
-	[fetchRequest setPredicate:pred];
+    if(pred)
+        [fetchRequest setPredicate:pred];
 	[fetchRequest setEntity:entity];
 	
     @try {

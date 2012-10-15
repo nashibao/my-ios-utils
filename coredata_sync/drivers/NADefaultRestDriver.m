@@ -25,7 +25,7 @@
     return self;
 }
 
-- (NSString *)URLByType:(NARestType)type model:(NSString*)modelname endpoint:(NSString *)endpoint pk:(NSNumber *)_pk{
+- (NSString *)URLByType:(NARestType)type model:(NSString*)modelname endpoint:(NSString *)endpoint pk:(NSNumber *)_pk option:(NSDictionary *)option{
     int pk = -1;
     if(_pk)
         pk = [_pk intValue];
@@ -44,6 +44,9 @@
             break;
         case NARestTypeDELETE:
             return [NSString stringWithFormat:@"%@%@delete/%@/%d/", [[self class] domain], endpoint, modelname, pk];
+            break;
+        case NARestTypeRPC:
+            return [NSString stringWithFormat:@"%@%@rpc/%@/%@/", [[self class] domain], endpoint, modelname, option[@"rpc_name"]];
             break;
             
         default:
@@ -67,6 +70,9 @@
             break;
         case NARestTypeDELETE:
             return NANetworkProtocolPOST;
+            break;
+        case NARestTypeRPC:
+            return NANetworkProtocolGET;
             break;
             
         default:

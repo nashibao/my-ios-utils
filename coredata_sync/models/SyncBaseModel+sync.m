@@ -64,6 +64,10 @@
     [NASyncHelper syncUpdate:query pk:[self primaryKey] driver:[[self class] driver] options:options handler:nil saveHandler:complete];
 }
 
++ (void)sync_rpc:(NSDictionary *)query rpcname:(NSString *)rpcname options:(NSDictionary *)options complete:(void(^)())complete{
+    [NASyncHelper syncRPC:query rpcname:rpcname driver:[self driver] options:options handler:nil saveHandler:complete];
+}
+
 static BOOL __is_loading__;
 
 + (BOOL)is_loading{

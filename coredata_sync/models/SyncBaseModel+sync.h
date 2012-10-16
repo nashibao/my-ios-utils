@@ -103,14 +103,14 @@
   network_identifier(mo): frcの名前などを入れておく
   network_cache_identifier(mo): 検索語などを入れておく
  */
-+ (void)sync_filter:(NSDictionary *)query options:(NSDictionary *)options complete:(void(^)())complete;
-+ (void)sync_get:(NSNumber *)pk options:(NSDictionary *)options complete:(void(^)())complete;
-- (void)sync_get:(NSDictionary *)options complete:(void(^)())complete;
-+ (void)sync_create:(NSDictionary *)query options:(NSDictionary *)options complete:(void(^)())complete;
-- (void)sync_create:(NSDictionary *)options complete:(void(^)())complete;
-+ (void)sync_update:(NSNumber *)pk query:(NSDictionary *)query options:(NSDictionary *)options complete:(void(^)())complete;
-- (void)sync_update:(NSDictionary *)query options:(NSDictionary *)options complete:(void(^)())complete;
-+ (void)sync_rpc:(NSDictionary *)query rpcname:(NSString *)rpcname options:(NSDictionary *)options complete:(void(^)())complete;
++ (void)sync_filter:(NSDictionary *)query options:(NSDictionary *)options complete:(void(^)())complete error:(void(^)(NSError *err))error;
++ (void)sync_get:(NSNumber *)pk options:(NSDictionary *)options complete:(void(^)())complete error:(void(^)(NSError *err))error;
+- (void)sync_get:(NSDictionary *)options complete:(void(^)())complete error:(void(^)(NSError *err))error;
++ (void)sync_create:(NSDictionary *)query options:(NSDictionary *)options complete:(void(^)())complete error:(void(^)(NSError *err))error;
+- (void)sync_create:(NSDictionary *)options complete:(void(^)())complete error:(void(^)(NSError *err))error;
++ (void)sync_update:(NSNumber *)pk query:(NSDictionary *)query options:(NSDictionary *)options complete:(void(^)())complete error:(void(^)(NSError *err))error;
+- (void)sync_update:(NSDictionary *)query options:(NSDictionary *)options complete:(void(^)())complete error:(void(^)(NSError *err))error;
++ (void)sync_rpc:(NSDictionary *)query rpcname:(NSString *)rpcname options:(NSDictionary *)options complete:(void(^)())complete error:(void(^)(NSError *err))error;
 
 
 #pragma mark 同期用設定

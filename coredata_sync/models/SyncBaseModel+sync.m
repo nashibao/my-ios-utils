@@ -36,36 +36,36 @@
 }
 
 
-+ (void)sync_filter:(NSDictionary *)query options:(NSDictionary *)options complete:(void(^)())complete{
-    [NASyncHelper syncFilter:query driver:[self driver] options:options handler:nil saveHandler:complete];
++ (void)sync_filter:(NSDictionary *)query options:(NSDictionary *)options complete:(void(^)())complete error:(void(^)(NSError *err))error{
+    [NASyncHelper syncFilter:query driver:[self driver] options:options saveHandler:complete errorHandler:error];
 }
 
-+ (void)sync_get:(NSNumber *)pk options:(NSDictionary *)options complete:(void(^)())complete{
-    [NASyncHelper syncGet:pk driver:[self driver] options:options handler:nil saveHandler:complete];
++ (void)sync_get:(NSNumber *)pk options:(NSDictionary *)options complete:(void(^)())complete error:(void(^)(NSError *err))error{
+    [NASyncHelper syncGet:pk driver:[self driver] options:options saveHandler:complete errorHandler:error];
 }
 
-- (void)sync_get:(NSDictionary *)options complete:(void(^)())complete{
-    [NASyncHelper syncGet:[self primaryKey] driver:[[self class] driver] options:options handler:nil saveHandler:complete];
+- (void)sync_get:(NSDictionary *)options complete:(void(^)())complete error:(void(^)(NSError *err))error{
+    [NASyncHelper syncGet:[self primaryKey] driver:[[self class] driver] options:options saveHandler:complete errorHandler:error];
 }
 
-+ (void)sync_create:(NSDictionary *)query options:(NSDictionary *)options complete:(void(^)())complete{
-    [NASyncHelper syncCreate:query driver:[self driver] options:options handler:nil saveHandler:complete];
++ (void)sync_create:(NSDictionary *)query options:(NSDictionary *)options complete:(void(^)())complete error:(void(^)(NSError *err))error{
+    [NASyncHelper syncCreate:query driver:[self driver] options:options saveHandler:complete errorHandler:error];
 }
 
-- (void)sync_create:(NSDictionary *)options complete:(void(^)())complete{
+- (void)sync_create:(NSDictionary *)options complete:(void(^)())complete error:(void(^)(NSError *err))error{
     NSDictionary *query = [[[self class] driver] mo2query:self];
-    [NASyncHelper syncCreate:query driver:[[self class] driver] options:options handler:nil saveHandler:complete];
+    [NASyncHelper syncCreate:query driver:[[self class] driver] options:options saveHandler:complete errorHandler:error];
 }
 
-+ (void)sync_update:(NSNumber *)pk query:(NSDictionary *)query options:(NSDictionary *)options complete:(void(^)())complete{
-    [NASyncHelper syncUpdate:query pk:pk driver:[self driver] options:options handler:nil saveHandler:complete];
++ (void)sync_update:(NSNumber *)pk query:(NSDictionary *)query options:(NSDictionary *)options complete:(void(^)())complete error:(void(^)(NSError *err))error{
+    [NASyncHelper syncUpdate:query pk:pk driver:[self driver] options:options saveHandler:complete errorHandler:error];
 }
-- (void)sync_update:(NSDictionary *)query options:(NSDictionary *)options complete:(void(^)())complete{
-    [NASyncHelper syncUpdate:query pk:[self primaryKey] driver:[[self class] driver] options:options handler:nil saveHandler:complete];
+- (void)sync_update:(NSDictionary *)query options:(NSDictionary *)options complete:(void(^)())complete error:(void(^)(NSError *err))error{
+    [NASyncHelper syncUpdate:query pk:[self primaryKey] driver:[[self class] driver] options:options saveHandler:complete errorHandler:error];
 }
 
-+ (void)sync_rpc:(NSDictionary *)query rpcname:(NSString *)rpcname options:(NSDictionary *)options complete:(void(^)())complete{
-    [NASyncHelper syncRPC:query rpcname:rpcname driver:[self driver] options:options handler:nil saveHandler:complete];
++ (void)sync_rpc:(NSDictionary *)query rpcname:(NSString *)rpcname options:(NSDictionary *)options complete:(void(^)())complete error:(void(^)(NSError *err))error{
+    [NASyncHelper syncRPC:query rpcname:rpcname driver:[self driver] options:options saveHandler:complete errorHandler:error];
 }
 
 static BOOL __is_loading__;

@@ -19,7 +19,7 @@
 /*
  call when network is ended.
  */
-+ (void)_success:(NAMappingDriver *)driver response:(NSURLResponse *)resp data:(id)data options:(NSDictionary *)options handler:(void(^)(NSArray *mos, NSError *err))handler saveHandler:(void(^)())saveHandler{
++ (void)_success:(NAMappingDriver *)driver response:(NSURLResponse *)resp data:(id)data options:(NSDictionary *)options saveHandler:(void(^)())saveHandler errorHandler:(void(^)(NSError *err))errorHandler{
     NSManagedObjectContext *context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
     [context setPersistentStoreCoordinator:driver.coordinator];
     [[NSNotificationCenter defaultCenter] addObserverForName:NSManagedObjectContextDidSaveNotification object:context queue:nil usingBlock:^(NSNotification *note) {
@@ -47,6 +47,7 @@
         }
         NSLog(@"%s|%d", __PRETTY_FUNCTION__, [items count]);
         NSMutableArray *temp = [@[] mutableCopy];
+        int cnt = 0;
         for(NSDictionary *d in items){
             NSManagedObject *mo = [context getOrCreateObject:[driver entityName] props:[driver json2uniqueDictionary:d]];
             BOOL updated = YES;
@@ -60,30 +61,30 @@
                 }
                 [sm setNetwork_identifier:network_identifier];
                 [sm setNetwork_cache_identifier:network_cache_identifier];
+                [sm setNetwork_index:@(cnt)];
+                cnt += 1;
             }
             if(updated)
                 [mo setValuesForKeysWithDictionary:[driver json2dictionary:d]];
             [temp addObject:mo];
         }
         [context save:nil];
-        if(handler)
-            handler(temp, nil);
     }];
 }
 
 /*
  call when network is errored.
  */
-+ (void)_error:(NAMappingDriver *)driver response:(NSURLResponse *)resp error:(NSError *)err options:(NSDictionary *)options handler:(void(^)(NSArray *mos, NSError *err))handler saveHandler:(void(^)())saveHandler{
++ (void)_error:(NAMappingDriver *)driver response:(NSURLResponse *)resp error:(NSError *)err options:(NSDictionary *)options saveHandler:(void(^)())saveHandler errorHandler:(void(^)(NSError *err))errorHandler{
     NSLog(@"%s|%@", __PRETTY_FUNCTION__, err);
-    if(handler)
-        handler(nil, err);
+    if(errorHandler)
+        errorHandler(err);
 }
 
 /*
  base function
  */
-+ (void)syncBaseByType:(NARestType)type query:(NSDictionary *)query pk:(NSNumber *)pk rpcname:(NSString *)rpcname driver:(NAMappingDriver *)driver options:(NSDictionary *)options handler:(void(^)(NSArray *mos, NSError *err))handler saveHandler:(void(^)())saveHandler{
++ (void)syncBaseByType:(NARestType)type query:(NSDictionary *)query pk:(NSNumber *)pk rpcname:(NSString *)rpcname driver:(NAMappingDriver *)driver options:(NSDictionary *)options saveHandler:(void(^)())saveHandler errorHandler:(void(^)(NSError *err))errorHandler{
     NSDictionary *option = nil;
     if(rpcname){
         option = @{@"rpc_name": rpcname};
@@ -92,30 +93,30 @@
     NANetworkProtocol protocol = [driver.restDriver ProtocolByType:type model:driver.modelName];
     NSURLRequest *req = [NANetworkGCDHelper requestTo:url query:query protocol:protocol encoding:driver.restDriver.encoding];
     [NANetworkGCDHelper sendJsonAsynchronousRequest:req jsonOption:NSJSONReadingAllowFragments returnEncoding:driver.restDriver.returnEncoding returnMain:NO successHandler:^(NSURLResponse *resp, id data) {
-        [self _success:driver response:resp data:data options:options handler:handler saveHandler:saveHandler];
+        [self _success:driver response:resp data:data options:options saveHandler:saveHandler errorHandler:errorHandler];
     } errorHandler:^(NSURLResponse *resp, NSError *err) {
         NSLog(@"%s|%@", __PRETTY_FUNCTION__, err);
-        [self _error:driver response:resp error:err options:options handler:handler saveHandler:saveHandler];
+        [self _error:driver response:resp error:err options:options saveHandler:saveHandler errorHandler:errorHandler];
     }];
 }
 
-+ (void)syncFilter:(NSDictionary *)query driver:(NAMappingDriver *)driver options:(NSDictionary *)options handler:(void(^)(NSArray *mos, NSError *err))handler saveHandler:(void(^)())saveHandler{
-    [self syncBaseByType:NARestTypeFILTER query:query pk:nil rpcname:nil driver:driver options:options handler:handler saveHandler:saveHandler];
++ (void)syncFilter:(NSDictionary *)query driver:(NAMappingDriver *)driver options:(NSDictionary *)options saveHandler:(void(^)())saveHandler errorHandler:(void(^)(NSError *err))errorHandler{
+    [self syncBaseByType:NARestTypeFILTER query:query pk:nil rpcname:nil driver:driver options:options saveHandler:saveHandler errorHandler:errorHandler];
 }
 
-+ (void)syncGet:(NSNumber *)pk driver:(NAMappingDriver *)driver options:(NSDictionary *)options handler:(void(^)(NSArray *mos, NSError *err))handler saveHandler:(void(^)())saveHandler{
-    [self syncBaseByType:NARestTypeGET query:nil pk:pk rpcname:nil driver:driver options:options handler:handler saveHandler:saveHandler];
++ (void)syncGet:(NSNumber *)pk driver:(NAMappingDriver *)driver options:(NSDictionary *)options saveHandler:(void(^)())saveHandler errorHandler:(void(^)(NSError *err))errorHandler{
+    [self syncBaseByType:NARestTypeGET query:nil pk:pk rpcname:nil driver:driver options:options saveHandler:saveHandler errorHandler:errorHandler];
 }
 
-+ (void)syncCreate:(NSDictionary *)query driver:(NAMappingDriver *)driver options:(NSDictionary *)options handler:(void(^)(NSArray *mos, NSError *err))handler saveHandler:(void(^)())saveHandler{
-    [self syncBaseByType:NARestTypeCREATE query:query pk:nil rpcname:nil driver:driver options:options handler:handler saveHandler:saveHandler];
++ (void)syncCreate:(NSDictionary *)query driver:(NAMappingDriver *)driver options:(NSDictionary *)options saveHandler:(void(^)())saveHandler errorHandler:(void(^)(NSError *err))errorHandler{
+    [self syncBaseByType:NARestTypeCREATE query:query pk:nil rpcname:nil driver:driver options:options saveHandler:saveHandler errorHandler:errorHandler];
 }
 
-+ (void)syncUpdate:(NSDictionary *)query pk:(NSNumber *)pk driver:(NAMappingDriver *)driver options:(NSDictionary *)options handler:(void(^)(NSArray *mos, NSError *err))handler saveHandler:(void(^)())saveHandler{
-    [self syncBaseByType:NARestTypeUPDATE query:query pk:pk rpcname:nil driver:driver options:options handler:handler saveHandler:saveHandler];
++ (void)syncUpdate:(NSDictionary *)query pk:(NSNumber *)pk driver:(NAMappingDriver *)driver options:(NSDictionary *)options saveHandler:(void(^)())saveHandler errorHandler:(void(^)(NSError *err))errorHandler{
+    [self syncBaseByType:NARestTypeUPDATE query:query pk:pk rpcname:nil driver:driver options:options saveHandler:saveHandler errorHandler:errorHandler];
 }
-+ (void)syncRPC:(NSDictionary *)query rpcname:(NSString *)rpcname driver:(NAMappingDriver *)driver options:(NSDictionary *)options handler:(void(^)(NSArray *mos, NSError *err))handler saveHandler:(void(^)())saveHandler{
-    [self syncBaseByType:NARestTypeRPC query:query pk:nil rpcname:rpcname driver:driver options:options handler:handler saveHandler:saveHandler];
++ (void)syncRPC:(NSDictionary *)query rpcname:(NSString *)rpcname driver:(NAMappingDriver *)driver options:(NSDictionary *)options saveHandler:(void(^)())saveHandler errorHandler:(void(^)(NSError *err))errorHandler{
+    [self syncBaseByType:NARestTypeRPC query:query pk:nil rpcname:rpcname driver:driver options:options saveHandler:saveHandler errorHandler:errorHandler];
 }
 
 @end

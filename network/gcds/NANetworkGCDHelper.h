@@ -49,4 +49,9 @@
                  successHandler:(void(^)(NSURLResponse *resp, id data))successHandler
                    errorHandler:(void(^)(NSURLResponse *resp, NSError *err))errorHandler;
 
+/*
+ global error handler
+ */
++ (void)setGlobalErrorHandler:(void(^)(NSURLResponse *resp, NSError *err))errorHandler;
+
 @end

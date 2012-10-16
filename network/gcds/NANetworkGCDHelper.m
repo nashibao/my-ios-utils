@@ -12,7 +12,11 @@
 
 #import "AFNetworkActivityIndicatorManager.h"
 
+typedef void (^ERROR_BLOCK)(NSURLResponse *resp, NSError *err);
+
 @implementation NANetworkGCDHelper
+
+static ERROR_BLOCK __global_error_block__;
 
 NSInteger __networking__count__ = 0;
 
@@ -23,8 +27,8 @@ NSInteger __networking__count__ = 0;
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue globalBackgroundQueue] completionHandler:^(NSURLResponse *resp, NSData *data, NSError *err) {
         NSError *_err = nil;
         id _result = nil;
-        NSString *resulttemp = [[NSString alloc] initWithData:data encoding:returnEncoding];
-        NSLog(@"%s|%@", __PRETTY_FUNCTION__, resulttemp);
+//        NSString *resulttemp = [[NSString alloc] initWithData:data encoding:returnEncoding];
+//        NSLog(@"%s|%@", __PRETTY_FUNCTION__, resulttemp);
         if([data length] > 0 && err == nil){
             if(isJSON){
                 NSError *jsonErr;
@@ -52,6 +56,11 @@ NSInteger __networking__count__ = 0;
                 }else{
                     errorHandler(resp, _err);
                 }
+            }
+            if(__global_error_block__){
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    __global_error_block__(resp, _err);
+                });
             }
         }else{
             if(successHandler){
@@ -118,6 +127,10 @@ NSInteger __networking__count__ = 0;
 
 + (void)sendAsynchronousRequest:(NSURLRequest *)request returnEncoding:(NSStringEncoding)returnEncoding returnMain:(BOOL)returnMain successHandler:(void(^)(NSURLResponse *resp, id data))successHandler errorHandler:(void(^)(NSURLResponse *resp, NSError *err))errorHandler{
     [self _sendAsynchronousRequest:request returnEncoding:returnEncoding isJson:NO jsonOption:NSJSONReadingAllowFragments returnMain:returnMain successHandler:successHandler errorHandler:errorHandler];
+}
+
++ (void)setGlobalErrorHandler:(void(^)(NSURLResponse *resp, NSError *err))errorHandler{
+    __global_error_block__ = errorHandler;
 }
 
 @end

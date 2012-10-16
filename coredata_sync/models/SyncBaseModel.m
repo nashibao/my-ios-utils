@@ -2,7 +2,7 @@
 //  SyncBaseModel.m
 //  SK3
 //
-//  Created by nashibao on 2012/10/12.
+//  Created by nashibao on 2012/10/15.
 //  Copyright (c) 2012年 s-cubism. All rights reserved.
 //
 
@@ -22,5 +22,6 @@
 @dynamic sync_error;
 @dynamic sync_version;
 @dynamic updated_at;
+@dynamic network_index;
 
 @end

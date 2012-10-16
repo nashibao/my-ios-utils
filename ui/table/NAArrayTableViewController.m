@@ -8,6 +8,8 @@
 
 #import "NAArrayTableViewController.h"
 
+#import "NATableViewCell.h"
+
 @interface NAArrayTableViewController ()
 
 @end
@@ -68,6 +70,11 @@
         cell = [[self.cellClass alloc] initWithStyle:self.cellStyle reuseIdentifier:cellIdentifier];
         [cell setAccessoryType:self.cellAccessoryType];
         [self initializeCell:cell atIndexPath:indexPath reuseIdentifier:cellIdentifier row:row];
+    }
+    
+    if([cell isKindOfClass:[NATableViewCell class]]){
+        id data = [self rowData:row];
+        [(NATableViewCell *)cell setData:data];
     }
     
     [self updateCell:cell atIndexPath:indexPath row:row];

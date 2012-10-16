@@ -14,5 +14,6 @@
 @property (weak, nonatomic) UITableViewController *tableViewController;
 @property (strong, nonatomic) UIColor *defaultBackgroundColor;
 
+@property (strong, nonatomic) id data;
 
 @end

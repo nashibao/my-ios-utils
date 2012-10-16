@@ -10,7 +10,7 @@
 
 #import "NSOperationQueue+na.h"
 
-#import "AFNetworkActivityIndicatorManager.h"
+#import "NANetworkActivityIndicatorManager.h"
 
 typedef void (^ERROR_BLOCK)(NSURLResponse *resp, NSError *err);
 
@@ -22,13 +22,11 @@ NSInteger __networking__count__ = 0;
 
 + (void)_sendAsynchronousRequest:(NSURLRequest *)request returnEncoding:(NSStringEncoding)returnEncoding isJson:(BOOL)isJSON jsonOption:(NSJSONReadingOptions)jsonOption returnMain:(BOOL)returnMain successHandler:(void(^)(NSURLResponse *resp, id data))successHandler errorHandler:(void(^)(NSURLResponse *resp, NSError *err))errorHandler{
     
-    [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];
+    [[NANetworkActivityIndicatorManager sharedManager] incrementActivityCount];
     
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue globalBackgroundQueue] completionHandler:^(NSURLResponse *resp, NSData *data, NSError *err) {
         NSError *_err = nil;
         id _result = nil;
-//        NSString *resulttemp = [[NSString alloc] initWithData:data encoding:returnEncoding];
-//        NSLog(@"%s|%@", __PRETTY_FUNCTION__, resulttemp);
         if([data length] > 0 && err == nil){
             if(isJSON){
                 NSError *jsonErr;
@@ -73,7 +71,7 @@ NSInteger __networking__count__ = 0;
                 }
             }
         }
-        [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
+        [[NANetworkActivityIndicatorManager sharedManager] decrementActivityCount];
     }];
 }
 

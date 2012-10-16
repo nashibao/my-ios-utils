@@ -66,4 +66,7 @@ typedef void (^FAIL_BLOCK)(id op, NSError *err);
 + (NSArray *)getOperationsByIdentifier:(NSString *)identifier;
 + (NSArray *)cancelByIdentifier:(NSString *)identifier handler:(void (^)(void))handler;
 
+//identifierに対してerrorHandler, successHandlerを設定する
+//identifierに対して、indicatorの出し方を指定する
+
 @end

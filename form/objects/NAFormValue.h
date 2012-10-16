@@ -50,6 +50,10 @@
 
 @required
 
+//validateの前後
+- (void)formValueWillValidate:(NAFormValue *)formValue;
+//validateの前後
+- (void)formValueDidValidate:(NAFormValue *)formValue;
 //フォーカス
 - (void)formValue:(NAFormValue *)formValue focused:(BOOL)focused;
 

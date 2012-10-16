@@ -25,6 +25,9 @@
 }
 
 - (BOOL)validate{
+    if(_targetViewDelegate){
+        [_targetViewDelegate formValueWillValidate:self];
+    }
     NSMutableDictionary *_temp = [@{} mutableCopy];
     for(NSString *key in self.validatRules){
         NSString *errorMessage = nil;
@@ -49,6 +52,9 @@
     }
     self.errors = _temp;
     [self highlight];
+    if(_targetViewDelegate){
+        [_targetViewDelegate formValueDidValidate:self];
+    }
     return [self.errors count] > 0;
 }
 

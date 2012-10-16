@@ -24,6 +24,14 @@
     }
 }
 
+- (void)formValueWillValidate:(NAFormValue *)formValue{
+    
+}
+
+- (void)formValueDidValidate:(NAFormValue *)formValue{
+    
+}
+
 - (BOOL)focusEnabled{
     return NO;
 }

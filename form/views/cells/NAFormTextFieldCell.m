@@ -51,5 +51,11 @@
     [self.textField becomeFirstResponder];
 }
 
+- (void)formValueWillValidate:(NAFormValue *)formValue{
+    NSString *modifiedData = [self.textField text];
+    if(self.delegate){
+        [self.delegate formCell:self inTableViewController:self.tableViewController modifiedData:modifiedData formValue:_formValue indexPath:self.indexPath];
+    }
+}
 
 @end

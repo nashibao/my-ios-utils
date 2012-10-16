@@ -7,6 +7,7 @@
         <attribute name="is_edited" optional="YES" attributeType="Boolean" defaultValueString="NO" indexed="YES" syncable="YES"/>
         <attribute name="network_cache_identifier" optional="YES" transient="YES" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="network_identifier" optional="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="network_index" optional="YES" attributeType="Integer 32" defaultValueString="0" indexed="YES" syncable="YES"/>
         <attribute name="pk" optional="YES" attributeType="Integer 32" defaultValueString="-1" indexed="YES" syncable="YES"/>
         <attribute name="raw_data" optional="YES" attributeType="Transformable" valueTransformerName="NSDictionaryTransformer" syncable="YES"/>
         <attribute name="sync_error" optional="YES" attributeType="Integer 32" defaultValueString="0" indexed="YES" syncable="YES"/>
@@ -14,6 +15,6 @@
         <attribute name="updated_at" optional="YES" attributeType="Date" indexed="YES" syncable="YES"/>
     </entity>
     <elements>
-        <element name="SyncBaseModel" positionX="-3645" positionY="-306" width="198" height="208"/>
+        <element name="SyncBaseModel" positionX="-3645" positionY="-306" width="198" height="225"/>
     </elements>
 </model>

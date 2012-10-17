@@ -69,7 +69,13 @@
                 [mo setValuesForKeysWithDictionary:[driver json2dictionary:d]];
             [temp addObject:mo];
         }
-        [context save:nil];
+        @try {
+            [context save:nil];
+        }@catch (NSException *exception) {
+            if(errorHandler)
+                errorHandler([NSError errorWithDomain:exception.reason code:0 userInfo:nil]);
+        }@finally {
+        }
     }];
 }
 

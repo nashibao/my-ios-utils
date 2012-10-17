@@ -39,8 +39,7 @@ static NSTimeInterval const kAFNetworkActivityIndicatorInvisibilityDelay = 0.17;
     if (!self) {
         return nil;
     }
-    
-    
+    self.errors = [@[] mutableCopy];
     return self;
 }
 
@@ -85,7 +84,12 @@ static BOOL __enable_svprogress__ = YES;
     if([self isNetworkActivityIndicatorVisible]){
         [SVProgressHUD show];
     }else{
-        [SVProgressHUD showSuccessWithStatus:@""];
+        if([self.errors count] > 0){
+            [SVProgressHUD showErrorWithStatus:@"ネットワークエラー"];
+        }else{
+            [SVProgressHUD showSuccessWithStatus:@""];
+        }
+        [self.errors removeAllObjects];
     }
 }
 
@@ -116,6 +120,11 @@ static BOOL __enable_svprogress__ = YES;
     }
     [self didChangeValueForKey:@"activityCount"];
     [self updateNetworkActivityIndicatorVisibilityDelayed];
+}
+
+- (void)decrementActivityCountWithError:(NSString *)errorString{
+    [self.errors addObject:errorString];
+    [self decrementActivityCount];
 }
 
 @end

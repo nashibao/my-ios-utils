@@ -116,7 +116,6 @@ failure:(void (^)(id operation, NSError *error))failure isJson:(BOOL)isJson json
     self.success_block = success;
     self.fail_block = failure;
     self.completionBlock = ^{
-        [[NANetworkActivityIndicatorManager sharedManager] decrementActivityCount];
         NSMutableArray *operations = _operations_with_id[wself.identifier];
         [operations removeObject:wself];
         [wself checkIdentifierFinish];
@@ -125,6 +124,7 @@ failure:(void (^)(id operation, NSError *error))failure isJson:(BOOL)isJson json
                 wself.cancel_block();
             if(wself.finish_block)
                 wself.finish_block();
+            [[NANetworkActivityIndicatorManager sharedManager] decrementActivityCount];
             return;
         }
         NSError *_err = nil;
@@ -160,6 +160,7 @@ failure:(void (^)(id operation, NSError *error))failure isJson:(BOOL)isJson json
                     wself.fail_block(wself, wself.error);
                 }
             }
+            [[NANetworkActivityIndicatorManager sharedManager] decrementActivityCountWithError:[NSString stringWithFormat:@"%@", _err]];
         }else{
             if(wself.success_block){
                 if(returnMain){
@@ -170,6 +171,7 @@ failure:(void (^)(id operation, NSError *error))failure isJson:(BOOL)isJson json
                     wself.success_block(wself, response);
                 }
             }
+            [[NANetworkActivityIndicatorManager sharedManager] decrementActivityCount];
         }
         if(wself.finish_block)
             wself.finish_block();

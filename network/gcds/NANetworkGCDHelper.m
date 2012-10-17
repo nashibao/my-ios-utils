@@ -60,6 +60,7 @@ NSInteger __networking__count__ = 0;
                     __global_error_block__(resp, _err);
                 });
             }
+            [[NANetworkActivityIndicatorManager sharedManager] decrementActivityCountWithError:[NSString stringWithFormat:@"%@", _err] ?: @"no result"];
         }else{
             if(successHandler){
                 if(returnMain){
@@ -70,8 +71,8 @@ NSInteger __networking__count__ = 0;
                     successHandler(resp, _result);
                 }
             }
+            [[NANetworkActivityIndicatorManager sharedManager] decrementActivityCount];
         }
-        [[NANetworkActivityIndicatorManager sharedManager] decrementActivityCount];
     }];
 }
 

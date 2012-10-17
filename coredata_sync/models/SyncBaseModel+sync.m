@@ -31,11 +31,6 @@
     return __mapping_driver__;
 }
 
-- (NSNumber *)primaryKey{
-    return [self valueForKey:[[[self class] driver] primaryKey]];
-}
-
-
 + (void)sync_filter:(NSDictionary *)query options:(NSDictionary *)options complete:(void(^)())complete error:(void(^)(NSError *err))error{
     [NASyncHelper syncFilter:query driver:[self driver] options:options saveHandler:complete errorHandler:error];
 }
@@ -45,7 +40,7 @@
 }
 
 - (void)sync_get:(NSDictionary *)options complete:(void(^)())complete error:(void(^)(NSError *err))error{
-    [NASyncHelper syncGet:[self primaryKey] driver:[[self class] driver] options:options saveHandler:complete errorHandler:error];
+    [NASyncHelper syncGet:[self primary_key_for_sync] driver:[[self class] driver] options:options saveHandler:complete errorHandler:error];
 }
 
 + (void)sync_create:(NSDictionary *)query options:(NSDictionary *)options complete:(void(^)())complete error:(void(^)(NSError *err))error{
@@ -61,7 +56,22 @@
     [NASyncHelper syncUpdate:query pk:pk driver:[self driver] options:options saveHandler:complete errorHandler:error];
 }
 - (void)sync_update:(NSDictionary *)query options:(NSDictionary *)options complete:(void(^)())complete error:(void(^)(NSError *err))error{
-    [NASyncHelper syncUpdate:query pk:[self primaryKey] driver:[[self class] driver] options:options saveHandler:complete errorHandler:error];
+    [NASyncHelper syncUpdate:query pk:[self primary_key_for_sync] driver:[[self class] driver] options:options saveHandler:complete errorHandler:error];
+}
+
+- (void)sync_update:(NSDictionary *)options complete:(void(^)())complete error:(void(^)(NSError *err))error{
+    NSDictionary *query = [[[self class] driver] mo2query:self];
+    [self sync_update:query complete:complete error:error];
+}
+
++ (void)sync_update_all:(NSDictionary *)options{
+    NSArray *edited_sms = [self filter:@{@"is_edited": @YES} options:nil];
+    for (SyncBaseModel *sm in edited_sms) {
+        if(sm.pk && [sm.pk integerValue] != -1){
+#warning bulk_uploadがある場合はそっちを使う
+            [sm sync_update:options complete:nil error:nil];
+        }
+    }
 }
 
 + (void)sync_rpc:(NSDictionary *)query rpcname:(NSString *)rpcname options:(NSDictionary *)options complete:(void(^)())complete error:(void(^)(NSError *err))error{
@@ -146,5 +156,29 @@ static BOOL __is_loading__;
     [super didChangeValueForKey:key];
 }
 
+
+//書きやすい部分
+@dynamic primary_key_for_sync;
+@dynamic sync_version_for_sync;
+- (NSNumber *)primary_key_for_sync{
+    return self.pk;
+}
+- (void)setPrimary_key_for_sync:(NSNumber *)primary_key_for_sync{
+    self.pk = primary_key_for_sync;
+}
+- (id)sync_version_for_sync{
+    return self.sync_version;
+}
+- (void)setSync_version_for_sync:(id)sync_version_for_sync{
+    self.sync_version = sync_version_for_sync;
+}
+
+- (BOOL)isNewByCompareVersion:(id)newVersion{
+    if(!newVersion)
+        return NO;
+    if(!self.sync_version)
+        return YES;
+    return [self.sync_version integerValue] < [newVersion integerValue];
+}
 
 @end

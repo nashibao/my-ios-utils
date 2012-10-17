@@ -22,7 +22,6 @@ static NSMutableArray *__waiting_queues__ = nil;
 static NSMutableDictionary *_operations_with_id = nil;
 static Reachability *__reach__ = nil;
 
-#warning ポーズ中にキャンセルした場合、__waiting_operations__からも消さなくちゃならない．
 #warning 本当は呼び出しもとのスレッドは決めておいた方がいいな．lockはかけたくないしmainはいやだから、globalBackgroundThreadがあるといいけど?gcdのglobal background queueを使うか．
 
 + (void)load{

@@ -20,7 +20,12 @@
 /*
  call when network is ended.
  */
-+ (void)_success:(NAMappingDriver *)driver response:(NSURLResponse *)resp data:(id)data options:(NSDictionary *)options saveHandler:(void(^)())saveHandler errorHandler:(void(^)(NSError *err))errorHandler{
++ (void)_successByRestType:(NARestType)restType
+                    driver:(NAMappingDriver *)driver
+                  response:(NSURLResponse *)resp
+                      data:(id)data options:(NSDictionary *)options
+               saveHandler:(void(^)())saveHandler
+              errorHandler:(void(^)(NSError *err))errorHandler{
     NSManagedObjectContext *context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
     [context setPersistentStoreCoordinator:driver.coordinator];
     [[NSNotificationCenter defaultCenter] addObserverForName:NSManagedObjectContextDidSaveNotification object:context queue:nil usingBlock:^(NSNotification *note) {
@@ -31,6 +36,8 @@
         });
     }];
     
+//    __block __weak NSManagedObjectContext *wcontext = context;
+    
     [context performBlock:^{
         NSString *network_identifier = @"";
         NSString *network_cache_identifier = @"";
@@ -40,37 +47,10 @@
             if(options[@"network_cache_identifier"])
                 network_cache_identifier = options[@"network_cache_identifier"];
         }
-        NSArray *items = nil;
-        if(driver.callbackName){
-            items = data[driver.callbackName];
-        }else{
-            items = data;
-        }
-        NSLog(@"%s|%d", __PRETTY_FUNCTION__, [items count]);
-        NSMutableArray *temp = [@[] mutableCopy];
-        int cnt = 0;
-        for(NSDictionary *d in items){
-            NSManagedObject *mo = [context getOrCreateObject:[driver entityName] props:[driver json2uniqueDictionary:d]];
-            BOOL updated = YES;
-            if([mo isKindOfClass:[SyncBaseModel class]]){
-                SyncBaseModel *sm = (SyncBaseModel *)mo;
-                if([sm.sync_version integerValue] < [d[@"sync_version"] integerValue]){
-                    [sm setData:d];
-                    [sm setRaw_data:d];
-                }else{
-                    updated = NO;
-                }
-                [sm setNetwork_identifier:network_identifier];
-                [sm setNetwork_cache_identifier:network_cache_identifier];
-                [sm setNetwork_index:@(cnt)];
-                cnt += 1;
-            }
-            if(updated)
-                [mo setValuesForKeysWithDictionary:[driver json2dictionary:d]];
-            [temp addObject:mo];
-        }
         @try {
-            [context save:nil];
+            BOOL bl = [driver mappingByRestType:restType data:data inContext:context options:options network_identifier:network_identifier network_cache_identifier:network_cache_identifier];
+            if(bl)
+                [context save:nil];
         }@catch (NSException *exception) {
             if(errorHandler)
                 errorHandler([NSError errorWithDomain:exception.reason code:0 userInfo:nil]);
@@ -82,7 +62,13 @@
 /*
  call when network is errored.
  */
-+ (void)_error:(NAMappingDriver *)driver response:(NSURLResponse *)resp error:(NSError *)err options:(NSDictionary *)options    saveHandler:(void(^)())saveHandler errorHandler:(void(^)(NSError *err))errorHandler{
++ (void)_errorByRestType:(NARestType)restType
+                  driver:(NAMappingDriver *)driver
+                response:(NSURLResponse *)resp
+                   error:(NSError *)err
+                 options:(NSDictionary *)options
+             saveHandler:(void(^)())saveHandler
+            errorHandler:(void(^)(NSError *err))errorHandler{
     NSLog(@"%s|%@", __PRETTY_FUNCTION__, err);
     if(errorHandler)
         errorHandler(err);
@@ -118,9 +104,9 @@
     NSString *network_identifier = [self network_identifier:type rpcname:rpcname driver:driver options:option];
 #pragma mark TODO: queueはsyncmodel用に別個用意するか？？今はglobalBackgroundQueue.
     [NANetworkOperation sendJsonAsynchronousRequest:req jsonOption:NSJSONReadingAllowFragments returnEncoding:driver.restDriver.returnEncoding returnMain:NO queue:nil identifier:network_identifier identifierMaxCount:1 queueingOption:NANetworkOperationQueingOptionDefault successHandler:^(NANetworkOperation *op, id data) {
-        [self _success:driver response:nil data:data options:options saveHandler:saveHandler errorHandler:errorHandler];
+        [self _successByRestType:type driver:driver response:nil data:data options:options saveHandler:saveHandler errorHandler:errorHandler];
     } errorHandler:^(NANetworkOperation *op, NSError *err) {
-        [self _error:driver response:nil error:err options:options saveHandler:saveHandler errorHandler:errorHandler];
+        [self _errorByRestType:type driver:driver response:nil error:err options:options saveHandler:saveHandler errorHandler:errorHandler];
     }];
 //    [NANetworkGCDHelper sendJsonAsynchronousRequest:req jsonOption:NSJSONReadingAllowFragments returnEncoding:driver.restDriver.returnEncoding returnMain:NO successHandler:^(NSURLResponse *resp, id data) {
 //        [self _success:driver response:resp data:data options:options saveHandler:saveHandler errorHandler:errorHandler];

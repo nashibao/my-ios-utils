@@ -110,7 +110,10 @@
 - (void)sync_create:(NSDictionary *)options complete:(void(^)())complete error:(void(^)(NSError *err))error;
 + (void)sync_update:(NSNumber *)pk query:(NSDictionary *)query options:(NSDictionary *)options complete:(void(^)())complete error:(void(^)(NSError *err))error;
 - (void)sync_update:(NSDictionary *)query options:(NSDictionary *)options complete:(void(^)())complete error:(void(^)(NSError *err))error;
+- (void)sync_update:(NSDictionary *)options complete:(void(^)())complete error:(void(^)(NSError *err))error;
++ (void)sync_update_all:(NSDictionary *)options complete:(void(^)())complete error:(void(^)(NSError *err))error;
 + (void)sync_rpc:(NSDictionary *)query rpcname:(NSString *)rpcname options:(NSDictionary *)options complete:(void(^)())complete error:(void(^)(NSError *err))error;
+
 
 + (void)sync_cancel_all;
 + (void)sync_cancel:(NARestType)restType rpcname:(NSString *)rpcname options:(NSDictionary *)options handler:(void(^)())handler;
@@ -133,5 +136,9 @@
  default: YES
  */
 + (BOOL)is_manual_edit_management;
+
+@property (strong, nonatomic) NSNumber * primary_key_for_sync;
+@property (strong, nonatomic) id sync_version_for_sync;
+- (BOOL)isNewByCompareVersion:(id)newVersion;
 
 @end

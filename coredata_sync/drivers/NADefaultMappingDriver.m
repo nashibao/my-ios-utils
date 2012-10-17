@@ -15,7 +15,6 @@
 - (id)init{
     self = [super init];
     if(self){
-        self.primaryKey = @"pk";
         self.uniqueKeys = [@{@"pk": @YES} mutableCopy];
         self.jsonKeys = [@{
             @"pk": @"pk",

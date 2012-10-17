@@ -130,6 +130,26 @@ static inline BOOL AFStateTransitionIsValid(AFOperationState fromState, AFOperat
     }
 }
 
+- (void)pause {
+    if ([self isPaused] || [self isFinished] || [self isCancelled]) {
+        return;
+    }
+    
+    if ([self isExecuting]) {
+        [self.connection performSelector:@selector(cancel) onThread:[[self class] networkRequestThread] withObject:nil waitUntilDone:NO modes:[self.runLoopModes allObjects]];
+    }
+    
+    self.state = AFOperationPausedState;
+}
+
+- (void)resume {
+    if (![self isPaused]) {
+        return;
+    }
+    self.state = AFOperationReadyState;
+    
+    [self start];
+}
 
 #pragma mark - NSOperation
 
@@ -143,6 +163,10 @@ static inline BOOL AFStateTransitionIsValid(AFOperationState fromState, AFOperat
 
 - (BOOL)isFinished {
     return self.state == AFOperationFinishedState;
+}
+
+- (BOOL)isPaused {
+    return self.state == AFOperationPausedState;
 }
 
 - (BOOL)isConcurrent {
@@ -201,6 +225,10 @@ static inline BOOL AFStateTransitionIsValid(AFOperationState fromState, AFOperat
 - (void)cancelConnection {
     if (self.connection) {
         [self.connection cancel];
+        
+#warning ポーズしているときにキャンセルが来た場合、完全なキャンセルにならなくちゃいけない．
+        if([self isPaused])
+            return;
         
         // Manually send this delegate message since `[self.connection cancel]` causes the connection to never send another message to its delegate
         NSDictionary *userInfo = nil;

@@ -19,4 +19,8 @@
 
 - (id)initWithRequest:(NSURLRequest *)urlRequest;
 
+- (void)pause;
+- (BOOL)isPaused;
+- (void)resume;
+
 @end

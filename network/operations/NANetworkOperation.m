@@ -12,13 +12,54 @@
 
 #import "NANetworkActivityIndicatorManager.h"
 
+#import "Reachability.h"
+
 @implementation NANetworkOperation
 
+static NSMutableArray *__all_operations__ = nil;
+static NSMutableArray *__waiting_operations__ = nil;
+static NSMutableArray *__waiting_queues__ = nil;
 static NSMutableDictionary *_operations_with_id = nil;
+static Reachability *__reach__ = nil;
+
+#warning ポーズ中にキャンセルした場合、__waiting_operations__からも消さなくちゃならない．
+#warning 本当は呼び出しもとのスレッドは決めておいた方がいいな．lockはかけたくないしmainはいやだから、globalBackgroundThreadがあるといいけど?gcdのglobal background queueを使うか．
 
 + (void)load{
     [super load];
     _operations_with_id = [[NSMutableDictionary alloc] init];
+    __all_operations__ = [@[] mutableCopy];
+    __waiting_operations__ = [@[] mutableCopy];
+    __waiting_queues__ = [@[] mutableCopy];
+    __reach__ = [Reachability reachabilityWithHostname:@"www.google.com"];
+    __reach__.reachableBlock = ^(Reachability *reach){
+        NSLog(@"%s|%@", __PRETTY_FUNCTION__, @"Reachable!!");
+//        waiting -> queue
+        int opcnt = 0;
+        for (NANetworkOperation *op in __waiting_operations__) {
+            id queue =__waiting_queues__[opcnt];
+            opcnt += 1;
+            if([queue isKindOfClass:[NSOperationQueue class]]){
+                [queue addOperation:op];
+            }else{
+                [op resume];
+            }
+        }
+        [__waiting_operations__ removeAllObjects];
+        [__waiting_queues__ removeAllObjects];
+    };
+    __reach__.unreachableBlock = ^(Reachability *reach){
+        NSLog(@"%s|%@", __PRETTY_FUNCTION__, @"Unreachable!!");
+//        all -> waiting
+        for (NANetworkOperation *op in __all_operations__) {
+            [op pause];
+            if([__waiting_operations__ indexOfObject:op]==NSNotFound){
+                [__waiting_operations__ addObject:op];
+                [__waiting_queues__ addObject:[NSNull null]];
+            }
+        }
+    };
+    [__reach__ startNotifier];
 }
 
 + (NANetworkOperation *)sendJsonAsynchronousRequest:(NSURLRequest *)request
@@ -74,15 +115,21 @@ static NSMutableDictionary *_operations_with_id = nil;
     [[NANetworkActivityIndicatorManager sharedManager] incrementActivityCount];
     
     op = [[[self class] alloc] initWithRequest:request];
+    [__all_operations__ addObject:op];
     [op setCompletionBlockWithSuccess:successHandler failure:errorHandler isJson:isJson jsonOption:jsonOption returnMain:returnMain returnEncoding:returnEncoding];
     NSOperationQueue *_queue = queue ?: [NSOperationQueue globalBackgroundQueue];
-    [_queue addOperation:op];
     [op setIdentifier:identifier];
     operations = _operations_with_id[identifier] ?: [@[] mutableCopy];
     [operations addObject:op];
     _operations_with_id[identifier] = operations;
     [op checkIdentifierStart];
     
+    if([__reach__ isReachable]){
+        [_queue addOperation:op];
+    }else{
+        [__waiting_operations__ addObject:op];
+        [__waiting_queues__ addObject:_queue];
+    }
     return op;
 }
 
@@ -116,8 +163,14 @@ failure:(void (^)(id operation, NSError *error))failure isJson:(BOOL)isJson json
     self.success_block = success;
     self.fail_block = failure;
     self.completionBlock = ^{
+        [__all_operations__ removeObject:wself];
         NSMutableArray *operations = _operations_with_id[wself.identifier];
         [operations removeObject:wself];
+        NSUInteger temp_index = [__waiting_operations__ indexOfObject:wself];
+        if(temp_index != NSNotFound){
+            [__waiting_operations__ removeObjectAtIndex:temp_index];
+            [__waiting_queues__ removeObjectAtIndex:temp_index];
+        }
         [wself checkIdentifierFinish];
         if ([wself isCancelled]) {
             if(wself.cancel_block)

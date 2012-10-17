@@ -75,7 +75,7 @@
 /*
  call when network is errored.
  */
-+ (void)_error:(NAMappingDriver *)driver response:(NSURLResponse *)resp error:(NSError *)err options:(NSDictionary *)options saveHandler:(void(^)())saveHandler errorHandler:(void(^)(NSError *err))errorHandler{
++ (void)_error:(NAMappingDriver *)driver response:(NSURLResponse *)resp error:(NSError *)err options:(NSDictionary *)options    saveHandler:(void(^)())saveHandler errorHandler:(void(^)(NSError *err))errorHandler{
     NSLog(@"%s|%@", __PRETTY_FUNCTION__, err);
     if(errorHandler)
         errorHandler(err);

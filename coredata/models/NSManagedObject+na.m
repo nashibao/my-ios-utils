@@ -131,7 +131,14 @@
     NSFetchRequest *req = [NSFetchRequest fetchRequestWithEntityName:class_name];
     NSMutableArray *_sorts = [@[] mutableCopy];
     for(NSString *sort in sorts){
-        NSSortDescriptor *sd = [[NSSortDescriptor alloc] initWithKey:sort ascending:NO];
+        BOOL asc = YES;
+        NSRange range = [sort rangeOfString:@"-"];
+        NSString *temp = sort;
+        if(range.location==0 && range.length>0){
+            temp = [sort stringByReplacingOccurrencesOfString:@"-" withString:@""];
+            asc = NO;
+        }
+        NSSortDescriptor *sd = [[NSSortDescriptor alloc] initWithKey:temp ascending:asc];
         [_sorts addObject:sd];
     }
     [req setSortDescriptors:_sorts];

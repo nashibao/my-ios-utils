@@ -92,8 +92,7 @@
                 if([sm.is_edited boolValue] || [sm.is_deleted boolValue]){
                     [conflict_sms addObject:@{@"smid": [sm objectID], @"data": d}];
                 }else{
-                    [conflict_sms addObject:@{@"smid": [sm objectID], @"data": d}];
-//                    [self setData:d to:sm];
+                    [self setData:d to:sm];
                 }
             }
             [sm setNetwork_identifier:network_identifier];
@@ -106,11 +105,15 @@
         [temp addObject:mo];
     }
     if([conflict_sms count] > 0){
-        BOOL bl = [self conflict:NAMappingDriverMergeOptionAlert sms:conflict_sms context:context];
+        BOOL bl = [self conflict:[self mergeOption] sms:conflict_sms context:context];
         return bl;
     }else{
         return YES;
     }
+}
+
+- (NAMappingDriverMergeOption)mergeOption{
+    return NAMappingDriverMergeOptionAlert;
 }
 
 - (BOOL)conflict:(NAMappingDriverMergeOption)mergeOption sms:(NSArray *)sms context:(NSManagedObjectContext *)context{

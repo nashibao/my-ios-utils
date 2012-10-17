@@ -8,7 +8,8 @@
 
 #import "NASyncHelper.h"
 
-#import "NANetworkGCDHelper.h"
+//#import "NANetworkGCDHelper.h"
+#import "NANetworkOperation.h"
 
 #import "NSManagedObjectContext+na.h"
 
@@ -81,6 +82,22 @@
         errorHandler(err);
 }
 
++ (void)cancel:(NARestType)restType rpcname:(NSString *)rpcname driver:(NAMappingDriver *)driver options:(NSDictionary *)options handler:(void(^)())handler{
+    NSString *network_identifier = [self network_identifier:restType rpcname:rpcname driver:driver options:options];
+    [NANetworkOperation cancelByIdentifier:network_identifier handler:handler];
+}
+
++ (NSString *)network_identifier:(NARestType)restType rpcname:(NSString *)rpcname driver:(NAMappingDriver *)driver options:(NSDictionary *)options{
+    if(options[@"network_identifier"])
+        return options[@"network_identifier"];
+    if(rpcname){
+        return [NSString stringWithFormat:@"__sync_api_%@_%d_%@__", driver.modelName, restType, rpcname];
+    }else{
+        return [NSString stringWithFormat:@"__sync_api_%@_%d__", driver.modelName, restType];
+    }
+    return nil;
+}
+
 /*
  base function
  */
@@ -92,12 +109,19 @@
     NSString *url = [driver.restDriver URLByType:type model:driver.modelName endpoint:driver.endpoint pk:pk option:option];
     NANetworkProtocol protocol = [driver.restDriver ProtocolByType:type model:driver.modelName];
     NSURLRequest *req = [NANetworkGCDHelper requestTo:url query:query protocol:protocol encoding:driver.restDriver.encoding];
-    [NANetworkGCDHelper sendJsonAsynchronousRequest:req jsonOption:NSJSONReadingAllowFragments returnEncoding:driver.restDriver.returnEncoding returnMain:NO successHandler:^(NSURLResponse *resp, id data) {
-        [self _success:driver response:resp data:data options:options saveHandler:saveHandler errorHandler:errorHandler];
-    } errorHandler:^(NSURLResponse *resp, NSError *err) {
-        NSLog(@"%s|%@", __PRETTY_FUNCTION__, err);
-        [self _error:driver response:resp error:err options:options saveHandler:saveHandler errorHandler:errorHandler];
+    NSString *network_identifier = [self network_identifier:type rpcname:rpcname driver:driver options:option];
+#pragma mark TODO: queueはsyncmodel用に別個用意するか？？今はglobalBackgroundQueue.
+    [NANetworkOperation sendJsonAsynchronousRequest:req jsonOption:NSJSONReadingAllowFragments returnEncoding:driver.restDriver.returnEncoding returnMain:NO queue:nil identifier:network_identifier identifierMaxCount:1 queueingOption:NANetworkOperationQueingOptionDefault successHandler:^(NANetworkOperation *op, id data) {
+        [self _success:driver response:nil data:data options:options saveHandler:saveHandler errorHandler:errorHandler];
+    } errorHandler:^(NANetworkOperation *op, NSError *err) {
+        [self _error:driver response:nil error:err options:options saveHandler:saveHandler errorHandler:errorHandler];
     }];
+//    [NANetworkGCDHelper sendJsonAsynchronousRequest:req jsonOption:NSJSONReadingAllowFragments returnEncoding:driver.restDriver.returnEncoding returnMain:NO successHandler:^(NSURLResponse *resp, id data) {
+//        [self _success:driver response:resp data:data options:options saveHandler:saveHandler errorHandler:errorHandler];
+//    } errorHandler:^(NSURLResponse *resp, NSError *err) {
+//        NSLog(@"%s|%@", __PRETTY_FUNCTION__, err);
+//        [self _error:driver response:resp error:err options:options saveHandler:saveHandler errorHandler:errorHandler];
+//    }];
 }
 
 + (void)syncFilter:(NSDictionary *)query driver:(NAMappingDriver *)driver options:(NSDictionary *)options saveHandler:(void(^)())saveHandler errorHandler:(void(^)(NSError *err))errorHandler{

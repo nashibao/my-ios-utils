@@ -10,6 +10,8 @@
 
 #import "NSOperationQueue+na.h"
 
+#import "NANetworkActivityIndicatorManager.h"
+
 @implementation NANetworkOperation
 
 static NSMutableDictionary *_operations_with_id = nil;
@@ -69,6 +71,8 @@ static NSMutableDictionary *_operations_with_id = nil;
         }
     }
     
+    [[NANetworkActivityIndicatorManager sharedManager] incrementActivityCount];
+    
     op = [[[self class] alloc] initWithRequest:request];
     [op setCompletionBlockWithSuccess:successHandler failure:errorHandler isJson:isJson jsonOption:jsonOption returnMain:returnMain returnEncoding:returnEncoding];
     NSOperationQueue *_queue = queue ?: [NSOperationQueue globalBackgroundQueue];
@@ -112,6 +116,7 @@ failure:(void (^)(id operation, NSError *error))failure isJson:(BOOL)isJson json
     self.success_block = success;
     self.fail_block = failure;
     self.completionBlock = ^{
+        [[NANetworkActivityIndicatorManager sharedManager] decrementActivityCount];
         NSMutableArray *operations = _operations_with_id[wself.identifier];
         [operations removeObject:wself];
         [wself checkIdentifierFinish];

@@ -16,6 +16,10 @@
  */
 @interface NASyncHelper : NSObject
 
++ (void)cancel:(NARestType)restType rpcname:(NSString *)rpcname driver:(NAMappingDriver *)driver options:(NSDictionary *)options handler:(void(^)())handler;
+
++ (NSString *)network_identifier:(NARestType)restType rpcname:(NSString *)rpcname driver:(NAMappingDriver *)driver options:(NSDictionary *)options;
+
 + (void)syncFilter:(NSDictionary *)query driver:(NAMappingDriver *)driver options:(NSDictionary *)options saveHandler:(void(^)())saveHandler errorHandler:(void(^)(NSError *err))errorHandler;
 + (void)syncGet:(NSNumber *)pk driver:(NAMappingDriver *)driver options:(NSDictionary *)options saveHandler:(void(^)())saveHandler errorHandler:(void(^)(NSError *err))errorHandler;
 + (void)syncCreate:(NSDictionary *)query driver:(NAMappingDriver *)driver options:(NSDictionary *)options saveHandler:(void(^)())saveHandler errorHandler:(void(^)(NSError *err))errorHandler;

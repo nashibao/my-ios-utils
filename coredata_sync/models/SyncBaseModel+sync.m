@@ -68,6 +68,17 @@
     [NASyncHelper syncRPC:query rpcname:rpcname driver:[self driver] options:options saveHandler:complete errorHandler:error];
 }
 
++ (void)sync_cancel_all{
+    [self sync_cancel:NARestTypeFILTER rpcname:nil options:nil handler:nil];
+    [self sync_cancel:NARestTypeGET rpcname:nil options:nil handler:nil];
+    [self sync_cancel:NARestTypeCREATE rpcname:nil options:nil handler:nil];
+    [self sync_cancel:NARestTypeUPDATE rpcname:nil options:nil handler:nil];
+}
+
++ (void)sync_cancel:(NARestType)restType rpcname:(NSString *)rpcname options:(NSDictionary *)options handler:(void(^)())handler{
+    [NASyncHelper cancel:restType rpcname:rpcname driver:[self driver] options:options handler:handler];
+}
+
 static BOOL __is_loading__;
 
 + (BOOL)is_loading{

@@ -19,6 +19,5 @@
 @dynamic modified_date_;
 @dynamic sync_error_;
 @dynamic sync_state_;
-@dynamic is_conflicted_;
 
 @end

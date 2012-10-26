@@ -10,7 +10,7 @@
 
 #import "NAFetchHelper.h"
 
-#import "SyncBaseModel+sync.h"
+#import "NASyncModel+sync.h"
 
 #import "NSManagedObjectContext+na.h"
 

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1811" systemVersion="12C60" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="NASyncModel" representedClassName="NASyncModel" syncable="YES">
+        <attribute name="cache_identifier_" optional="YES" transient="YES" attributeType="String" indexed="YES" syncable="YES"/>
+        <attribute name="cache_index_" optional="YES" transient="YES" attributeType="Integer 32" defaultValueString="0" indexed="YES" syncable="YES"/>
+        <attribute name="data" optional="YES" attributeType="Transformable" valueTransformerName="NSDictionaryTransformer" syncable="YES"/>
+        <attribute name="edited_data" optional="YES" attributeType="Transformable" valueTransformerName="NSDictionaryTransformer" syncable="YES"/>
+        <attribute name="is_conflicted_" optional="YES" attributeType="Boolean" indexed="YES" syncable="YES"/>
+        <attribute name="is_syncing_" optional="YES" transient="YES" attributeType="Boolean" defaultValueString="NO" indexed="YES" syncable="YES"/>
+        <attribute name="modified_date_" optional="YES" attributeType="Date" indexed="YES" syncable="YES"/>
+        <attribute name="pk" optional="YES" attributeType="Integer 32" defaultValueString="-1" indexed="YES" syncable="YES"/>
+        <attribute name="sync_error_" optional="YES" attributeType="Integer 32" defaultValueString="0" indexed="YES" syncable="YES"/>
+        <attribute name="sync_state_" optional="YES" attributeType="Integer 32" defaultValueString="0" indexed="YES" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="NASyncModel" positionX="-2205" positionY="-405" width="198" height="193"/>
+    </elements>
+</model>

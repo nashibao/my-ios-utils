@@ -16,7 +16,6 @@
 @dynamic data;
 @dynamic edited_data;
 @dynamic pk;
-@dynamic is_syncing_;
 @dynamic modified_date_;
 @dynamic sync_error_;
 @dynamic sync_state_;

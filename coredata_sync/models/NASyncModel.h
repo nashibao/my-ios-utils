@@ -17,7 +17,6 @@
 @property (nonatomic, retain) id data;
 @property (nonatomic, retain) id edited_data;
 @property (nonatomic) int32_t pk;
-@property (nonatomic) BOOL is_syncing_;
 @property (nonatomic, retain) NSDate * modified_date_;
 @property (nonatomic) int32_t sync_error_;
 @property (nonatomic) int32_t sync_state_;

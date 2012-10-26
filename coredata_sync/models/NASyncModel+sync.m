@@ -55,6 +55,7 @@
 + (void)sync_rpc:(NSDictionary *)query rpcname:(NSString *)rpcname options:(NSDictionary *)options complete:(void(^)())complete error:(void(^)(NSError *err))error{
     [NASyncHelper syncRPC:query rpcname:rpcname modelkls:self options:options saveHandler:complete errorHandler:error];
 }
+
 + (void)sync:(NSDictionary *)query options:(NSDictionary *)options complete:(void(^)())complete error:(void(^)(NSError *err))error{
     
 }
@@ -85,7 +86,6 @@
 - (void)sync_delete:(NSDictionary *)options complete:(void(^)())complete error:(void(^)(NSError *err))error{
     [NASyncHelper syncDelete:[self pk] modelkls:[self class] options:options saveHandler:complete errorHandler:error];
 }
-
 
 /*
  instance methods without sync

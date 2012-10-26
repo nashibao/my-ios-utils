@@ -12,7 +12,7 @@
 - `sync_state` (default=`SYNCD`, `EDITED`, `DELETED`, `CREATED`) : `SYNCD` just after syncing to server data. when modified data in client side, this param won't be `SYNCD` state.
 - `data` (json)：raw data from server.
 - `edited_data` (json, transient?)：store the edited field and values which is caused in client side.
-- `is_uploading` (transient, default=false): for row level lock while syncing.
+- `is_uploading` (transient, default=false): for row level lock while syncing. ( **!!!deprecated!!!** no more use of the param in this package.)
 
 # diagram
 
@@ -21,12 +21,11 @@
 ### 1. client side
 
 1. start!
-- `is_uploading` = true
 - `max_updated_at` = MAX(`updated_at` in items)
 - (if `sync_state` == `SYNCED`)
-    - get
+    - get with `max_updated_at`
 - (if `sync_state` != `SYNCED`)
-    - post(put, delete)
+    - post(put, delete) with `edited_data` and `max_updated_at`
 
 ### 2. server side
 
@@ -35,7 +34,7 @@
 3. (if post method) ->
     - `is_conflicted` = `max_updated_at` < `updated_at`
 5. (if `is_conflicted` == true)
-    - 変更を適用
+    - take the `edited_data`
 5. return [item ∈ `max_updated_at` < `updated_at`]
 
 ### 3. client side
@@ -43,11 +42,16 @@
 1. (`is_conflicted` == true)
     - jump to 4
 3. (`is_conflicted` == fale)
-    - renew `data`
-    - renew `update_at`
-    - `sync_state` = `SYNCED`
-    - `edited_data` = nil
-    - `is_uploading` = false
+	1. (`sync_state` == `SYNCED`)
+    	- renew `data`
+    	- renew `update_at`
+    	- `sync_state` = `SYNCED`
+    	- `edited_data` = nil
+	1. (`sync_state` != `SYNCED`)
+		1. (server-`updated_at` > client-`updated_at` )
+			- jump to 4
+		2. (server-`updated_at` == client-`updated_at` )
+			- jump to 1.5
 
 ### 4. conflict tactics
 

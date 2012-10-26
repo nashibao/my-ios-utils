@@ -75,7 +75,6 @@
             sm.modified_date_ = [self modifiedDateInServerItemData:d];
             sm.edited_data = nil;
             sm.sync_state_ = NASyncModelSyncStateSYNCED;
-            sm.is_syncing_ = NO;
             [sm updateByServerItemData:d];
         }
         [sm setCache_identifier_:network_cache_identifier];
@@ -115,7 +114,6 @@
             self.modified_date_ = [[self class] modifiedDateInServerItemData:data];
             self.edited_data = nil;
             self.sync_state_ = NASyncModelSyncStateSYNCED;
-            self.is_syncing_ = NO;
             [self updateByServerItemData:data];
             break;
         case NASyncModelConflictOptionLocalPriority:

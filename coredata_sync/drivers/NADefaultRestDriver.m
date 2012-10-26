@@ -25,10 +25,7 @@
     return self;
 }
 
-- (NSString *)URLByType:(NARestType)type model:(NSString*)modelname endpoint:(NSString *)endpoint pk:(NSNumber *)_pk option:(NSDictionary *)option{
-    int pk = -1;
-    if(_pk)
-        pk = [_pk intValue];
+- (NSString *)URLByType:(NARestType)type model:(NSString*)modelname endpoint:(NSString *)endpoint pk:(NSInteger)pk option:(NSDictionary *)option{
     switch (type) {
         case NARestTypeGET:
             return [NSString stringWithFormat:@"%@%@get/%@/%d/", [[self class] domain], endpoint, modelname, pk];

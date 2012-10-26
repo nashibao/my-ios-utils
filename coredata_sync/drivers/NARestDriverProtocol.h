@@ -24,7 +24,7 @@ typedef enum NARestType: NSUInteger{
 @property (nonatomic) NSStringEncoding encoding;
 @property (nonatomic) NSStringEncoding returnEncoding;
 
-- (NSString *)URLByType:(NARestType)type model:(NSString*)modelname endpoint:(NSString *)endpoint pk:(NSNumber *)pk option:(NSDictionary *)option;
+- (NSString *)URLByType:(NARestType)type model:(NSString*)modelname endpoint:(NSString *)endpoint pk:(NSInteger)pk option:(NSDictionary *)option;
 - (NANetworkProtocol)ProtocolByType:(NARestType)type model:(NSString*)modelname;
 
 @end

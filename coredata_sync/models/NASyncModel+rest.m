@@ -66,16 +66,25 @@
     for(NSDictionary *d in items){
         NASyncModel *sm = (NASyncModel *)[context getOrCreateObject:[self restEntityName] props:@{@"pk": @([self primaryKeyInServerItemData:d])}];
         if([sm conflictedToServerItemData:d]){
-            //conflicted!!!
-            [conflict_sms addObject:@{@"sm":sm, @"data": d}];
+//            conflict
+            [conflict_sms addObject:@{@"sm":sm, @"data": d, @"option":@([self conflictOption])}];
         }else{
-            //no conflicted!!
-#warning 本当はここにローカルで検知するconflict.. pushの場合含む
-            sm.data = d;
-            sm.modified_date_ = [self modifiedDateInServerItemData:d];
-            sm.edited_data = nil;
-            sm.sync_state_ = NASyncModelSyncStateSYNCED;
-            [sm updateByServerItemData:d];
+            if(sm.sync_state_ == NASyncModelSyncStateSYNCED){
+//                no conflict
+                sm.data = d;
+                sm.modified_date_ = [self modifiedDateInServerItemData:d];
+                sm.edited_data = nil;
+                sm.sync_state_ = NASyncModelSyncStateSYNCED;
+                [sm updateByServerItemData:d];
+            }else{
+                if([[sm modified_date_] compare:[self modifiedDateInServerItemData:d]] == NSOrderedAscending){
+//                    ローカルで検知したコンフリクト
+                    [conflict_sms addObject:@{@"sm":sm, @"data": d, @"option":@([self conflictOption])}];
+                }else{
+//                    local priority
+                    [conflict_sms addObject:@{@"sm":sm, @"data": d, @"option":@(NASyncModelConflictOptionLocalPriority)}];
+                }
+            }
         }
         [sm setCache_identifier_:network_cache_identifier];
         [sm setCache_index_:cnt];
@@ -86,7 +95,8 @@
         for (NSDictionary *temp in conflict_sms) {
             NASyncModel *sm = temp[@"sm"];
             id d = temp[@"data"];
-            [sm resolveConflictByOption:[self conflictOption] data:d];
+            NASyncModelConflictOption option = [temp[@"option"] integerValue];
+            [sm resolveConflictByOption:option data:d];
         }
         return NO;
     }else{
@@ -106,10 +116,10 @@
     return NASyncModelConflictOptionServerPriority;
 }
 
-#warning コンフリクトの場合の詳細はこちら．
 - (void)resolveConflictByOption:(NASyncModelConflictOption)conflictOption data:(id)data{
     switch (conflictOption) {
         case NASyncModelConflictOptionServerPriority:
+//            server priority
             self.data = data;
             self.modified_date_ = [[self class] modifiedDateInServerItemData:data];
             self.edited_data = nil;
@@ -117,12 +127,24 @@
             [self updateByServerItemData:data];
             break;
         case NASyncModelConflictOptionLocalPriority:
+//            local priority
+            self.modified_date_ = [[self class] modifiedDateInServerItemData:data];
+            [self sync_update:nil complete:nil error:nil];
             break;
         case NASyncModelConflictOptionUserAlert:
+//            user alert
+#warning conflict時のuser alert.
             break;
-        case NASyncModelConflictOptionAutoMerge:
+        case NASyncModelConflictOptionAutoMerge:{
+//            auto merge
+            NSMutableDictionary *newData = [data mutableCopy];
+            [newData addEntriesFromDictionary:self.edited_data];
+            self.data = newData;
+            self.modified_date_ = [[self class] modifiedDateInServerItemData:data];
+            [self updateByServerItemData:data];
+            [self sync_update:nil complete:nil error:nil];
             break;
-            
+        }
         default:
             break;
     }

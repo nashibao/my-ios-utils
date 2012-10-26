@@ -60,6 +60,13 @@
 - (void)local_update:(NSDictionary *)query options:(NSDictionary *)options;
 - (void)local_delete:(NSDictionary *)options;
 
+/*
+ is_syncing_のtoggle
+ threadが気になるので外だしする
+ */
++ (void)syncing_on:(NSManagedObjectID *)objectID;
++ (void)syncing_off:(NSManagedObjectID *)objectID;
+
 
 /*
  canceling

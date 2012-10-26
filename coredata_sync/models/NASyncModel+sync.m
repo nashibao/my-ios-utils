@@ -26,7 +26,7 @@
 }
 
 + (void)sync_get:(NSInteger)pk options:(NSDictionary *)options complete:(void(^)())complete error:(void(^)(NSError *err))error{
-    [NASyncHelper syncGet:pk modelkls:self options:options saveHandler:complete errorHandler:error];
+    [NASyncHelper syncGet:pk objectID:nil modelkls:self options:options saveHandler:complete errorHandler:error];
 }
 
 + (void)sync_create:(NSDictionary *)query options:(NSDictionary *)options complete:(void(^)())complete error:(void(^)(NSError *err))error{
@@ -34,7 +34,7 @@
 }
 
 + (void)sync_update:(NSInteger)pk query:(NSDictionary *)query options:(NSDictionary *)options complete:(void(^)())complete error:(void(^)(NSError *err))error{
-    [NASyncHelper syncUpdate:query pk:pk modelkls:self options:options saveHandler:complete errorHandler:error];
+    [NASyncHelper syncUpdate:query pk:pk objectID:nil modelkls:self options:options saveHandler:complete errorHandler:error];
 }
 
 + (void)sync_bulk_update:(NSDictionary *)query options:(NSDictionary *)options{
@@ -49,7 +49,7 @@
 }
 
 + (void)sync_delete:(NSInteger)pk options:(NSDictionary *)options complete:(void(^)())complete error:(void(^)(NSError *err))error{
-    [NASyncHelper syncDelete:pk modelkls:[self class] options:options saveHandler:complete errorHandler:error];
+    [NASyncHelper syncDelete:pk objectID:nil modelkls:[self class] options:options saveHandler:complete errorHandler:error];
 }
 
 + (void)sync_rpc:(NSDictionary *)query rpcname:(NSString *)rpcname options:(NSDictionary *)options complete:(void(^)())complete error:(void(^)(NSError *err))error{
@@ -65,7 +65,7 @@
  instance methods
  */
 - (void)sync_get:(NSDictionary *)options complete:(void(^)())complete error:(void(^)(NSError *err))error{
-    [NASyncHelper syncGet:[self pk] modelkls:[self class] options:options saveHandler:complete errorHandler:error];
+    [NASyncHelper syncGet:[self pk] objectID:self.objectID modelkls:[self class] options:options saveHandler:complete errorHandler:error];
 }
 
 - (void)sync_create:(NSDictionary *)options complete:(void(^)())complete error:(void(^)(NSError *err))error{
@@ -80,11 +80,11 @@
 
 - (void)sync_update:(NSDictionary *)options complete:(void(^)())complete error:(void(^)(NSError *err))error{
     NSDictionary *query = [self getQuery];
-    [NASyncHelper syncUpdate:query pk:[self pk] modelkls:[self class] options:options saveHandler:complete errorHandler:error];
+    [NASyncHelper syncUpdate:query pk:[self pk] objectID:self.objectID modelkls:[self class] options:options saveHandler:complete errorHandler:error];
 }
 
 - (void)sync_delete:(NSDictionary *)options complete:(void(^)())complete error:(void(^)(NSError *err))error{
-    [NASyncHelper syncDelete:[self pk] modelkls:[self class] options:options saveHandler:complete errorHandler:error];
+    [NASyncHelper syncDelete:[self pk] objectID:self.objectID modelkls:[self class] options:options saveHandler:complete errorHandler:error];
 }
 
 /*
@@ -109,6 +109,20 @@
             self.sync_state_ = NASyncModelSyncStateDELETED;
         }
     }
+}
+
+/*
+ is_syncing_のtoggle
+ threadが気になるので外だしする
+ */
++ (void)syncing_on:(NSManagedObjectID *)objectID{
+    NASyncModel *sm = (NASyncModel *)[[[self class] mainContext] objectWithID:objectID];
+    sm.is_syncing_ = YES;
+}
+
++ (void)syncing_off:(NSManagedObjectID *)objectID{
+    NASyncModel *sm = (NASyncModel *)[[[self class] mainContext] objectWithID:objectID];
+    sm.is_syncing_ = NO;
 }
 
 

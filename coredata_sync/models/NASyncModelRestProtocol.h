@@ -25,4 +25,7 @@
 
 + (NASyncModelConflictOption)conflictOption;
 
++ (void)syncing_on:(NSManagedObjectID *)objectID;
++ (void)syncing_off:(NSManagedObjectID *)objectID;
+
 @end

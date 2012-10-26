@@ -16,6 +16,8 @@
 
 #import "NASyncModelRestProtocol.h"
 
+#import "NASyncModel+sync.h"
+
 @interface NASyncModel (rest)
 
 + (NSInteger)primaryKeyInServerItemData:(id)itemData;

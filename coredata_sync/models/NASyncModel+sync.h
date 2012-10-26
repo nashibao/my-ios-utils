@@ -40,10 +40,16 @@
 + (void)sync_get:(NSInteger)pk options:(NSDictionary *)options complete:(void(^)())complete error:(void(^)(NSError *err))error;
 + (void)sync_create:(NSDictionary *)query options:(NSDictionary *)options complete:(void(^)())complete error:(void(^)(NSError *err))error;
 + (void)sync_update:(NSInteger)pk query:(NSDictionary *)query options:(NSDictionary *)options complete:(void(^)())complete error:(void(^)(NSError *err))error;
-+ (void)sync_bulk_update:(NSDictionary *)query options:(NSDictionary *)options;
 + (void)sync_delete:(NSInteger)pk options:(NSDictionary *)options complete:(void(^)())complete error:(void(^)(NSError *err))error;
 + (void)sync_rpc:(NSDictionary *)query rpcname:(NSString *)rpcname options:(NSDictionary *)options complete:(void(^)())complete error:(void(^)(NSError *err))error;
-+ (void)sync:(NSDictionary *)query options:(NSDictionary *)options complete:(void(^)())complete error:(void(^)(NSError *err))error;
+
+/*
+ bulk commands
+ 単純だが、callbackが扱えない
+ */
++ (void)sync_bulk_update_or_create:(NSDictionary *)query options:(NSDictionary *)options;
++ (void)sync_bulk_delete:(NSDictionary *)query options:(NSDictionary *)options;
++ (void)sync:(NSDictionary *)query options:(NSDictionary *)options;
 
 /*
  instance methods

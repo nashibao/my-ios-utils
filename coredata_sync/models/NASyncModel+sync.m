@@ -37,9 +37,32 @@
     [NASyncHelper syncUpdate:query pk:pk objectID:nil modelkls:self options:options saveHandler:complete errorHandler:error];
 }
 
-+ (void)sync_bulk_update:(NSDictionary *)query options:(NSDictionary *)options{
-    NSArray *edited_sms = [self filter:@{@"sync_state": @(NASyncModelSyncStateEDITED)} options:nil];
-    for (NASyncModel *sm in edited_sms) {
+
++ (void)sync_delete:(NSInteger)pk options:(NSDictionary *)options complete:(void(^)())complete error:(void(^)(NSError *err))error{
+    [NASyncHelper syncDelete:pk objectID:nil modelkls:[self class] options:options saveHandler:complete errorHandler:error];
+}
+
+
++ (void)sync_rpc:(NSDictionary *)query rpcname:(NSString *)rpcname options:(NSDictionary *)options complete:(void(^)())complete error:(void(^)(NSError *err))error{
+    [NASyncHelper syncRPC:query rpcname:rpcname modelkls:self options:options saveHandler:complete errorHandler:error];
+}
+
+
+/*
+ bulk commands
+ */
+
++ (void)sync_bulk_update_or_create:(NSDictionary *)query options:(NSDictionary *)options{
+    NSDictionary *newQuery = nil;
+    if(query){
+        NSMutableDictionary *temp = [query mutableCopy];
+        [temp addEntriesFromDictionary:@{@"sync_state": @(NASyncModelSyncStateEDITED)}];
+        newQuery = temp;
+    }else{
+        newQuery = @{@"sync_state": @(NASyncModelSyncStateEDITED)};
+    }
+    NSArray *sms = [self filter:newQuery options:nil];
+    for (NASyncModel *sm in sms) {
         if(sm.pk != NASyncModelGUIDTypeNotInServer){
             [sm sync_update:options complete:nil error:nil];
         }else{
@@ -48,18 +71,30 @@
     }
 }
 
-+ (void)sync_delete:(NSInteger)pk options:(NSDictionary *)options complete:(void(^)())complete error:(void(^)(NSError *err))error{
-    [NASyncHelper syncDelete:pk objectID:nil modelkls:[self class] options:options saveHandler:complete errorHandler:error];
++ (void)sync_bulk_delete:(NSDictionary *)query options:(NSDictionary *)options{
+    NSDictionary *newQuery = nil;
+    if(query){
+        NSMutableDictionary *temp = [query mutableCopy];
+        [temp addEntriesFromDictionary:@{@"sync_state": @(NASyncModelSyncStateEDITED)}];
+        newQuery = temp;
+    }else{
+        newQuery = @{@"sync_state": @(NASyncModelSyncStateEDITED)};
+    }
+    NSArray *sms = [self filter:newQuery options:nil];
+    for (NASyncModel *sm in sms) {
+        if(sm.pk != NASyncModelGUIDTypeNotInServer){
+            [sm sync_delete:options complete:nil error:nil];
+        }else{
+            [sm local_delete:options];
+        }
+    }
 }
 
-+ (void)sync_rpc:(NSDictionary *)query rpcname:(NSString *)rpcname options:(NSDictionary *)options complete:(void(^)())complete error:(void(^)(NSError *err))error{
-    [NASyncHelper syncRPC:query rpcname:rpcname modelkls:self options:options saveHandler:complete errorHandler:error];
++ (void)sync:(NSDictionary *)query options:(NSDictionary *)options{
+    [self sync_bulk_update_or_create:query options:options];
+    [self sync_bulk_delete:query options:options];
+    [self sync_filter:query options:options complete:nil error:nil];
 }
-
-+ (void)sync:(NSDictionary *)query options:(NSDictionary *)options complete:(void(^)())complete error:(void(^)(NSError *err))error{
-    
-}
-
 
 /*
  instance methods

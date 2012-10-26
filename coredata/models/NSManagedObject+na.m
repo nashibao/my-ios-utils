@@ -17,6 +17,8 @@
 @implementation NSManagedObject (na)
 
 + (NSPersistentStoreCoordinator *)coordinator{
+    if ([self mainContext])
+        return [[self mainContext] persistentStoreCoordinator];
     return nil;
 }
 

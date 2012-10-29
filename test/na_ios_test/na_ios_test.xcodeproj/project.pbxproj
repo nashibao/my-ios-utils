@@ -23,7 +23,6 @@
 		3413F781163E443800A6B3ED /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3413F75D163E443800A6B3ED /* Foundation.framework */; };
 		3413F782163E443800A6B3ED /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3413F761163E443800A6B3ED /* CoreData.framework */; };
 		3413F78A163E443800A6B3ED /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3413F788163E443800A6B3ED /* InfoPlist.strings */; };
-		3413F78D163E443800A6B3ED /* na_ios_testTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3413F78C163E443800A6B3ED /* na_ios_testTests.m */; };
 		3413F839163E445500A6B3ED /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 3413F797163E445500A6B3ED /* .gitignore */; };
 		3413F83A163E445500A6B3ED /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 3413F797163E445500A6B3ED /* .gitignore */; };
 		3413F83B163E445500A6B3ED /* NAFetchHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3413F79B163E445500A6B3ED /* NAFetchHelper.m */; };
@@ -100,6 +99,9 @@
 		3413F8C0163E445500A6B3ED /* NAArrayTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3413F831163E445500A6B3ED /* NAArrayTableViewController.m */; };
 		3413F8C1163E445500A6B3ED /* NATableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3413F833163E445500A6B3ED /* NATableViewController.m */; };
 		3413F8C2163E445500A6B3ED /* NATableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3413F833163E445500A6B3ED /* NATableViewController.m */; };
+		34CA1B1B163E57060005F09E /* NAAsyncOCUnit.m in Sources */ = {isa = PBXBuildFile; fileRef = 34CA1B1A163E57060005F09E /* NAAsyncOCUnit.m */; };
+		34CA1B1C163E57060005F09E /* NAAsyncOCUnit.m in Sources */ = {isa = PBXBuildFile; fileRef = 34CA1B1A163E57060005F09E /* NAAsyncOCUnit.m */; };
+		34CA1B25163E583B0005F09E /* NANetworkGCDHelperTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 34CA1B21163E583B0005F09E /* NANetworkGCDHelperTest.m */; };
 		6503163EDC924BE1A773B90B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3226F816A3C447AD9E88E9B1 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -134,8 +136,6 @@
 		3413F77E163E443800A6B3ED /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		3413F787163E443800A6B3ED /* na_ios_testTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "na_ios_testTests-Info.plist"; sourceTree = "<group>"; };
 		3413F789163E443800A6B3ED /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		3413F78B163E443800A6B3ED /* na_ios_testTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = na_ios_testTests.h; sourceTree = "<group>"; };
-		3413F78C163E443800A6B3ED /* na_ios_testTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = na_ios_testTests.m; sourceTree = "<group>"; };
 		3413F797163E445500A6B3ED /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		3413F79A163E445500A6B3ED /* NAFetchHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAFetchHelper.h; sourceTree = "<group>"; };
 		3413F79B163E445500A6B3ED /* NAFetchHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAFetchHelper.m; sourceTree = "<group>"; };
@@ -212,6 +212,10 @@
 		3413F831163E445500A6B3ED /* NAArrayTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAArrayTableViewController.m; sourceTree = "<group>"; };
 		3413F832163E445500A6B3ED /* NATableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NATableViewController.h; sourceTree = "<group>"; };
 		3413F833163E445500A6B3ED /* NATableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NATableViewController.m; sourceTree = "<group>"; };
+		34CA1B19163E57060005F09E /* NAAsyncOCUnit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAAsyncOCUnit.h; sourceTree = "<group>"; };
+		34CA1B1A163E57060005F09E /* NAAsyncOCUnit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAAsyncOCUnit.m; sourceTree = "<group>"; };
+		34CA1B20163E583B0005F09E /* NANetworkGCDHelperTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NANetworkGCDHelperTest.h; sourceTree = "<group>"; };
+		34CA1B21163E583B0005F09E /* NANetworkGCDHelperTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NANetworkGCDHelperTest.m; sourceTree = "<group>"; };
 		B3CF3A24FB2A443C8A89DB04 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -304,8 +308,11 @@
 		3413F785163E443800A6B3ED /* na_ios_testTests */ = {
 			isa = PBXGroup;
 			children = (
-				3413F78B163E443800A6B3ED /* na_ios_testTests.h */,
-				3413F78C163E443800A6B3ED /* na_ios_testTests.m */,
+				34CA1B1D163E583B0005F09E /* coredata */,
+				34CA1B1E163E583B0005F09E /* coredata_sync */,
+				34CA1B1F163E583B0005F09E /* network */,
+				34CA1B22163E583B0005F09E /* theme */,
+				34CA1B23163E583B0005F09E /* ui */,
 				3413F786163E443800A6B3ED /* Supporting Files */,
 			);
 			path = na_ios_testTests;
@@ -323,6 +330,7 @@
 		3413F796163E445500A6B3ED /* na_ios */ = {
 			isa = PBXGroup;
 			children = (
+				34CA1B18163E56EA0005F09E /* ocunit */,
 				3413F797163E445500A6B3ED /* .gitignore */,
 				3413F798163E445500A6B3ED /* coredata */,
 				3413F7AF163E445500A6B3ED /* coredata_sync */,
@@ -564,6 +572,52 @@
 			path = cell;
 			sourceTree = "<group>";
 		};
+		34CA1B18163E56EA0005F09E /* ocunit */ = {
+			isa = PBXGroup;
+			children = (
+				34CA1B19163E57060005F09E /* NAAsyncOCUnit.h */,
+				34CA1B1A163E57060005F09E /* NAAsyncOCUnit.m */,
+			);
+			path = ocunit;
+			sourceTree = "<group>";
+		};
+		34CA1B1D163E583B0005F09E /* coredata */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = coredata;
+			sourceTree = "<group>";
+		};
+		34CA1B1E163E583B0005F09E /* coredata_sync */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = coredata_sync;
+			sourceTree = "<group>";
+		};
+		34CA1B1F163E583B0005F09E /* network */ = {
+			isa = PBXGroup;
+			children = (
+				34CA1B20163E583B0005F09E /* NANetworkGCDHelperTest.h */,
+				34CA1B21163E583B0005F09E /* NANetworkGCDHelperTest.m */,
+			);
+			path = network;
+			sourceTree = "<group>";
+		};
+		34CA1B22163E583B0005F09E /* theme */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = theme;
+			sourceTree = "<group>";
+		};
+		34CA1B23163E583B0005F09E /* ui */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ui;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -732,6 +786,7 @@
 				3413F8BD163E445500A6B3ED /* NATextLabelCell.m in Sources */,
 				3413F8BF163E445500A6B3ED /* NAArrayTableViewController.m in Sources */,
 				3413F8C1163E445500A6B3ED /* NATableViewController.m in Sources */,
+				34CA1B1B163E57060005F09E /* NAAsyncOCUnit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -739,7 +794,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3413F78D163E443800A6B3ED /* na_ios_testTests.m in Sources */,
 				3413F83C163E445500A6B3ED /* NAFetchHelper.m in Sources */,
 				3413F83E163E445500A6B3ED /* NSFetchRequest+na.m in Sources */,
 				3413F840163E445500A6B3ED /* NSManagedObjectContext+na.m in Sources */,
@@ -775,6 +829,8 @@
 				3413F8BE163E445500A6B3ED /* NATextLabelCell.m in Sources */,
 				3413F8C0163E445500A6B3ED /* NAArrayTableViewController.m in Sources */,
 				3413F8C2163E445500A6B3ED /* NATableViewController.m in Sources */,
+				34CA1B1C163E57060005F09E /* NAAsyncOCUnit.m in Sources */,
+				34CA1B25163E583B0005F09E /* NANetworkGCDHelperTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

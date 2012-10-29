@@ -8,6 +8,6 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 
-@interface na_ios_testTests : SenTestCase
+@interface NANetworkGCDHelperTest : SenTestCase
 
 @end

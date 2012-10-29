@@ -1,0 +1,4 @@
+Documentation set was installed to Xcode!
+
+Path: /Users/nashibao/Library/Developer/Shared/Documentation/DocSets/com.nashibao.na_ios_test.docset
+Time: 2012-10-29 07:36:43 +0000

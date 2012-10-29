@@ -17,3 +17,6 @@ profile
 
 /test/Pods/
 /test/Podfile.lock
+/test/na_ios_test/Pods/
+/test/na_ios_test/Podfile.lock
+/test/back/

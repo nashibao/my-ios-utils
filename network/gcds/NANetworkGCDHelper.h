@@ -10,11 +10,16 @@
 
 #import "NANetworkConfig.h"
 
-
+/** network class for gcd
+ */
 @interface NANetworkGCDHelper : NSObject
 
-/*
- for managing statusbar indicator
+/** for managing statusbar indicator
+ 
+ @param baseURL base url
+ @param query query
+ @param protocol protocol
+ @param encoding encoding
  */
 
 + (NSURLRequest *)requestTo:(NSString *)baseURL
@@ -22,20 +27,15 @@
                    protocol:(NANetworkProtocol)protocol
                    encoding:(NSStringEncoding)encoding;
 
-/*
- main function of this class.
+/** main function of this class.
  
- <args>
- endpoint: url should be domains + endpoint
- data: request data
- isPost: boolean for post/get
- encoding: escape encoding
- jsonOption: if this param is not nil, callback param(id data) will be a json data.
- returnMain: it this param is YES, callback func is enclosed by main queue dispatch
- successHandler/errorHandler: blocks for callback
- 
+ @param request request
+ @param jsonOption jsonOption
+ @param returnEncoding jsonEncoding
+ @param returnMain returnMain
+ @param successHandler successHandler
+ @param errorHandler errorHandler
  */
-
 + (void)sendJsonAsynchronousRequest:(NSURLRequest *)request
                          jsonOption:(NSJSONReadingOptions)jsonOption
                      returnEncoding:(NSStringEncoding)returnEncoding
@@ -43,14 +43,23 @@
                      successHandler:(void(^)(NSURLResponse *resp, id data))successHandler
                        errorHandler:(void(^)(NSURLResponse *resp, NSError *err))errorHandler;
 
+/** json function of this class.
+ 
+ @param request request
+ @param returnEncoding jsonEncoding
+ @param returnMain returnMain
+ @param successHandler successHandler
+ @param errorHandler errorHandler
+ */
 + (void)sendAsynchronousRequest:(NSURLRequest *)request
                  returnEncoding:(NSStringEncoding)returnEncoding
                      returnMain:(BOOL)returnMain
                  successHandler:(void(^)(NSURLResponse *resp, id data))successHandler
                    errorHandler:(void(^)(NSURLResponse *resp, NSError *err))errorHandler;
 
-/*
- global error handler
+/** global error handler
+ 
+ @param errorHandler errorHandler
  */
 + (void)setGlobalErrorHandler:(void(^)(NSURLResponse *resp, NSError *err))errorHandler;
 

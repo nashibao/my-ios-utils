@@ -36,6 +36,7 @@
         STAssertTrue(YES, @"success!!!!!");
         STAsynchronousTestDone(test);
     } errorHandler:^(NSURLResponse *resp, NSError *err) {
+        NSLog(@"%s|%@", __PRETTY_FUNCTION__, err);
         STAssertTrue(NO, @"error!!!!!");
         STAsynchronousTestDone(test);
     }];
@@ -52,6 +53,7 @@
         STAssertTrue(YES, @"success!!!!!");
         STAsynchronousTestDone(test);
     } errorHandler:^(NSURLResponse *resp, NSError *err) {
+        NSLog(@"%s|%@", __PRETTY_FUNCTION__, err);
         STAssertTrue(YES, @"error!!!!!");
         STAsynchronousTestDone(test);
     }];

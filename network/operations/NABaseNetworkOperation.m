@@ -223,6 +223,15 @@ static inline BOOL AFStateTransitionIsValid(AFOperationState fromState, AFOperat
 }
 
 - (void)cancelConnection {
+    
+    // Manually send this delegate message since `[self.connection cancel]` causes the connection to never send another message to its delegate
+    NSDictionary *userInfo = nil;
+    if ([self.request URL]) {
+        userInfo = [NSDictionary dictionaryWithObject:[self.request URL] forKey:NSURLErrorFailingURLErrorKey];
+    }
+    NSError *err = [NSError errorWithDomain:NSURLErrorDomain code:NSURLErrorCancelled userInfo:userInfo];
+    self.error = err;
+    
     if (self.connection) {
         [self.connection cancel];
         
@@ -230,12 +239,7 @@ static inline BOOL AFStateTransitionIsValid(AFOperationState fromState, AFOperat
         if([self isPaused])
             return;
         
-        // Manually send this delegate message since `[self.connection cancel]` causes the connection to never send another message to its delegate
-        NSDictionary *userInfo = nil;
-        if ([self.request URL]) {
-            userInfo = [NSDictionary dictionaryWithObject:[self.request URL] forKey:NSURLErrorFailingURLErrorKey];
-        }
-        [self performSelector:@selector(connection:didFailWithError:) withObject:self.connection withObject:[NSError errorWithDomain:NSURLErrorDomain code:NSURLErrorCancelled userInfo:userInfo]];
+        [self performSelector:@selector(connection:didFailWithError:) withObject:self.connection withObject:err];
     }
 }
 

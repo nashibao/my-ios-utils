@@ -10,7 +10,7 @@
 
 #import "NANetworkConfig.h"
 
-/** network class for gcd
+/** helper class for netwrok with gcd.
  */
 @interface NANetworkGCDHelper : NSObject
 
@@ -27,7 +27,21 @@
                    protocol:(NANetworkProtocol)protocol
                    encoding:(NSStringEncoding)encoding;
 
-/** main function of this class.
+/** request wrapper
+ 
+ @param request request
+ @param returnEncoding jsonEncoding
+ @param returnMain returnMain
+ @param successHandler successHandler
+ @param errorHandler errorHandler
+ */
++ (void)sendAsynchronousRequest:(NSURLRequest *)request
+                 returnEncoding:(NSStringEncoding)returnEncoding
+                     returnMain:(BOOL)returnMain
+                 successHandler:(void(^)(NSURLResponse *resp, id data))successHandler
+                   errorHandler:(void(^)(NSURLResponse *resp, NSError *err))errorHandler;
+
+/** json request wrapper
  
  @param request request
  @param jsonOption jsonOption
@@ -42,20 +56,6 @@
                          returnMain:(BOOL)returnMain
                      successHandler:(void(^)(NSURLResponse *resp, id data))successHandler
                        errorHandler:(void(^)(NSURLResponse *resp, NSError *err))errorHandler;
-
-/** json function of this class.
- 
- @param request request
- @param returnEncoding jsonEncoding
- @param returnMain returnMain
- @param successHandler successHandler
- @param errorHandler errorHandler
- */
-+ (void)sendAsynchronousRequest:(NSURLRequest *)request
-                 returnEncoding:(NSStringEncoding)returnEncoding
-                     returnMain:(BOOL)returnMain
-                 successHandler:(void(^)(NSURLResponse *resp, id data))successHandler
-                   errorHandler:(void(^)(NSURLResponse *resp, NSError *err))errorHandler;
 
 /** global error handler
  

@@ -101,13 +101,12 @@ static Reachability *__reach__ = nil;
         identifierMaxCount = 1;
     NANetworkOperation *op = nil;
     NSMutableArray *operations = _operations_with_id[identifier];
-    if([operations count] > 0){
+    if([operations count] >= identifierMaxCount){
         if(queueingOption == NANetworkOperationQueingOptionReturnOld){
             op = [operations lastObject];
             return op;
         }else if(queueingOption == NANetworkOperationQueingOptionCancel){
-            if([operations count] >= identifierMaxCount)
-                [self cancelByIdentifier:identifier handler:nil];
+            [self cancelByIdentifier:identifier handler:nil];
         }
     }
     

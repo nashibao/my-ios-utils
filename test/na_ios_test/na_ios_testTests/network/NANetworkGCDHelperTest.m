@@ -27,12 +27,13 @@
     [super tearDown];
 }
 
-- (void)testSendAsynchronousRequest
+- (void)atestSendAsynchronousRequest
 {
     STAsynchronousTestStart(test);
     NSURLRequest *req = [NANetworkGCDHelper requestTo:@"http://www.google.co.jp" query:nil protocol:NANetworkProtocolGET encoding:NSUTF8StringEncoding];
     
     [NANetworkGCDHelper sendAsynchronousRequest:req returnEncoding:NSShiftJISStringEncoding returnMain:NO successHandler:^(NSURLResponse *resp, id data) {
+        STAssertFalse([data isKindOfClass:[NSDictionary class]], @"is not json class");
         STAssertTrue(YES, @"success!!!!!");
         STAsynchronousTestDone(test);
     } errorHandler:^(NSURLResponse *resp, NSError *err) {
@@ -43,14 +44,14 @@
     STAsynchronousTestWait(test, 0.5);
 }
 
-- (void)testSendJSONAsynchronousRequest
+- (void)atestSendJSONAsynchronousRequest
 {
     STAsynchronousTestStart(test);
     NSURLRequest *req = [NANetworkGCDHelper requestTo:@"http://www.google.co.jp" query:nil protocol:NANetworkProtocolGET encoding:NSUTF8StringEncoding];
     
     [NANetworkGCDHelper sendJsonAsynchronousRequest:req jsonOption:NSJSONReadingAllowFragments returnEncoding:NSShiftJISStringEncoding returnMain:NO successHandler:^(NSURLResponse *resp, id data) {
         NSLog(@"%s|%@", __PRETTY_FUNCTION__, data);
-        STAssertTrue(YES, @"success!!!!!");
+        STAssertTrue([data isKindOfClass:[NSDictionary class]], @"is json class");
         STAsynchronousTestDone(test);
     } errorHandler:^(NSURLResponse *resp, NSError *err) {
         NSLog(@"%s|%@", __PRETTY_FUNCTION__, err);

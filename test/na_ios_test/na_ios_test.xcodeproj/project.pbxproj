@@ -55,8 +55,6 @@
 		3413F856163E445500A6B3ED /* NASyncModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3413F7BD163E445500A6B3ED /* NASyncModel.m */; };
 		3413F857163E445500A6B3ED /* syncmodel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3413F7C0163E445500A6B3ED /* syncmodel.xcdatamodeld */; };
 		3413F858163E445500A6B3ED /* syncmodel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3413F7C0163E445500A6B3ED /* syncmodel.xcdatamodeld */; };
-		3413F859163E445500A6B3ED /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 3413F7C2163E445500A6B3ED /* README.md */; };
-		3413F85A163E445500A6B3ED /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 3413F7C2163E445500A6B3ED /* README.md */; };
 		3413F85B163E445500A6B3ED /* NAValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 3413F7C5163E445500A6B3ED /* NAValidator.m */; };
 		3413F85C163E445500A6B3ED /* NAValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 3413F7C5163E445500A6B3ED /* NAValidator.m */; };
 		3413F85D163E445500A6B3ED /* NAFormValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 3413F7C8163E445500A6B3ED /* NAFormValue.m */; };
@@ -85,8 +83,6 @@
 		3413F874163E445500A6B3ED /* NANetworkOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3413F7E3163E445500A6B3ED /* NANetworkOperation.m */; };
 		3413F875163E445500A6B3ED /* NSOperationQueue+na.m in Sources */ = {isa = PBXBuildFile; fileRef = 3413F7E5163E445500A6B3ED /* NSOperationQueue+na.m */; };
 		3413F876163E445500A6B3ED /* NSOperationQueue+na.m in Sources */ = {isa = PBXBuildFile; fileRef = 3413F7E5163E445500A6B3ED /* NSOperationQueue+na.m */; };
-		3413F877163E445500A6B3ED /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 3413F7E6163E445500A6B3ED /* README.md */; };
-		3413F878163E445500A6B3ED /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 3413F7E6163E445500A6B3ED /* README.md */; };
 		3413F8B7163E445500A6B3ED /* NATheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 3413F825163E445500A6B3ED /* NATheme.m */; };
 		3413F8B8163E445500A6B3ED /* NATheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 3413F825163E445500A6B3ED /* NATheme.m */; };
 		3413F8B9163E445500A6B3ED /* NAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3413F828163E445500A6B3ED /* NAViewController.m */; };
@@ -99,9 +95,9 @@
 		3413F8C0163E445500A6B3ED /* NAArrayTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3413F831163E445500A6B3ED /* NAArrayTableViewController.m */; };
 		3413F8C1163E445500A6B3ED /* NATableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3413F833163E445500A6B3ED /* NATableViewController.m */; };
 		3413F8C2163E445500A6B3ED /* NATableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3413F833163E445500A6B3ED /* NATableViewController.m */; };
+		34A6A877163E88B400F28492 /* WorkingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 34A6A876163E88B400F28492 /* WorkingTest.m */; };
 		34CA1B1B163E57060005F09E /* NAAsyncOCUnit.m in Sources */ = {isa = PBXBuildFile; fileRef = 34CA1B1A163E57060005F09E /* NAAsyncOCUnit.m */; };
 		34CA1B1C163E57060005F09E /* NAAsyncOCUnit.m in Sources */ = {isa = PBXBuildFile; fileRef = 34CA1B1A163E57060005F09E /* NAAsyncOCUnit.m */; };
-		34CA1B25163E583B0005F09E /* NANetworkGCDHelperTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 34CA1B21163E583B0005F09E /* NANetworkGCDHelperTest.m */; };
 		6503163EDC924BE1A773B90B /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3226F816A3C447AD9E88E9B1 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -169,7 +165,6 @@
 		3413F7BE163E445500A6B3ED /* NASyncModelProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NASyncModelProtocol.h; sourceTree = "<group>"; };
 		3413F7BF163E445500A6B3ED /* NASyncModelRestProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NASyncModelRestProtocol.h; sourceTree = "<group>"; };
 		3413F7C1163E445500A6B3ED /* syncmodel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = syncmodel.xcdatamodel; sourceTree = "<group>"; };
-		3413F7C2163E445500A6B3ED /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		3413F7C4163E445500A6B3ED /* NAValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAValidator.h; sourceTree = "<group>"; };
 		3413F7C5163E445500A6B3ED /* NAValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAValidator.m; sourceTree = "<group>"; };
 		3413F7C7163E445500A6B3ED /* NAFormValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAFormValue.h; sourceTree = "<group>"; };
@@ -198,7 +193,6 @@
 		3413F7E3163E445500A6B3ED /* NANetworkOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NANetworkOperation.m; sourceTree = "<group>"; };
 		3413F7E4163E445500A6B3ED /* NSOperationQueue+na.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSOperationQueue+na.h"; sourceTree = "<group>"; };
 		3413F7E5163E445500A6B3ED /* NSOperationQueue+na.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSOperationQueue+na.m"; sourceTree = "<group>"; };
-		3413F7E6163E445500A6B3ED /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		3413F824163E445500A6B3ED /* NATheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NATheme.h; sourceTree = "<group>"; };
 		3413F825163E445500A6B3ED /* NATheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NATheme.m; sourceTree = "<group>"; };
 		3413F827163E445500A6B3ED /* NAViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAViewController.h; sourceTree = "<group>"; };
@@ -212,6 +206,11 @@
 		3413F831163E445500A6B3ED /* NAArrayTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAArrayTableViewController.m; sourceTree = "<group>"; };
 		3413F832163E445500A6B3ED /* NATableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NATableViewController.h; sourceTree = "<group>"; };
 		3413F833163E445500A6B3ED /* NATableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NATableViewController.m; sourceTree = "<group>"; };
+		3484D21D163E6F0500C80E42 /* NANetworkOperationTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NANetworkOperationTest.h; sourceTree = "<group>"; };
+		3484D21E163E6F0500C80E42 /* NANetworkOperationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NANetworkOperationTest.m; sourceTree = "<group>"; };
+		34A6A875163E88B400F28492 /* WorkingTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkingTest.h; sourceTree = "<group>"; };
+		34A6A876163E88B400F28492 /* WorkingTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkingTest.m; sourceTree = "<group>"; };
+		34A6A928163E8B4600F28492 /* na_ios_testTests copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "na_ios_testTests copy-Info.plist"; path = "/Users/nashibao/lab/scubism/projects/sk/iphone/sk_ios/SK3/lib/na_ios/test/na_ios_test/na_ios_testTests copy-Info.plist"; sourceTree = "<absolute>"; };
 		34CA1B19163E57060005F09E /* NAAsyncOCUnit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAAsyncOCUnit.h; sourceTree = "<group>"; };
 		34CA1B1A163E57060005F09E /* NAAsyncOCUnit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAAsyncOCUnit.m; sourceTree = "<group>"; };
 		34CA1B20163E583B0005F09E /* NANetworkGCDHelperTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NANetworkGCDHelperTest.h; sourceTree = "<group>"; };
@@ -255,6 +254,7 @@
 				3413F75A163E443800A6B3ED /* Frameworks */,
 				3413F758163E443800A6B3ED /* Products */,
 				B3CF3A24FB2A443C8A89DB04 /* Pods.xcconfig */,
+				34A6A928163E8B4600F28492 /* na_ios_testTests copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -336,7 +336,6 @@
 				3413F7AF163E445500A6B3ED /* coredata_sync */,
 				3413F7C3163E445500A6B3ED /* form */,
 				3413F7D7163E445500A6B3ED /* network */,
-				3413F7E6163E445500A6B3ED /* README.md */,
 				3413F823163E445500A6B3ED /* theme */,
 				3413F826163E445500A6B3ED /* ui */,
 			);
@@ -407,7 +406,6 @@
 				3413F7B0163E445500A6B3ED /* drivers */,
 				3413F7B4163E445500A6B3ED /* helpers */,
 				3413F7B7163E445500A6B3ED /* models */,
-				3413F7C2163E445500A6B3ED /* README.md */,
 			);
 			path = coredata_sync;
 			sourceTree = "<group>";
@@ -600,6 +598,10 @@
 			children = (
 				34CA1B20163E583B0005F09E /* NANetworkGCDHelperTest.h */,
 				34CA1B21163E583B0005F09E /* NANetworkGCDHelperTest.m */,
+				3484D21D163E6F0500C80E42 /* NANetworkOperationTest.h */,
+				3484D21E163E6F0500C80E42 /* NANetworkOperationTest.m */,
+				34A6A875163E88B400F28492 /* WorkingTest.h */,
+				34A6A876163E88B400F28492 /* WorkingTest.m */,
 			);
 			path = network;
 			sourceTree = "<group>";
@@ -695,8 +697,6 @@
 				3413F772163E443800A6B3ED /* Default@2x.png in Resources */,
 				3413F774163E443800A6B3ED /* Default-568h@2x.png in Resources */,
 				3413F839163E445500A6B3ED /* .gitignore in Resources */,
-				3413F859163E445500A6B3ED /* README.md in Resources */,
-				3413F877163E445500A6B3ED /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -706,8 +706,6 @@
 			files = (
 				3413F78A163E443800A6B3ED /* InfoPlist.strings in Resources */,
 				3413F83A163E445500A6B3ED /* .gitignore in Resources */,
-				3413F85A163E445500A6B3ED /* README.md in Resources */,
-				3413F878163E445500A6B3ED /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -830,7 +828,7 @@
 				3413F8C0163E445500A6B3ED /* NAArrayTableViewController.m in Sources */,
 				3413F8C2163E445500A6B3ED /* NATableViewController.m in Sources */,
 				34CA1B1C163E57060005F09E /* NAAsyncOCUnit.m in Sources */,
-				34CA1B25163E583B0005F09E /* NANetworkGCDHelperTest.m in Sources */,
+				34A6A877163E88B400F28492 /* WorkingTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -960,6 +958,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "na_ios_test/na_ios_test-Prefix.pch";
 				INFOPLIST_FILE = "na_ios_testTests/na_ios_testTests-Info.plist";
+				OTHER_TEST_FLAGS = "-SenTest NANetworkOperationCancelTest/testTest";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/**";
@@ -979,6 +978,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "na_ios_test/na_ios_test-Prefix.pch";
 				INFOPLIST_FILE = "na_ios_testTests/na_ios_testTests-Info.plist";
+				OTHER_TEST_FLAGS = "-SenTest NANetworkOperationCancelTest/testTest";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				USER_HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)/**";

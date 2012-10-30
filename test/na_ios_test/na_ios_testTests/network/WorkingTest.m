@@ -8,25 +8,24 @@
 
 #import "WorkingTest.h"
 
-#import "NAAsyncOCUnit.h"
-
-#import "NANetworkGCDHelper.h"
-
-#import "NANetworkOperation.h"
-
 /*
  全てをテストするのは面倒なので、基本的にはtargetの部分に
  含めたファイルだけテストしている．
  */
 @implementation WorkingTest
 
-/** testTest
- */
-- (void)testTest
+- (void)setUp
 {
-    
+    [super setUp];
 }
 
+- (void)tearDown
+{
+    [super tearDown];
+}
 
+- (void)testTest
+{
+}
 
 @end

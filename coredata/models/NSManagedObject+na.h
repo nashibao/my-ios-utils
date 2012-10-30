@@ -12,6 +12,7 @@
 
 + (NSPersistentStoreCoordinator *)coordinator;
 + (NSManagedObjectContext *)mainContext;
++ (void)setMainContext:(NSManagedObjectContext *)context;
 
 + (NSArray *)filter:(NSDictionary *)props options:(NSDictionary *)options;
 + (id)get:(NSDictionary *)props options:(NSDictionary *)options;

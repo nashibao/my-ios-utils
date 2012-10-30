@@ -44,6 +44,7 @@
  and used as initial sqlite database.
  */
 - (void)setup:(NSString *)name;
+- (void)setup:(NSString *)name withBundle:(NSBundle *)bundle;
 
 /*
  migrations

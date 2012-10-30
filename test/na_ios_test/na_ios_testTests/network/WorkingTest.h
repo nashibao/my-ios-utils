@@ -8,6 +8,8 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 
+#import "NAAsyncOCUnit.h"
+
 @interface WorkingTest : SenTestCase
 
 @end

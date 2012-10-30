@@ -22,8 +22,14 @@
     return nil;
 }
 
+static NSManagedObjectContext * __main_context__ = nil;
+
 + (NSManagedObjectContext *)mainContext{
-    return nil;
+    return __main_context__;
+}
+
++ (void)setMainContext:(NSManagedObjectContext *)context{
+    __main_context__ = context;
 }
 
 + (NSManagedObjectContext *)createPrivateContext{

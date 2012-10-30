@@ -95,6 +95,10 @@
 		3413F8C0163E445500A6B3ED /* NAArrayTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3413F831163E445500A6B3ED /* NAArrayTableViewController.m */; };
 		3413F8C1163E445500A6B3ED /* NATableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3413F833163E445500A6B3ED /* NATableViewController.m */; };
 		3413F8C2163E445500A6B3ED /* NATableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3413F833163E445500A6B3ED /* NATableViewController.m */; };
+		34868C65163F56C20032BF6D /* testmodel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 34868C63163F56C20032BF6D /* testmodel.xcdatamodeld */; };
+		34868C6C163F58C90032BF6D /* TestParent.m in Sources */ = {isa = PBXBuildFile; fileRef = 34868C6B163F58C90032BF6D /* TestParent.m */; };
+		34868C6F163F58C90032BF6D /* TestChild.m in Sources */ = {isa = PBXBuildFile; fileRef = 34868C6E163F58C90032BF6D /* TestChild.m */; };
+		34868C72163F62200032BF6D /* NSManagedObjectContextNaCategoryTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 34868C71163F62200032BF6D /* NSManagedObjectContextNaCategoryTest.m */; };
 		34A6A877163E88B400F28492 /* WorkingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 34A6A876163E88B400F28492 /* WorkingTest.m */; };
 		34CA1B1B163E57060005F09E /* NAAsyncOCUnit.m in Sources */ = {isa = PBXBuildFile; fileRef = 34CA1B1A163E57060005F09E /* NAAsyncOCUnit.m */; };
 		34CA1B1C163E57060005F09E /* NAAsyncOCUnit.m in Sources */ = {isa = PBXBuildFile; fileRef = 34CA1B1A163E57060005F09E /* NAAsyncOCUnit.m */; };
@@ -208,8 +212,15 @@
 		3413F833163E445500A6B3ED /* NATableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NATableViewController.m; sourceTree = "<group>"; };
 		3484D21D163E6F0500C80E42 /* NANetworkOperationTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NANetworkOperationTest.h; sourceTree = "<group>"; };
 		3484D21E163E6F0500C80E42 /* NANetworkOperationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NANetworkOperationTest.m; sourceTree = "<group>"; };
-		34A6A875163E88B400F28492 /* WorkingTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkingTest.h; sourceTree = "<group>"; };
-		34A6A876163E88B400F28492 /* WorkingTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkingTest.m; sourceTree = "<group>"; };
+		34868C64163F56C20032BF6D /* testmodel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = testmodel.xcdatamodel; sourceTree = "<group>"; };
+		34868C6A163F58C90032BF6D /* TestParent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestParent.h; sourceTree = "<group>"; };
+		34868C6B163F58C90032BF6D /* TestParent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestParent.m; sourceTree = "<group>"; };
+		34868C6D163F58C90032BF6D /* TestChild.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestChild.h; sourceTree = "<group>"; };
+		34868C6E163F58C90032BF6D /* TestChild.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestChild.m; sourceTree = "<group>"; };
+		34868C70163F62200032BF6D /* NSManagedObjectContextNaCategoryTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSManagedObjectContextNaCategoryTest.h; sourceTree = "<group>"; };
+		34868C71163F62200032BF6D /* NSManagedObjectContextNaCategoryTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSManagedObjectContextNaCategoryTest.m; sourceTree = "<group>"; };
+		34A6A875163E88B400F28492 /* WorkingTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WorkingTest.h; path = ../network/WorkingTest.h; sourceTree = "<group>"; };
+		34A6A876163E88B400F28492 /* WorkingTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WorkingTest.m; path = ../network/WorkingTest.m; sourceTree = "<group>"; };
 		34A6A928163E8B4600F28492 /* na_ios_testTests copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "na_ios_testTests copy-Info.plist"; path = "/Users/nashibao/lab/scubism/projects/sk/iphone/sk_ios/SK3/lib/na_ios/test/na_ios_test/na_ios_testTests copy-Info.plist"; sourceTree = "<absolute>"; };
 		34CA1B19163E57060005F09E /* NAAsyncOCUnit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAAsyncOCUnit.h; sourceTree = "<group>"; };
 		34CA1B1A163E57060005F09E /* NAAsyncOCUnit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAAsyncOCUnit.m; sourceTree = "<group>"; };
@@ -582,6 +593,15 @@
 		34CA1B1D163E583B0005F09E /* coredata */ = {
 			isa = PBXGroup;
 			children = (
+				34A6A875163E88B400F28492 /* WorkingTest.h */,
+				34A6A876163E88B400F28492 /* WorkingTest.m */,
+				34868C63163F56C20032BF6D /* testmodel.xcdatamodeld */,
+				34868C6D163F58C90032BF6D /* TestChild.h */,
+				34868C6E163F58C90032BF6D /* TestChild.m */,
+				34868C6A163F58C90032BF6D /* TestParent.h */,
+				34868C6B163F58C90032BF6D /* TestParent.m */,
+				34868C70163F62200032BF6D /* NSManagedObjectContextNaCategoryTest.h */,
+				34868C71163F62200032BF6D /* NSManagedObjectContextNaCategoryTest.m */,
 			);
 			path = coredata;
 			sourceTree = "<group>";
@@ -600,8 +620,6 @@
 				34CA1B21163E583B0005F09E /* NANetworkGCDHelperTest.m */,
 				3484D21D163E6F0500C80E42 /* NANetworkOperationTest.h */,
 				3484D21E163E6F0500C80E42 /* NANetworkOperationTest.m */,
-				34A6A875163E88B400F28492 /* WorkingTest.h */,
-				34A6A876163E88B400F28492 /* WorkingTest.m */,
 			);
 			path = network;
 			sourceTree = "<group>";
@@ -829,6 +847,10 @@
 				3413F8C2163E445500A6B3ED /* NATableViewController.m in Sources */,
 				34CA1B1C163E57060005F09E /* NAAsyncOCUnit.m in Sources */,
 				34A6A877163E88B400F28492 /* WorkingTest.m in Sources */,
+				34868C65163F56C20032BF6D /* testmodel.xcdatamodeld in Sources */,
+				34868C6C163F58C90032BF6D /* TestParent.m in Sources */,
+				34868C6F163F58C90032BF6D /* TestChild.m in Sources */,
+				34868C72163F62200032BF6D /* NSManagedObjectContextNaCategoryTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1036,6 +1058,16 @@
 			);
 			currentVersion = 3413F7C1163E445500A6B3ED /* syncmodel.xcdatamodel */;
 			path = syncmodel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		34868C63163F56C20032BF6D /* testmodel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				34868C64163F56C20032BF6D /* testmodel.xcdatamodel */,
+			);
+			currentVersion = 34868C64163F56C20032BF6D /* testmodel.xcdatamodel */;
+			path = testmodel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

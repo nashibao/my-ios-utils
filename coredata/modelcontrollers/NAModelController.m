@@ -11,8 +11,12 @@
 @implementation NAModelController
 
 - (void)setup:(NSString *)name{
+    [self setup:name withBundle:[NSBundle mainBundle]];
+}
+- (void)setup:(NSString *)name withBundle:(NSBundle *)bundle{
     
-    NSString *model_path = [[NSBundle mainBundle] pathForResource:name ofType:@"momd"];
+    NSString *model_path = [bundle pathForResource:name ofType:@"momd"];
+    
     NSURL *model_url = [NSURL fileURLWithPath:model_path];
     
     self.model = [[NSManagedObjectModel alloc] initWithContentsOfURL:model_url];

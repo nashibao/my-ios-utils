@@ -74,6 +74,7 @@
     [super tableView:tableView didSelectRowAtIndexPath:indexPath];
     id row = [self rowAtIndexPath:indexPath];
     if(row[@"actionType"]){
+//        ここを上書きすれば、新しいアクションを追加できる
         switch ([row[@"actionType"] integerValue]) {
             case FormTableSelectActionTypeOpenSelectTable:{
                 NASelectFormTableViewController *selectTableViewController = [[NASelectFormTableViewController alloc] initWithStyle:UITableViewStylePlain];

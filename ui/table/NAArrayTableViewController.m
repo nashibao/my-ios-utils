@@ -30,6 +30,10 @@
     return row[@"data"];
 }
 
+- (id)rowAction:(id)row{
+    return row[@"action"];
+}
+
 - (NSString *)rowCellIdentifier:(id)row{
     if(row)
         return row[@"cell"];
@@ -88,6 +92,14 @@
 
 - (void)updateCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath row:(id)row{
     [self updateCell:cell atIndexPath:indexPath];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    id row = [self rowAtIndexPath:indexPath];
+    void (^action_block)(UITableView*, NSIndexPath*) = [self rowAction:row];
+    if(action_block){
+        action_block(tableView, indexPath);
+    }
 }
 
 @end

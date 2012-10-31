@@ -30,21 +30,12 @@
 @property (strong, nonatomic) NSPersistentStoreCoordinator *coordinator;
 @property (strong, nonatomic) NSManagedObjectContext *mainContext;
 
-/*
- setup function.
- 
- <args>
- name: should be xcdatamodeld name.
- (ex)
- if model file is "hoge.xcdatamodeld",
- hoge.sqlite will be created.
- "name" should be @"hoge".
- 
- if you added hoge.sqlite in mainbundle, it will be copied to app doc directory
- and used as initial sqlite database.
+@property (readonly, nonatomic) NSString *name;
+@property (readonly, nonatomic) NSBundle *bundle;
+
+/** 初期化処理．すでにあるデータベースは削除する
  */
-- (void)setup:(NSString *)name;
-- (void)setup:(NSString *)name withBundle:(NSBundle *)bundle;
+- (void)destroyAndSetup;
 
 /*
  migrations

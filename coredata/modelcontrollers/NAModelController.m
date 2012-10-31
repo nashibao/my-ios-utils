@@ -10,28 +10,51 @@
 
 @implementation NAModelController
 
-- (void)setup:(NSString *)name{
-    [self setup:name withBundle:[NSBundle mainBundle]];
+- (id)init{
+    self = [super init];
+    if(self){
+        [self setup];
+    }
+    return self;
 }
-- (void)setup:(NSString *)name withBundle:(NSBundle *)bundle{
+
+- (NSBundle *)bundle{
+    return [NSBundle mainBundle];
+}
+
+- (NSString *)name{
+    @throw [NSException exceptionWithName:@"must override name option" reason:@"must override name option" userInfo:nil];
+    return nil;
+}
+
+- (NSString *)directoryPath{
+    return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+}
+
+- (NSString *)storeFileName{
+    NSString *directory_path = [self directoryPath];
+    NSString *location = [NSString stringWithFormat:@"%@.sqlite", [self name]];
+    NSString *store_path = [directory_path stringByAppendingPathComponent:location];
+    return store_path;
+}
+
+- (void)setup{
     
-    NSString *model_path = [bundle pathForResource:name ofType:@"momd"];
+    NSString *model_path = [[self bundle] pathForResource:[self name] ofType:@"momd"];
     
     NSURL *model_url = [NSURL fileURLWithPath:model_path];
     
     self.model = [[NSManagedObjectModel alloc] initWithContentsOfURL:model_url];
-    NSString *directory_path = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-    NSString *location = [NSString stringWithFormat:@"%@.sqlite", name];
-    NSString *store_path = [directory_path stringByAppendingPathComponent:location];
+    NSString *store_file_name = [self storeFileName];
     
-    if(![[NSFileManager defaultManager] fileExistsAtPath:store_path]){
-        NSString *defaultStorePath = [[NSBundle mainBundle] pathForResource:name ofType:@"sqlite"];
-        if(defaultStorePath){
-            [[NSFileManager defaultManager] copyItemAtPath:defaultStorePath toPath:store_path error:NULL];
+    if(![[NSFileManager defaultManager] fileExistsAtPath:store_file_name]){
+        NSString *bundleStorePath = [[NSBundle mainBundle] pathForResource:[self name] ofType:@"sqlite"];
+        if(bundleStorePath){
+            [[NSFileManager defaultManager] copyItemAtPath:bundleStorePath toPath:store_file_name error:NULL];
         }
     }
     
-    NSURL *storeURL = [NSURL fileURLWithPath:store_path];
+    NSURL *storeURL = [NSURL fileURLWithPath:store_file_name];
     NSError *error = nil;
     self.coordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:self.model];
     if (![self.coordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
@@ -41,6 +64,14 @@
     
     self.mainContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
     [self.mainContext setPersistentStoreCoordinator:self.coordinator];
+}
+
+- (void)destroyAndSetup{
+    NSString *store_file_name = [self storeFileName];
+    if([[NSFileManager defaultManager] fileExistsAtPath:store_file_name]){
+        [[NSFileManager defaultManager] removeItemAtPath:store_file_name error:nil];
+        [self setup];
+    }
 }
 
 

@@ -23,6 +23,9 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    if(self.formValue){
+        [self.navigationItem setTitle:self.formValue.label];
+    }
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

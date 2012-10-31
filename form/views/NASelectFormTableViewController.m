@@ -25,6 +25,8 @@
     [super viewWillAppear:animated];
     if([self.formValue selectedIndexPath]){
         self.selectedIndexPath = [self.formValue selectedIndexPath];
+        [self.navigationItem setTitle:self.formValue.label];
+        [self.tableView scrollToRowAtIndexPath:self.selectedIndexPath atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
     }
 }
 

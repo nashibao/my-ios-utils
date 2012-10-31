@@ -95,6 +95,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [super tableView:tableView didSelectRowAtIndexPath:indexPath];
     id row = [self rowAtIndexPath:indexPath];
     void (^action_block)(UITableView*, NSIndexPath*) = [self rowAction:row];
     if(action_block){

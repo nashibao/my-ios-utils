@@ -10,6 +10,11 @@
 
 #import "NAFormCell.h"
 
+typedef enum FormTableSelectActionType : NSUInteger {
+    FormTableSelectActionTypeOpenSelectTable,
+    FormTableSelectActionTypeOpenMultipleSelectTable,
+} FormTableSelectActionType;
+
 @interface NAFormTableViewController : NAArrayTableViewController <NAFormCellDelegate>
 
 - (void)changeFormValue:(NAFormValue *)formValue newValue:(id)newValue;

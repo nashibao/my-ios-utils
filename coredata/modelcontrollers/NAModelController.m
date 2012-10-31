@@ -8,6 +8,9 @@
 
 #import "NAModelController.h"
 
+NSString * const NAModelControllerDestroyedNotification = @"NAModelControllerDestroyedNotification";
+NSString * const NAModelControllerInitializedNotification = @"NAModelControllerInitializedNotification";
+
 @implementation NAModelController
 
 - (id)init{
@@ -64,12 +67,14 @@
     
     self.mainContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
     [self.mainContext setPersistentStoreCoordinator:self.coordinator];
+    [[NSNotificationCenter defaultCenter] postNotificationName:NAModelControllerInitializedNotification object:self];
 }
 
 - (void)destroyAndSetup{
     NSString *store_file_name = [self storeFileName];
     if([[NSFileManager defaultManager] fileExistsAtPath:store_file_name]){
         [[NSFileManager defaultManager] removeItemAtPath:store_file_name error:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:NAModelControllerDestroyedNotification object:self];
         [self setup];
     }
 }

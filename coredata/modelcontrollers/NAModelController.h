@@ -16,6 +16,9 @@
 
 #import "NSFetchRequest+na.h"
 
+extern NSString * const NAModelControllerDestroyedNotification;
+extern NSString * const NAModelControllerInitializedNotification;
+
 /*
  model controller class.
  which includes "model", "coordinator", "mainContext".

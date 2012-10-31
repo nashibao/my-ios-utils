@@ -10,6 +10,10 @@
 
 #import "NAFormValue.h"
 
+#import "NASelectFormTableViewController.h"
+
+#import "NAMultipleSelectFormTableViewController.h"
+
 @interface NAFormTableViewController ()
 
 @end
@@ -64,6 +68,29 @@
         }
     }
     return nil;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [super tableView:tableView didSelectRowAtIndexPath:indexPath];
+    id row = [self rowAtIndexPath:indexPath];
+    if(row[@"actionType"]){
+        switch ([row[@"actionType"] integerValue]) {
+            case FormTableSelectActionTypeOpenSelectTable:{
+                NASelectFormTableViewController *selectTableViewController = [[NASelectFormTableViewController alloc] initWithStyle:UITableViewStylePlain];
+                selectTableViewController.formValue = [self rowData:row];
+                [self.navigationController pushViewController:selectTableViewController animated:YES];
+                break;
+            }
+            case FormTableSelectActionTypeOpenMultipleSelectTable:{
+                NAMultipleSelectFormTableViewController *selectTableViewController = [[NAMultipleSelectFormTableViewController alloc] initWithStyle:UITableViewStylePlain];
+                selectTableViewController.formValue = [self rowData:row];
+                [self.navigationController pushViewController:selectTableViewController animated:YES];
+                break;
+            }
+            default:
+                break;
+        }
+    }
 }
 
 @end

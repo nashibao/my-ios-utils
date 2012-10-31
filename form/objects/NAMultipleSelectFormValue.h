@@ -19,4 +19,9 @@
 @property (strong, nonatomic) NSString *label_key;
 @property (strong, nonatomic) NSString *value_key;
 
+- (void)addIndexPath:(NSIndexPath *)indexPath;
+- (void)removeIndexPath:(NSIndexPath *)indexPath;
+- (void)toggleIndexPath:(NSIndexPath *)indexPath;
+- (BOOL)hasIndexPath:(NSIndexPath *)indexPath;
+
 @end

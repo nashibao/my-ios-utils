@@ -69,4 +69,96 @@
     }
 }
 
+- (void)updateSelectedLabel{
+    _selectedLabel = @"";
+    for (NSIndexPath * indexPath in self.selectedIndexPaths) {
+        id val = self.selects[indexPath.row];
+        _selectedLabel = [NSString stringWithFormat:@"%@%@,", _selectedLabel, val[self.label_key]];
+    }
+}
+
+- (void)addIndexPath:(NSIndexPath *)indexPath{
+    
+//    初期化
+    if(!_selectedIndexPaths)
+        _selectedIndexPaths = [@[] mutableCopy];
+    if(!_selectedLabel)
+        _selectedLabel = @"";
+    if(!_value)
+        _value = [@[] mutableCopy];
+    
+//    同じものが入らないように
+    for (NSIndexPath *ip in _selectedIndexPaths) {
+        if(ip.section == indexPath.section && ip.row == indexPath.row){
+            return;
+        }
+    }
+    
+//    更新
+    id val = self.selects[indexPath.row];
+    [_selectedIndexPaths addObject:indexPath];
+    [_value addObject:val[self.value_key]];
+    _selectedLabel = [NSString stringWithFormat:@"%@%@,", _selectedLabel, val[self.label_key]];
+    
+}
+
+- (void)removeIndexPath:(NSIndexPath *)indexPath{
+    
+    if(!_selectedIndexPaths)
+        return;
+    
+//    同じものを探す
+    NSIndexPath *target = nil;
+    for (NSIndexPath *ip in _selectedIndexPaths) {
+        if(ip.section == indexPath.section && ip.row == indexPath.row){
+            target = ip;
+            break;
+        }
+    }
+    
+    if(!target)
+        return;
+    
+//    更新
+    id val = self.selects[target.row];
+    [_selectedIndexPaths removeObject:target];
+    [_value removeObject:val[self.value_key]];
+    _selectedLabel = [NSString stringWithFormat:@"%@%@,", _selectedLabel, val[self.label_key]];
+    [self updateSelectedLabel];
+}
+
+- (void)toggleIndexPath:(NSIndexPath *)indexPath{
+    
+    if([self hasIndexPath:indexPath]){
+        [self removeIndexPath:indexPath];
+    }else{
+        [self addIndexPath:indexPath];
+    }
+    
+    NSIndexPath *target = nil;
+    for (NSIndexPath *ip in _selectedIndexPaths) {
+        if(ip.section == indexPath.section && ip.row == indexPath.row){
+            target = ip;
+            break;
+        }
+    }
+}
+
+- (BOOL)hasIndexPath:(NSIndexPath *)indexPath{
+    
+    NSIndexPath *target = nil;
+    for (NSIndexPath *ip in _selectedIndexPaths) {
+        if(ip.section == indexPath.section && ip.row == indexPath.row){
+            target = ip;
+            break;
+        }
+    }
+    
+    if(target){
+        return YES;
+    }else{
+        return NO;
+    }
+}
+
 @end

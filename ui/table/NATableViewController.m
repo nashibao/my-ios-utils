@@ -91,8 +91,8 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     if(self.selectedIndexPath){
-        [self tableView:self.tableView cellForRowAtIndexPath:self.selectedIndexPath];
-//        [self updateCell:cell atIndexPath:self.selectedIndexPath];
+        [self.tableView deselectRowAtIndexPath:self.selectedIndexPath animated:animated];
+        [self.tableView reloadRowsAtIndexPaths:@[self.selectedIndexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     }
 }
 

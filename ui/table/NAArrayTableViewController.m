@@ -81,6 +81,11 @@
         [(NATableViewCell *)cell setData:data];
     }
     
+    void (^updateCellBlock)(UITableViewCell *, NSIndexPath *) = row[@"updateCell"];
+    if(updateCellBlock){
+        updateCellBlock(cell, indexPath);
+    }
+    
     [self updateCell:cell atIndexPath:indexPath row:row];
     
     return cell;

@@ -38,6 +38,7 @@
 5. (if `is_conflicted` == true)
     - take the `edited_data`
 5. return [item ∈ `max_updated_at` < `updated_at`]
+6. or return `error`
 
 ### 3. client side
 
@@ -54,6 +55,12 @@
 			- jump to 4
 		2. (server-`updated_at` == client-`updated_at` )
 			- jump to 1.5
+4. (if `error` exists)
+	1. retry
+		- jump to 1
+	2. resign
+    	- `sync_state` = `SYNCED`
+    	- `edited_data` = nil
 
 ### 4. conflict tactics
 
@@ -61,7 +68,7 @@
     - jump to 3.2
 - take the client side data
     - renew `update_at`
-    - jump to 1.5
+    - jump to 1.4
 - inform to user
     - jump to 4.1
     - jump to 4.2

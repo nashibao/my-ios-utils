@@ -1,3 +1,5 @@
+[github > na_ios > coredata_sync](https://github.com/nashibao/na_ios)
+
 # settings
 
 ### server side settings

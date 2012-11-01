@@ -24,7 +24,9 @@
 + (NSDate *)modifiedDateInServerItemData:(id)itemData;
 - (BOOL)conflictedToServerItemData:(id)itemData;
 
-+ (BOOL)updateByServerData:(id)data restType:(NARestType)restType inContext:(NSManagedObjectContext *)context options:(NSDictionary *)options network_identifier:(NSString *)network_identifier network_cache_identifier:(NSString *)network_cache_identifier;
++ (NASyncModelSyncError)updateByServerData:(id)data restType:(NARestType)restType inContext:(NSManagedObjectContext *)context objectID:(NSManagedObjectID *)objectID options:(NSDictionary *)options network_identifier:(NSString *)network_identifier network_cache_identifier:(NSString *)network_cache_identifier;
++ (NSError *)isErrorByServerData:(id)data restType:(NARestType)restType inContext:(NSManagedObjectContext *)context objectID:(NSManagedObjectID *)objectID options:(NSDictionary *)options network_identifier:(NSString *)network_identifier network_cache_identifier:(NSString *)network_cache_identifier;
++ (NASyncModelSyncError)deupdateByServerError:(NSError *)error data:(id)data restType:(NARestType)restType inContext:(NSManagedObjectContext *)context objectID:(NSManagedObjectID *)objectID options:(NSDictionary *)options;
 - (void)updateByServerItemData:(id)itemData;
 - (NSDictionary *)getQuery;
 
@@ -37,6 +39,7 @@
 + (NSString *)restCallbackName;
 
 + (NASyncModelConflictOption)conflictOption;
++ (NASyncModelErrorOption)errorOption;
 - (void)resolveConflictByOption:(NASyncModelConflictOption)conflictOption data:(id)data;
 
 @end

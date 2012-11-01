@@ -33,10 +33,22 @@ typedef enum NASyncModelConflictOption: NSUInteger{
 } NASyncModelConflictOption;
 
 /*
+ エラー時の戦略
+ */
+typedef enum NASyncModelErrorOption: NSUInteger{
+    NASyncModelErrorOptionLeave,
+    NASyncModelErrorOptionResign,
+    NASyncModelErrorOptionRetry,
+} NASyncModelErrorOption;
+
+/*
  同期エラーの種類
  */
 typedef enum NASyncModelSyncError: NSUInteger{
-    NASyncModelSyncErrorCONFLICT,
+    NASyncModelSyncErrorNone = 0,
+    NASyncModelSyncErrorConflict = 1,
+    NASyncModelSyncErrorMerge = 2,
+    NASyncModelSyncErrorOther = 3,
 } NASyncModelSyncError;
 
 /*

@@ -52,14 +52,15 @@
     return [self restName];
 }
 
-+ (BOOL)updateByServerData:(id)data restType:(NARestType)restType inContext:(NSManagedObjectContext *)context options:(NSDictionary *)options network_identifier:(NSString *)network_identifier network_cache_identifier:(NSString *)network_cache_identifier{
-    NSArray *items = nil;
++ (NASyncModelSyncError)updateByServerData:(id)data restType:(NARestType)restType inContext:(NSManagedObjectContext *)context objectID:(NSManagedObjectID *)objectID options:(NSDictionary *)options network_identifier:(NSString *)network_identifier network_cache_identifier:(NSString *)network_cache_identifier{
     NSLog(@"%s|%@", __PRETTY_FUNCTION__, data);
+    NSArray *items = nil;
     if([self restCallbackName]){
         items = data[[self restCallbackName]];
     }else{
         items = data;
     }
+    NSLog(@"%s|%@", __PRETTY_FUNCTION__, items);
     NSMutableArray *temp = [@[] mutableCopy];
     int cnt = 0;
     NSMutableArray *conflict_sms = [@[] mutableCopy];
@@ -71,6 +72,7 @@
         }else{
             if(sm.sync_state_ == NASyncModelSyncStateSYNCED){
 //                no conflict
+                sm.sync_error_ = NASyncModelSyncErrorNone;
                 sm.data = d;
                 sm.modified_date_ = [self modifiedDateInServerItemData:d];
                 sm.edited_data = nil;
@@ -94,14 +96,42 @@
     if([conflict_sms count] > 0){
         for (NSDictionary *temp in conflict_sms) {
             NASyncModel *sm = temp[@"sm"];
+            sm.sync_error_ = NASyncModelSyncErrorConflict;
             id d = temp[@"data"];
             NASyncModelConflictOption option = [temp[@"option"] integerValue];
             [sm resolveConflictByOption:option data:d];
         }
-        return NO;
-    }else{
-        return YES;
+        return NASyncModelSyncErrorConflict;
     }
+    return NASyncModelSyncErrorNone;
+}
+
++ (NSError *)isErrorByServerData:(id)data restType:(NARestType)restType inContext:(NSManagedObjectContext *)context objectID:(NSManagedObjectID *)objectID options:(NSDictionary *)options network_identifier:(NSString *)network_identifier network_cache_identifier:(NSString *)network_cache_identifier{
+    return nil;
+}
+
++ (NASyncModelSyncError)deupdateByServerError:(NSError *)error data:(id)data restType:(NARestType)restType inContext:(NSManagedObjectContext *)context objectID:(NSManagedObjectID *)objectID options:(NSDictionary *)options{
+#warning retryはまだ実装してない．．
+    NASyncModel *sm = nil;
+    if(objectID){
+        sm = (NASyncModel *)[context objectWithID:objectID];
+        sm.sync_error_ = NASyncModelSyncErrorOther;
+    }
+    
+    switch ([self errorOption]) {
+        case NASyncModelErrorOptionLeave:
+            break;
+        case NASyncModelErrorOptionResign:{
+            if(sm){
+                sm.edited_data = nil;
+                sm.sync_state_ = NASyncModelSyncStateSYNCED;
+            }
+            break;
+        }
+        default:
+            break;
+    }
+    return NASyncModelSyncErrorOther;
 }
 
 - (void)updateByServerItemData:(id)itemData{
@@ -114,6 +144,10 @@
 
 + (NASyncModelConflictOption)conflictOption{
     return NASyncModelConflictOptionServerPriority;
+}
+
++ (NASyncModelErrorOption)errorOption{
+    return NASyncModelErrorOptionLeave;
 }
 
 - (void)resolveConflictByOption:(NASyncModelConflictOption)conflictOption data:(id)data{
@@ -129,11 +163,11 @@
         case NASyncModelConflictOptionLocalPriority:
 //            local priority
             self.modified_date_ = [[self class] modifiedDateInServerItemData:data];
-            [self sync_update:nil complete:nil error:nil];
+            [self sync_update:nil complete:nil save:nil];
             break;
         case NASyncModelConflictOptionUserAlert:
 //            user alert
-#warning conflict時のuser alert.
+#warning まだ実装してない．conflict時のuser alert.
             break;
         case NASyncModelConflictOptionAutoMerge:{
 //            auto merge
@@ -142,7 +176,7 @@
             self.data = newData;
             self.modified_date_ = [[self class] modifiedDateInServerItemData:data];
             [self updateByServerItemData:data];
-            [self sync_update:nil complete:nil error:nil];
+            [self sync_update:nil complete:nil save:nil];
             break;
         }
         default:

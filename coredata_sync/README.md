@@ -58,6 +58,8 @@
 4. (if `error` exists)
 	1. retry
 		- jump to 1
+	2. leave
+		- nothing
 	2. resign
     	- `sync_state` = `SYNCED`
     	- `edited_data` = nil

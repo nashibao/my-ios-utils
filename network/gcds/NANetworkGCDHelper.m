@@ -116,7 +116,7 @@ NSInteger __networking__count__ = 0;
         [req setHTTPBody:requestData];
     [req setHTTPMethod: method];
     [req setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"content-type"];
-    
+    NSLog(@"%s|%@|%@", __PRETTY_FUNCTION__, urlstring, query);
     return req;
 }
 

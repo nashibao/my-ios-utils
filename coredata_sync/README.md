@@ -15,6 +15,7 @@
 - `data` (json)：raw data from server.
 - `edited_data` (json, transient?)：store the edited field and values which is caused in client side.
 - `is_uploading` (transient, default=false): for row level lock while syncing. ( **!!!deprecated!!!** no more use of the param in this package.)
+- `sync_error` (`NONE`, `CONFLICTED`, `OTHER_ERROR`) 
 
 # diagram
 
@@ -43,8 +44,10 @@
 ### 3. client side
 
 1. (`is_conflicted` == true)
+	- `sync_error` = `CONFLICT` 
     - jump to 4
 3. (`is_conflicted` == fale)
+	- `sync_error` = `NONE` 
 	1. (`sync_state` == `SYNCED`)
     	- renew `data`
     	- renew `update_at`
@@ -56,6 +59,7 @@
 		2. (server-`updated_at` == client-`updated_at` )
 			- jump to 1.5
 4. (if `error` exists)
+	- `sync_error` = `OTHER_ERROR` 
 	1. retry
 		- jump to 1
 	2. leave

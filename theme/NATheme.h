@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
+
+/** theme用無形カテゴリによるプロトコル　もしくはシングルトン
+ blockによるアニメーションなども汎用的なものはここに外だししていく
+ */
 @interface NATheme : NSObject
 
 + (NATheme *)currentTheme;

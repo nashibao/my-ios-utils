@@ -15,6 +15,7 @@
 - (NSArray *)sectionRows:(id)section;
 - (id)rowData:(id)row;
 - (id)rowAction:(id)row;
+#warning 名前付けがおかしすぎる didSelectEndとか、willSelectStartに変更する
 - (id)rowActionBackBlock:(id)row;
 - (id)rowAtIndexPath:(NSIndexPath *)indexPath;
 

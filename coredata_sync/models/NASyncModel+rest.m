@@ -154,7 +154,7 @@
         }
         case NASyncModelErrorOptionUserAlert:{
             dispatch_async(dispatch_get_main_queue(), ^{
-                UIAlertView *alertView = [UIAlertView alertViewWithTitle:@"ネットワークエラー" message:@"サーバ側とエラーが置きました．"];
+                UIAlertView *alertView = [UIAlertView alertViewWithTitle:@"ネットワークエラー" message:@"通信できませんでした．"];
                 if(sm){
                     [alertView setCancelButtonWithTitle:@"編集内容を破棄する" handler:^{
                         [sm resolveConflictByOption:NASyncModelConflictOptionServerPriority

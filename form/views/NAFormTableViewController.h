@@ -17,6 +17,9 @@ typedef enum FormTableSelectActionType : NSUInteger {
 
 @interface NAFormTableViewController : NAArrayTableViewController <NAFormCellDelegate>
 
+
+- (BOOL)enableNextFocus;
+
 - (void)changeFormValue:(NAFormValue *)formValue newValue:(id)newValue;
 
 @end

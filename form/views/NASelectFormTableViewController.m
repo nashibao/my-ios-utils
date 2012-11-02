@@ -8,6 +8,7 @@
 
 #import "NASelectFormTableViewController.h"
 
+
 @interface NASelectFormTableViewController ()
 
 @end
@@ -28,6 +29,10 @@
         [self.navigationItem setTitle:self.formValue.label];
         [self.tableView scrollToRowAtIndexPath:self.selectedIndexPath atScrollPosition:UITableViewScrollPositionMiddle animated:NO];
     }
+}
+
+- (void)viewDidDisappear:(BOOL)animated{
+    [_parentTableViewController willActionBacked:self];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

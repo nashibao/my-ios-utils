@@ -28,6 +28,11 @@
     }
 }
 
+- (void)viewDidDisappear:(BOOL)animated{
+    [_parentTableViewController willActionBacked:self];
+}
+
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;

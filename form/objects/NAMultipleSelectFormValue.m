@@ -55,7 +55,7 @@
 
 - (void)setSelectedIndexPaths:(NSMutableArray *)selectedIndexPaths{
     _selectedIndexPaths = selectedIndexPaths;
-    _value = nil;
+    _value = [@[] mutableCopy];
     _selectedLabel = nil;
     if(_selectedIndexPaths && [_selectedIndexPaths count] > 0){
         NSMutableArray *tempvalue = [@[] mutableCopy];

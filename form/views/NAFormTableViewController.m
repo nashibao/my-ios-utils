@@ -25,12 +25,26 @@
        formValue:(NAFormValue *)formValue
        indexPath:(NSIndexPath *)indexPath{
     [self changeFormValue:formValue newValue:modifiedData];
+    id row = [self rowAtIndexPath:indexPath];
+    void(^backBlock)(id) = [self rowActionBackBlock:row];
+    if(backBlock){
+        backBlock([self rowData:row]);
+    }
+}
+
+/** keyboardのNextでfocus移動が出来るかどうかなど．
+ reloadTableが途中で挟まれる場合、TextFieldなどに渡したフォーカスは捨てられる．
+ */
+- (BOOL)enableNextFocus{
+    return YES;
 }
 
 - (void)formCell:(NAFormCell *)cell inTableViewController:(UITableViewController *)tableViewController nextFocus:(BOOL)focus formValue:(NAFormValue *)formValue indexPath:(NSIndexPath *)indexPath{
-    NAFormValue *nextFormValue = [self nextFormValue:formValue];
-    if(nextFormValue)
-        [nextFormValue focus:YES];
+    if([self enableNextFocus]){
+        NAFormValue *nextFormValue = [self nextFormValue:formValue];
+        if(nextFormValue)
+            [nextFormValue focus:YES];
+    }
 }
 
 - (void)changeFormValue:(NAFormValue *)formValue newValue:(id)newValue{
@@ -42,6 +56,7 @@
     if([cell isKindOfClass:[NAFormCell class]]){
         NAFormCell *fcell = (NAFormCell *)cell;
         [fcell setDelegate:self];
+        [fcell setIndexPath:indexPath];
         if([data isKindOfClass:[NAFormValue class]]){
             [fcell setFormValue:(NAFormValue *)data];
         }
@@ -79,12 +94,14 @@
             case FormTableSelectActionTypeOpenSelectTable:{
                 NASelectFormTableViewController *selectTableViewController = [[NASelectFormTableViewController alloc] initWithStyle:UITableViewStylePlain];
                 selectTableViewController.formValue = [self rowData:row];
+                [selectTableViewController setParentTableViewController:self];
                 [self.navigationController pushViewController:selectTableViewController animated:YES];
                 break;
             }
             case FormTableSelectActionTypeOpenMultipleSelectTable:{
                 NAMultipleSelectFormTableViewController *selectTableViewController = [[NAMultipleSelectFormTableViewController alloc] initWithStyle:UITableViewStylePlain];
                 selectTableViewController.formValue = [self rowData:row];
+                [selectTableViewController setParentTableViewController:self];
                 [self.navigationController pushViewController:selectTableViewController animated:YES];
                 break;
             }
@@ -93,5 +110,6 @@
         }
     }
 }
+
 
 @end

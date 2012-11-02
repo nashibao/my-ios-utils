@@ -12,8 +12,12 @@
 
 #import "NATableViewController.h"
 
+#import "NAFormTableViewController.h"
+
 @interface NASelectFormTableViewController : NATableViewController
 
 @property (strong, nonatomic) NASelectFormValue *formValue;
+
+@property (weak, nonatomic) NAFormTableViewController *parentTableViewController;
 
 @end

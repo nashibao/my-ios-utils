@@ -14,12 +14,15 @@
 
 #import "NASyncModel+rest.h"
 
+#import "NANetworkActivityIndicatorManager.h"
+
 @implementation NASyncHelper
 
 /*
  call when network is ended.
  */
 + (void)_successByRestType:(NARestType)restType
+                identifier:identifier
                   modelkls:(Class)modelkls
                         objectID:(NSManagedObjectID *)objectID
                   response:(NSURLResponse *)resp
@@ -60,6 +63,7 @@
             NSError *err = nil;
             if(syncError != NASyncModelSyncErrorNone){
                 err = [NSError errorWithDomain:@"NASyncModelSyncError" code:syncError userInfo:nil];
+                [[NANetworkActivityIndicatorManager sharedManager] insert:identifier error:@"同期エラー" option:options];
             }
             
             if(completeHandler){
@@ -76,6 +80,7 @@
             syncError = [modelkls deupdateByServerError:err data:data restType:restType inContext:context objectID:objectID options:options];
             if(syncError != NASyncModelSyncErrorNone){
                 err = [NSError errorWithDomain:@"NASyncModelSyncError" code:syncError userInfo:nil];
+                [[NANetworkActivityIndicatorManager sharedManager] insert:identifier error:@"同期エラー" option:options];
             }else{
                 err = nil;
             }
@@ -94,6 +99,7 @@
  call when network is errored.
  */
 + (void)_errorByRestType:(NARestType)restType
+              identifier:identifier
                 modelkls:(Class)modelkls
                 objectID:(NSManagedObjectID *)objectID
                 response:(NSURLResponse *)resp
@@ -118,6 +124,7 @@
         NSError *err = nil;
         if(syncError != NASyncModelSyncErrorNone){
             err = [NSError errorWithDomain:@"NASyncModelSyncError" code:syncError userInfo:nil];
+            [[NANetworkActivityIndicatorManager sharedManager] insert:identifier error:@"同期エラー" option:options];
         }else{
             err = nil;
         }
@@ -157,25 +164,21 @@
     NSString *url = [[modelkls restDriver] URLByType:type model:[modelkls restModelName] endpoint:[modelkls restEndpoint] pk:pk option:option];
     NANetworkProtocol protocol = [[modelkls restDriver] ProtocolByType:type model:[modelkls restModelName]];
     NSURLRequest *req = [NANetworkGCDHelper requestTo:url query:query protocol:protocol encoding:[[modelkls restDriver] encoding]];
-    NSString *network_identifier = [self network_identifier:type rpcname:rpcname modelkls:modelkls options:option];
+    NSString *identifier = [self network_identifier:type rpcname:rpcname modelkls:modelkls options:option];
+#warning saveもしてないし．．
     if(objectID)
         [modelkls syncing_on:objectID];
-#pragma mark TODO: queueはsyncmodel用に別個用意するか？？今はglobalBackgroundQueue.
-    [NANetworkOperation sendJsonAsynchronousRequest:req jsonOption:NSJSONReadingAllowFragments returnEncoding:[modelkls restDriver].returnEncoding returnMain:NO queue:nil identifier:network_identifier identifierMaxCount:1 queueingOption:NANetworkOperationQueingOptionDefault successHandler:^(NANetworkOperation *op, id data) {
+#warning queueはsyncmodel用に別個用意するか？？今はglobalBackgroundQueue.
+    [NANetworkOperation sendJsonAsynchronousRequest:req jsonOption:NSJSONReadingAllowFragments returnEncoding:[modelkls restDriver].returnEncoding returnMain:NO queue:nil identifier:identifier identifierMaxCount:1 options:options queueingOption:NANetworkOperationQueingOptionDefault successHandler:^(NANetworkOperation *op, id data) {
+#warning そもそもここにかかずに_success, _error内で処理すべきだな．．
         if(objectID)
             [modelkls syncing_off:objectID];
-        [self _successByRestType:type modelkls:modelkls objectID:objectID response:nil data:data options:options saveHandler:saveHandler completeHandler:completeHandler];
+        [self _successByRestType:type identifier:identifier modelkls:modelkls objectID:objectID response:nil data:data options:options saveHandler:saveHandler completeHandler:completeHandler];
     } errorHandler:^(NANetworkOperation *op, NSError *err) {
         if(objectID)
             [modelkls syncing_off:objectID];
-        [self _errorByRestType:type modelkls:modelkls objectID:objectID response:nil error:err options:options saveHandler:saveHandler completeHandler:completeHandler];
+        [self _errorByRestType:type identifier:identifier modelkls:modelkls objectID:objectID response:nil error:err options:options saveHandler:saveHandler completeHandler:completeHandler];
     }];
-    //    [NANetworkGCDHelper sendJsonAsynchronousRequest:req jsonOption:NSJSONReadingAllowFragments returnEncoding:driver.restDriver.returnEncoding returnMain:NO successHandler:^(NSURLResponse *resp, id data) {
-    //        [self _success:driver response:resp data:data options:options saveHandler:saveHandler errorHandler:errorHandler];
-    //    } errorHandler:^(NSURLResponse *resp, NSError *err) {
-    //        NSLog(@"%s|%@", __PRETTY_FUNCTION__, err);
-    //        [self _error:driver response:resp error:err options:options saveHandler:saveHandler errorHandler:errorHandler];
-    //    }];
 }
 
 + (void)syncFilter:(NSDictionary *)query modelkls:(Class)modelkls options:(NSDictionary *)options completeHandler:(void(^)(NSError *err))completeHandler saveHandler:(void(^)())saveHandler{

@@ -145,18 +145,20 @@
     }
 }
 
+
+#warning ここはthread safeじゃないのでcontext performBlockを利用すべきだが．．パフォーマンスを考えて保留
 /*
  is_syncing_のtoggle
  threadが気になるので外だしする
  */
 + (void)syncing_on:(NSManagedObjectID *)objectID{
-    NASyncModel *sm = (NASyncModel *)[[[self class] mainContext] objectWithID:objectID];
-    sm.is_syncing_ = YES;
+//    NASyncModel *sm = (NASyncModel *)[[[self class] mainContext] objectWithID:objectID];
+//    sm.is_syncing_ = YES;
 }
 
 + (void)syncing_off:(NSManagedObjectID *)objectID{
-    NASyncModel *sm = (NASyncModel *)[[[self class] mainContext] objectWithID:objectID];
-    sm.is_syncing_ = NO;
+//    NASyncModel *sm = (NASyncModel *)[[[self class] mainContext] objectWithID:objectID];
+//    sm.is_syncing_ = NO;
 }
 
 

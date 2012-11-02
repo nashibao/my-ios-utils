@@ -3,21 +3,34 @@
 
 #import <Availability.h>
 
+#import "SVProgressHUD.h"
+
+
+@interface NANetworkActivityIndicatorActivityObject : NSObject
+@property (strong, nonatomic) NSString *identifier;
+@property (nonatomic) NSInteger activityCount;
+@property (strong, nonatomic) NSMutableArray *errors;
+@end
+
+
+/** indicator manager
+ */
 @interface NANetworkActivityIndicatorManager : NSObject
 
 @property (nonatomic, assign, getter = isEnabled) BOOL enabled;
 
 @property (readonly, nonatomic, assign) BOOL isNetworkActivityIndicatorVisible;
 @property (strong, nonatomic) NSMutableArray *errors;
+@property (strong, nonatomic) NSMutableDictionary *activityObjectWithIdentifiers;
 
-+ (void)setEnableSVProgress:(BOOL)bl;
-+ (BOOL)enableSVProgress;
+@property (nonatomic) BOOL enableSVProgress;
+@property (nonatomic) SVProgressHUDMaskType defaultSVProgressHUDMaskType;
 
 + (NANetworkActivityIndicatorManager *)sharedManager;
 
-- (void)incrementActivityCount;
-
-- (void)decrementActivityCount;
-- (void)decrementActivityCountWithError:(NSString *)errorString;
+- (void)incrementActivityCount:(NSString *)identifier option:(NSDictionary *)option;
+- (void)decrementActivityCount:(NSString *)identifier;
+- (void)decrementActivityCount:(NSString *)identifier error:(NSString *)error;
+- (void)insert:(NSString *)identifier error:(NSString *)error option:(NSDictionary *)option;
 
 @end

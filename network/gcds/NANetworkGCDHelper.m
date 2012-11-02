@@ -22,7 +22,7 @@ NSInteger __networking__count__ = 0;
 
 + (void)_sendAsynchronousRequest:(NSURLRequest *)request returnEncoding:(NSStringEncoding)returnEncoding isJson:(BOOL)isJSON jsonOption:(NSJSONReadingOptions)jsonOption returnMain:(BOOL)returnMain successHandler:(void(^)(NSURLResponse *resp, id data))successHandler errorHandler:(void(^)(NSURLResponse *resp, NSError *err))errorHandler{
     
-    [[NANetworkActivityIndicatorManager sharedManager] incrementActivityCount];
+    [[NANetworkActivityIndicatorManager sharedManager] incrementActivityCount:nil option:nil];
     
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue globalBackgroundQueue] completionHandler:^(NSURLResponse *resp, NSData *data, NSError *err) {
         NSError *_err = nil;
@@ -60,7 +60,7 @@ NSInteger __networking__count__ = 0;
                     __global_error_block__(resp, _err);
                 });
             }
-            [[NANetworkActivityIndicatorManager sharedManager] decrementActivityCountWithError:[NSString stringWithFormat:@"%@", _err] ?: @"no result"];
+            [[NANetworkActivityIndicatorManager sharedManager] decrementActivityCount:nil error:[NSString stringWithFormat:@"%@", _err] ?: @"no result"];
         }else{
             if(successHandler){
                 if(returnMain){
@@ -71,7 +71,7 @@ NSInteger __networking__count__ = 0;
                     successHandler(resp, _result);
                 }
             }
-            [[NANetworkActivityIndicatorManager sharedManager] decrementActivityCount];
+            [[NANetworkActivityIndicatorManager sharedManager] decrementActivityCount:nil];
         }
     }];
 }

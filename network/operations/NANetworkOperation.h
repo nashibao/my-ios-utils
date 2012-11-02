@@ -48,6 +48,7 @@ typedef void (^FAIL_BLOCK)(id op, NSError *err);
                                               queue:(NSOperationQueue *)queue
                                          identifier:(NSString *)identifier
                                  identifierMaxCount:(NSInteger)identifierMaxCount
+                                            options:(NSDictionary *)options
                                  queueingOption:(NANetworkOperationQueingOption)queueingOption
                                      successHandler:(void(^)(NANetworkOperation *op, id data))successHandler
                                        errorHandler:(void(^)(NANetworkOperation *op, NSError *err))errorHandler;
@@ -59,6 +60,7 @@ typedef void (^FAIL_BLOCK)(id op, NSError *err);
                                           queue:(NSOperationQueue *)queue
                                      identifier:(NSString *)identifier
                              identifierMaxCount:(NSInteger)identifierMaxCount
+                                        options:(NSDictionary *)options
                                  queueingOption:(NANetworkOperationQueingOption)queueingOption
                                  successHandler:(void(^)(NANetworkOperation *op, id data))successHandler
                                    errorHandler:(void(^)(NANetworkOperation *op, NSError *err))errorHandler;

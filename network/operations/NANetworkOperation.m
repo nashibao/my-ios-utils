@@ -21,6 +21,7 @@ static NSMutableArray *__waiting_operations__ = nil;
 static NSMutableArray *__waiting_queues__ = nil;
 static NSMutableDictionary *_operations_with_id = nil;
 static Reachability *__reach__ = nil;
+static BOOL __reachability__ = NO;
 
 #warning 本当は呼び出しもとのスレッドは決めておいた方がいいな．lockはかけたくないしmainはいやだから、globalBackgroundThreadがあるといいけど?gcdのglobal background queueを使うか．
 
@@ -31,7 +32,10 @@ static Reachability *__reach__ = nil;
     __waiting_operations__ = [@[] mutableCopy];
     __waiting_queues__ = [@[] mutableCopy];
     __reach__ = [Reachability reachabilityWithHostname:@"www.google.com"];
+    
     __reach__.reachableBlock = ^(Reachability *reach){
+        if(__reachability__)return;
+        __reachability__ = YES;
         NSLog(@"%s|%@", __PRETTY_FUNCTION__, @"Reachable!!");
 //        waiting -> queue
         int opcnt = 0;
@@ -48,6 +52,8 @@ static Reachability *__reach__ = nil;
         [__waiting_queues__ removeAllObjects];
     };
     __reach__.unreachableBlock = ^(Reachability *reach){
+        if(!__reachability__)return;
+        __reachability__ = NO;
         NSLog(@"%s|%@", __PRETTY_FUNCTION__, @"Unreachable!!");
 //        all -> waiting
         for (NANetworkOperation *op in __all_operations__) {
@@ -59,6 +65,7 @@ static Reachability *__reach__ = nil;
         }
     };
     [__reach__ startNotifier];
+    __reachability__ = __reach__.isReachable;
 }
 
 + (NANetworkOperation *)sendJsonAsynchronousRequest:(NSURLRequest *)request
@@ -68,10 +75,11 @@ static Reachability *__reach__ = nil;
                                               queue:(NSOperationQueue *)queue
                                          identifier:(NSString *)identifier
                                  identifierMaxCount:(NSInteger)identifierMaxCount
+                                            options:(NSDictionary *)options
                                      queueingOption:(NANetworkOperationQueingOption)queueingOption
                                      successHandler:(void(^)(NANetworkOperation *op, id data))successHandler
                                        errorHandler:(void(^)(NANetworkOperation *op, NSError *err))errorHandler{
-    return [self _sendAsynchronousRequest:request isJson:YES jsonOption:jsonOption returnEncoding:returnEncoding returnMain:returnMain queue:queue identifier:identifier identifierMaxCount:identifierMaxCount queueingOption:queueingOption successHandler:successHandler errorHandler:errorHandler];
+    return [self _sendAsynchronousRequest:request isJson:YES jsonOption:jsonOption returnEncoding:returnEncoding returnMain:returnMain queue:queue identifier:identifier identifierMaxCount:identifierMaxCount options:options queueingOption:queueingOption successHandler:successHandler errorHandler:errorHandler];
 }
 
 + (NANetworkOperation *)sendAsynchronousRequest:(NSURLRequest *)request
@@ -80,10 +88,11 @@ static Reachability *__reach__ = nil;
                                           queue:(NSOperationQueue *)queue
                                      identifier:(NSString *)identifier
                              identifierMaxCount:(NSInteger)identifierMaxCount
+                                        options:(NSDictionary *)options
                                  queueingOption:(NANetworkOperationQueingOption)queueingOption
                                  successHandler:(void(^)(NANetworkOperation *op, id data))successHandler
                                    errorHandler:(void(^)(NANetworkOperation *op, NSError *err))errorHandler{
-    return [self _sendAsynchronousRequest:request isJson:NO jsonOption:0 returnEncoding:returnEncoding returnMain:returnMain queue:queue identifier:identifier identifierMaxCount:identifierMaxCount queueingOption:queueingOption successHandler:successHandler errorHandler:errorHandler];
+    return [self _sendAsynchronousRequest:request isJson:NO jsonOption:0 returnEncoding:returnEncoding returnMain:returnMain queue:queue identifier:identifier identifierMaxCount:identifierMaxCount  options:options queueingOption:queueingOption successHandler:successHandler errorHandler:errorHandler];
 }
 
 + (NANetworkOperation *)_sendAsynchronousRequest:(NSURLRequest *)request
@@ -94,6 +103,7 @@ static Reachability *__reach__ = nil;
                                               queue:(NSOperationQueue *)queue
                                       identifier:(NSString *)identifier
                               identifierMaxCount:(NSInteger)identifierMaxCount
+                                         options:(NSDictionary *)options
                                   queueingOption:(NANetworkOperationQueingOption)queueingOption
                                      successHandler:(void(^)(NANetworkOperation *op, id data))successHandler
                                        errorHandler:(void(^)(NANetworkOperation *op, NSError *err))errorHandler{
@@ -110,7 +120,7 @@ static Reachability *__reach__ = nil;
         }
     }
     
-    [[NANetworkActivityIndicatorManager sharedManager] incrementActivityCount];
+    [[NANetworkActivityIndicatorManager sharedManager] incrementActivityCount:identifier option:options];
     
     op = [[[self class] alloc] initWithRequest:request];
     [__all_operations__ addObject:op];
@@ -175,7 +185,7 @@ failure:(void (^)(id operation, NSError *error))failure isJson:(BOOL)isJson json
                 wself.cancel_block();
             if(wself.finish_block)
                 wself.finish_block();
-            [[NANetworkActivityIndicatorManager sharedManager] decrementActivityCount];
+            [[NANetworkActivityIndicatorManager sharedManager] decrementActivityCount:wself.identifier];
             return;
         }
         NSError *_err = nil;
@@ -211,7 +221,7 @@ failure:(void (^)(id operation, NSError *error))failure isJson:(BOOL)isJson json
                     wself.fail_block(wself, wself.error);
                 }
             }
-            [[NANetworkActivityIndicatorManager sharedManager] decrementActivityCountWithError:[NSString stringWithFormat:@"%@", _err]];
+            [[NANetworkActivityIndicatorManager sharedManager] decrementActivityCount:wself.identifier error:[NSString stringWithFormat:@"%@", _err]];
         }else{
             if(wself.success_block){
                 if(returnMain){
@@ -222,7 +232,7 @@ failure:(void (^)(id operation, NSError *error))failure isJson:(BOOL)isJson json
                     wself.success_block(wself, response);
                 }
             }
-            [[NANetworkActivityIndicatorManager sharedManager] decrementActivityCount];
+            [[NANetworkActivityIndicatorManager sharedManager] decrementActivityCount:wself.identifier];
         }
         if(wself.finish_block)
             wself.finish_block();

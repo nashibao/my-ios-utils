@@ -81,7 +81,7 @@
             }
             if(completeHandler){
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    completeHandler(nil);
+                    completeHandler(err);
                 });
             }
             [context save:nil];
@@ -123,7 +123,7 @@
         }
         if(completeHandler){
             dispatch_async(dispatch_get_main_queue(), ^{
-                completeHandler(nil);
+                completeHandler(err);
             });
         }
         [context save:nil];

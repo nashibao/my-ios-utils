@@ -60,7 +60,7 @@
     }else{
         items = data;
     }
-    NSLog(@"%s|%@", __PRETTY_FUNCTION__, items);
+//    NSLog(@"%s|%@", __PRETTY_FUNCTION__, items);
     NSMutableArray *temp = [@[] mutableCopy];
     int cnt = 0;
     NSMutableArray *conflict_sms = [@[] mutableCopy];

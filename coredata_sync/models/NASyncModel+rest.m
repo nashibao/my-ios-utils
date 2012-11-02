@@ -52,7 +52,13 @@
     return [self restName];
 }
 
-+ (NASyncModelSyncError)updateByServerData:(id)data restType:(NARestType)restType inContext:(NSManagedObjectContext *)context objectID:(NSManagedObjectID *)objectID options:(NSDictionary *)options network_identifier:(NSString *)network_identifier network_cache_identifier:(NSString *)network_cache_identifier{
++ (NASyncModelSyncError)updateByServerData:(id)data
+                                  restType:(NARestType)restType
+                                 inContext:(NSManagedObjectContext *)context
+                                     query:(NASyncQueryObject *)query
+                        network_identifier:(NSString *)network_identifier
+                  network_cache_identifier:(NSString *)network_cache_identifier{
+    
     NSLog(@"%s|%@", __PRETTY_FUNCTION__, data);
     NSArray *items = nil;
     if([self restCallbackName]){
@@ -99,22 +105,37 @@
             sm.sync_error_ = NASyncModelSyncErrorConflict;
             id d = temp[@"data"];
             NASyncModelConflictOption option = [temp[@"option"] integerValue];
-            [sm resolveConflictByOption:option data:d];
+            [sm resolveConflictByOption:option
+                                   data:data
+                               restType:restType
+                              inContext:context
+                                  query:query];
         }
         return NASyncModelSyncErrorConflict;
     }
     return NASyncModelSyncErrorNone;
 }
 
-+ (NSError *)isErrorByServerData:(id)data restType:(NARestType)restType inContext:(NSManagedObjectContext *)context objectID:(NSManagedObjectID *)objectID options:(NSDictionary *)options network_identifier:(NSString *)network_identifier network_cache_identifier:(NSString *)network_cache_identifier{
++ (NSError *)isErrorByServerData:(id)data
+                        restType:(NARestType)restType
+                       inContext:(NSManagedObjectContext *)context
+                           query:(NASyncQueryObject *)query
+              network_identifier:(NSString *)network_identifier
+        network_cache_identifier:(NSString *)network_cache_identifier{
     return nil;
 }
 
-+ (NASyncModelSyncError)deupdateByServerError:(NSError *)error data:(id)data restType:(NARestType)restType inContext:(NSManagedObjectContext *)context objectID:(NSManagedObjectID *)objectID options:(NSDictionary *)options{
-#warning retryはまだ実装してない．．
++ (NASyncModelSyncError)deupdateByServerError:(NSError *)error
+                                         data:(id)data
+                                     restType:(NARestType)restType
+                                    inContext:(NSManagedObjectContext *)context
+                                        query:(NASyncQueryObject *)query
+                           network_identifier:(NSString *)network_identifier
+                     network_cache_identifier:(NSString *)network_cache_identifier{
+#warning useralert, retryはまだ実装してない．．出来ればSVProgressと同じように処理したい．singleton??
     NASyncModel *sm = nil;
-    if(objectID){
-        sm = (NASyncModel *)[context objectWithID:objectID];
+    if(query.objectID){
+        sm = (NASyncModel *)[context objectWithID:query.objectID];
         sm.sync_error_ = NASyncModelSyncErrorOther;
     }
     
@@ -126,6 +147,31 @@
                 sm.edited_data = nil;
                 sm.sync_state_ = NASyncModelSyncStateSYNCED;
             }
+            break;
+        }
+        case NASyncModelErrorOptionRetry:{
+            break;
+        }
+        case NASyncModelErrorOptionUserAlert:{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                UIAlertView *alertView = [UIAlertView alertViewWithTitle:@"ネットワークエラー" message:@"サーバ側とエラーが置きました．"];
+                if(sm){
+                    [alertView setCancelButtonWithTitle:@"編集内容を破棄する" handler:^{
+                        [sm resolveConflictByOption:NASyncModelConflictOptionServerPriority
+                                               data:data restType:restType
+                                          inContext:context
+                                              query:query];
+                    }];
+                }else{
+                    [alertView setCancelButtonWithTitle:@"閉じる" handler:^{
+                    }];
+                }
+                [alertView addButtonWithTitle:@"リトライ" handler:^{
+                    [NASyncHelper syncByRestType:restType query:query];
+                }];
+                [alertView show];
+                
+            });
             break;
         }
         default:
@@ -147,10 +193,14 @@
 }
 
 + (NASyncModelErrorOption)errorOption{
-    return NASyncModelErrorOptionLeave;
+    return NASyncModelErrorOptionUserAlert;
 }
 
-- (void)resolveConflictByOption:(NASyncModelConflictOption)conflictOption data:(id)data{
+- (void)resolveConflictByOption:(NASyncModelConflictOption)conflictOption
+                           data:(id)data
+                       restType:(NARestType)restType
+                      inContext:(NSManagedObjectContext *)context
+                          query:(NASyncQueryObject *)query{
     switch (conflictOption) {
         case NASyncModelConflictOptionServerPriority:
 //            server priority
@@ -165,10 +215,23 @@
             self.modified_date_ = [[self class] modifiedDateInServerItemData:data];
             [self sync_update:nil complete:nil save:nil];
             break;
-        case NASyncModelConflictOptionUserAlert:
-//            user alert
-#warning まだ実装してない．conflict時のuser alert.
+        case NASyncModelConflictOptionUserAlert:{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                UIAlertView *alertView = [UIAlertView alertViewWithTitle:@"同期エラー" message:@"サーバでの変更とコンフリクトしました．"];
+                [alertView setCancelButtonWithTitle:@"編集内容を破棄する" handler:^{
+                    [self resolveConflictByOption:NASyncModelConflictOptionServerPriority
+                                             data:data
+                                         restType:restType
+                                        inContext:context
+                                            query:query];
+                }];
+                [alertView addButtonWithTitle:@"リトライ" handler:^{
+                    [NASyncHelper syncByRestType:restType query:query];
+                }];
+                [alertView show];
+            });
             break;
+        }
         case NASyncModelConflictOptionAutoMerge:{
 //            auto merge
             NSMutableDictionary *newData = [data mutableCopy];

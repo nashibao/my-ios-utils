@@ -39,6 +39,7 @@ typedef enum NASyncModelErrorOption: NSUInteger{
     NASyncModelErrorOptionLeave,
     NASyncModelErrorOptionResign,
     NASyncModelErrorOptionRetry,
+    NASyncModelErrorOptionUserAlert,
 } NASyncModelErrorOption;
 
 /*

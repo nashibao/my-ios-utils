@@ -22,29 +22,31 @@
  class methods
  */
 + (void)sync_filter:(NSDictionary *)query options:(NSDictionary *)options complete:(void(^)(NSError *err))complete save:(void(^)())save{
-    [NASyncHelper syncFilter:query modelkls:self options:options completeHandler:complete saveHandler:save];
+    [NASyncHelper syncFilter:[NASyncQueryObject query:query model:self options:options completeHandler:complete saveHandler:save]];
 }
 
 + (void)sync_get:(NSInteger)pk options:(NSDictionary *)options complete:(void(^)(NSError *err))complete save:(void(^)())save{
-    [NASyncHelper syncGet:pk objectID:nil modelkls:self options:options completeHandler:complete saveHandler:save];
+    [NASyncHelper syncGet:[NASyncQueryObject query:nil pk:pk objectID:nil model:self options:options completeHandler:complete saveHandler:save]];
 }
 
 + (void)sync_create:(NSDictionary *)query options:(NSDictionary *)options complete:(void(^)(NSError *err))complete save:(void(^)())save{
-    [NASyncHelper syncCreate:query modelkls:self options:options completeHandler:complete saveHandler:save];
+    [NASyncHelper syncCreate:[NASyncQueryObject query:query model:self options:options completeHandler:complete saveHandler:save]];
 }
 
 + (void)sync_update:(NSInteger)pk query:(NSDictionary *)query options:(NSDictionary *)options complete:(void(^)(NSError *err))complete save:(void(^)())save{
-    [NASyncHelper syncUpdate:query pk:pk objectID:nil modelkls:self options:options completeHandler:complete saveHandler:save];
+    [NASyncHelper syncUpdate:[NASyncQueryObject query:query pk:pk objectID:nil model:self options:options completeHandler:complete saveHandler:save]];
 }
 
 
 + (void)sync_delete:(NSInteger)pk options:(NSDictionary *)options complete:(void(^)(NSError *err))complete save:(void(^)())save{
-    [NASyncHelper syncDelete:pk objectID:nil modelkls:[self class] options:options completeHandler:complete saveHandler:save];
+    [NASyncHelper syncDelete:[NASyncQueryObject query:nil pk:pk objectID:nil model:self options:options completeHandler:complete saveHandler:save]];
 }
 
 
 + (void)sync_rpc:(NSDictionary *)query rpcname:(NSString *)rpcname options:(NSDictionary *)options complete:(void(^)(NSError *err))complete save:(void(^)())save{
-    [NASyncHelper syncRPC:query rpcname:rpcname modelkls:self options:options completeHandler:complete saveHandler:save];
+    NASyncQueryObject *qo = [NASyncQueryObject query:query model:self options:options completeHandler:complete saveHandler:save];
+    [qo setRpcName:rpcname];
+    [NASyncHelper syncRPC:qo];
 }
 
 
@@ -100,25 +102,26 @@
  instance methods
  */
 - (void)sync_get:(NSDictionary *)options complete:(void(^)(NSError *err))complete save:(void(^)())save{
-    [NASyncHelper syncGet:[self pk] objectID:self.objectID modelkls:[self class] options:options completeHandler:complete saveHandler:save];
+    [NASyncHelper syncGet:[NASyncQueryObject query:nil pk:[self pk] objectID:self.objectID model:[self class] options:options completeHandler:complete saveHandler:save]];
 }
 
 - (void)sync_create:(NSDictionary *)options complete:(void(^)(NSError *err))complete save:(void(^)())save{
     NSDictionary *query = [self getQuery];
-    [NASyncHelper syncCreate:query modelkls:[self class] options:options completeHandler:complete saveHandler:save];
+    [NASyncHelper syncCreate:[NASyncQueryObject query:query model:[self class] options:options completeHandler:complete saveHandler:save]];
 }
 
 - (void)sync_update:(NSDictionary *)query options:(NSDictionary *)options complete:(void(^)(NSError *err))complete save:(void(^)())save{
-    [NASyncHelper syncUpdate:query pk:[self pk] objectID:self.objectID modelkls:[self class] options:options completeHandler:complete saveHandler:save];
+    [self local_delete:query];
+    query = [self getQuery];
+    [NASyncHelper syncUpdate:[NASyncQueryObject query:query pk:[self pk] objectID:self.objectID model:[self class] options:options completeHandler:complete saveHandler:save]];
 }
 
 - (void)sync_update:(NSDictionary *)options complete:(void(^)(NSError *err))complete save:(void(^)())save{
     NSDictionary *query = [self getQuery];
-    [NASyncHelper syncUpdate:query pk:[self pk] objectID:self.objectID modelkls:[self class] options:options completeHandler:complete saveHandler:save];
 }
 
 - (void)sync_delete:(NSDictionary *)options complete:(void(^)(NSError *err))complete save:(void(^)())save{
-    [NASyncHelper syncDelete:[self pk] objectID:self.objectID modelkls:[self class] options:options completeHandler:complete saveHandler:save];
+    [NASyncHelper syncDelete:[NASyncQueryObject query:nil pk:[self pk] objectID:self.objectID model:[self class] options:options completeHandler:complete saveHandler:save]];
 }
 
 /*

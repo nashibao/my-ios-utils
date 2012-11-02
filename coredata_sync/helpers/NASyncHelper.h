@@ -18,21 +18,37 @@
 
 #import "NASyncModelRestProtocol.h"
 
+#import "NASyncQueryObject.h"
+
 /*
  実際のsyncmodelでのrestAPIの実装はこちら
  直接使うことももちろん出来る
  */
 @interface NASyncHelper : NSObject
 
-+ (void)cancel:(NARestType)restType rpcname:(NSString *)rpcname modelkls:(Class)modelkls options:(NSDictionary *)options handler:(void(^)())handler;
++ (void)cancel:(NARestType)restType
+       rpcname:(NSString *)rpcname
+      modelkls:(Class)modelkls
+       options:(NSDictionary *)options
+       handler:(void(^)())handler;
 
-+ (NSString *)network_identifier:(NARestType)restType rpcname:(NSString *)rpcname modelkls:(Class)modelkls options:(NSDictionary *)options;
++ (NSString *)network_identifier:(NARestType)restType
+                         rpcname:(NSString *)rpcname
+                        modelkls:(Class)modelkls
+                         options:(NSDictionary *)options;
 
-+ (void)syncFilter:(NSDictionary *)query modelkls:(Class)modelkls options:(NSDictionary *)options completeHandler:(void(^)(NSError *err))completeHandler saveHandler:(void(^)())saveHandler;
-+ (void)syncGet:(NSInteger)pk objectID:(NSManagedObjectID *)objectID modelkls:(Class)modelkls options:(NSDictionary *)options completeHandler:(void(^)(NSError *err))completeHandler saveHandler:(void(^)())saveHandler;
-+ (void)syncCreate:(NSDictionary *)query modelkls:(Class)modelkls options:(NSDictionary *)options completeHandler:(void(^)(NSError *err))completeHandler saveHandler:(void(^)())saveHandler;
-+ (void)syncUpdate:(NSDictionary *)query pk:(NSInteger)pk objectID:(NSManagedObjectID *)objectID modelkls:(Class)modelkls options:(NSDictionary *)options completeHandler:(void(^)(NSError *err))completeHandler saveHandler:(void(^)())saveHandler;
-+ (void)syncDelete:(NSInteger)pk objectID:(NSManagedObjectID *)objectID modelkls:(Class)modelkls options:(NSDictionary *)options completeHandler:(void(^)(NSError *err))completeHandler saveHandler:(void(^)())saveHandler;
-+ (void)syncRPC:(NSDictionary *)query rpcname:(NSString *)rpcname modelkls:(Class)modelkls options:(NSDictionary *)options completeHandler:(void(^)(NSError *err))completeHandler saveHandler:(void(^)())saveHandler;
++ (void)syncByRestType:(NARestType)restType query:(NASyncQueryObject *)query;
+
++ (void)syncFilter:(NASyncQueryObject *)query;
+
++ (void)syncGet:(NASyncQueryObject *)query;
+
++ (void)syncCreate:(NASyncQueryObject *)query;
+
++ (void)syncUpdate:(NASyncQueryObject *)query;
+
++ (void)syncDelete:(NASyncQueryObject *)query;
+
++ (void)syncRPC:(NASyncQueryObject *)query;
 
 @end

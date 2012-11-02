@@ -18,15 +18,37 @@
 
 #import "NASyncModel+sync.h"
 
+#import "NASyncHelper.h"
+
 @interface NASyncModel (rest)
 
 + (NSInteger)primaryKeyInServerItemData:(id)itemData;
 + (NSDate *)modifiedDateInServerItemData:(id)itemData;
 - (BOOL)conflictedToServerItemData:(id)itemData;
 
-+ (NASyncModelSyncError)updateByServerData:(id)data restType:(NARestType)restType inContext:(NSManagedObjectContext *)context objectID:(NSManagedObjectID *)objectID options:(NSDictionary *)options network_identifier:(NSString *)network_identifier network_cache_identifier:(NSString *)network_cache_identifier;
-+ (NSError *)isErrorByServerData:(id)data restType:(NARestType)restType inContext:(NSManagedObjectContext *)context objectID:(NSManagedObjectID *)objectID options:(NSDictionary *)options network_identifier:(NSString *)network_identifier network_cache_identifier:(NSString *)network_cache_identifier;
-+ (NASyncModelSyncError)deupdateByServerError:(NSError *)error data:(id)data restType:(NARestType)restType inContext:(NSManagedObjectContext *)context objectID:(NSManagedObjectID *)objectID options:(NSDictionary *)options;
+#warning さすがに引数が多すぎるから、objectにでもまとめるか．．
++ (NASyncModelSyncError)updateByServerData:(id)data
+                                  restType:(NARestType)restType
+                                 inContext:(NSManagedObjectContext *)context
+                                     query:(NASyncQueryObject *)query
+                        network_identifier:(NSString *)network_identifier
+                  network_cache_identifier:(NSString *)network_cache_identifier;
+
++ (NSError *)isErrorByServerData:(id)data
+                        restType:(NARestType)restType
+                       inContext:(NSManagedObjectContext *)context
+                           query:(NASyncQueryObject *)query
+              network_identifier:(NSString *)network_identifier
+        network_cache_identifier:(NSString *)network_cache_identifier;
+
++ (NASyncModelSyncError)deupdateByServerError:(NSError *)error
+                                         data:(id)data
+                                     restType:(NARestType)restType
+                                    inContext:(NSManagedObjectContext *)context
+                                        query:(NASyncQueryObject *)query
+                           network_identifier:(NSString *)network_identifier
+                     network_cache_identifier:(NSString *)network_cache_identifier;
+
 - (void)updateByServerItemData:(id)itemData;
 - (NSDictionary *)getQuery;
 
@@ -40,6 +62,11 @@
 
 + (NASyncModelConflictOption)conflictOption;
 + (NASyncModelErrorOption)errorOption;
-- (void)resolveConflictByOption:(NASyncModelConflictOption)conflictOption data:(id)data;
+
+- (void)resolveConflictByOption:(NASyncModelConflictOption)conflictOption
+                           data:(id)data
+                       restType:(NARestType)restType
+                      inContext:(NSManagedObjectContext *)context
+                          query:(NASyncQueryObject *)query;
 
 @end

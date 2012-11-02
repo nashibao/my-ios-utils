@@ -24,7 +24,7 @@ static NSTimeInterval const kAFNetworkActivityIndicatorInvisibilityDelay = 0.17;
     static dispatch_once_t oncePredicate;
     dispatch_once(&oncePredicate, ^{
         _sharedManager = [[self alloc] init];
-        _sharedManager.defaultSVProgressHUDMaskType = SVProgressHUDMaskTypeGradient;
+        _sharedManager.defaultSVProgressHUDMaskType = SVProgressHUDMaskTypeNone;
         _sharedManager.enableSVProgress = YES;
         _sharedManager.activityObjectWithIdentifiers = [@{} mutableCopy];
     });

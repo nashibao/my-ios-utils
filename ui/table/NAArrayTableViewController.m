@@ -34,6 +34,10 @@
     return row[@"action"];
 }
 
+- (id)rowActionBackBlock:(id)row{
+    return row[@"backBlock"];
+}
+
 - (NSString *)rowCellIdentifier:(id)row{
     if(row)
         return row[@"cell"];
@@ -105,6 +109,16 @@
     void (^action_block)(UITableView*, NSIndexPath*) = [self rowAction:row];
     if(action_block){
         action_block(tableView, indexPath);
+    }
+}
+
+- (void)willActionBacked:(UITableViewController *)controller{
+    if(self.selectedIndexPath){
+        id row = [self rowAtIndexPath:self.selectedIndexPath];
+        void(^backBlock)(id) = [self rowActionBackBlock:row];
+        if(backBlock){
+            backBlock([self rowData:row]);
+        }
     }
 }
 

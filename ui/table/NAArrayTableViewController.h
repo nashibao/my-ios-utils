@@ -15,10 +15,12 @@
 - (NSArray *)sectionRows:(id)section;
 - (id)rowData:(id)row;
 - (id)rowAction:(id)row;
-- (id)rowViewOptions:(id)row;
+- (id)rowActionBackBlock:(id)row;
 - (id)rowAtIndexPath:(NSIndexPath *)indexPath;
 
 - (void)initializeCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath reuseIdentifier:(NSString *)reuseIdentifier row:(id)row;
 - (void)updateCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath row:(id)row;
+
+- (void)willActionBacked:(UITableViewController *)controller;
 
 @end

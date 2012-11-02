@@ -12,8 +12,14 @@
 
 @implementation NAFormCell
 
+- (void)setFormValue:(NAFormValue *)formValue{
+    _formValue = formValue;
+    formValue.targetViewDelegate = self;
+    [formValue highlight];
+    [self formValue:formValue isUploading:formValue.isUploading];
+}
+
 - (void)formValue:(NAFormValue *)formValue focused:(BOOL)focused{
-    
 }
 
 - (void)formValue:(NAFormValue *)formValue highlighted:(BOOL)highlighted{
@@ -21,6 +27,14 @@
         [self setBackgroundColor:[[NATheme currentTheme] cellErrorHighlightBackgroundColor]];
     }else{
         [self setBackgroundColor:[[NATheme currentTheme] cellBackgroundColor]];
+    }
+}
+
+- (void)formValue:(NAFormValue *)formValue isUploading:(BOOL)isUploading{
+    if(isUploading){
+        [self setAlpha:0.5f];
+    }else{
+        [self setAlpha:1.0f];
     }
 }
 

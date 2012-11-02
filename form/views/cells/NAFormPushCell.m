@@ -10,12 +10,10 @@
 
 @implementation NAFormPushCell
 
-@synthesize formValue = _formValue;
-
 - (void)setFormValue:(NAFormValue *)formValue{
-    _formValue = formValue;
+    [super setFormValue:formValue];
     [self.textLabel setText:self.formValue.label];
-    NSString *val = _formValue.stringValue;
+    NSString *val = self.formValue.stringValue;
     if(val && [val length]>0){
         [self.detailTextLabel setText:val];
     }else{

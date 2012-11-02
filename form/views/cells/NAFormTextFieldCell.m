@@ -10,14 +10,10 @@
 
 @implementation NAFormTextFieldCell
 
-@synthesize formValue = _formValue;
-
 - (void)setFormValue:(NAFormValue *)formValue{
-    _formValue = formValue;
+    [super setFormValue:formValue];
     [self.textField setPlaceholder:formValue.label];
-    formValue.targetViewDelegate = self;
-    [formValue highlight];
-    NSString *val = _formValue.stringValue;
+    NSString *val = self.formValue.stringValue;
     if(val && [val length]>0){
         [self.textField setText:val];
     }else{
@@ -39,7 +35,7 @@
 - (void)textFieldDidEndEditing:(UITextField *)textField{
     NSString *modifiedData = [self.textField text];
     if(self.delegate){
-        [self.delegate formCell:self inTableViewController:self.tableViewController modifiedData:modifiedData formValue:_formValue indexPath:self.indexPath];
+        [self.delegate formCell:self inTableViewController:self.tableViewController modifiedData:modifiedData formValue:self.formValue indexPath:self.indexPath];
     }
 }
 
@@ -54,7 +50,7 @@
 - (void)formValueWillValidate:(NAFormValue *)formValue{
     NSString *modifiedData = [self.textField text];
     if(self.delegate){
-        [self.delegate formCell:self inTableViewController:self.tableViewController modifiedData:modifiedData formValue:_formValue indexPath:self.indexPath];
+        [self.delegate formCell:self inTableViewController:self.tableViewController modifiedData:modifiedData formValue:self.formValue indexPath:self.indexPath];
     }
 }
 

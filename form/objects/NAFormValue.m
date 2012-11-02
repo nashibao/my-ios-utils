@@ -73,7 +73,8 @@
 
 - (void)highlight{
     if(_targetViewDelegate)
-        [_targetViewDelegate formValue:self highlighted:([self.errors count] > 0)];
+        if([_targetViewDelegate respondsToSelector:@selector(formValue:highlighted:)])
+            [_targetViewDelegate formValue:self highlighted:([self.errors count] > 0)];
 }
 
 - (void)focus:(BOOL)focusin{
@@ -97,6 +98,14 @@
 
 - (NSDictionary *)query{
     return @{self.name: self.value};
+}
+
+- (void)setIsUploading:(BOOL)isUploading{
+    _isUploading = isUploading;
+    
+    if(_targetViewDelegate)
+        if([_targetViewDelegate respondsToSelector:@selector(formValue:isUploading:)])
+            [_targetViewDelegate formValue:self isUploading:isUploading];
 }
 
 @end

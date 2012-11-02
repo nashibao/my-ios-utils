@@ -31,6 +31,7 @@
 @property (strong, nonatomic) id raw_value;
 //indicatorを出す用途
 @property (nonatomic) BOOL isUploading;
+
 @property (readonly, nonatomic) NSDictionary *query;
 
 #pragma mark TODO: このindexPath無くしたい
@@ -64,5 +65,8 @@
 
 //エラーによるハイライト
 - (void)formValue:(NAFormValue *)formValue highlighted:(BOOL)highlighted;
+
+//uploadingによるハイライト
+- (void)formValue:(NAFormValue *)formValue isUploading:(BOOL)isUploading;
 
 @end

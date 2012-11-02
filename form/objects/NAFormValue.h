@@ -27,6 +27,11 @@
 @property (strong, nonatomic) NSString *stringValue;
 //表示用valueのキャッシュ
 @property (strong, nonatomic) NSString *cachedStringValue;
+//比較用value
+@property (strong, nonatomic) id raw_value;
+//indicatorを出す用途
+@property (nonatomic) BOOL isUploading;
+@property (readonly, nonatomic) NSDictionary *query;
 
 #pragma mark TODO: このindexPath無くしたい
 //indexPathはtableView用．．微妙か．

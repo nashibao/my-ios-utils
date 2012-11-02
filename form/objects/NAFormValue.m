@@ -84,7 +84,7 @@
 - (NSString *)stringValue{
     if(self.cachedStringValue)
         return self.cachedStringValue;
-    if(self.value)
+    if(self.value && self.value != [NSNull null])
         return [NSString stringWithFormat:@"%@", self.value];
     return @"";
 }
@@ -93,6 +93,10 @@
     if(_name && self.value){
         queries[_name] = self.value;
     }
+}
+
+- (NSDictionary *)query{
+    return @{self.name: self.value};
 }
 
 @end

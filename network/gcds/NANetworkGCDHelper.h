@@ -10,6 +10,8 @@
 
 #import "NANetworkConfig.h"
 
+#import "NSURLRequest+na.h"
+
 /** GCDを利用したNetwork用ヘルパー
  */
 @interface NANetworkGCDHelper : NSObject

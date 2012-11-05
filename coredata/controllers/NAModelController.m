@@ -17,6 +17,9 @@ NSString * const NAModelControllerInitializedNotification = @"NAModelControllerI
     self = [super init];
     if(self){
         self.bundle = [NSBundle mainBundle];
+        if([self name]){
+            [self setup];
+        }
     }
     return self;
 }

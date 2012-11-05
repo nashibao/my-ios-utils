@@ -42,8 +42,6 @@
 	
 	<option value="class_methods">Class Methods</option>
 	
-	<option value="//api/name/requestTo:query:protocol:encoding:">&nbsp;&nbsp;&nbsp;&nbsp;+ requestTo:query:protocol:encoding:</option>
-	
 	<option value="//api/name/sendAsynchronousRequest:returnEncoding:returnMain:successHandler:errorHandler:">&nbsp;&nbsp;&nbsp;&nbsp;+ sendAsynchronousRequest:returnEncoding:returnMain:successHandler:errorHandler:</option>
 	
 	<option value="//api/name/sendJsonAsynchronousRequest:jsonOption:returnEncoding:returnMain:successHandler:errorHandler:">&nbsp;&nbsp;&nbsp;&nbsp;+ sendJsonAsynchronousRequest:jsonOption:returnEncoding:returnMain:successHandler:errorHandler:</option>
@@ -77,8 +75,6 @@
 
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/requestTo:query:protocol:encoding:">requestTo:query:protocol:encoding:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sendAsynchronousRequest:returnEncoding:returnMain:successHandler:errorHandler:">sendAsynchronousRequest:returnEncoding:returnMain:successHandler:errorHandler:</a></span></li>
 	
@@ -125,7 +121,7 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>helper class for netwrok with gcd.</p>
+						<p>GCDを利用したNetwork用ヘルパー</p>
 					</div>
 					
 					
@@ -143,15 +139,8 @@
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/requestTo:query:protocol:encoding:">+&nbsp;requestTo:query:protocol:encoding:</a></code>
-		<span class="tooltip"><p>for managing statusbar indicator</p></span>
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
 		<code><a href="#//api/name/sendAsynchronousRequest:returnEncoding:returnMain:successHandler:errorHandler:">+&nbsp;sendAsynchronousRequest:returnEncoding:returnMain:successHandler:errorHandler:</a></code>
-		<span class="tooltip"><p>request wrapper</p></span>
+		<span class="tooltip"><p>非同期リクエスト without json</p></span>
 	</span>
 	
 	
@@ -165,7 +154,7 @@
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/setGlobalErrorHandler:">+&nbsp;setGlobalErrorHandler:</a></code>
-		<span class="tooltip"><p>global error handler</p></span>
+		<span class="tooltip"><p>グローバルなエラーハンドラ</p></span>
 	</span>
 	
 	
@@ -185,79 +174,13 @@
 						<h2 class="subtitle subtitle-methods">Class Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/requestTo:query:protocol:encoding:" title="requestTo:query:protocol:encoding:"></a>
-	<h3 class="subsubtitle method-title">requestTo:query:protocol:encoding:</h3>
-	
-	
-	
-	<div class="method-subsection brief-description">
-		<p>for managing statusbar indicator</p>
-	</div>		
-	
-    
-
-	<div class="method-subsection method-declaration"><code>+ (NSURLRequest *)requestTo:(NSString *)<em>baseURL</em> query:(NSDictionary *)<em>query</em> protocol:(NANetworkProtocol)<em>protocol</em> encoding:(NSStringEncoding)<em>encoding</em></code></div>
-
-    
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>baseURL</em></dt>
-			<dd><p>base url</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>query</em></dt>
-			<dd><p>query</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>protocol</em></dt>
-			<dd><p>protocol</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>encoding</em></dt>
-			<dd><p>encoding</p></dd>
-		</dl>
-		
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection discussion-section">
-		<h4 class="method-subtitle">Discussion</h4>
-		<p>for managing statusbar indicator</p>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	<div class="method-subsection declared-in-section">
-		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">NANetworkGCDHelper.h</code><br />
-	</div>				
-	
-	
-</div>
-						
-						<div class="section-method">
 	<a name="//api/name/sendAsynchronousRequest:returnEncoding:returnMain:successHandler:errorHandler:" title="sendAsynchronousRequest:returnEncoding:returnMain:successHandler:errorHandler:"></a>
 	<h3 class="subsubtitle method-title">sendAsynchronousRequest:returnEncoding:returnMain:successHandler:errorHandler:</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>request wrapper</p>
+		<p>非同期リクエスト without json</p>
 	</div>		
 	
     
@@ -271,27 +194,27 @@
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>request</em></dt>
-			<dd><p>request</p></dd>
+			<dd><p>リクエスト</p></dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>returnEncoding</em></dt>
-			<dd><p>jsonEncoding</p></dd>
+			<dd><p>返り値のエンコーディング．</p></dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>returnMain</em></dt>
-			<dd><p>returnMain</p></dd>
+			<dd><p>メインスレッドで返ってくるかどうか</p></dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>successHandler</em></dt>
-			<dd><p>successHandler</p></dd>
+			<dd><p>成功時コールバック</p></dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>errorHandler</em></dt>
-			<dd><p>errorHandler</p></dd>
+			<dd><p>失敗時コールバック</p></dd>
 		</dl>
 		
 	</div>
@@ -304,7 +227,7 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>request wrapper</p>
+		<p>非同期リクエスト without json</p>
 	</div>
 	
 	
@@ -342,32 +265,32 @@
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>request</em></dt>
-			<dd><p>request</p></dd>
+			<dd><p>リクエスト</p></dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>jsonOption</em></dt>
-			<dd><p>jsonOption</p></dd>
+			<dd><p>jsonのoption NSJSONReadingOptions</p></dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>returnEncoding</em></dt>
-			<dd><p>jsonEncoding</p></dd>
+			<dd><p>返り値のエンコーディング．</p></dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>returnMain</em></dt>
-			<dd><p>returnMain</p></dd>
+			<dd><p>メインスレッドで返ってくるかどうか</p></dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>successHandler</em></dt>
-			<dd><p>successHandler</p></dd>
+			<dd><p>成功時コールバック</p></dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>errorHandler</em></dt>
-			<dd><p>errorHandler</p></dd>
+			<dd><p>失敗時コールバック</p></dd>
 		</dl>
 		
 	</div>
@@ -404,7 +327,7 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<p>global error handler</p>
+		<p>グローバルなエラーハンドラ</p>
 	</div>		
 	
     
@@ -418,7 +341,7 @@
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>errorHandler</em></dt>
-			<dd><p>errorHandler</p></dd>
+			<dd><p>エラーハンドラ</p></dd>
 		</dl>
 		
 	</div>
@@ -431,7 +354,7 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>global error handler</p>
+		<p>グローバルなエラーハンドラ</p>
 	</div>
 	
 	
@@ -463,7 +386,7 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2012 nashibao. All rights reserved. (Last updated: 2012-10-29)</span><br />
+						<p><span class="copyright">&copy; 2012 nashibao. All rights reserved. (Last updated: 2012-11-05)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
 						

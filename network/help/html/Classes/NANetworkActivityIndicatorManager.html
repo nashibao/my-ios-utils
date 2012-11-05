@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
-		<title>NANetworkGCDHelper Class Reference</title>
+		<title>NANetworkActivityIndicatorManager Class Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
@@ -17,7 +17,7 @@
 			</div>
 			
 			<div id="title" role="banner">
-				<h1 class="hideInXcode">NANetworkGCDHelper Class Reference</h1>
+				<h1 class="hideInXcode">NANetworkActivityIndicatorManager Class Reference</h1>
 			</div>
 			<ul id="headerButtons" role="toolbar">
 				<li id="toc_button">
@@ -38,15 +38,15 @@
 	
 	
 	
+	<option value="properties">Properties</option>
+	
+	<option value="//api/name/enabled">&nbsp;&nbsp;&nbsp;&nbsp;enabled</option>
+	
+	<option value="//api/name/errors">&nbsp;&nbsp;&nbsp;&nbsp;errors</option>
+	
+	<option value="//api/name/isNetworkActivityIndicatorVisible">&nbsp;&nbsp;&nbsp;&nbsp;isNetworkActivityIndicatorVisible</option>
 	
 	
-	<option value="class_methods">Class Methods</option>
-	
-	<option value="//api/name/sendAsynchronousRequest:returnEncoding:returnMain:successHandler:errorHandler:">&nbsp;&nbsp;&nbsp;&nbsp;+ sendAsynchronousRequest:returnEncoding:returnMain:successHandler:errorHandler:</option>
-	
-	<option value="//api/name/sendJsonAsynchronousRequest:jsonOption:returnEncoding:returnMain:successHandler:errorHandler:">&nbsp;&nbsp;&nbsp;&nbsp;+ sendJsonAsynchronousRequest:jsonOption:returnEncoding:returnMain:successHandler:errorHandler:</option>
-	
-	<option value="//api/name/setGlobalErrorHandler:">&nbsp;&nbsp;&nbsp;&nbsp;+ setGlobalErrorHandler:</option>
 	
 	
 	
@@ -72,17 +72,17 @@
 
 
 
-
-
-<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sendAsynchronousRequest:returnEncoding:returnMain:successHandler:errorHandler:">sendAsynchronousRequest:returnEncoding:returnMain:successHandler:errorHandler:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/enabled">enabled</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sendJsonAsynchronousRequest:jsonOption:returnEncoding:returnMain:successHandler:errorHandler:">sendJsonAsynchronousRequest:jsonOption:returnEncoding:returnMain:successHandler:errorHandler:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/errors">errors</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setGlobalErrorHandler:">setGlobalErrorHandler:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isNetworkActivityIndicatorVisible">isNetworkActivityIndicatorVisible</a></span></li>
 	
 </ul></li>
+
+
 
 
 
@@ -91,7 +91,7 @@
 		</nav>
 		<article>
 			<div id="contents" class="isShowingTOC" role="main">
-				<a title="NANetworkGCDHelper Class Reference" name="top"></a>
+				<a title="NANetworkActivityIndicatorManager Class Reference" name="top"></a>
 				<div class="main-navigation navigation-top">
 					<ul>
 	<li><a href="../index.html">Index</a></li>
@@ -100,7 +100,7 @@
 				</div>
 				<div id="header">
 					<div class="section-header">
-						<h1 class="title title-header">NANetworkGCDHelper Class Reference</h1>
+						<h1 class="title title-header">NANetworkActivityIndicatorManager Class Reference</h1>
 					</div>		
 				</div>
 				<div id="container">	
@@ -111,7 +111,7 @@
 	<td class="specification-value">NSObject</td>
 </tr><tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">NANetworkGCDHelper.h<br />NANetworkGCDHelper.m</td>
+	<td class="specification-value">NANetworkActivityIndicatorManager.h<br />NANetworkActivityIndicatorManager.m</td>
 </tr>
 						</tbody></table></div>
 					
@@ -121,7 +121,7 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>GCDを利用したNetwork用ヘルパー</p>
+						<p>indicator manager</p>
 					</div>
 					
 					
@@ -139,24 +139,24 @@
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/sendAsynchronousRequest:returnEncoding:returnMain:successHandler:errorHandler:">+&nbsp;sendAsynchronousRequest:returnEncoding:returnMain:successHandler:errorHandler:</a></code>
-		<span class="tooltip"><p>非同期リクエスト without json</p></span>
+		<code><a href="#//api/name/enabled">&nbsp;&nbsp;enabled</a></code>
+		<span class="tooltip"><p>enable option : default = YES</p></span>
 	</span>
-	
+	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/sendJsonAsynchronousRequest:jsonOption:returnEncoding:returnMain:successHandler:errorHandler:">+&nbsp;sendJsonAsynchronousRequest:jsonOption:returnEncoding:returnMain:successHandler:errorHandler:</a></code>
-		<span class="tooltip"><p>json request wrapper</p></span>
+		<code><a href="#//api/name/isNetworkActivityIndicatorVisible">&nbsp;&nbsp;isNetworkActivityIndicatorVisible</a></code>
+		<span class="tooltip"><p>getter. to be YES when network count > 0</p></span>
 	</span>
-	
+	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/setGlobalErrorHandler:">+&nbsp;setGlobalErrorHandler:</a></code>
-		<span class="tooltip"><p>グローバルなエラーハンドラ</p></span>
+		<code><a href="#//api/name/errors">&nbsp;&nbsp;errors</a></code>
+		<span class="tooltip"><p>error array.</p></span>
 	</span>
-	
+	<span class="task-item-suffix">property</span>
 	
 </li>
 						</ul>
@@ -167,57 +167,25 @@
 					
 					
 					
-					
-					
 					<div class="section section-methods">
-						<a title="Class Methods" name="class_methods"></a>
-						<h2 class="subtitle subtitle-methods">Class Methods</h2>
+						<a title="Properties" name="properties"></a>
+						<h2 class="subtitle subtitle-methods">Properties</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/sendAsynchronousRequest:returnEncoding:returnMain:successHandler:errorHandler:" title="sendAsynchronousRequest:returnEncoding:returnMain:successHandler:errorHandler:"></a>
-	<h3 class="subsubtitle method-title">sendAsynchronousRequest:returnEncoding:returnMain:successHandler:errorHandler:</h3>
+	<a name="//api/name/enabled" title="enabled"></a>
+	<h3 class="subsubtitle method-title">enabled</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>非同期リクエスト without json</p>
+		<p>enable option : default = YES</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>+ (void)sendAsynchronousRequest:(NSURLRequest *)<em>request</em> returnEncoding:(NSStringEncoding)<em>returnEncoding</em> returnMain:(BOOL)<em>returnMain</em> successHandler:(void ( ^ ) ( NSURLResponse *resp , id data ))<em>successHandler</em> errorHandler:(void ( ^ ) ( NSURLResponse *resp , NSError *err ))<em>errorHandler</em></code></div>
+	<div class="method-subsection method-declaration"><code>@property (nonatomic, assign, getter=isEnabled) BOOL enabled</code></div>
 
     
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>request</em></dt>
-			<dd><p>リクエスト</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>returnEncoding</em></dt>
-			<dd><p>返り値のエンコーディング．</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>returnMain</em></dt>
-			<dd><p>メインスレッドで返ってくるかどうか</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>successHandler</em></dt>
-			<dd><p>成功時コールバック</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>errorHandler</em></dt>
-			<dd><p>失敗時コールバック</p></dd>
-		</dl>
-		
-	</div>
 	
 	
 	
@@ -227,7 +195,7 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>非同期リクエスト without json</p>
+		<p>enable option : default = YES</p>
 	</div>
 	
 	
@@ -238,62 +206,27 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">NANetworkGCDHelper.h</code><br />
+		<code class="declared-in-ref">NANetworkActivityIndicatorManager.h</code><br />
 	</div>				
 	
 	
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/sendJsonAsynchronousRequest:jsonOption:returnEncoding:returnMain:successHandler:errorHandler:" title="sendJsonAsynchronousRequest:jsonOption:returnEncoding:returnMain:successHandler:errorHandler:"></a>
-	<h3 class="subsubtitle method-title">sendJsonAsynchronousRequest:jsonOption:returnEncoding:returnMain:successHandler:errorHandler:</h3>
+	<a name="//api/name/errors" title="errors"></a>
+	<h3 class="subsubtitle method-title">errors</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>json request wrapper</p>
+		<p>error array.</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>+ (void)sendJsonAsynchronousRequest:(NSURLRequest *)<em>request</em> jsonOption:(NSJSONReadingOptions)<em>jsonOption</em> returnEncoding:(NSStringEncoding)<em>returnEncoding</em> returnMain:(BOOL)<em>returnMain</em> successHandler:(void ( ^ ) ( NSURLResponse *resp , id data ))<em>successHandler</em> errorHandler:(void ( ^ ) ( NSURLResponse *resp , NSError *err ))<em>errorHandler</em></code></div>
+	<div class="method-subsection method-declaration"><code>@property (strong, nonatomic) NSMutableArray *errors</code></div>
 
     
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>request</em></dt>
-			<dd><p>リクエスト</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>jsonOption</em></dt>
-			<dd><p>jsonのoption NSJSONReadingOptions</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>returnEncoding</em></dt>
-			<dd><p>返り値のエンコーディング．</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>returnMain</em></dt>
-			<dd><p>メインスレッドで返ってくるかどうか</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>successHandler</em></dt>
-			<dd><p>成功時コールバック</p></dd>
-		</dl>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>errorHandler</em></dt>
-			<dd><p>失敗時コールバック</p></dd>
-		</dl>
-		
-	</div>
 	
 	
 	
@@ -303,7 +236,7 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>json request wrapper</p>
+		<p>error array.</p>
 	</div>
 	
 	
@@ -314,37 +247,27 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">NANetworkGCDHelper.h</code><br />
+		<code class="declared-in-ref">NANetworkActivityIndicatorManager.h</code><br />
 	</div>				
 	
 	
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/setGlobalErrorHandler:" title="setGlobalErrorHandler:"></a>
-	<h3 class="subsubtitle method-title">setGlobalErrorHandler:</h3>
+	<a name="//api/name/isNetworkActivityIndicatorVisible" title="isNetworkActivityIndicatorVisible"></a>
+	<h3 class="subsubtitle method-title">isNetworkActivityIndicatorVisible</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>グローバルなエラーハンドラ</p>
+		<p>getter. to be YES when network count > 0</p>
 	</div>		
 	
     
 
-	<div class="method-subsection method-declaration"><code>+ (void)setGlobalErrorHandler:(void ( ^ ) ( NSURLResponse *resp , NSError *err ))<em>errorHandler</em></code></div>
+	<div class="method-subsection method-declaration"><code>@property (readonly, nonatomic, assign) BOOL isNetworkActivityIndicatorVisible</code></div>
 
     
-	
-	<div class="method-subsection arguments-section parameters">
-		<h4 class="method-subtitle parameter-title">Parameters</h4>
-		
-		<dl class="argument-def parameter-def">
-			<dt><em>errorHandler</em></dt>
-			<dd><p>エラーハンドラ</p></dd>
-		</dl>
-		
-	</div>
 	
 	
 	
@@ -354,7 +277,7 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>グローバルなエラーハンドラ</p>
+		<p>getter. to be YES when network count > 0</p>
 	</div>
 	
 	
@@ -365,13 +288,15 @@
 	
 	<div class="method-subsection declared-in-section">
 		<h4 class="method-subtitle">Declared In</h4>
-		<code class="declared-in-ref">NANetworkGCDHelper.h</code><br />
+		<code class="declared-in-ref">NANetworkActivityIndicatorManager.h</code><br />
 	</div>				
 	
 	
 </div>
 						
 					</div>
+					
+					
 					
 					
 					

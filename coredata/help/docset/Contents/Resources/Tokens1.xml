@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/NAModelController.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/NAModelController</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>NAModelController.h</DeclaredIn>
+			
+			<NodeRef refid="1"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/NAModelController/setup</TokenIdentifier>
+			<Abstract type="html">setup</Abstract>
+			<DeclaredIn>NAModelController.h</DeclaredIn>			
+			
+			<Declaration>- (void)setup</Declaration>
+			
+			
+			<Anchor>//api/name/setup</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/NAModelController/destroyAndSetup</TokenIdentifier>
+			<Abstract type="html">初期化処理．すでにあるデータベースは削除する</Abstract>
+			<DeclaredIn>NAModelController.h</DeclaredIn>			
+			
+			<Declaration>- (void)destroyAndSetup</Declaration>
+			
+			
+			<Anchor>//api/name/destroyAndSetup</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

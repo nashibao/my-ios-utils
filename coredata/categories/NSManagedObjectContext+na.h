@@ -18,6 +18,11 @@
 - (NSManagedObject *)createObject:(NSString *)entityName props:(NSDictionary *)props;
 - (NSManagedObject *)getOrCreateObject:(NSString *)entityName props:(NSDictionary *)props;
 
+/** 別のcontextを作るのがそもそもめんどくさい人のため．
+ caution!!!! mainthreadにあるmainContextからのみ呼び出せる！！
+ */
+- (void)performBlockOutOfOwnThread:(void(^)())block afterSaveOnMainThread:(void(^)(NSNotification *note))afterSaveOnMainThread;
+
 #pragma mark delete
 
 - (void)deleteObjectWithCheck:(NSManagedObject *)obj;

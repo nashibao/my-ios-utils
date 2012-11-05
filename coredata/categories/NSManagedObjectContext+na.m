@@ -108,4 +108,26 @@
     [self deleteObjectWithCheck:mo];
 }
 
+- (void)performBlockOutOfOwnThread:(void(^)())block afterSaveOnMainThread:(void(^)(NSNotification *note))afterSaveOnMainThread{
+    NSPersistentStoreCoordinator *coordinator = self.persistentStoreCoordinator;
+    NSManagedObjectContext *context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+    [context setPersistentStoreCoordinator:coordinator];
+    [[NSNotificationCenter defaultCenter] addObserverForName:NSManagedObjectContextDidSaveNotification object:context queue:nil usingBlock:^(NSNotification *note) {
+        [self performSelectorOnMainThread:@selector(mergeChangesFromContextDidSaveNotification:)
+                                      withObject:note
+                                   waitUntilDone:YES];
+        if(afterSaveOnMainThread){
+            dispatch_async(dispatch_get_main_queue(), ^{
+                afterSaveOnMainThread(note);
+            });
+        }
+    }];
+    
+    [context performBlock:^{
+        if(block)
+            block();
+        [context save:nil];
+    }];
+}
+
 @end

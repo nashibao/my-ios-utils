@@ -114,8 +114,9 @@ dictionaryとsqlite内のバイナリを自動変換するクラス
 
 ```objective-c
 
-    [self performBlockOutOfOwnThread:^{
+    [self performBlockOutOfOwnThread:^(NSManagedObjectContext *context){
         // !!!!!!ここでいろいろと変更を加える!!!!!!
+        [context save:nil];
     } afterSaveOnMainThread:^(NSNotification *note) {
         // !!!!!!終了処理!!!!!!
     }];

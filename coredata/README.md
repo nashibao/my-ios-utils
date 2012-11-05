@@ -61,7 +61,7 @@ dictionaryとsqlite内のバイナリを自動変換するクラス
 	TestObject *obj = [TestObject create:@{@"name": @"test"} options:nil];
 	NSArray *objs = [TestObject filter:@{@"name": @"test"} options:nil];
 	TestObject *obj2 = [TestObject get_or_create:@{@"name": @"test"} options:nil];
-	Bool bl = (obj == obj2) => YES
+	Bool bl = (obj == obj2); => YES
 
 ```
 
@@ -70,7 +70,7 @@ dictionaryとsqlite内のバイナリを自動変換するクラス
 ```objective-c
 
     [TestObject create:@{@"name": @"test2"} options:nil complete:^(id mo) {
-        TestObject *pa = (TestObject *)mo;
+        TestObject *obj3 = (TestObject *)mo;
     }];
     
     [TestObject filter:nil options:nil complete:^(NSArray *mos) {
@@ -78,7 +78,9 @@ dictionaryとsqlite内のバイナリを自動変換するクラス
     }];
     
     [TestObject get_or_create:@{@"name": @"test"} options:nil complete:^(id mo) {
-        TestParent *pa = (TestParent *)mo;
+        TestParent *obj4 = (TestParent *)mo;
+        // コンテキストが別!!
+		Bool bl = (obj4 == obj1); => NO
     }];
 
 ```
@@ -88,23 +90,36 @@ dictionaryとsqlite内のバイナリを自動変換するクラス
 ```objective-c
 
     NSManagedObjectContext *mainContext = [ModelController sharedController].mainContext;
-    NSPersistenceStoreCoordinator *coordinator = mainContext.persistentStoreCoordinator;
+    NSPersistentStoreCoordinator *coordinator = mainContext.persistentStoreCoordinator;
     NSManagedObjectContext *context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
     [context setPersistentStoreCoordinator:coordinator];
     [[NSNotificationCenter defaultCenter] addObserverForName:NSManagedObjectContextDidSaveNotification object:context queue:nil usingBlock:^(NSNotification *note) {
         [mainContext performSelectorOnMainThread:@selector(mergeChangesFromContextDidSaveNotification:)
-                                    withObject:note
-                                 waitUntilDone:YES];
+                                      withObject:note
+                                   waitUntilDone:YES];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            // !!!!!!終了処理!!!!!!
+        });
     }];
-
+    
     [context performBlock:^{
         // !!!!!!ここでいろいろと変更を加える!!!!!!
         [context save:nil];
     }];
 
+
 ```
 
-となり、けっこう面倒．ここはもう少し単純化すべきか．．
+となり、けっこう面倒なので、次のようなAPIも生やしてある．
 
+```objective-c
+
+    [self performBlockOutOfOwnThread:^{
+        // !!!!!!ここでいろいろと変更を加える!!!!!!
+    } afterSaveOnMainThread:^(NSNotification *note) {
+        // !!!!!!終了処理!!!!!!
+    }];
+    
+```
 
 

@@ -51,10 +51,6 @@ dictionaryとsqlite内のバイナリを自動変換するクラス
 
 # サンプル
 
-`categories/NSManagedObjectContext+na`の使用例．
-
-# サンプル
-
 `categories/NSManagedObjectContext+na`の使用例．`TestObject`というMOのクラスがあった場合、
 
 
@@ -86,6 +82,29 @@ dictionaryとsqlite内のバイナリを自動変換するクラス
     }];
 
 ```
+
+また、自前でコンテキストを作成する場合は、
+
+```objective-c
+
+    NSManagedObjectContext *mainContext = [ModelController sharedController].mainContext;
+    NSPersistenceStoreCoordinator *coordinator = mainContext.persistentStoreCoordinator;
+    NSManagedObjectContext *context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+    [context setPersistentStoreCoordinator:coordinator];
+    [[NSNotificationCenter defaultCenter] addObserverForName:NSManagedObjectContextDidSaveNotification object:context queue:nil usingBlock:^(NSNotification *note) {
+        [mainContext performSelectorOnMainThread:@selector(mergeChangesFromContextDidSaveNotification:)
+                                    withObject:note
+                                 waitUntilDone:YES];
+    }];
+
+    [context performBlock:^{
+        // !!!!!!ここでいろいろと変更を加える!!!!!!
+        [context save:nil];
+    }];
+
+```
+
+となり、けっこう面倒．ここはもう少し単純化すべきか．．
 
 
 

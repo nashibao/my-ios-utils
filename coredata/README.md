@@ -76,7 +76,7 @@ tableなどに使う時はna_ios/coredata_uiモジュールもあわせて使う
 
 ```objective-c
 
-    [self performBlockOutOfOwnThread:^(NSManagedObjectContext *context){
+    [mainContext performBlockOutOfOwnThread:^(NSManagedObjectContext *context){
         // !!!!!!ここでいろいろと変更を加える!!!!!!
         [context save:nil];
     } afterSaveOnMainThread:^(NSNotification *note) {

@@ -28,7 +28,9 @@
     self.modelController = [[NAModelController alloc] init];
     
     //    (test時だけbundle指定が必要)
-    [_modelController setup:@"testmodel" withBundle:[NSBundle bundleForClass:[TestParent class]]];
+    self.modelController.name = @"testmodel";
+    self.modelController.bundle = [NSBundle bundleForClass:[TestParent class]];
+    [self.modelController setup];
     
     //    modelへの設定
     [TestParent setMainContext:_modelController.mainContext];

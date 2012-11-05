@@ -11,6 +11,8 @@
 
 #import "NAAsyncOCUnit.h"
 
+#import "NSURLRequest+na.h"
+
 @implementation NANetworkGCDHelperTest
 
 - (void)setUp
@@ -30,7 +32,7 @@
 - (void)atestSendAsynchronousRequest
 {
     STAsynchronousTestStart(test);
-    NSURLRequest *req = [NANetworkGCDHelper requestTo:@"http://www.google.co.jp" query:nil protocol:NANetworkProtocolGET encoding:NSUTF8StringEncoding];
+    NSURLRequest *req = [NSURLRequest request:@"http://www.google.co.jp" query:nil protocol:NANetworkProtocolGET encoding:NSUTF8StringEncoding];
     
     [NANetworkGCDHelper sendAsynchronousRequest:req returnEncoding:NSShiftJISStringEncoding returnMain:NO successHandler:^(NSURLResponse *resp, id data) {
         STAssertFalse([data isKindOfClass:[NSDictionary class]], @"is not json class");
@@ -47,7 +49,7 @@
 - (void)atestSendJSONAsynchronousRequest
 {
     STAsynchronousTestStart(test);
-    NSURLRequest *req = [NANetworkGCDHelper requestTo:@"http://www.google.co.jp" query:nil protocol:NANetworkProtocolGET encoding:NSUTF8StringEncoding];
+    NSURLRequest *req = [NSURLRequest request:@"http://www.google.co.jp" query:nil protocol:NANetworkProtocolGET encoding:NSUTF8StringEncoding];
     
     [NANetworkGCDHelper sendJsonAsynchronousRequest:req jsonOption:NSJSONReadingAllowFragments returnEncoding:NSShiftJISStringEncoding returnMain:NO successHandler:^(NSURLResponse *resp, id data) {
         NSLog(@"%s|%@", __PRETTY_FUNCTION__, data);

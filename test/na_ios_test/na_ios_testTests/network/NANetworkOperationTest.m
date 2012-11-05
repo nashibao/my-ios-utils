@@ -13,6 +13,8 @@
 
 #import "NANetworkOperation.h"
 
+#import "NSURLRequest+na.h"
+
 @implementation NANetworkOperationTest
 
 - (void)setUp
@@ -35,9 +37,9 @@
 - (void)testJustSend
 {
     STAsynchronousTestStart(test);
-    NSURLRequest *req = [NANetworkGCDHelper requestTo:@"http://www.google.co.jp" query:nil protocol:NANetworkProtocolGET encoding:NSUTF8StringEncoding];
+    NSURLRequest *req = [NSURLRequest request:@"http://www.google.co.jp" query:nil protocol:NANetworkProtocolGET encoding:NSUTF8StringEncoding];
     
-    [NANetworkOperation sendAsynchronousRequest:req returnEncoding:NSShiftJISStringEncoding returnMain:YES queue:nil identifier:@"testjustsend" identifierMaxCount:1 queueingOption:NANetworkOperationQueingOptionReturnOld successHandler:^(NANetworkOperation *op, id data) {
+    [NANetworkOperation sendAsynchronousRequest:req returnEncoding:NSShiftJISStringEncoding returnMain:YES queue:nil identifier:@"testjustsend" identifierMaxCount:1 options:nil queueingOption:NANetworkOperationQueingOptionReturnOld successHandler:^(NANetworkOperation *op, id data) {
         STAssertTrue(YES, @"testSendAsynchronousRequest success");
         STAsynchronousTestDone(test);
     } errorHandler:^(NANetworkOperation *op, NSError *err) {
@@ -54,11 +56,12 @@
  */
 - (void)testCancel1
 {
-    NSURLRequest *req = [NANetworkGCDHelper requestTo:@"http://www.google.co.jp" query:nil protocol:NANetworkProtocolGET encoding:NSUTF8StringEncoding];
+    NSURLRequest *req = [NSURLRequest request:@"http://www.google.co.jp" query:nil protocol:NANetworkProtocolGET encoding:NSUTF8StringEncoding];
     
-    NANetworkOperation *op1 = [NANetworkOperation sendAsynchronousRequest:req returnEncoding:NSShiftJISStringEncoding returnMain:YES queue:nil identifier:@"testCancel1" identifierMaxCount:1 queueingOption:NANetworkOperationQueingOptionReturnOld successHandler:nil errorHandler:nil];
     
-    NANetworkOperation *op2 = [NANetworkOperation sendAsynchronousRequest:req returnEncoding:NSShiftJISStringEncoding returnMain:YES queue:nil identifier:@"testCancel1" identifierMaxCount:1 queueingOption:NANetworkOperationQueingOptionReturnOld successHandler:nil errorHandler:nil];
+    NANetworkOperation *op1 = [NANetworkOperation sendAsynchronousRequest:req returnEncoding:NSShiftJISStringEncoding returnMain:YES queue:nil identifier:@"testCancel1" identifierMaxCount:1 options:nil queueingOption:NANetworkOperationQueingOptionReturnOld successHandler:nil errorHandler:nil];
+    
+    NANetworkOperation *op2 = [NANetworkOperation sendAsynchronousRequest:req returnEncoding:NSShiftJISStringEncoding returnMain:YES queue:nil identifier:@"testCancel1" identifierMaxCount:1 options:nil queueingOption:NANetworkOperationQueingOptionReturnOld successHandler:nil errorHandler:nil];
     
     STAssertEqualObjects(op1, op2, @"新しく作る代わりに古いのがかえってくるはず");
 }
@@ -69,15 +72,15 @@
  */
 - (void)testCancel2
 {
-    NSURLRequest *req = [NANetworkGCDHelper requestTo:@"http://www.google.co.jp" query:nil protocol:NANetworkProtocolGET encoding:NSUTF8StringEncoding];
+    NSURLRequest *req = [NSURLRequest request:@"http://www.google.co.jp" query:nil protocol:NANetworkProtocolGET encoding:NSUTF8StringEncoding];
     
-    NANetworkOperation *op1 = [NANetworkOperation sendAsynchronousRequest:req returnEncoding:NSShiftJISStringEncoding returnMain:YES queue:nil identifier:@"testCancel2" identifierMaxCount:2 queueingOption:NANetworkOperationQueingOptionReturnOld successHandler:nil errorHandler:nil];
+    NANetworkOperation *op1 = [NANetworkOperation sendAsynchronousRequest:req returnEncoding:NSShiftJISStringEncoding returnMain:YES queue:nil identifier:@"testCancel2" identifierMaxCount:2 options:nil queueingOption:NANetworkOperationQueingOptionReturnOld successHandler:nil errorHandler:nil];
     
-    NANetworkOperation *op2 = [NANetworkOperation sendAsynchronousRequest:req returnEncoding:NSShiftJISStringEncoding returnMain:YES queue:nil identifier:@"testCancel2" identifierMaxCount:2 queueingOption:NANetworkOperationQueingOptionReturnOld successHandler:nil errorHandler:nil];
+    NANetworkOperation *op2 = [NANetworkOperation sendAsynchronousRequest:req returnEncoding:NSShiftJISStringEncoding returnMain:YES queue:nil identifier:@"testCancel2" identifierMaxCount:2 options:nil queueingOption:NANetworkOperationQueingOptionReturnOld successHandler:nil errorHandler:nil];
     
-    NANetworkOperation *op3 = [NANetworkOperation sendAsynchronousRequest:req returnEncoding:NSShiftJISStringEncoding returnMain:YES queue:nil identifier:@"testCancel2" identifierMaxCount:2 queueingOption:NANetworkOperationQueingOptionReturnOld successHandler:nil errorHandler:nil];
+    NANetworkOperation *op3 = [NANetworkOperation sendAsynchronousRequest:req returnEncoding:NSShiftJISStringEncoding returnMain:YES queue:nil identifier:@"testCancel2" identifierMaxCount:2 options:nil queueingOption:NANetworkOperationQueingOptionReturnOld successHandler:nil errorHandler:nil];
     
-    NANetworkOperation *op4 = [NANetworkOperation sendAsynchronousRequest:req returnEncoding:NSShiftJISStringEncoding returnMain:YES queue:nil identifier:@"testCancel2" identifierMaxCount:2 queueingOption:NANetworkOperationQueingOptionReturnOld successHandler:nil errorHandler:nil];
+    NANetworkOperation *op4 = [NANetworkOperation sendAsynchronousRequest:req returnEncoding:NSShiftJISStringEncoding returnMain:YES queue:nil identifier:@"testCancel2" identifierMaxCount:2 options:nil queueingOption:NANetworkOperationQueingOptionReturnOld successHandler:nil errorHandler:nil];
     
     STAssertFalse(op1 == op2, @"二つ作られるはず");
     STAssertEqualObjects(op3, op2, @"1,2が作られて、3はつくられずに古いのがかえってくる");
@@ -90,11 +93,11 @@
  */
 - (void)testCancel3
 {
-    NSURLRequest *req = [NANetworkGCDHelper requestTo:@"http://www.google.co.jp" query:nil protocol:NANetworkProtocolGET encoding:NSUTF8StringEncoding];
+    NSURLRequest *req = [NSURLRequest request:@"http://www.google.co.jp" query:nil protocol:NANetworkProtocolGET encoding:NSUTF8StringEncoding];
     
-    NANetworkOperation *op1 = [NANetworkOperation sendAsynchronousRequest:req returnEncoding:NSShiftJISStringEncoding returnMain:YES queue:nil identifier:@"testCancel3" identifierMaxCount:1 queueingOption:NANetworkOperationQueingOptionJustAdd successHandler:nil errorHandler:nil];
+    NANetworkOperation *op1 = [NANetworkOperation sendAsynchronousRequest:req returnEncoding:NSShiftJISStringEncoding returnMain:YES queue:nil identifier:@"testCancel3" identifierMaxCount:1 options:nil queueingOption:NANetworkOperationQueingOptionJustAdd successHandler:nil errorHandler:nil];
     
-    NANetworkOperation *op2 = [NANetworkOperation sendAsynchronousRequest:req returnEncoding:NSShiftJISStringEncoding returnMain:YES queue:nil identifier:@"testCancel3" identifierMaxCount:1 queueingOption:NANetworkOperationQueingOptionJustAdd successHandler:nil errorHandler:nil];
+    NANetworkOperation *op2 = [NANetworkOperation sendAsynchronousRequest:req returnEncoding:NSShiftJISStringEncoding returnMain:YES queue:nil identifier:@"testCancel3" identifierMaxCount:1 options:nil queueingOption:NANetworkOperationQueingOptionJustAdd successHandler:nil errorHandler:nil];
     
     STAssertFalse(op1 == op2, @"二つ作られるはず");
 }
@@ -105,11 +108,11 @@
  */
 - (void)atestCancel4
 {
-    NSURLRequest *req = [NANetworkGCDHelper requestTo:@"http://www.google.co.jp" query:nil protocol:NANetworkProtocolGET encoding:NSUTF8StringEncoding];
+    NSURLRequest *req = [NSURLRequest request:@"http://www.google.co.jp" query:nil protocol:NANetworkProtocolGET encoding:NSUTF8StringEncoding];
     
-    NANetworkOperation *op1 = [NANetworkOperation sendAsynchronousRequest:req returnEncoding:NSShiftJISStringEncoding returnMain:YES queue:nil identifier:@"testCancel4" identifierMaxCount:1 queueingOption:NANetworkOperationQueingOptionCancel successHandler:nil errorHandler:nil];
+    NANetworkOperation *op1 = [NANetworkOperation sendAsynchronousRequest:req returnEncoding:NSShiftJISStringEncoding returnMain:YES queue:nil identifier:@"testCancel4" identifierMaxCount:1 options:nil queueingOption:NANetworkOperationQueingOptionCancel successHandler:nil errorHandler:nil];
     
-    NANetworkOperation *op2 = [NANetworkOperation sendAsynchronousRequest:req returnEncoding:NSShiftJISStringEncoding returnMain:YES queue:nil identifier:@"testCancel4" identifierMaxCount:1 queueingOption:NANetworkOperationQueingOptionCancel successHandler:nil errorHandler:nil];
+    NANetworkOperation *op2 = [NANetworkOperation sendAsynchronousRequest:req returnEncoding:NSShiftJISStringEncoding returnMain:YES queue:nil identifier:@"testCancel4" identifierMaxCount:1 options:nil queueingOption:NANetworkOperationQueingOptionCancel successHandler:nil errorHandler:nil];
     
     STAssertFalse(op1 == op2, @"二つ作られるはず");
     STAssertTrue([op1 isCancelled], @"一つ目がキャンセルされているはず");
@@ -123,15 +126,15 @@
 {
     
     STAsynchronousTestStart(test);
-    NSURLRequest *req = [NANetworkGCDHelper requestTo:@"http://www.google.co.jp" query:nil protocol:NANetworkProtocolGET encoding:NSUTF8StringEncoding];
+    NSURLRequest *req = [NSURLRequest request:@"http://www.google.co.jp" query:nil protocol:NANetworkProtocolGET encoding:NSUTF8StringEncoding];
     
-    NANetworkOperation *op1 = [NANetworkOperation sendAsynchronousRequest:req returnEncoding:NSShiftJISStringEncoding returnMain:YES queue:nil identifier:@"testCancel5" identifierMaxCount:1 queueingOption:NANetworkOperationQueingOptionJustAdd successHandler:^(NANetworkOperation *op, id data) {
+    NANetworkOperation *op1 = [NANetworkOperation sendAsynchronousRequest:req returnEncoding:NSShiftJISStringEncoding returnMain:YES queue:nil identifier:@"testCancel5" identifierMaxCount:1 options:nil queueingOption:NANetworkOperationQueingOptionJustAdd successHandler:^(NANetworkOperation *op, id data) {
         STAssertTrue(NO, @"ここまでこないはず");
     } errorHandler:^(NANetworkOperation *op, NSError *err) {
         STAssertTrue(NO, @"cancelはerrorHandlerにくる？いや、こない");
     }];
     
-    NANetworkOperation *op2 = [NANetworkOperation sendAsynchronousRequest:req returnEncoding:NSShiftJISStringEncoding returnMain:YES queue:nil identifier:@"testCancel5" identifierMaxCount:1 queueingOption:NANetworkOperationQueingOptionJustAdd successHandler:^(NANetworkOperation *op, id data) {
+    NANetworkOperation *op2 = [NANetworkOperation sendAsynchronousRequest:req returnEncoding:NSShiftJISStringEncoding returnMain:YES queue:nil identifier:@"testCancel5" identifierMaxCount:1 options:nil queueingOption:NANetworkOperationQueingOptionJustAdd successHandler:^(NANetworkOperation *op, id data) {
         STAssertTrue(NO, @"ここまでこないはず");
     } errorHandler:^(NANetworkOperation *op, NSError *err) {
         STAssertTrue(NO, @"cancelはerrorHandlerにくる？いや、こない");

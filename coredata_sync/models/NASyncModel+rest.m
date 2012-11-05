@@ -106,7 +106,7 @@
             id d = temp[@"data"];
             NASyncModelConflictOption option = [temp[@"option"] integerValue];
             [sm resolveConflictByOption:option
-                                   data:data
+                                   data:d
                                restType:restType
                               inContext:context
                                   query:query];

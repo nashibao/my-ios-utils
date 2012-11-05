@@ -59,8 +59,6 @@
 		3413F782163E443800A6B3ED /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3413F761163E443800A6B3ED /* CoreData.framework */; };
 		3413F78A163E443800A6B3ED /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3413F788163E443800A6B3ED /* InfoPlist.strings */; };
 		346C5D0116479A490036531E /* NSURLRequest+na.m in Sources */ = {isa = PBXBuildFile; fileRef = 346C5D0016479A490036531E /* NSURLRequest+na.m */; };
-		346C5D0316479B2C0036531E /* NANetworkGCDHelperTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 34CA1B21163E583B0005F09E /* NANetworkGCDHelperTest.m */; };
-		346C5D0416479B790036531E /* NANetworkOperationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3484D21E163E6F0500C80E42 /* NANetworkOperationTest.m */; };
 		346C5D671647A3A20036531E /* NSFetchRequest+na.m in Sources */ = {isa = PBXBuildFile; fileRef = 346C5D601647A3A20036531E /* NSFetchRequest+na.m */; };
 		346C5D681647A3A20036531E /* NSManagedObject+na.m in Sources */ = {isa = PBXBuildFile; fileRef = 346C5D621647A3A20036531E /* NSManagedObject+na.m */; };
 		346C5D691647A3A20036531E /* NSManagedObjectContext+na.m in Sources */ = {isa = PBXBuildFile; fileRef = 346C5D641647A3A20036531E /* NSManagedObjectContext+na.m */; };
@@ -69,6 +67,7 @@
 		346C5D751647A67B0036531E /* NAFRCTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 346C5D711647A67B0036531E /* NAFRCTableViewController.m */; };
 		346C5D761647A67B0036531E /* NAFRCTableWithAppendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 346C5D731647A67B0036531E /* NAFRCTableWithAppendViewController.m */; };
 		346C5D7A1647A6A90036531E /* NAModelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 346C5D791647A6A90036531E /* NAModelController.m */; };
+		346C5D7B1647B8300036531E /* NSManagedObjectContextNaCategoryTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 34868C71163F62200032BF6D /* NSManagedObjectContextNaCategoryTest.m */; };
 		34868C65163F56C20032BF6D /* testmodel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 34868C63163F56C20032BF6D /* testmodel.xcdatamodeld */; };
 		34868C6C163F58C90032BF6D /* TestParent.m in Sources */ = {isa = PBXBuildFile; fileRef = 34868C6B163F58C90032BF6D /* TestParent.m */; };
 		34868C6F163F58C90032BF6D /* TestChild.m in Sources */ = {isa = PBXBuildFile; fileRef = 34868C6E163F58C90032BF6D /* TestChild.m */; };
@@ -856,8 +855,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				346C5D0416479B790036531E /* NANetworkOperationTest.m in Sources */,
-				346C5D0316479B2C0036531E /* NANetworkGCDHelperTest.m in Sources */,
+				346C5D7B1647B8300036531E /* NSManagedObjectContextNaCategoryTest.m in Sources */,
 				34868C65163F56C20032BF6D /* testmodel.xcdatamodeld in Sources */,
 				34868C6C163F58C90032BF6D /* TestParent.m in Sources */,
 				34868C6F163F58C90032BF6D /* TestChild.m in Sources */,

@@ -118,6 +118,7 @@
 
 - (void)sync_update:(NSDictionary *)options complete:(void(^)(NSError *err))complete save:(void(^)())save{
     NSDictionary *query = [self getQuery];
+    [NASyncHelper syncUpdate:[NASyncQueryObject query:query pk:[self pk] objectID:self.objectID model:[self class] options:options completeHandler:complete saveHandler:save]];
 }
 
 - (void)sync_delete:(NSDictionary *)options complete:(void(^)(NSError *err))complete save:(void(^)())save{

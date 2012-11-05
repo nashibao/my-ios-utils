@@ -2,6 +2,8 @@
 coredataを扱いやすくするモジュール．
 特に非同期アクセス周りを隠蔽するのが目的．
 
+一番重要なのは`categories/NSManagedObjectContext+na`．
+
 tableなどに使う時はna_ios/coredata_uiモジュールもあわせて使うこと．
 
 依存元：**なし**  
@@ -12,20 +14,23 @@ tableなどに使う時はna_ios/coredata_uiモジュールもあわせて使う
 APIを生やしているだけのものがほとんど．
 
 NSFetchRequest, NSManagedObjectContext, NSPredicate, NSManagedObjectの4種類．
-#### categories/NSFetchRequest+na
-fetchRequestをupdateする．
-（検索時に利用）
 #### categories/NSPredicate+na
 NSDictionaryか、NSArrayからPredicateを作成する．
 NSDictionaryの方は`@"%K == %@", key, val`で評価
+NSPredicateは直接は使わず、下記の3つを使ってアクセスするのが良い．
 
 #### categories/NSManagedObjectContext+na
 
 contextにCRUD操作を生やしているだけ．
+こちらも出来るだけ下のmoのAPIから呼び出すのが良い．
 
 #### categories/NSManagedObject+na
 
 moにCRUD操作を生やしているだけ．ただし、blockによるcallbackを引数に持つものは非同期．またメインスレッドで返ってくる．．
+
+#### categories/NSFetchRequest+na
+fetchRequestをupdateする．
+（検索時に有用）
 
 # controllersパッケージ
 
@@ -42,4 +47,45 @@ modeldファイル(`hoge.modeld`)の名前(`hoge`)を`name`に設定して、`se
 #### models/NSDictionaryTransformer
 
 dictionaryとsqlite内のバイナリを自動変換するクラス
+
+
+# サンプル
+
+`categories/NSManagedObjectContext+na`の使用例．
+
+# サンプル
+
+`categories/NSManagedObjectContext+na`の使用例．`TestObject`というMOのクラスがあった場合、
+
+
+同期メソッドは以下のようになる．
+
+```objective-c
+
+	TestObject *obj = [TestObject create:@{@"name": @"test"} options:nil];
+	NSArray *objs = [TestObject filter:@{@"name": @"test"} options:nil];
+	TestObject *obj2 = [TestObject get_or_create:@{@"name": @"test"} options:nil];
+	Bool bl = (obj == obj2) => YES
+
+```
+
+それに対して、非同期メソッドは次のようになる．
+
+```objective-c
+
+    [TestObject create:@{@"name": @"test2"} options:nil complete:^(id mo) {
+        TestObject *pa = (TestObject *)mo;
+    }];
+    
+    [TestObject filter:nil options:nil complete:^(NSArray *mos) {
+        NSLog(@"%s|%d", __PRETTY_FUNCTION__, [mos count]);
+    }];
+    
+    [TestObject get_or_create:@{@"name": @"test"} options:nil complete:^(id mo) {
+        TestParent *pa = (TestParent *)mo;
+    }];
+
+```
+
+
 

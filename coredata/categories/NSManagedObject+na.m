@@ -10,7 +10,7 @@
 
 #import "NSManagedObjectContext+na.h"
 
-#import "NAFetchHelper.h"
+#import "NSPredicate+na.h"
 
 #import <objc/runtime.h>
 
@@ -152,7 +152,7 @@ static NSManagedObjectContext * __main_context__ = nil;
     [req setSortDescriptors:_sorts];
     NSPredicate *pred = nil;
     if(equalProps && [equalProps count] > 0)
-        pred = [NAFetchHelper predicateForEqualProps:equalProps];
+        pred = [NSPredicate predicateForEqualProps:equalProps];
     if(pred)
         [req setPredicate:pred];
     return req;
@@ -175,7 +175,7 @@ static NSManagedObjectContext * __main_context__ = nil;
     [req setSortDescriptors:_sorts];
     NSPredicate *pred = nil;
     if(props && [props count] > 0)
-        pred = [NAFetchHelper predicateForProps:props];
+        pred = [NSPredicate predicateForProps:props];
     if(pred)
         [req setPredicate:pred];
     return req;

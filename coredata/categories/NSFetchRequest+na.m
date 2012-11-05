@@ -8,17 +8,17 @@
 
 #import "NSFetchRequest+na.h"
 
-#import "NAFetchHelper.h"
+#import "NSPredicate+na.h"
 
 @implementation NSFetchRequest (na)
 
 - (void)updateWithEqualProps:(NSDictionary *)equalProps{
-    NSPredicate *pred = [NAFetchHelper predicateForEqualProps:equalProps];
+    NSPredicate *pred = [NSPredicate predicateForEqualProps:equalProps];
     [self setPredicate:pred];
 }
 
 - (void)updateWithProps:(NSArray *)props{
-    NSPredicate *pred = [NAFetchHelper predicateForProps:props];
+    NSPredicate *pred = [NSPredicate predicateForProps:props];
     [self setPredicate:pred];
 }
 

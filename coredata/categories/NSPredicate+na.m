@@ -1,14 +1,14 @@
 //
-//  NAFetchHelper.m
-//  SK3
+//  NSPredicate+na.m
+//  na_ios_test
 //
-//  Created by nashibao on 2012/09/28.
-//  Copyright (c) 2012年 s-cubism. All rights reserved.
+//  Created by nashibao on 2012/11/05.
+//  Copyright (c) 2012年 nashibao. All rights reserved.
 //
 
-#import "NAFetchHelper.h"
+#import "NSPredicate+na.h"
 
-@implementation NAFetchHelper
+@implementation NSPredicate (na)
 
 + (NSPredicate *)predicateForEqualProps:(NSDictionary *)equalProps{
     if(!equalProps)return nil;

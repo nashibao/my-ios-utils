@@ -9,7 +9,7 @@
 #import <CoreData/CoreData.h>
 
 /*
- NSManagedObjectContext category to add utility functions to get/create/delete mo.
+ moの取得用にcontextそのものにAPIを生やした．
  */
 @interface NSManagedObjectContext (na)
 

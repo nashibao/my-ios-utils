@@ -8,12 +8,12 @@
 
 #import "NSManagedObjectContext+na.h"
 
-#import "NAFetchHelper.h"
+#import "NSPredicate+na.h"
 
 @implementation NSManagedObjectContext (na)
 
 - (NSArray *)filterObjects:(NSString *)entityName props:(NSDictionary *)props{
-    NSPredicate* pred = [NAFetchHelper predicateForEqualProps:props];
+    NSPredicate* pred = [NSPredicate predicateForEqualProps:props];
 	
 	NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:entityName inManagedObjectContext:self];
@@ -37,7 +37,7 @@
 }
 
 - (NSManagedObject *)getObject:(NSString *)entityName props:(NSDictionary *)props{
-    NSPredicate* pred = [NAFetchHelper predicateForEqualProps:props];
+    NSPredicate* pred = [NSPredicate predicateForEqualProps:props];
 	
 	NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     NSEntityDescription *entity = [NSEntityDescription entityForName:entityName inManagedObjectContext:self];

@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import "NAFetchHelper.h"
+#import "NSPredicate+na.h"
 
 #import "NASyncModel+sync.h"
 
@@ -33,8 +33,12 @@ extern NSString * const NAModelControllerInitializedNotification;
 @property (strong, nonatomic) NSPersistentStoreCoordinator *coordinator;
 @property (strong, nonatomic) NSManagedObjectContext *mainContext;
 
-@property (readonly, nonatomic) NSString *name;
-@property (readonly, nonatomic) NSBundle *bundle;
+@property (strong, nonatomic) NSString *name;
+@property (strong, nonatomic) NSBundle *bundle;
+
+/** setup
+ */
+- (void)setup;
 
 /** 初期化処理．すでにあるデータベースは削除する
  */

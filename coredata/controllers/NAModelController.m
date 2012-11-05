@@ -16,19 +16,11 @@ NSString * const NAModelControllerInitializedNotification = @"NAModelControllerI
 - (id)init{
     self = [super init];
     if(self){
-        [self setup];
+        self.bundle = [NSBundle mainBundle];
     }
     return self;
 }
 
-- (NSBundle *)bundle{
-    return [NSBundle mainBundle];
-}
-
-- (NSString *)name{
-    @throw [NSException exceptionWithName:@"must override name option" reason:@"must override name option" userInfo:nil];
-    return nil;
-}
 
 - (NSString *)directoryPath{
     return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];

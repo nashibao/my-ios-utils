@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+/** mo用binaryとdictionaryの相互変換用クラス
+ */
 @interface NSDictionaryTransformer : NSValueTransformer
 
 @end

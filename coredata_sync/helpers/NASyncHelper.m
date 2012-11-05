@@ -16,6 +16,7 @@
 
 #import "NANetworkActivityIndicatorManager.h"
 
+#import "NSURLRequest+na.h"
 
 @implementation NASyncHelper
 
@@ -157,7 +158,7 @@
     }
     NSString *url = [[query.modelkls restDriver] URLByType:type model:[query.modelkls restModelName] endpoint:[query.modelkls restEndpoint] pk:query.pk option:option];
     NANetworkProtocol protocol = [[query.modelkls restDriver] ProtocolByType:type model:[query.modelkls restModelName]];
-    NSURLRequest *req = [NANetworkGCDHelper requestTo:url query:query.query protocol:protocol encoding:[[query.modelkls restDriver] encoding]];
+    NSURLRequest *req = [NSURLRequest request:url query:query.query protocol:protocol encoding:[[query.modelkls restDriver] encoding]];
     NSString *identifier = [self network_identifier:type rpcname:query.rpcName modelkls:query.modelkls options:option];
 #warning saveもしてないし．．
     if(query.objectID)

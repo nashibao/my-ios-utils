@@ -10,7 +10,7 @@
 
 #import "NASyncHelper.h"
 
-#import "NAFetchHelper.h"
+#import "NSPredicate+na.h"
 
 #import <objc/runtime.h>
 

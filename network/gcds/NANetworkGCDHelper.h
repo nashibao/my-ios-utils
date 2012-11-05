@@ -10,30 +10,18 @@
 
 #import "NANetworkConfig.h"
 
-/** helper class for netwrok with gcd.
+/** GCDを利用したNetwork用ヘルパー
  */
 @interface NANetworkGCDHelper : NSObject
 
-/** for managing statusbar indicator
- 
- @param baseURL base url
- @param query query
- @param protocol protocol
- @param encoding encoding
- */
 
-+ (NSURLRequest *)requestTo:(NSString *)baseURL
-                      query:(NSDictionary *)query
-                   protocol:(NANetworkProtocol)protocol
-                   encoding:(NSStringEncoding)encoding;
-
-/** request wrapper
+/** 非同期リクエスト without json
  
- @param request request
- @param returnEncoding jsonEncoding
- @param returnMain returnMain
- @param successHandler successHandler
- @param errorHandler errorHandler
+ @param request リクエスト
+ @param returnEncoding 返り値のエンコーディング．
+ @param returnMain メインスレッドで返ってくるかどうか
+ @param successHandler 成功時コールバック
+ @param errorHandler 失敗時コールバック
  */
 + (void)sendAsynchronousRequest:(NSURLRequest *)request
                  returnEncoding:(NSStringEncoding)returnEncoding
@@ -43,12 +31,12 @@
 
 /** json request wrapper
  
- @param request request
- @param jsonOption jsonOption
- @param returnEncoding jsonEncoding
- @param returnMain returnMain
- @param successHandler successHandler
- @param errorHandler errorHandler
+ @param request リクエスト
+ @param jsonOption jsonのoption NSJSONReadingOptions
+ @param returnEncoding 返り値のエンコーディング．
+ @param returnMain メインスレッドで返ってくるかどうか
+ @param successHandler 成功時コールバック
+ @param errorHandler 失敗時コールバック
  */
 + (void)sendJsonAsynchronousRequest:(NSURLRequest *)request
                          jsonOption:(NSJSONReadingOptions)jsonOption
@@ -57,9 +45,9 @@
                      successHandler:(void(^)(NSURLResponse *resp, id data))successHandler
                        errorHandler:(void(^)(NSURLResponse *resp, NSError *err))errorHandler;
 
-/** global error handler
+/** グローバルなエラーハンドラ
  
- @param errorHandler errorHandler
+ @param errorHandler エラーハンドラ
  */
 + (void)setGlobalErrorHandler:(void(^)(NSURLResponse *resp, NSError *err))errorHandler;
 

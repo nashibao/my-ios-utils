@@ -17,9 +17,16 @@
  */
 @interface NANetworkActivityIndicatorManager : NSObject
 
+/** enable option : default = YES */
 @property (nonatomic, assign, getter = isEnabled) BOOL enabled;
 
+/** getter. to be YES when network count > 0 */
 @property (readonly, nonatomic, assign) BOOL isNetworkActivityIndicatorVisible;
+
+/** error array.
+ 
+ 
+ */
 @property (strong, nonatomic) NSMutableArray *errors;
 @property (strong, nonatomic) NSMutableDictionary *activityObjectWithIdentifiers;
 

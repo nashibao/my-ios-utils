@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+/** http用プロトコルのenumバージョン
+ */
 typedef enum NANetworkProtocol: NSUInteger{
     NANetworkProtocolGET,
     NANetworkProtocolPOST,
@@ -16,6 +18,9 @@ typedef enum NANetworkProtocol: NSUInteger{
 } NANetworkProtocol;
 
 
+/**
+ 設定値
+ */
 @interface NANetworkConfig : NSObject
 
 @end

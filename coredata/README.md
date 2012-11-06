@@ -79,7 +79,7 @@ NSManagedObjectContext *context = [[NSManagedObjectContext alloc] initWithConcur
 
 設定方法は以下のようになります．
 
-`ModelController`クラスと
+`ModelController`クラスの実装と`NSManagedObject`のサブクラスである`TestObject`のカテゴリの実装をするだけです．
 
 ```objective-c
 
@@ -93,7 +93,7 @@ NSManagedObjectContext *context = [[NSManagedObjectContext alloc] initWithConcur
 @implementation ModelController
 SHARED_CONTROLLER(ModelController)
 - (NSString *)name{
-    return @"event";
+    return @"hoge";
 }
 @end
 ```
@@ -112,6 +112,9 @@ SHARED_CONTROLLER(ModelController)
 }
 @end
 ```
+
+`ModelController`の名前には、modeldの名前を入れて下さい．(`hoge.xcdatamodeld`ならば`hoge`です．この場合`hoge.sqlite`にデータは保存されます．)
+これで晴れて`na_ios/coredata`の全ての機能を使う事が出来ます．
 
 
 # 個々のパッケージ

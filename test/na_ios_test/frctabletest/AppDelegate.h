@@ -1,8 +1,8 @@
 //
 //  AppDelegate.h
-//  na_ios_test
+//  frctabletest
 //
-//  Created by nashibao on 2012/10/29.
+//  Created by nashibao on 2012/11/06.
 //  Copyright (c) 2012年 nashibao. All rights reserved.
 //
 

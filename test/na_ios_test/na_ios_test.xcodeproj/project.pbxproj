@@ -71,6 +71,53 @@
 		34868C65163F56C20032BF6D /* testmodel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 34868C63163F56C20032BF6D /* testmodel.xcdatamodeld */; };
 		34868C6C163F58C90032BF6D /* TestParent.m in Sources */ = {isa = PBXBuildFile; fileRef = 34868C6B163F58C90032BF6D /* TestParent.m */; };
 		34868C6F163F58C90032BF6D /* TestChild.m in Sources */ = {isa = PBXBuildFile; fileRef = 34868C6E163F58C90032BF6D /* TestChild.m */; };
+		34B740971648FB29008142AB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3413F75B163E443800A6B3ED /* UIKit.framework */; };
+		34B740981648FB29008142AB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3413F75D163E443800A6B3ED /* Foundation.framework */; };
+		34B740991648FB29008142AB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3413F75F163E443800A6B3ED /* CoreGraphics.framework */; };
+		34B7409F1648FB29008142AB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 34B7409D1648FB29008142AB /* InfoPlist.strings */; };
+		34B740A11648FB29008142AB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B740A01648FB29008142AB /* main.m */; };
+		34B740A51648FB29008142AB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B740A41648FB29008142AB /* AppDelegate.m */; };
+		34B740A71648FB29008142AB /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 34B740A61648FB29008142AB /* Default.png */; };
+		34B740A91648FB29008142AB /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 34B740A81648FB29008142AB /* Default@2x.png */; };
+		34B740AB1648FB29008142AB /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 34B740AA1648FB29008142AB /* Default-568h@2x.png */; };
+		34B740AE1648FB29008142AB /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34B740AC1648FB29008142AB /* MainStoryboard.storyboard */; };
+		34B740DB1648FBBD008142AB /* Event+na.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B740D01648FBBD008142AB /* Event+na.m */; };
+		34B740DC1648FBBD008142AB /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B740D21648FBBD008142AB /* Event.m */; };
+		34B740DD1648FBBD008142AB /* EventModelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B740D41648FBBD008142AB /* EventModelController.m */; };
+		34B740DE1648FBBD008142AB /* table.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 34B740D51648FBBD008142AB /* table.xcdatamodeld */; };
+		34B740DF1648FBBD008142AB /* EventFRCTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B740D91648FBBD008142AB /* EventFRCTableViewController.m */; };
+		34B740E01648FC09008142AB /* NAFRCDelegateTableViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 346C5D6E1647A67B0036531E /* NAFRCDelegateTableViewController.h */; };
+		34B740E11648FC09008142AB /* NAFRCDelegateTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 346C5D6F1647A67B0036531E /* NAFRCDelegateTableViewController.m */; };
+		34B740E21648FC09008142AB /* NAFRCTableViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 346C5D701647A67B0036531E /* NAFRCTableViewController.h */; };
+		34B740E31648FC09008142AB /* NAFRCTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 346C5D711647A67B0036531E /* NAFRCTableViewController.m */; };
+		34B740E41648FC09008142AB /* NAFRCTableWithAppendViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 346C5D721647A67B0036531E /* NAFRCTableWithAppendViewController.h */; };
+		34B740E51648FC09008142AB /* NAFRCTableWithAppendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 346C5D731647A67B0036531E /* NAFRCTableWithAppendViewController.m */; };
+		34B740E61648FC10008142AB /* NAModelController.h in Sources */ = {isa = PBXBuildFile; fileRef = 346C5D781647A6A90036531E /* NAModelController.h */; };
+		34B740E71648FC10008142AB /* NAModelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 346C5D791647A6A90036531E /* NAModelController.m */; };
+		34B740E81648FC18008142AB /* NSFetchRequest+na.h in Sources */ = {isa = PBXBuildFile; fileRef = 346C5D5F1647A3A20036531E /* NSFetchRequest+na.h */; };
+		34B740E91648FC18008142AB /* NSFetchRequest+na.m in Sources */ = {isa = PBXBuildFile; fileRef = 346C5D601647A3A20036531E /* NSFetchRequest+na.m */; };
+		34B740EA1648FC18008142AB /* NSManagedObject+na.h in Sources */ = {isa = PBXBuildFile; fileRef = 346C5D611647A3A20036531E /* NSManagedObject+na.h */; };
+		34B740EB1648FC18008142AB /* NSManagedObject+na.m in Sources */ = {isa = PBXBuildFile; fileRef = 346C5D621647A3A20036531E /* NSManagedObject+na.m */; };
+		34B740EC1648FC18008142AB /* NSManagedObjectContext+na.h in Sources */ = {isa = PBXBuildFile; fileRef = 346C5D631647A3A20036531E /* NSManagedObjectContext+na.h */; };
+		34B740ED1648FC18008142AB /* NSManagedObjectContext+na.m in Sources */ = {isa = PBXBuildFile; fileRef = 346C5D641647A3A20036531E /* NSManagedObjectContext+na.m */; };
+		34B740EE1648FC18008142AB /* NSPredicate+na.h in Sources */ = {isa = PBXBuildFile; fileRef = 346C5D651647A3A20036531E /* NSPredicate+na.h */; };
+		34B740EF1648FC18008142AB /* NSPredicate+na.m in Sources */ = {isa = PBXBuildFile; fileRef = 346C5D661647A3A20036531E /* NSPredicate+na.m */; };
+		34B740F01648FC18008142AB /* NSDictionaryTransformer.h in Sources */ = {isa = PBXBuildFile; fileRef = 34048D2A16441C19008E5E32 /* NSDictionaryTransformer.h */; };
+		34B740F11648FC18008142AB /* NSDictionaryTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 34048D2B16441C19008E5E32 /* NSDictionaryTransformer.m */; };
+		34B740F21648FC18008142AB /* SingletonMactors.h in Sources */ = {isa = PBXBuildFile; fileRef = 3482C90E1648AB69001B1BB1 /* SingletonMactors.h */; };
+		34B740F31648FC18008142AB /* SingletonMactors.m in Sources */ = {isa = PBXBuildFile; fileRef = 3482C90F1648AB69001B1BB1 /* SingletonMactors.m */; };
+		34B740F41648FC33008142AB /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3413F761163E443800A6B3ED /* CoreData.framework */; };
+		34B740F51648FC5A008142AB /* NAViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 34048EC216441C19008E5E32 /* NAViewController.h */; };
+		34B740F61648FC5A008142AB /* NAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34048EC316441C19008E5E32 /* NAViewController.m */; };
+		34B740F71648FC5A008142AB /* NAViewControllerProtocol.h in Sources */ = {isa = PBXBuildFile; fileRef = 34048EC416441C19008E5E32 /* NAViewControllerProtocol.h */; };
+		34B740F81648FC5A008142AB /* NATableViewCell.h in Sources */ = {isa = PBXBuildFile; fileRef = 34048EC716441C19008E5E32 /* NATableViewCell.h */; };
+		34B740F91648FC5A008142AB /* NATableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 34048EC816441C19008E5E32 /* NATableViewCell.m */; };
+		34B740FA1648FC5A008142AB /* NATextLabelCell.h in Sources */ = {isa = PBXBuildFile; fileRef = 34048EC916441C19008E5E32 /* NATextLabelCell.h */; };
+		34B740FB1648FC5A008142AB /* NATextLabelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 34048ECA16441C19008E5E32 /* NATextLabelCell.m */; };
+		34B740FC1648FC5A008142AB /* NAArrayTableViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 34048ECB16441C19008E5E32 /* NAArrayTableViewController.h */; };
+		34B740FD1648FC5A008142AB /* NAArrayTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34048ECC16441C19008E5E32 /* NAArrayTableViewController.m */; };
+		34B740FE1648FC5A008142AB /* NATableViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 34048ECD16441C19008E5E32 /* NATableViewController.h */; };
+		34B740FF1648FC5A008142AB /* NATableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34048ECE16441C19008E5E32 /* NATableViewController.m */; };
 		7FC45350278542F5B9CB72A9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D571E5B3F2EC41BB97B08A6C /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -205,6 +252,26 @@
 		34868C71163F62200032BF6D /* NSManagedObjectContextNaCategoryTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSManagedObjectContextNaCategoryTest.m; sourceTree = "<group>"; };
 		34A6A875163E88B400F28492 /* WorkingTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WorkingTest.h; path = ../network/WorkingTest.h; sourceTree = "<group>"; };
 		34A6A876163E88B400F28492 /* WorkingTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WorkingTest.m; path = ../network/WorkingTest.m; sourceTree = "<group>"; };
+		34B740951648FB29008142AB /* frctabletest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = frctabletest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		34B7409C1648FB29008142AB /* frctabletest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "frctabletest-Info.plist"; sourceTree = "<group>"; };
+		34B7409E1648FB29008142AB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		34B740A01648FB29008142AB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		34B740A21648FB29008142AB /* frctabletest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "frctabletest-Prefix.pch"; sourceTree = "<group>"; };
+		34B740A31648FB29008142AB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		34B740A41648FB29008142AB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		34B740A61648FB29008142AB /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		34B740A81648FB29008142AB /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		34B740AA1648FB29008142AB /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		34B740AD1648FB29008142AB /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		34B740CF1648FBBD008142AB /* Event+na.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Event+na.h"; sourceTree = "<group>"; };
+		34B740D01648FBBD008142AB /* Event+na.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Event+na.m"; sourceTree = "<group>"; };
+		34B740D11648FBBD008142AB /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
+		34B740D21648FBBD008142AB /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
+		34B740D31648FBBD008142AB /* EventModelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventModelController.h; sourceTree = "<group>"; };
+		34B740D41648FBBD008142AB /* EventModelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventModelController.m; sourceTree = "<group>"; };
+		34B740D61648FBBD008142AB /* table.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = table.xcdatamodel; sourceTree = "<group>"; };
+		34B740D81648FBBD008142AB /* EventFRCTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventFRCTableViewController.h; sourceTree = "<group>"; };
+		34B740D91648FBBD008142AB /* EventFRCTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventFRCTableViewController.m; sourceTree = "<group>"; };
 		34CA1B20163E583B0005F09E /* NANetworkGCDHelperTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NANetworkGCDHelperTest.h; sourceTree = "<group>"; };
 		34CA1B21163E583B0005F09E /* NANetworkGCDHelperTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NANetworkGCDHelperTest.m; sourceTree = "<group>"; };
 		91A8E345710D4C69B7CBAA84 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
@@ -232,6 +299,17 @@
 				3413F780163E443800A6B3ED /* UIKit.framework in Frameworks */,
 				3413F781163E443800A6B3ED /* Foundation.framework in Frameworks */,
 				3413F782163E443800A6B3ED /* CoreData.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		34B740921648FB29008142AB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				34B740F41648FC33008142AB /* CoreData.framework in Frameworks */,
+				34B740971648FB29008142AB /* UIKit.framework in Frameworks */,
+				34B740981648FB29008142AB /* Foundation.framework in Frameworks */,
+				34B740991648FB29008142AB /* CoreGraphics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -472,6 +550,7 @@
 				34048D1C16441C19008E5E32 /* na_ios */,
 				3413F763163E443800A6B3ED /* na_ios_test */,
 				3413F785163E443800A6B3ED /* na_ios_testTests */,
+				34B7409A1648FB29008142AB /* frctabletest */,
 				3413F75A163E443800A6B3ED /* Frameworks */,
 				3413F758163E443800A6B3ED /* Products */,
 				91A8E345710D4C69B7CBAA84 /* Pods.xcconfig */,
@@ -483,6 +562,7 @@
 			children = (
 				3413F757163E443800A6B3ED /* na_ios_test.app */,
 				3413F77D163E443800A6B3ED /* na_ios_testTests.octest */,
+				34B740951648FB29008142AB /* frctabletest.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -503,6 +583,7 @@
 		3413F763163E443800A6B3ED /* na_ios_test */ = {
 			isa = PBXGroup;
 			children = (
+				34B73F5A1648F4A5008142AB /* apps */,
 				3413F76C163E443800A6B3ED /* AppDelegate.h */,
 				3413F76D163E443800A6B3ED /* AppDelegate.m */,
 				3413F775163E443800A6B3ED /* na_ios_test.xcdatamodeld */,
@@ -601,6 +682,87 @@
 			path = controllers;
 			sourceTree = "<group>";
 		};
+		34B73F5A1648F4A5008142AB /* apps */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = apps;
+			sourceTree = "<group>";
+		};
+		34B7409A1648FB29008142AB /* frctabletest */ = {
+			isa = PBXGroup;
+			children = (
+				34B740CC1648FBBD008142AB /* apps */,
+				34B740A31648FB29008142AB /* AppDelegate.h */,
+				34B740A41648FB29008142AB /* AppDelegate.m */,
+				34B740AC1648FB29008142AB /* MainStoryboard.storyboard */,
+				34B7409B1648FB29008142AB /* Supporting Files */,
+			);
+			path = frctabletest;
+			sourceTree = "<group>";
+		};
+		34B7409B1648FB29008142AB /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				34B7409C1648FB29008142AB /* frctabletest-Info.plist */,
+				34B7409D1648FB29008142AB /* InfoPlist.strings */,
+				34B740A01648FB29008142AB /* main.m */,
+				34B740A21648FB29008142AB /* frctabletest-Prefix.pch */,
+				34B740A61648FB29008142AB /* Default.png */,
+				34B740A81648FB29008142AB /* Default@2x.png */,
+				34B740AA1648FB29008142AB /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		34B740CC1648FBBD008142AB /* apps */ = {
+			isa = PBXGroup;
+			children = (
+				34B740CD1648FBBD008142AB /* app */,
+			);
+			path = apps;
+			sourceTree = "<group>";
+		};
+		34B740CD1648FBBD008142AB /* app */ = {
+			isa = PBXGroup;
+			children = (
+				34B740CE1648FBBD008142AB /* models */,
+				34B740D71648FBBD008142AB /* viewcontrollers */,
+				34B740DA1648FBBD008142AB /* views */,
+			);
+			path = app;
+			sourceTree = "<group>";
+		};
+		34B740CE1648FBBD008142AB /* models */ = {
+			isa = PBXGroup;
+			children = (
+				34B740CF1648FBBD008142AB /* Event+na.h */,
+				34B740D01648FBBD008142AB /* Event+na.m */,
+				34B740D11648FBBD008142AB /* Event.h */,
+				34B740D21648FBBD008142AB /* Event.m */,
+				34B740D31648FBBD008142AB /* EventModelController.h */,
+				34B740D41648FBBD008142AB /* EventModelController.m */,
+				34B740D51648FBBD008142AB /* table.xcdatamodeld */,
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
+		34B740D71648FBBD008142AB /* viewcontrollers */ = {
+			isa = PBXGroup;
+			children = (
+				34B740D81648FBBD008142AB /* EventFRCTableViewController.h */,
+				34B740D91648FBBD008142AB /* EventFRCTableViewController.m */,
+			);
+			path = viewcontrollers;
+			sourceTree = "<group>";
+		};
+		34B740DA1648FBBD008142AB /* views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
 		34CA1B1D163E583B0005F09E /* coredata */ = {
 			isa = PBXGroup;
 			children = (
@@ -691,6 +853,23 @@
 			productReference = 3413F77D163E443800A6B3ED /* na_ios_testTests.octest */;
 			productType = "com.apple.product-type.bundle";
 		};
+		34B740941648FB29008142AB /* frctabletest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 34B740B51648FB29008142AB /* Build configuration list for PBXNativeTarget "frctabletest" */;
+			buildPhases = (
+				34B740911648FB29008142AB /* Sources */,
+				34B740921648FB29008142AB /* Frameworks */,
+				34B740931648FB29008142AB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = frctabletest;
+			productName = frctabletest;
+			productReference = 34B740951648FB29008142AB /* frctabletest.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -714,6 +893,7 @@
 			targets = (
 				3413F756163E443800A6B3ED /* na_ios_test */,
 				3413F77C163E443800A6B3ED /* na_ios_testTests */,
+				34B740941648FB29008142AB /* frctabletest */,
 			);
 		};
 /* End PBXProject section */
@@ -737,6 +917,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				3413F78A163E443800A6B3ED /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		34B740931648FB29008142AB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				34B7409F1648FB29008142AB /* InfoPlist.strings in Resources */,
+				34B740A71648FB29008142AB /* Default.png in Resources */,
+				34B740A91648FB29008142AB /* Default@2x.png in Resources */,
+				34B740AB1648FB29008142AB /* Default-568h@2x.png in Resources */,
+				34B740AE1648FB29008142AB /* MainStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -864,6 +1056,51 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		34B740911648FB29008142AB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				34B740F51648FC5A008142AB /* NAViewController.h in Sources */,
+				34B740F61648FC5A008142AB /* NAViewController.m in Sources */,
+				34B740F71648FC5A008142AB /* NAViewControllerProtocol.h in Sources */,
+				34B740F81648FC5A008142AB /* NATableViewCell.h in Sources */,
+				34B740F91648FC5A008142AB /* NATableViewCell.m in Sources */,
+				34B740FA1648FC5A008142AB /* NATextLabelCell.h in Sources */,
+				34B740FB1648FC5A008142AB /* NATextLabelCell.m in Sources */,
+				34B740FC1648FC5A008142AB /* NAArrayTableViewController.h in Sources */,
+				34B740FD1648FC5A008142AB /* NAArrayTableViewController.m in Sources */,
+				34B740FE1648FC5A008142AB /* NATableViewController.h in Sources */,
+				34B740FF1648FC5A008142AB /* NATableViewController.m in Sources */,
+				34B740E81648FC18008142AB /* NSFetchRequest+na.h in Sources */,
+				34B740E91648FC18008142AB /* NSFetchRequest+na.m in Sources */,
+				34B740EA1648FC18008142AB /* NSManagedObject+na.h in Sources */,
+				34B740EB1648FC18008142AB /* NSManagedObject+na.m in Sources */,
+				34B740EC1648FC18008142AB /* NSManagedObjectContext+na.h in Sources */,
+				34B740ED1648FC18008142AB /* NSManagedObjectContext+na.m in Sources */,
+				34B740EE1648FC18008142AB /* NSPredicate+na.h in Sources */,
+				34B740EF1648FC18008142AB /* NSPredicate+na.m in Sources */,
+				34B740F01648FC18008142AB /* NSDictionaryTransformer.h in Sources */,
+				34B740F11648FC18008142AB /* NSDictionaryTransformer.m in Sources */,
+				34B740F21648FC18008142AB /* SingletonMactors.h in Sources */,
+				34B740F31648FC18008142AB /* SingletonMactors.m in Sources */,
+				34B740E61648FC10008142AB /* NAModelController.h in Sources */,
+				34B740E71648FC10008142AB /* NAModelController.m in Sources */,
+				34B740E01648FC09008142AB /* NAFRCDelegateTableViewController.h in Sources */,
+				34B740E11648FC09008142AB /* NAFRCDelegateTableViewController.m in Sources */,
+				34B740E21648FC09008142AB /* NAFRCTableViewController.h in Sources */,
+				34B740E31648FC09008142AB /* NAFRCTableViewController.m in Sources */,
+				34B740E41648FC09008142AB /* NAFRCTableWithAppendViewController.h in Sources */,
+				34B740E51648FC09008142AB /* NAFRCTableWithAppendViewController.m in Sources */,
+				34B740A11648FB29008142AB /* main.m in Sources */,
+				34B740A51648FB29008142AB /* AppDelegate.m in Sources */,
+				34B740DB1648FBBD008142AB /* Event+na.m in Sources */,
+				34B740DC1648FBBD008142AB /* Event.m in Sources */,
+				34B740DD1648FBBD008142AB /* EventModelController.m in Sources */,
+				34B740DE1648FBBD008142AB /* table.xcdatamodeld in Sources */,
+				34B740DF1648FBBD008142AB /* EventFRCTableViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -889,6 +1126,22 @@
 				3413F789163E443800A6B3ED /* en */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		34B7409D1648FB29008142AB /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				34B7409E1648FB29008142AB /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		34B740AC1648FB29008142AB /* MainStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				34B740AD1648FB29008142AB /* en */,
+			);
+			name = MainStoryboard.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1012,6 +1265,30 @@
 			};
 			name = Release;
 		};
+		34B740B61648FB29008142AB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "frctabletest/frctabletest-Prefix.pch";
+				INFOPLIST_FILE = "frctabletest/frctabletest-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		34B740B71648FB29008142AB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "frctabletest/frctabletest-Prefix.pch";
+				INFOPLIST_FILE = "frctabletest/frctabletest-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1041,6 +1318,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		34B740B51648FB29008142AB /* Build configuration list for PBXNativeTarget "frctabletest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				34B740B61648FB29008142AB /* Debug */,
+				34B740B71648FB29008142AB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 
@@ -1072,6 +1357,16 @@
 			);
 			currentVersion = 34868C64163F56C20032BF6D /* testmodel.xcdatamodel */;
 			path = testmodel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		34B740D51648FBBD008142AB /* table.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				34B740D61648FBBD008142AB /* table.xcdatamodel */,
+			);
+			currentVersion = 34B740D61648FBBD008142AB /* table.xcdatamodel */;
+			path = table.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

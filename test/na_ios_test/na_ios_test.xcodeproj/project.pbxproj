@@ -29,7 +29,6 @@
 		34048EEE16441C19008E5E32 /* NAMultipleSelectFormTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34048D6216441C19008E5E32 /* NAMultipleSelectFormTableViewController.m */; };
 		34048EEF16441C19008E5E32 /* NASelectFormTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34048D6416441C19008E5E32 /* NASelectFormTableViewController.m */; };
 		34048EF016441C19008E5E32 /* NANetworkGCDHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 34048D6816441C19008E5E32 /* NANetworkGCDHelper.m */; };
-		34048F0D16441C19008E5E32 /* make_help.sh in Resources */ = {isa = PBXBuildFile; fileRef = 34048D9116441C19008E5E32 /* make_help.sh */; };
 		34048F0E16441C19008E5E32 /* NANetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 34048D9316441C19008E5E32 /* NANetworkActivityIndicatorManager.m */; };
 		34048F0F16441C19008E5E32 /* NANetworkConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 34048D9516441C19008E5E32 /* NANetworkConfig.m */; };
 		34048F1016441C19008E5E32 /* NABaseNetworkOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 34048D9816441C19008E5E32 /* NABaseNetworkOperation.m */; };
@@ -130,7 +129,6 @@
 		34048D6416441C19008E5E32 /* NASelectFormTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NASelectFormTableViewController.m; sourceTree = "<group>"; };
 		34048D6716441C19008E5E32 /* NANetworkGCDHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NANetworkGCDHelper.h; sourceTree = "<group>"; };
 		34048D6816441C19008E5E32 /* NANetworkGCDHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NANetworkGCDHelper.m; sourceTree = "<group>"; };
-		34048D9116441C19008E5E32 /* make_help.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = make_help.sh; sourceTree = "<group>"; };
 		34048D9216441C19008E5E32 /* NANetworkActivityIndicatorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NANetworkActivityIndicatorManager.h; sourceTree = "<group>"; };
 		34048D9316441C19008E5E32 /* NANetworkActivityIndicatorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NANetworkActivityIndicatorManager.m; sourceTree = "<group>"; };
 		34048D9416441C19008E5E32 /* NANetworkConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NANetworkConfig.h; sourceTree = "<group>"; };
@@ -383,7 +381,6 @@
 			isa = PBXGroup;
 			children = (
 				34048D6616441C19008E5E32 /* gcds */,
-				34048D9116441C19008E5E32 /* make_help.sh */,
 				346C5CFF16479A490036531E /* NSURLRequest+na.h */,
 				346C5D0016479A490036531E /* NSURLRequest+na.m */,
 				34048D9216441C19008E5E32 /* NANetworkActivityIndicatorManager.h */,
@@ -732,7 +729,6 @@
 				3413F774163E443800A6B3ED /* Default-568h@2x.png in Resources */,
 				34048ED316441C19008E5E32 /* .gitignore in Resources */,
 				34048EE416441C19008E5E32 /* README.md in Resources */,
-				34048F0D16441C19008E5E32 /* make_help.sh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

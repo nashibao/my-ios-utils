@@ -5,25 +5,23 @@ na_ios/coredataは、扱うのに経験が必要なcoredataを、簡単に扱え
 
 例えば、`TestObject`という`NSManagedObject`のクラスがあった場合、
 
-```objective-c
-
-    [TestObject filter:@{@"name": @"test"} options:nil complete:^(NSArray *mos) {
-        // 色々処理
-    }];
+```
+[TestObject filter:@{@"name": @"test"} options:nil complete:^(NSArray *mos) {
+    // 色々処理
+}];
 ```
 
 このように非同期メソッドの`complete`ハンドラに結果が渡されます．また`complete`ハンドラはmain threadで返ってくるため、ハンドラ内でUIの処理をしても、問題が無いようになっています．
 非同期メソッドには`filter`の他に、`create`、`get`、`get_ore_create`などのAPIがあります．
 
-```objective-c
+```
+[TestObject create:@{@"name": @"test2"} options:nil complete:^(id mo) {
+	// hogehoge
+}];
 
-    [TestObject create:@{@"name": @"test2"} options:nil complete:^(id mo) {
-    	// hogehoge
-    }];
-    
-    [TestObject get_or_create:@{@"name": @"test"} options:nil complete:^(id mo) {
-    	// hogehoge
-    }];
+[TestObject get_or_create:@{@"name": @"test"} options:nil complete:^(id mo) {
+	// hogehoge
+}];
 ```
 
 また、同じようにして、ハンドラを渡さない同期メソッドもあります．

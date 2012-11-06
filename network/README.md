@@ -1,9 +1,9 @@
-# na_ios/network
+# `na_ios/network`
 
-na_ios/networkはnetworkアクセスに置けるスレッドプログラミングを隠蔽するモジュールです．
-バックエンドにGCDを用いたものと、NSOperationを用いたものの二種類があります．
+`na_ios/network`はnetworkアクセスに置けるスレッドプログラミングを隠蔽するモジュールです．
+バックエンドにGCDを用いたものと、`NSOperation`を用いたものの二種類があります．
 
-GCDを用いた、NANetworkGCDHelperのサンプルコードは次のようになります．
+GCDを用いた、`NANetworkGCDHelper`のサンプルコードは次のようになります．
 
 ```objective-c
 [NANetworkGCDHelper sendAsynchronousRequest:req returnEncoding:NSShiftJISStringEncoding returnMain:NO successHandler:^(NSURLResponse *resp, id data) {
@@ -23,12 +23,12 @@ GCDを用いた、NANetworkGCDHelperのサンプルコードは次のように�
                      successHandler:(void(^)(NSURLResponse *resp, id data))successHandler
                        errorHandler:(void(^)(NSURLResponse *resp, NSError *err))errorHandler;
 ```
-returnManinをYESにするとバックエンドのスレッド内でstringのエンコードとjsonのエンコードを行ってからmain threadに結果を返してくれます．
+`returnMain`をYESにするとバックエンドのスレッド内でstringのエンコードとjsonのエンコードを行ってからmain threadに結果を返してくれます．
 
 
-NANetworkGCDHelperは単純なAPIのみで、キャンセルやネットワークコネクションの有無などを考慮しません．これらの機能を使うためにはNANetworkOperationを使って下さい．
+`NANetworkGCDHelper`は単純なAPIのみで、キャンセルやネットワークコネクションの有無などを考慮しません．これらの機能を使うためには`NANetworkOperation`を使って下さい．
 
-NANetworkOperationは次のように呼び出すことができます．
+`NANetworkOperation`は次のように呼び出すことができます．
 
 
 ```objective-c
@@ -39,11 +39,11 @@ NANetworkOperationは次のように呼び出すことができます．
 }];
 ```
 
-NANetworkGCDHelperと比較して、queue、identifier、identifierMaxCount、queueingOptionなどの引数が追加されています
+`NANetworkGCDHelper`と比較して、`queue`、`identifier`、`identifierMaxCount`、`queueingOption`などの引数が追加されています
 
-queueパラメタは処理を走らせるためのNSOperationQueueです．nilに設定すると[NSOperationQueue globalBackgroundQueue]が利用されます．
+`queue`パラメタは処理を走らせるための`NSOperationQueue`です．`nil`に設定すると`[NSOperationQueue globalBackgroundQueue]`が利用されます．
 
-queueingOptionパラメタはNANetworkOperationQueingOptionから選択します．
+`queueingOption`パラメタは`NANetworkOperationQueingOption`から選択します．
 
 ```objective-c
 typedef enum NANetworkOperationQueingOption: NSInteger {
@@ -57,8 +57,8 @@ typedef enum NANetworkOperationQueingOption: NSInteger {
 } NANetworkOperationQueingOption;
 ```
 
-identifierパラメタはqueueingOptionにおける識別子です．またキャンセル処理もこの識別子を使ってまとめてキャンセル処理を行うことができます．
-identifiermaxCountパラメタはNANetworkOperationQueingOptionCancel, NANetworkOperationQueingOptionReturnOldの時にだけ使われる最大値です．
+`identifier`パラメタは`queueingOption`における識別子です．またキャンセル処理もこの識別子を使ってまとめてキャンセル処理を行うことができます．
+`identifiermaxCount`パラメタは`NANetworkOperationQueingOptionCancel`, `NANetworkOperationQueingOptionReturnOld`の時にだけ使われる最大値です．
 
 キャンセル処理はidentifierを使って次のように行うことが出来ます．
 
@@ -68,4 +68,4 @@ identifiermaxCountパラメタはNANetworkOperationQueingOptionCancel, NANetwork
 }];
 ```
 
-またNANetworkOperationでは内部にtonymillion/Reachabilityを利用しています．ネットワークがないところでは一度アクセスをあきらめ、ネットワークが復帰したタイミングでもう一度処理を走らせます．ただし、アクセス途中でネットワークが遮断された場合はエラーハンドラに返ってきます．
+また`NANetworkOperation`では内部に[tonymillion/Reachability](https://github.com/tonymillion/Reachability)を利用しています．ネットワークがないところでは一度アクセスをあきらめ、ネットワークが復帰したタイミングでもう一度処理を走らせます．ただし、アクセス途中でネットワークが遮断された場合はエラーハンドラに返ってきます．

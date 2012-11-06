@@ -36,14 +36,10 @@
 ```objective-c
 
 @implementation EventFRCTableViewController
-
 …
 …
-
 - (IBAction)addEvent:(id)sender{
-    //    dataの更新
     [Event create:@{@"date": [NSDate date]} options:nil complete:^(id mo) {
-        
         //        ここで更新(メインスレッド)
         [self.fetchedResultsController performFetch:nil];
         [self.tableView reloadData];

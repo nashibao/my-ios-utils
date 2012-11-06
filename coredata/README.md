@@ -1,14 +1,15 @@
 # na_ios/coredata モジュール
-na_ios/coredataは扱うのに経験が必要なcoredataを、簡単に扱えるようにするモジュールです．データの正しさとパフォーマンスの良さを両立するため、多くのAPIの内部ではスレッドを使い、なおかつ、それを隠蔽しています．
+na_ios/coredataは、扱うのに経験が必要なcoredataを、簡単に扱えるようにするモジュールです．
+
+データの正しさとパフォーマンスの良さを両立するため、多くのAPIの内部ではスレッドを使い、なおかつ、それを隠蔽しています．
 
 例えば、`TestObject`という`NSManagedObject`のクラスがあった場合、
 
 ```objective-c
-    
+
     [TestObject filter:@{@"name": @"test"} options:nil complete:^(NSArray *mos) {
         // 色々処理
     }];
-
 ```
 
 このように非同期メソッドの`complete`ハンドラに結果が渡されます．また`complete`ハンドラはmain threadで返ってくるため、ハンドラ内でUIの処理をしても、問題が無いようになっています．
@@ -23,7 +24,6 @@ na_ios/coredataは扱うのに経験が必要なcoredataを、簡単に扱える
     [TestObject get_or_create:@{@"name": @"test"} options:nil complete:^(id mo) {
     	// hogehoge
     }];
-
 ```
 
 また、同じようにして、ハンドラを渡さない同期メソッドもあります．
@@ -34,7 +34,6 @@ na_ios/coredataは扱うのに経験が必要なcoredataを、簡単に扱える
 	NSArray *objs = [TestObject filter:@{@"name": @"test"} options:nil];
 	TestObject *obj2 = [TestObject get_or_create:@{@"name": @"test"} options:nil];
 	Bool bl = (obj == obj2); => YES
-
 ```
 
 最後に、独自にcoredata上でスレッドを作成したい上級者向けには、次のようなメソッドがあります．
@@ -47,7 +46,6 @@ na_ios/coredataは扱うのに経験が必要なcoredataを、簡単に扱える
     } afterSaveOnMainThread:^(NSNotification *note) {
         // !!!!!!終了処理!!!!!!
     }];
-    
 ```
 
 これは次の処理のラッパーになっています．
@@ -84,26 +82,27 @@ na_ios/coredataは扱うのに経験が必要なcoredataを、簡単に扱える
 
 NSFetchRequest, NSManagedObjectContext, NSPredicate, NSManagedObjectの4種類に対応しています．
 
-#### categories/NSPredicate+na
-
-NSDictionaryか、NSArrayからPredicateを作成するもので、NSDictionaryの方は`@"%K == %@", key, val`で評価し、NSArrayの方は、評価式を順番に入れておくショートカットを持っています．基本的には上記の3つのクラスを用いてNSPredicateを直接は触らないようにするのが得策です．
-
-#### categories/NSManagedObjectContext+na
+ - `categories/NSManagedObjectContext+na`
 
 contextにCRUD操作を生やしているだけ．
 こちらも出来るだけ下のmoのAPIから呼び出すのが良い．
 
-#### categories/NSManagedObject+na
+ - `categories/NSManagedObject+na`
 
 moにCRUD操作を生やしているだけ．ただし、blockによるcallbackを引数に持つものは非同期．またメインスレッドで返ってくる．．
 
-#### categories/NSFetchRequest+na
+ - `categories/NSFetchRequest+na`
+ 
 fetchRequestをupdateする．
 （検索時に有用）
 
+ - `categories/NSPredicate+na`
+
+NSDictionaryか、NSArrayからPredicateを作成するもので、NSDictionaryの方は`@"%K == %@", key, val`で評価し、NSArrayの方は、評価式を順番に入れておくショートカットを持っています．基本的には上記の3つのクラスを用いてNSPredicateを直接は触らないようにするのが得策です．
+
 # coredata/controllers
 
-#### controllers/NAModelController  
+#### `controllers/NAModelController`  
 modeldファイル(`hoge.modeld`)の名前(`hoge`)を`name`に設定して、`setup()`を呼べば、以下のことをやってくれる  
  - coordinatorの作成  
  - bundleからの初期コピー（bundle内に`hoge.sqlite`ファイルを入れておけば、初期状態としてそちらを使う．でかいデータの時に便利）  
@@ -113,7 +112,7 @@ modeldファイル(`hoge.modeld`)の名前(`hoge`)を`name`に設定して、`se
 
 # coredata/models
 
-#### models/NSDictionaryTransformer
+#### `models/NSDictionaryTransformer`
 
 dictionaryとsqlite内のバイナリを自動変換するクラス
 

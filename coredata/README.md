@@ -74,9 +74,9 @@ NSManagedObjectContext *context = [[NSManagedObjectContext alloc] initWithConcur
 ```
 
 
-# パッケージ
+# 個々のパッケージ
 
-# coredata/categories
+## coredata/categories
 コアデータに関わる各種クラスのカテゴリが入っているパッケージになります．
 
 `NSFetchRequest`, `NSManagedObjectContext`, `NSPredicate`, `NSManagedObject`の4種類に対応しています．まずは`NSManagedObject`だけを使うのが良いでしょう．
@@ -95,7 +95,7 @@ contextにCRUD操作を生やすためのカテゴリ．`categories/NSManagedObj
 
 NSDictionaryか、NSArrayからPredicateを作成するもので、NSDictionaryの方は`@"%K == %@", key, val`で評価し、NSArrayの方は、評価式を順番に入れておくショートカットを持っています．基本的には上記の3つのクラスを用いてNSPredicateを直接は触らないようにするのが得策です．
 
-# coredata/controllers
+## coredata/controllers
 
 #### `controllers/NAModelController`  
 
@@ -106,25 +106,27 @@ modeldファイル(`hoge.modeld`)の名前(`hoge`)を`name`に設定して、`se
 
 また`destroyAndSetup`を呼ぶと、sqliteファイルを削除して、もう一度最初からやり直すことができます．
 
-# coredata/models
+## coredata/models
 
 #### `models/NSDictionaryTransformer`
 
 dictionaryとsqlite内のバイナリを自動変換するクラス
 
 
-# その他の情報
-
-#### `magicalpanda/MagicalRecord`との比較
+# `magicalpanda/MagicalRecord`との比較
 
 同じような目的のモジュールに、[magicalpanda/MagicalRecord](https://github.com/magicalpanda/MagicalRecord)があります．`magicalpanda/MagicalRecord`の“Performing Core Data operations on Threads“の章も合わせて参照して下さい．
 
-`magicalpanda/MagicalRecord`では、filteringやsortingにメリットがあります．`na_ios/coredata`に含まれていないような複雑なフェッチを行うことができます．これに対して、`na_ios/coredata`では複雑なfilteringやsortingを介するフェッチには`NSFetchedResultsController`経由で行い、`NSArray`を介さない方法を推奨しています．これは、`UITableViewController`などと併用する場合、パフォーマンスとメモリの観点において都合が良いからです．
+`magicalpanda/MagicalRecord`では、filteringやsortingにメリットがあります．`na_ios/coredata`に含まれていないような複雑なフェッチを行うことができます．
+これに対して、`na_ios/coredata`では複雑なfilteringやsortingを介するフェッチには`NSFetchedResultsController`経由で行い、`NSArray`を介さない方法を推奨しています．これは、`UITableViewController`などと併用する場合、パフォーマンスとメモリの観点において都合が良いからです．
+
 `NSFetchedResultsController`と`UITableViewController`を`na_ios/coredata`で使うには`na_ios/coredata_ui`を参照して下さい．
 
-`na_ios/coredata`ではフェッチに自由度がない代わりに、フェッチやインサートに非同期のメソッドを持っています．これらを使う事でUIのブロックを防ぐことを念頭においています．
+`na_ios/coredata`ではフェッチに自由度がない代わりに、フェッチやインサートに非同期のメソッドを持っています．これらを使う事でUIのブロックを防ぐことを念頭におきつつ、複雑なスレッドプログラミングを隠蔽することを目的にしています．
 
-#### 依存関係
+`magicalpanda/MagicalRecord`も分かりやすいAPIを持ったすばらしいモジュールです．上記の比較事項を念頭に入れて、プログラマはどちらのライブラリを選ぶかを選択することができます．
+
+# 依存関係
 
 依存元：**なし**  
 依存先: **na_ios/coredata_ui**, **na_ios/coredata_sync**

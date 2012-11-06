@@ -1,5 +1,5 @@
 # na_ios/coredata モジュール
-na_ios/coredataは、扱うのに経験が必要なcoredataを、簡単に扱えるようにするモジュールです．
+`na_ios/coredata`は、扱うのに経験が必要なcoredataを、簡単に扱えるようにするモジュールです．
 
 データの正しさとパフォーマンスの良さを両立するため、多くのAPIの内部ではスレッドを使い、なおかつ、それを隠蔽しています．
 
@@ -71,6 +71,46 @@ NSManagedObjectContext *context = [[NSManagedObjectContext alloc] initWithConcur
     // !!!!!!ここでいろいろと変更を加える!!!!!!
     [context save:nil];
 }];
+```
+
+# 設定方法
+
+現状のところ、`na_ios/coredata`を使うには`na_ios`(`git@github.com:nashibao/na_ios.git`)ごとcloneしてくるしかありません．
+
+設定方法は以下のようになります．
+
+`ModelController`クラスと
+
+```objective-c
+
+#import "NAModelController.h"
+@interface ModelController : NAModelController
++ (ModelController *)sharedController;
+@end
+
+#import "SingletonMacros.h"
+#import "ModelController.h"
+@implementation ModelController
+SHARED_CONTROLLER(ModelController)
+- (NSString *)name{
+    return @"event";
+}
+@end
+```
+```objective-c
+
+#import "NSManagedObject+na.h"
+@interface TestObject(na)
+@end
+
+#import "TestObject+na.h"
+#import "ModelController.h"
+@implementation TestObject (na)
+
++ (NSManagedObjectContext *)mainContext{
+    return [[ModelController sharedController] mainContext];
+}
+@end
 ```
 
 

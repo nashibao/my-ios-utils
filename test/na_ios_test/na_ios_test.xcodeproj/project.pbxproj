@@ -68,6 +68,7 @@
 		346C5D761647A67B0036531E /* NAFRCTableWithAppendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 346C5D731647A67B0036531E /* NAFRCTableWithAppendViewController.m */; };
 		346C5D7A1647A6A90036531E /* NAModelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 346C5D791647A6A90036531E /* NAModelController.m */; };
 		346C5D7B1647B8300036531E /* NSManagedObjectContextNaCategoryTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 34868C71163F62200032BF6D /* NSManagedObjectContextNaCategoryTest.m */; };
+		3482C9101648AB69001B1BB1 /* SingletonMactors.m in Sources */ = {isa = PBXBuildFile; fileRef = 3482C90F1648AB69001B1BB1 /* SingletonMactors.m */; };
 		34868C65163F56C20032BF6D /* testmodel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 34868C63163F56C20032BF6D /* testmodel.xcdatamodeld */; };
 		34868C6C163F58C90032BF6D /* TestParent.m in Sources */ = {isa = PBXBuildFile; fileRef = 34868C6B163F58C90032BF6D /* TestParent.m */; };
 		34868C6F163F58C90032BF6D /* TestChild.m in Sources */ = {isa = PBXBuildFile; fileRef = 34868C6E163F58C90032BF6D /* TestChild.m */; };
@@ -193,6 +194,8 @@
 		346C5D731647A67B0036531E /* NAFRCTableWithAppendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAFRCTableWithAppendViewController.m; sourceTree = "<group>"; };
 		346C5D781647A6A90036531E /* NAModelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAModelController.h; sourceTree = "<group>"; };
 		346C5D791647A6A90036531E /* NAModelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAModelController.m; sourceTree = "<group>"; };
+		3482C90E1648AB69001B1BB1 /* SingletonMactors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingletonMactors.h; sourceTree = "<group>"; };
+		3482C90F1648AB69001B1BB1 /* SingletonMactors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingletonMactors.m; sourceTree = "<group>"; };
 		3484D21D163E6F0500C80E42 /* NANetworkOperationTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NANetworkOperationTest.h; sourceTree = "<group>"; };
 		3484D21E163E6F0500C80E42 /* NANetworkOperationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NANetworkOperationTest.m; sourceTree = "<group>"; };
 		34868C64163F56C20032BF6D /* testmodel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = testmodel.xcdatamodel; sourceTree = "<group>"; };
@@ -260,6 +263,8 @@
 				346C5D771647A6A90036531E /* controllers */,
 				346C5D5E1647A3A20036531E /* categories */,
 				34048D2916441C19008E5E32 /* models */,
+				3482C90E1648AB69001B1BB1 /* SingletonMactors.h */,
+				3482C90F1648AB69001B1BB1 /* SingletonMactors.m */,
 			);
 			path = coredata;
 			sourceTree = "<group>";
@@ -848,6 +853,7 @@
 				346C5D751647A67B0036531E /* NAFRCTableViewController.m in Sources */,
 				346C5D761647A67B0036531E /* NAFRCTableWithAppendViewController.m in Sources */,
 				346C5D7A1647A6A90036531E /* NAModelController.m in Sources */,
+				3482C9101648AB69001B1BB1 /* SingletonMactors.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

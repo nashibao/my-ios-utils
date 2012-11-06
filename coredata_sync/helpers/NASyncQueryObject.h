@@ -11,7 +11,6 @@
 #import "NARestDriverProtocol.h"
 
 typedef void(^COMPLETE_HANDLER)(NSError *err);
-typedef void(^SAVE_HANDLER)();
 
 @interface NASyncQueryObject : NSObject
 @property (strong, nonatomic) NSDictionary *query;
@@ -20,7 +19,6 @@ typedef void(^SAVE_HANDLER)();
 @property (nonatomic) Class modelkls;
 @property (strong, nonatomic) NSDictionary *options;
 @property (nonatomic, copy) COMPLETE_HANDLER completeHandler;
-@property (nonatomic, copy) SAVE_HANDLER saveHandler;
 @property (strong, nonatomic) NSString *rpcName;
 @property (nonatomic) NARestType restType;
 
@@ -29,13 +27,11 @@ typedef void(^SAVE_HANDLER)();
                     objectID:(NSManagedObjectID *)objectID
                        model:(Class)model
                      options:(NSDictionary *)options
-             completeHandler:(COMPLETE_HANDLER)completeHandler
-                 saveHandler:(SAVE_HANDLER)saveHandler;
+             completeHandler:(COMPLETE_HANDLER)completeHandler;
 
 + (NASyncQueryObject *)query:(NSDictionary *)query
                        model:(Class)model
                      options:(NSDictionary *)options
-             completeHandler:(COMPLETE_HANDLER)completeHandler
-                 saveHandler:(SAVE_HANDLER)saveHandler;
+             completeHandler:(COMPLETE_HANDLER)completeHandler;
 
 @end

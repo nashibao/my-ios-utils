@@ -15,8 +15,7 @@
                     objectID:(NSManagedObjectID *)objectID
                        model:(Class)model
                      options:(NSDictionary *)options
-             completeHandler:(COMPLETE_HANDLER)completeHandler
-                 saveHandler:(SAVE_HANDLER)saveHandler{
+             completeHandler:(COMPLETE_HANDLER)completeHandler{
     NASyncQueryObject *qo = [[NASyncQueryObject alloc] init];
     qo.query = query;
     qo.pk = pk;
@@ -24,7 +23,6 @@
     qo.modelkls = model;
     qo.options = options;
     qo.completeHandler = completeHandler;
-    qo.saveHandler = saveHandler;
     return qo;
 }
 
@@ -32,9 +30,8 @@
 + (NASyncQueryObject *)query:(NSDictionary *)query
                        model:(Class)model
                      options:(NSDictionary *)options
-             completeHandler:(COMPLETE_HANDLER)completeHandler
-                 saveHandler:(SAVE_HANDLER)saveHandler{
-    return [self query:query pk:-1 objectID:nil model:model options:options completeHandler:completeHandler saveHandler:saveHandler];
+             completeHandler:(COMPLETE_HANDLER)completeHandler{
+    return [self query:query pk:-1 objectID:nil model:model options:options completeHandler:completeHandler];
 }
 
 @end

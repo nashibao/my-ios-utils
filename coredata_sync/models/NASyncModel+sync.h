@@ -36,12 +36,12 @@
 /*
  class methods
  */
-+ (void)sync_filter:(NSDictionary *)query options:(NSDictionary *)options complete:(void(^)(NSError *err))complete save:(void(^)())save;
-+ (void)sync_get:(NSInteger)pk options:(NSDictionary *)options complete:(void(^)(NSError *err))complete save:(void(^)())save;
-+ (void)sync_create:(NSDictionary *)query options:(NSDictionary *)options complete:(void(^)(NSError *err))complete save:(void(^)())save;
-+ (void)sync_update:(NSInteger)pk query:(NSDictionary *)query options:(NSDictionary *)options complete:(void(^)(NSError *err))complete save:(void(^)())save;
-+ (void)sync_delete:(NSInteger)pk options:(NSDictionary *)options complete:(void(^)(NSError *err))complete save:(void(^)())save;
-+ (void)sync_rpc:(NSDictionary *)query rpcname:(NSString *)rpcname options:(NSDictionary *)options complete:(void(^)(NSError *err))complete save:(void(^)())save;
++ (void)sync_filter:(NSDictionary *)query options:(NSDictionary *)options complete:(void(^)(NSError *err))complete;
++ (void)sync_get:(NSInteger)pk options:(NSDictionary *)options complete:(void(^)(NSError *err))complete;
++ (void)sync_create:(NSDictionary *)query options:(NSDictionary *)options complete:(void(^)(NSError *err))complete;
++ (void)sync_update:(NSInteger)pk query:(NSDictionary *)query options:(NSDictionary *)options complete:(void(^)(NSError *err))complete;
++ (void)sync_delete:(NSInteger)pk options:(NSDictionary *)options complete:(void(^)(NSError *err))complete;
++ (void)sync_rpc:(NSDictionary *)query rpcname:(NSString *)rpcname options:(NSDictionary *)options complete:(void(^)(NSError *err))complete;
 
 /*
  bulk commands
@@ -54,11 +54,11 @@
 /*
  instance methods
  */
-- (void)sync_get:(NSDictionary *)options complete:(void(^)(NSError *err))complete save:(void(^)())save;
-- (void)sync_create:(NSDictionary *)options complete:(void(^)(NSError *err))complete save:(void(^)())save;
-- (void)sync_update:(NSDictionary *)query options:(NSDictionary *)options complete:(void(^)(NSError *err))complete save:(void(^)())save;
-- (void)sync_update:(NSDictionary *)options complete:(void(^)(NSError *err))complete save:(void(^)())save;
-- (void)sync_delete:(NSDictionary *)options complete:(void(^)(NSError *err))complete save:(void(^)())save;
+- (void)sync_get:(NSDictionary *)options complete:(void(^)(NSError *err))complete;
+- (void)sync_create:(NSDictionary *)options complete:(void(^)(NSError *err))complete;
+- (void)sync_update:(NSDictionary *)query options:(NSDictionary *)options complete:(void(^)(NSError *err))complete;
+- (void)sync_update:(NSDictionary *)options complete:(void(^)(NSError *err))complete;
+- (void)sync_delete:(NSDictionary *)options complete:(void(^)(NSError *err))complete;
 
 /*
  instance methods without sync

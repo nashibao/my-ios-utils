@@ -28,6 +28,7 @@
                 identifier:identifier
                   response:(NSURLResponse *)resp
                       data:(id)data{
+    __block NSError *err = nil;
     [[query.modelkls mainContext] performBlockOutOfOwnThread:^(NSManagedObjectContext *context){
         
         NSString *network_identifier = @"";
@@ -53,12 +54,6 @@
                 [[NANetworkActivityIndicatorManager sharedManager] insert:identifier error:@"同期エラー" option:query.options];
             }
             
-            if(query.completeHandler){
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    query.completeHandler(err);
-                });
-            }
-            
             [context save:nil];
         }@catch (NSException *exception) {
             NSLog(@"%s|%@", __PRETTY_FUNCTION__, exception);
@@ -71,18 +66,13 @@
             }else{
                 err = nil;
             }
-            if(query.completeHandler){
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    query.completeHandler(err);
-                });
-            }
             [context save:nil];
         }@finally {
         }
         
     } afterSaveOnMainThread:^(NSNotification *note) {
-        if(query.saveHandler)
-            query.saveHandler();
+        if(query.completeHandler)
+            query.completeHandler(err);
     }];
 }
 
@@ -93,34 +83,22 @@
                    query:(NASyncQueryObject *)query
               identifier:identifier
                 response:(NSURLResponse *)resp
-                   error:(NSError *)err{
-    NSManagedObjectContext *context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
-    [context setPersistentStoreCoordinator:[query.modelkls coordinator]];
-    [[NSNotificationCenter defaultCenter] addObserverForName:NSManagedObjectContextDidSaveNotification object:context queue:nil usingBlock:^(NSNotification *note) {
-        [[query.modelkls mainContext] mergeChangesFromContextDidSaveNotification:note];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            if(query.saveHandler)
-                query.saveHandler();
-        });
-    }];
-    
-    [context performBlock:^{
+                   error:(NSError *)error{
+    __block NSError *err = nil;
+    [[query.modelkls mainContext] performBlockOutOfOwnThread:^(NSManagedObjectContext *context) {
         NSLog(@"%s|%@", __PRETTY_FUNCTION__, err);
         NASyncModelSyncError syncError = NASyncModelSyncErrorNone;
-        syncError = [query.modelkls deupdateByServerError:err data:nil restType:restType inContext:context query:query network_identifier:nil network_cache_identifier:nil];
-        NSError *err = nil;
+        syncError = [query.modelkls deupdateByServerError:error data:nil restType:restType inContext:context query:query network_identifier:nil network_cache_identifier:nil];
         if(syncError != NASyncModelSyncErrorNone){
             err = [NSError errorWithDomain:@"NASyncModelSyncError" code:syncError userInfo:nil];
             [[NANetworkActivityIndicatorManager sharedManager] insert:identifier error:@"同期エラー" option:query.options];
         }else{
             err = nil;
         }
-        if(query.completeHandler){
-            dispatch_async(dispatch_get_main_queue(), ^{
-                query.completeHandler(err);
-            });
-        }
         [context save:nil];
+    } afterSaveOnMainThread:^(NSNotification *note) {
+        if(query.completeHandler)
+            query.completeHandler(err);
     }];
 }
 

@@ -213,7 +213,7 @@
         case NASyncModelConflictOptionLocalPriority:
 //            local priority
             self.modified_date_ = [[self class] modifiedDateInServerItemData:data];
-            [self sync_update:nil complete:nil save:nil];
+            [self sync_update:nil complete:nil];
             break;
         case NASyncModelConflictOptionUserAlert:{
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -239,7 +239,7 @@
             self.data = newData;
             self.modified_date_ = [[self class] modifiedDateInServerItemData:data];
             [self updateByServerItemData:data];
-            [self sync_update:nil complete:nil save:nil];
+            [self sync_update:nil complete:nil];
             break;
         }
         default:

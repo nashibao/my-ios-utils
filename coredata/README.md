@@ -5,7 +5,7 @@ na_ios/coredataは、扱うのに経験が必要なcoredataを、簡単に扱え
 
 例えば、`TestObject`という`NSManagedObject`のクラスがあった場合、
 
-```
+```objective-c
 [TestObject filter:@{@"name": @"test"} options:nil complete:^(NSArray *mos) {
     // 色々処理
 }];
@@ -14,7 +14,7 @@ na_ios/coredataは、扱うのに経験が必要なcoredataを、簡単に扱え
 このように非同期メソッドの`complete`ハンドラに結果が渡されます．また`complete`ハンドラはmain threadで返ってくるため、ハンドラ内でUIの処理をしても、問題が無いようになっています．
 非同期メソッドには`filter`の他に、`create`、`get`、`get_ore_create`などのAPIがあります．
 
-```
+```objective-c
 [TestObject create:@{@"name": @"test2"} options:nil complete:^(id mo) {
 	// hogehoge
 }];
@@ -27,49 +27,44 @@ na_ios/coredataは、扱うのに経験が必要なcoredataを、簡単に扱え
 また、同じようにして、ハンドラを渡さない同期メソッドもあります．
 
 ```objective-c
-
-	TestObject *obj = [TestObject create:@{@"name": @"test"} options:nil];
-	NSArray *objs = [TestObject filter:@{@"name": @"test"} options:nil];
-	TestObject *obj2 = [TestObject get_or_create:@{@"name": @"test"} options:nil];
-	Bool bl = (obj == obj2); => YES
+TestObject *obj = [TestObject create:@{@"name": @"test"} options:nil];
+NSArray *objs = [TestObject filter:@{@"name": @"test"} options:nil];
+TestObject *obj2 = [TestObject get_or_create:@{@"name": @"test"} options:nil];
+Bool bl = (obj == obj2); => YES
 ```
 
 最後に、独自にcoredata上でスレッドを作成したい上級者向けには、次のようなメソッドがあります．
 
 ```objective-c
-
-    [mainContext performBlockOutOfOwnThread:^(NSManagedObjectContext *context){
-        // !!!!!!ここでいろいろと変更を加える!!!!!!
-        [context save:nil];
-    } afterSaveOnMainThread:^(NSNotification *note) {
-        // !!!!!!終了処理!!!!!!
-    }];
+[mainContext performBlockOutOfOwnThread:^(NSManagedObjectContext *context){
+    // !!!!!!ここでいろいろと変更を加える!!!!!!
+    [context save:nil];
+} afterSaveOnMainThread:^(NSNotification *note) {
+    // !!!!!!終了処理!!!!!!
+}];
 ```
 
 これは次の処理のラッパーになっています．
 
 
 ```objective-c
+NSManagedObjectContext *mainContext = [ModelController sharedController].mainContext;
+NSPersistentStoreCoordinator *coordinator = mainContext.persistentStoreCoordinator;
+NSManagedObjectContext *context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+[context setPersistentStoreCoordinator:coordinator];
+[[NSNotificationCenter defaultCenter] addObserverForName:NSManagedObjectContextDidSaveNotification object:context queue:nil usingBlock:^(NSNotification *note) {
+    [mainContext performSelectorOnMainThread:@selector(mergeChangesFromContextDidSaveNotification:)
+                                  withObject:note
+                               waitUntilDone:YES];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        // !!!!!!終了処理!!!!!!
+    });
+}];
 
-    NSManagedObjectContext *mainContext = [ModelController sharedController].mainContext;
-    NSPersistentStoreCoordinator *coordinator = mainContext.persistentStoreCoordinator;
-    NSManagedObjectContext *context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
-    [context setPersistentStoreCoordinator:coordinator];
-    [[NSNotificationCenter defaultCenter] addObserverForName:NSManagedObjectContextDidSaveNotification object:context queue:nil usingBlock:^(NSNotification *note) {
-        [mainContext performSelectorOnMainThread:@selector(mergeChangesFromContextDidSaveNotification:)
-                                      withObject:note
-                                   waitUntilDone:YES];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            // !!!!!!終了処理!!!!!!
-        });
-    }];
-    
-    [context performBlock:^{
-        // !!!!!!ここでいろいろと変更を加える!!!!!!
-        [context save:nil];
-    }];
-
-
+[context performBlock:^{
+    // !!!!!!ここでいろいろと変更を加える!!!!!!
+    [context save:nil];
+}];
 ```
 
 

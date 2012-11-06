@@ -69,3 +69,9 @@ typedef enum NANetworkOperationQueingOption: NSInteger {
 ```
 
 また`NANetworkOperation`では内部に[tonymillion/Reachability](https://github.com/tonymillion/Reachability)を利用しています．ネットワークがないところでは一度アクセスをあきらめ、ネットワークが復帰したタイミングでもう一度処理を走らせます．ただし、アクセス途中でネットワークが遮断された場合はエラーハンドラに返ってきます．
+
+また`NSURLRequest`において簡単に初期化するためのラッパが入ったカテゴリ、`UIActivityIndicator`を管理する`NANetworkActivityIndicatorManager`、`[NSOperationQueue globalBackgroundQueue]`なども追加されています．
+
+
+# 他のNetworkライブラリとの比較
+AFNetworkingとか．．

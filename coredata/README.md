@@ -24,6 +24,8 @@ na_ios/coredataは、扱うのに経験が必要なcoredataを、簡単に扱え
 }];
 ```
 
+`create`や`get_or_create`はcontextに変更を加える可能性がありますが、その場合は、`TestObject`に登録した`mainContext`(main thread上のcontext)に変更がマージされてから`complete`ハンドラは呼ばれます．そのため、`complete`ハンドラ内でUIを更新すると、変更分も表示されることになります．
+
 また、同じようにして、ハンドラを渡さない同期メソッドもあります．
 
 ```objective-c
@@ -43,6 +45,10 @@ Bool bl = (obj == obj2); => YES
     // !!!!!!終了処理!!!!!!
 }];
 ```
+
+`performBlockOutOfOwnThread:^(NSManagedObjectContext *context)block afterSaveOnMainThread:^(NSNotification *note)save`は、main thread上のcontextからしか呼び出すことを考慮していない事に注意して下さい．
+また`block`ハンドラはmain threadじゃなく、`save`ハンドラはmainThreadであることにも注意して下さい．
+`save`ハンドラは`mainContext`に変更がマージされた後に呼び出されるため、`save`ハンドラ内で（`mainContext`につなげてある）UIを更新することで、変更分も表示することができます．
 
 これは次の処理のラッパーになっています．
 

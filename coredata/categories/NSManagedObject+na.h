@@ -19,6 +19,8 @@
 + (id)create:(NSDictionary *)props options:(NSDictionary *)options;
 + (id)get_or_create:(NSDictionary *)props options:(NSDictionary *)options;
 
+
+#warning !! completeハンドラで返す値はmain threadで扱えない．NSManagedObjectIDの列に修正すべき！
 + (void)filter:(NSDictionary *)props options:(NSDictionary *)options complete:(void(^)(NSArray *mos))complete;
 + (void)get:(NSDictionary *)props options:(NSDictionary *)options complete:(void(^)(id mo))complete;
 + (void)create:(NSDictionary *)props options:(NSDictionary *)options complete:(void(^)(id mo))complete;

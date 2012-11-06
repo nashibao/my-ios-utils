@@ -1,8 +1,8 @@
 # `na_ios/coredata_ui`
 
-`na_ios/coredata_ui`では、NSFetchedResultsControllerを簡単に扱えるようなUITableViewControllerのサブクラスを提供します．
+`na_ios/coredata_ui`では、`NSFetchedResultsController`を簡単に扱えるような`UITableViewController`のサブクラスを提供します．
 
-NAFRCTableViewControllerを継承して、初期化の部分でfrcをアタッチして下さい．
+`NAFRCTableViewController`を継承して、初期化の部分で`frc`をアタッチして下さい．
 
 ```objective-c
 #import "NAFRCTableViewController.h"
@@ -31,7 +31,7 @@ NAFRCTableViewControllerを継承して、初期化の部分でfrcをアタッ�
 ```
 
 たったこれだけです！
-コアデータに変更を加えた場合は、FRCとtableviewを更新して下さい．
+コアデータに変更を加えた場合は、`frc`と`tableview`を更新して下さい．
 
 ```objective-c
 

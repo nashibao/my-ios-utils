@@ -115,7 +115,16 @@ dictionaryとsqlite内のバイナリを自動変換するクラス
 
 # その他の情報
 
-tableなどに使う時はna_ios/coredata_uiモジュールもあわせて使うこと．
+#### `magicalpanda/MagicalRecord`との比較
+
+同じような目的のモジュールに、[magicalpanda/MagicalRecord](https://github.com/magicalpanda/MagicalRecord)があります．`magicalpanda/MagicalRecord`の“Performing Core Data operations on Threads“の章も合わせて参照して下さい．
+
+`magicalpanda/MagicalRecord`では、filteringやsortingにメリットがあります．`na_ios/coredata`に含まれていないような複雑なフェッチを行うことができます．これに対して、`na_ios/coredata`では複雑なfilteringやsortingを介するフェッチには`NSFetchedResultsController`経由で行い、`NSArray`を介さない方法を推奨しています．これは、`UITableViewController`などと併用する場合、パフォーマンスとメモリの観点において都合が良いからです．
+`NSFetchedResultsController`と`UITableViewController`を`na_ios/coredata`で使うには`na_ios/coredata_ui`を参照して下さい．
+
+`na_ios/coredata`ではフェッチに自由度がない代わりに、フェッチやインサートに非同期のメソッドを持っています．これらを使う事でUIのブロックを防ぐことを念頭においています．
+
+#### 依存関係
 
 依存元：**なし**  
 依存先: **na_ios/coredata_ui**, **na_ios/coredata_sync**

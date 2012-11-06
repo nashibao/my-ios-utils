@@ -80,35 +80,32 @@ na_ios/coredataは、扱うのに経験が必要なcoredataを、簡単に扱え
 # coredata/categories
 コアデータに関わる各種クラスのカテゴリが入っているパッケージになります．
 
-NSFetchRequest, NSManagedObjectContext, NSPredicate, NSManagedObjectの4種類に対応しています．
+`NSFetchRequest`, `NSManagedObjectContext`, `NSPredicate`, `NSManagedObject`の4種類に対応しています．まずは`NSManagedObject`だけを使うのが良いでしょう．
 
- - `categories/NSManagedObjectContext+na`
+#### `categories/NSManagedObject+na`
 
-contextにCRUD操作を生やしているだけ．
-こちらも出来るだけ下のmoのAPIから呼び出すのが良い．
+moにCRUD操作を生やすためのカテゴリ．blockによるcallbackを引数に持つものは非同期で、メインスレッドに返ってくきます．
 
- - `categories/NSManagedObject+na`
+#### `categories/NSFetchRequest+na`
 
-moにCRUD操作を生やしているだけ．ただし、blockによるcallbackを引数に持つものは非同期．またメインスレッドで返ってくる．．
+#### `categories/NSManagedObjectContext+na`
 
- - `categories/NSFetchRequest+na`
- 
-fetchRequestをupdateする．
-（検索時に有用）
+contextにCRUD操作を生やすためのカテゴリ．`categories/NSManagedObject+na`で利用しています．
 
- - `categories/NSPredicate+na`
+#### `categories/NSPredicate+na`
 
 NSDictionaryか、NSArrayからPredicateを作成するもので、NSDictionaryの方は`@"%K == %@", key, val`で評価し、NSArrayの方は、評価式を順番に入れておくショートカットを持っています．基本的には上記の3つのクラスを用いてNSPredicateを直接は触らないようにするのが得策です．
 
 # coredata/controllers
 
 #### `controllers/NAModelController`  
-modeldファイル(`hoge.modeld`)の名前(`hoge`)を`name`に設定して、`setup()`を呼べば、以下のことをやってくれる  
+
+modeldファイル(`hoge.modeld`)の名前(`hoge`)を`name`に設定して、`setup()`を呼べば、以下のことをやってくれます． 
  - coordinatorの作成  
  - bundleからの初期コピー（bundle内に`hoge.sqlite`ファイルを入れておけば、初期状態としてそちらを使う．でかいデータの時に便利）  
  - mainthread上のcontextの作成
 
-また`destroyAndSetup`を呼ぶと、sqliteファイルを削除して、もう一度最初からやり直す．
+また`destroyAndSetup`を呼ぶと、sqliteファイルを削除して、もう一度最初からやり直すことができます．
 
 # coredata/models
 

@@ -1,22 +1,32 @@
 # na_ios/coredata モジュール
-coredataを扱いやすくするモジュール．
-特に非同期アクセス周りを隠蔽するのが目的．
+na_ios/coredataは扱うのに経験が必要なcoredataを、簡単に扱えるようにするモジュールです．データの正しさとパフォーマンスの良さを両立するため、多くのAPIの内部ではスレッドを使い、なおかつ、それを隠蔽しています．
 
-一番重要なのは`categories/NSManagedObjectContext+na`．
+例えば、`TestObject`という`NSManagedObject`のクラスがあった場合、
 
-tableなどに使う時はna_ios/coredata_uiモジュールもあわせて使うこと．
+```objective-c
+    
+    [TestObject filter:@{@"name": @"test"} options:nil complete:^(NSArray *mos) {
+        // 色々処理
+    }];
 
-依存元：**なし**  
-依存先: **na_ios/coredata_ui**, **na_ios/coredata_sync**
+```
 
+このように非同期メソッドの`complete`ハンドラに結果が渡されます．また`complete`ハンドラはmain threadで返ってくるため、ハンドラ内でUIの処理をしても、問題が無いようになっています．
+非同期メソッドには`filter`の他に、`create`、`get`、`get_ore_create`などのAPIがあります．
 
+```objective-c
 
-# 使い方のサンプル
+    [TestObject create:@{@"name": @"test2"} options:nil complete:^(id mo) {
+    	// hogehoge
+    }];
+    
+    [TestObject get_or_create:@{@"name": @"test"} options:nil complete:^(id mo) {
+    	// hogehoge
+    }];
 
-`categories/NSManagedObjectContext+na`の使用例．`TestObject`というMOのクラスがあった場合、
+```
 
-
-同期メソッドは以下のようになる．
+また、同じようにして、ハンドラを渡さない同期メソッドもあります．
 
 ```objective-c
 
@@ -27,27 +37,21 @@ tableなどに使う時はna_ios/coredata_uiモジュールもあわせて使う
 
 ```
 
-それに対して、非同期メソッドは次のようになる．
+最後に、独自にcoredata上でスレッドを作成したい上級者向けには、次のようなメソッドがあります．
 
 ```objective-c
 
-    [TestObject create:@{@"name": @"test2"} options:nil complete:^(id mo) {
-        TestObject *obj3 = (TestObject *)mo;
+    [mainContext performBlockOutOfOwnThread:^(NSManagedObjectContext *context){
+        // !!!!!!ここでいろいろと変更を加える!!!!!!
+        [context save:nil];
+    } afterSaveOnMainThread:^(NSNotification *note) {
+        // !!!!!!終了処理!!!!!!
     }];
     
-    [TestObject filter:nil options:nil complete:^(NSArray *mos) {
-        NSLog(@"%s|%d", __PRETTY_FUNCTION__, [mos count]);
-    }];
-    
-    [TestObject get_or_create:@{@"name": @"test"} options:nil complete:^(id mo) {
-        TestParent *obj4 = (TestParent *)mo;
-        // コンテキストが別!!
-		Bool bl = (obj4 == obj1); => NO
-    }];
-
 ```
 
-また、自前でコンテキストを作成する場合は、
+これは次の処理のラッパーになっています．
+
 
 ```objective-c
 
@@ -72,30 +76,17 @@ tableなどに使う時はna_ios/coredata_uiモジュールもあわせて使う
 
 ```
 
-となり、けっこう面倒なので、次のようなAPIも生やしてある．
 
-```objective-c
+# パッケージ
 
-    [mainContext performBlockOutOfOwnThread:^(NSManagedObjectContext *context){
-        // !!!!!!ここでいろいろと変更を加える!!!!!!
-        [context save:nil];
-    } afterSaveOnMainThread:^(NSNotification *note) {
-        // !!!!!!終了処理!!!!!!
-    }];
-    
-```
+# coredata/categories
+コアデータに関わる各種クラスのカテゴリが入っているパッケージになります．
 
-# それぞれのパッケージ説明．
+NSFetchRequest, NSManagedObjectContext, NSPredicate, NSManagedObjectの4種類に対応しています．
 
-# categoriesパッケージ
-各種コアデータに関わるクラスのカテゴリが入っている．ヘルパー的な扱い．
-APIを生やしているだけのものがほとんど．
-
-NSFetchRequest, NSManagedObjectContext, NSPredicate, NSManagedObjectの4種類．
 #### categories/NSPredicate+na
-NSDictionaryか、NSArrayからPredicateを作成する．
-NSDictionaryの方は`@"%K == %@", key, val`で評価
-NSPredicateは直接は使わず、下記の3つを使ってアクセスするのが良い．
+
+NSDictionaryか、NSArrayからPredicateを作成するもので、NSDictionaryの方は`@"%K == %@", key, val`で評価し、NSArrayの方は、評価式を順番に入れておくショートカットを持っています．基本的には上記の3つのクラスを用いてNSPredicateを直接は触らないようにするのが得策です．
 
 #### categories/NSManagedObjectContext+na
 
@@ -110,7 +101,7 @@ moにCRUD操作を生やしているだけ．ただし、blockによるcallback�
 fetchRequestをupdateする．
 （検索時に有用）
 
-# controllersパッケージ
+# coredata/controllers
 
 #### controllers/NAModelController  
 modeldファイル(`hoge.modeld`)の名前(`hoge`)を`name`に設定して、`setup()`を呼べば、以下のことをやってくれる  
@@ -120,11 +111,19 @@ modeldファイル(`hoge.modeld`)の名前(`hoge`)を`name`に設定して、`se
 
 また`destroyAndSetup`を呼ぶと、sqliteファイルを削除して、もう一度最初からやり直す．
 
-# modelsパッケージ
+# coredata/models
 
 #### models/NSDictionaryTransformer
 
 dictionaryとsqlite内のバイナリを自動変換するクラス
+
+
+# その他の情報
+
+tableなどに使う時はna_ios/coredata_uiモジュールもあわせて使うこと．
+
+依存元：**なし**  
+依存先: **na_ios/coredata_ui**, **na_ios/coredata_sync**
 
 
 

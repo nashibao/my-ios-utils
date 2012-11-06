@@ -55,64 +55,52 @@ static NSManagedObjectContext * __main_context__ = nil;
 }
 
 + (void)filter:(NSDictionary *)props options:(NSDictionary *)options complete:(void(^)(NSArray *mos))complete{
-    NSManagedObjectContext *privateContext = [self createPrivateContext];
-    [privateContext performBlock:^{
-        NSArray *mos = [privateContext filterObjects:NSStringFromClass(self) props:props];
+    [[self mainContext] performBlockOutOfOwnThread:^(NSManagedObjectContext *context) {
+        NSArray *mos = [context filterObjects:NSStringFromClass(self) props:props];
         if(complete)
             dispatch_async(dispatch_get_main_queue(), ^{
                 complete(mos);
             });
-    }];
+    } afterSaveOnMainThread:nil];
 }
 
 + (void)get:(NSDictionary *)props options:(NSDictionary *)options complete:(void(^)(id mo))complete{
-    NSManagedObjectContext *privateContext = [self createPrivateContext];
-    [privateContext performBlock:^{
-        id mo = [privateContext getObject:NSStringFromClass(self) props:props];
+    [[self mainContext] performBlockOutOfOwnThread:^(NSManagedObjectContext *context) {
+        id mo = [context getObject:NSStringFromClass(self) props:props];
         if(complete)
-            dispatch_async(dispatch_get_main_queue(), ^{
-                complete(mo);
-            });
-    }];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            complete(mo);
+        });
+    } afterSaveOnMainThread:nil];
 }
 
 + (void)create:(NSDictionary *)props options:(NSDictionary *)options complete:(void(^)(id mo))complete{
-    NSManagedObjectContext *privateContext = [self createPrivateContext];
     __block id mo = nil;
-    [[NSNotificationCenter defaultCenter] addObserverForName:NSManagedObjectContextDidSaveNotification object:privateContext queue:nil usingBlock:^(NSNotification *note) {
-        [[self mainContext] mergeChangesFromContextDidSaveNotification:note];
+    [[self mainContext] performBlockOutOfOwnThread:^(NSManagedObjectContext *context) {
+        mo = [context createObject:NSStringFromClass(self) props:props];
+        [context save:nil];
+    } afterSaveOnMainThread:^(NSNotification *note) {
         if(complete)
-            dispatch_async(dispatch_get_main_queue(), ^{
-                complete(mo);
-            });
-    }];
-    [privateContext performBlock:^{
-        mo = [privateContext createObject:NSStringFromClass(self) props:props];
-        [privateContext save:nil];
+            complete(mo);
     }];
 }
 
-+ (void)get_or_create:(NSDictionary *)props options:(NSDictionary *)options complete:(void(^)(id mo))complete{
-    NSManagedObjectContext *privateContext = [self createPrivateContext];
++ (void)get_or_create:(NSDictionary *)props options:(NSDictionary *)options complete:(void(^)(id mo))complete save:(void(^)())save{
     __block id mo = nil;
-    [[NSNotificationCenter defaultCenter] addObserverForName:NSManagedObjectContextDidSaveNotification object:privateContext queue:nil usingBlock:^(NSNotification *note) {
-        [[self mainContext] mergeChangesFromContextDidSaveNotification:note];
-        if(complete)
-            dispatch_async(dispatch_get_main_queue(), ^{
-                complete(mo);
-            });
-    }];
-    [privateContext performBlock:^{
-        mo = [privateContext getObject:NSStringFromClass(self) props:props];
+    [[self mainContext] performBlockOutOfOwnThread:^(NSManagedObjectContext *context) {
+        mo = [context getObject:NSStringFromClass(self) props:props];
         if(!mo){
-            mo = [privateContext createObject:NSStringFromClass(self) props:props];
-            [privateContext save:nil];
+            mo = [context createObject:NSStringFromClass(self) props:props];
+            [context save:nil];
         }else{
             if(complete)
                 dispatch_async(dispatch_get_main_queue(), ^{
                     complete(mo);
                 });
         }
+    } afterSaveOnMainThread:^(NSNotification *note) {
+        if(complete)
+            complete(mo);
     }];
 }
 

@@ -6,7 +6,10 @@
 GCDを用いた、`NANetworkGCDHelper`のサンプルコードは次のようになります．
 
 ```objective-c
-[NANetworkGCDHelper sendAsynchronousRequest:req returnEncoding:NSShiftJISStringEncoding returnMain:NO successHandler:^(NSURLResponse *resp, id data) {
+[NANetworkGCDHelper sendAsynchronousRequest:req
+                             returnEncoding:NSShiftJISStringEncoding
+                                 returnMain:NO
+                             successHandler:^(NSURLResponse *resp, id data) {
     // success
 } errorHandler:^(NSURLResponse *resp, NSError *err) {
     // error
@@ -32,7 +35,14 @@ GCDを用いた、`NANetworkGCDHelper`のサンプルコードは次のように
 
 
 ```objective-c
-[NANetworkOperation sendAsynchronousRequest:req returnEncoding:NSShiftJISStringEncoding returnMain:YES queue:nil identifier:@"testidentifier" identifierMaxCount:1 options:nil queueingOption:NANetworkOperationQueingOptionReturnOld successHandler:^(NANetworkOperation *op, id data) {
+[NANetworkOperation sendAsynchronousRequest:req
+                             returnEncoding:NSShiftJISStringEncoding
+                                 returnMain:YES
+                                      queue:nil
+                                 identifier:@"testidentifier"
+                         identifierMaxCount:1 options:nil
+                             queueingOption:NANetworkOperationQueingOptionReturnOld
+                             successHandler:^(NANetworkOperation *op, id data) {
     // hoge
 } errorHandler:^(NANetworkOperation *op, NSError *err) {
     // hoge

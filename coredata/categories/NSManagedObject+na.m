@@ -85,7 +85,7 @@ static NSManagedObjectContext * __main_context__ = nil;
     }];
 }
 
-+ (void)get_or_create:(NSDictionary *)props options:(NSDictionary *)options complete:(void(^)(id mo))complete save:(void(^)())save{
++ (void)get_or_create:(NSDictionary *)props options:(NSDictionary *)options complete:(void(^)(id mo))complete{
     __block id mo = nil;
     [[self mainContext] performBlockOutOfOwnThread:^(NSManagedObjectContext *context) {
         mo = [context getObject:NSStringFromClass(self) props:props];

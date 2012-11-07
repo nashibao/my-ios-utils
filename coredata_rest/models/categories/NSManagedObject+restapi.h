@@ -8,11 +8,9 @@
 
 #import "NSManagedObject+na.h"
 
-#import "NASyncModelProtocol.h"
-
 #import "NARestDriverProtocol.h"
 
-@interface NSManagedObject (sync)
+@interface NSManagedObject (restapi)
 
 
 #pragma mark ベースモデルの説明

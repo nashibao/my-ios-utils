@@ -6,16 +6,30 @@
 //  Copyright (c) 2012年 s-cubism. All rights reserved.
 //
 
-#import "NSManagedObject+rest.h"
+#import "NSManagedObject+restdriver.h"
 
 #import "NSManagedObjectContext+na.h"
 
 #import "AccessorMacros.h"
 
-@implementation NSManagedObject (rest)
+@implementation NSManagedObject (restdriver)
 
 + (id<NARestDriverProtocol>)restDriver{
     return nil;
+}
+
+
++ (Class)restMapperClass{
+    return [NARestMapper class];
+}
+
++ (NARestMapper *) restMapper{
+    static NARestMapper *__rest_mapper__ = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        __rest_mapper__ = [[[self restMapperClass] alloc] init];
+    });
+    return __rest_mapper__;
 }
 
 + (NSString *)restName{
@@ -40,14 +54,6 @@
 
 - (void)updateByServerItemData:(id)itemData{
 //    それぞれのマッピング
-}
-
-+ (NASyncModelConflictOption)conflictOption{
-    return NASyncModelConflictOptionServerPriority;
-}
-
-+ (NASyncModelErrorOption)errorOption{
-    return NASyncModelErrorOptionUserAlert;
 }
 
 @end

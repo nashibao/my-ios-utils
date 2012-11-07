@@ -35,5 +35,24 @@ INTEGER_ACCESSOR(sync_error_for_sync, setSync_error_for_sync, [self sync_error_f
     [self setValue:modified_date_for_sync forKey:[self modified_date_for_sync_key]];
 }
 
++ (NSDate *)modifiedDateInServerItemData:(id)itemData{
+    return itemData[@"modified_data"];
+}
+
++ (NASyncModelConflictOption)conflictOption{
+    return NASyncModelConflictOptionServerPriority;
+}
+
++ (NASyncModelErrorOption)errorOption{
+    return NASyncModelErrorOptionUserAlert;
+}
+
+- (BOOL)conflictedToServerItemData:(id)itemData{
+    if(!self.modified_date_for_sync)
+        return NO;
+    if(itemData[@"is_conflicted"])
+        return YES;
+    return NO;
+}
 
 @end

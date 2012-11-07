@@ -6,7 +6,7 @@
 //  Copyright (c) 2012年 s-cubism. All rights reserved.
 //
 
-#import "NSManagedObject+sync.h"
+#import "NSManagedObject+restapi.h"
 
 #import "NARestHelper.h"
 
@@ -14,11 +14,11 @@
 
 #import <objc/runtime.h>
 
-#import "NSManagedObject+rest.h"
-
 #import "NSManagedObject+syncobject.h"
 
-@implementation NSManagedObject (sync)
+#import "NSManagedObject+restobject.h"
+
+@implementation NSManagedObject (restapi)
 
 /*
  class methods

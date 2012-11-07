@@ -10,15 +10,14 @@
 
 #import "NSManagedObject+na.h"
 
-#import "NASyncModelProtocol.h"
+#import "NARestMapper.h"
 
-#import "NARestObjectProtocol.h"
-
-#import "NSManagedObject+sync.h"
-
-@interface NSManagedObject (rest)
+@interface NSManagedObject (restdriver)
 
 + (id<NARestDriverProtocol>) restDriver;
+
++ (Class)restMapperClass;
++ (NARestMapper *) restMapper;
 
 + (NSString *)restName;
 
@@ -31,9 +30,5 @@
 + (NSString *)restCallbackName;
 
 - (void)updateByServerItemData:(id)itemData;
-
-+ (NASyncModelConflictOption)conflictOption;
-
-+ (NASyncModelErrorOption)errorOption;
 
 @end

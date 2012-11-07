@@ -64,4 +64,8 @@ INTEGER_ACCESSOR(cache_index_for_sync, setCache_index_for_sync, [self cache_inde
     return self.edited_data_for_sync;
 }
 
++ (NSInteger)primaryKeyInServerItemData:(id)itemData{
+    return [itemData[@"id"] integerValue];
+}
+
 @end

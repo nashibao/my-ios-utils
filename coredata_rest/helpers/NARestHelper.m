@@ -10,13 +10,11 @@
 
 #import "NANetworkOperation.h"
 
-#import "NSManagedObject+sync.h"
-
-#import "NSManagedObject+rest.h"
-
 #import "NANetworkActivityIndicatorManager.h"
 
 #import "NSURLRequest+na.h"
+
+#import "NSManagedObject+restdriver.h"
 
 @implementation NARestHelper
 
@@ -40,31 +38,26 @@
                 network_cache_identifier = query.options[@"network_cache_identifier"];
         }
         @try {
-            NSError *isError = [query.modelkls isErrorByServerData:data restType:restType inContext:context query:query network_identifier:network_identifier network_cache_identifier:network_cache_identifier];
-            NASyncModelSyncError syncError = NASyncModelSyncErrorNone;
-            if(isError){
-                syncError = [query.modelkls deupdateByServerError:isError data:data restType:restType inContext:context query:query network_identifier:network_identifier network_cache_identifier:network_cache_identifier];
-            }else{
-                syncError = [query.modelkls updateByServerData:data restType:restType inContext:context query:query network_identifier:network_identifier network_cache_identifier:network_cache_identifier];
-            }
+            NSError *isError = [[query.modelkls restMapper] isErrorByServerData:data restType:restType inContext:context query:query network_identifier:network_identifier network_cache_identifier:network_cache_identifier];
             
             NSError *err = nil;
-            if(syncError != NASyncModelSyncErrorNone){
-                err = [NSError errorWithDomain:@"NASyncModelSyncError" code:syncError userInfo:nil];
-                [[NANetworkActivityIndicatorManager sharedManager] insert:identifier error:@"同期エラー" option:query.options];
+            if(isError){
+                [[query.modelkls restMapper] deupdateByServerError:isError data:data restType:restType inContext:context query:query network_identifier:network_identifier network_cache_identifier:network_cache_identifier];
+                err = isError;
+            }else{
+                err = [[query.modelkls restMapper] updateByServerData:data restType:restType inContext:context query:query network_identifier:network_identifier network_cache_identifier:network_cache_identifier];
+            }
+            if(err){
+                [[NANetworkActivityIndicatorManager sharedManager] insert:identifier error:err.domain option:query.options];
             }
             
             [context save:nil];
         }@catch (NSException *exception) {
             NSLog(@"%s|%@", __PRETTY_FUNCTION__, exception);
             NSError *err = [NSError errorWithDomain:exception.reason code:0 userInfo:nil];
-            NASyncModelSyncError syncError = NASyncModelSyncErrorNone;
-            syncError = [query.modelkls deupdateByServerError:err data:data restType:restType inContext:context query:query network_identifier:network_identifier network_cache_identifier:network_cache_identifier];
-            if(syncError != NASyncModelSyncErrorNone){
-                err = [NSError errorWithDomain:@"NASyncModelSyncError" code:syncError userInfo:nil];
-                [[NANetworkActivityIndicatorManager sharedManager] insert:identifier error:@"同期エラー" option:query.options];
-            }else{
-                err = nil;
+            [[query.modelkls restMapper] deupdateByServerError:err data:data restType:restType inContext:context query:query network_identifier:network_identifier network_cache_identifier:network_cache_identifier];
+            if(err){
+                [[NANetworkActivityIndicatorManager sharedManager] insert:identifier error:err.domain option:query.options];
             }
             [context save:nil];
         }@finally {
@@ -84,17 +77,11 @@
               identifier:identifier
                 response:(NSURLResponse *)resp
                    error:(NSError *)error{
-    __block NSError *err = nil;
+    __block NSError *err = error;
     [[query.modelkls mainContext] performBlockOutOfOwnThread:^(NSManagedObjectContext *context) {
-        NSLog(@"%s|%@", __PRETTY_FUNCTION__, err);
-        NASyncModelSyncError syncError = NASyncModelSyncErrorNone;
-        syncError = [query.modelkls deupdateByServerError:error data:nil restType:restType inContext:context query:query network_identifier:nil network_cache_identifier:nil];
-        if(syncError != NASyncModelSyncErrorNone){
-            err = [NSError errorWithDomain:@"NASyncModelSyncError" code:syncError userInfo:nil];
-            [[NANetworkActivityIndicatorManager sharedManager] insert:identifier error:@"同期エラー" option:query.options];
-        }else{
-            err = nil;
-        }
+        NSLog(@"%s|%@", __PRETTY_FUNCTION__, error);
+        [[query.modelkls restMapper] deupdateByServerError:error data:nil restType:restType inContext:context query:query network_identifier:nil network_cache_identifier:nil];
+            [[NANetworkActivityIndicatorManager sharedManager] insert:identifier error:err.domain option:query.options];
         [context save:nil];
     } afterSaveOnMainThread:^(NSNotification *note) {
         if(query.completeHandler)

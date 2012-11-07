@@ -22,6 +22,8 @@
 @property(nonatomic, readwrite)NSInteger cache_index_for_sync;
 @property(nonatomic, readwrite)NSString *cache_identifier_for_sync;
 
++ (NSInteger)primaryKeyInServerItemData:(id)itemData;
+
 - (NSDictionary *)getQuery;
 
 @end

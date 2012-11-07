@@ -12,11 +12,7 @@
 
 #import "NARestDriverProtocol.h"
 
-#import "NSManagedObject+sync.h"
-
-#import "NSManagedObject+rest.h"
-
-#import "NARestObjectProtocol.h"
+#import "NSManagedObject+restapi.h"
 
 #import "NARestQueryObject.h"
 

@@ -10,7 +10,7 @@
 
 #import "NASyncModelProtocol.h"
 
-#import "NSManagedObject+restobject.h"
+#import "coredata_rest.h"
 
 /** 
  */
@@ -23,5 +23,13 @@
 @property(nonatomic, readwrite)NSDate *modified_date_for_sync;
 @property(nonatomic, readwrite)NASyncModelSyncState sync_state_for_sync;
 @property(nonatomic, readwrite)NASyncModelSyncError sync_error_for_sync;
+
++ (NSDate *)modifiedDateInServerItemData:(id)itemData;
+
++ (NASyncModelConflictOption)conflictOption;
+
++ (NASyncModelErrorOption)errorOption;
+
+- (BOOL)conflictedToServerItemData:(id)itemData;
 
 @end

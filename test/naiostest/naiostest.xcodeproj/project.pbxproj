@@ -63,12 +63,13 @@
 		349A6301164A0FD400C9EFDD /* NADefaultRestDriver.m in Sources */ = {isa = PBXBuildFile; fileRef = 349A62EB164A0FD400C9EFDD /* NADefaultRestDriver.m */; };
 		349A6302164A0FD400C9EFDD /* NARestHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 349A62EF164A0FD400C9EFDD /* NARestHelper.m */; };
 		349A6303164A0FD400C9EFDD /* NARestQueryObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 349A62F1164A0FD400C9EFDD /* NARestQueryObject.m */; };
-		349A6304164A0FD400C9EFDD /* NSManagedObject+reciever.m in Sources */ = {isa = PBXBuildFile; fileRef = 349A62F5164A0FD400C9EFDD /* NSManagedObject+reciever.m */; };
-		349A6305164A0FD400C9EFDD /* NSManagedObject+rest.m in Sources */ = {isa = PBXBuildFile; fileRef = 349A62F7164A0FD400C9EFDD /* NSManagedObject+rest.m */; };
+		349A6305164A0FD400C9EFDD /* NSManagedObject+restdriver.m in Sources */ = {isa = PBXBuildFile; fileRef = 349A62F7164A0FD400C9EFDD /* NSManagedObject+restdriver.m */; };
 		349A6306164A0FD400C9EFDD /* NSManagedObject+restobject.m in Sources */ = {isa = PBXBuildFile; fileRef = 349A62F9164A0FD400C9EFDD /* NSManagedObject+restobject.m */; };
-		349A6307164A0FD400C9EFDD /* NSManagedObject+serverobject.m in Sources */ = {isa = PBXBuildFile; fileRef = 349A62FB164A0FD400C9EFDD /* NSManagedObject+serverobject.m */; };
-		349A6308164A0FD400C9EFDD /* NSManagedObject+sync.m in Sources */ = {isa = PBXBuildFile; fileRef = 349A62FD164A0FD400C9EFDD /* NSManagedObject+sync.m */; };
+		349A6308164A0FD400C9EFDD /* NSManagedObject+restapi.m in Sources */ = {isa = PBXBuildFile; fileRef = 349A62FD164A0FD400C9EFDD /* NSManagedObject+restapi.m */; };
 		349A6309164A0FD400C9EFDD /* restmodel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 349A62FF164A0FD400C9EFDD /* restmodel.xcdatamodeld */; };
+		349A6313164A4CAE00C9EFDD /* NSManagedObject+syncer.m in Sources */ = {isa = PBXBuildFile; fileRef = 349A6312164A4CAE00C9EFDD /* NSManagedObject+syncer.m */; };
+		349A6316164A4F7600C9EFDD /* NARestMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 349A6315164A4F7600C9EFDD /* NARestMapper.m */; };
+		349A631C164A539C00C9EFDD /* NARestSyncMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 349A631B164A539C00C9EFDD /* NARestSyncMapper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -186,18 +187,21 @@
 		349A62EF164A0FD400C9EFDD /* NARestHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NARestHelper.m; sourceTree = "<group>"; };
 		349A62F0164A0FD400C9EFDD /* NARestQueryObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NARestQueryObject.h; sourceTree = "<group>"; };
 		349A62F1164A0FD400C9EFDD /* NARestQueryObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NARestQueryObject.m; sourceTree = "<group>"; };
-		349A62F4164A0FD400C9EFDD /* NSManagedObject+reciever.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObject+reciever.h"; sourceTree = "<group>"; };
-		349A62F5164A0FD400C9EFDD /* NSManagedObject+reciever.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObject+reciever.m"; sourceTree = "<group>"; };
-		349A62F6164A0FD400C9EFDD /* NSManagedObject+rest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObject+rest.h"; sourceTree = "<group>"; };
-		349A62F7164A0FD400C9EFDD /* NSManagedObject+rest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObject+rest.m"; sourceTree = "<group>"; };
+		349A62F6164A0FD400C9EFDD /* NSManagedObject+restdriver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObject+restdriver.h"; sourceTree = "<group>"; };
+		349A62F7164A0FD400C9EFDD /* NSManagedObject+restdriver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObject+restdriver.m"; sourceTree = "<group>"; };
 		349A62F8164A0FD400C9EFDD /* NSManagedObject+restobject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObject+restobject.h"; sourceTree = "<group>"; };
 		349A62F9164A0FD400C9EFDD /* NSManagedObject+restobject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObject+restobject.m"; sourceTree = "<group>"; };
-		349A62FA164A0FD400C9EFDD /* NSManagedObject+serverobject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObject+serverobject.h"; sourceTree = "<group>"; };
-		349A62FB164A0FD400C9EFDD /* NSManagedObject+serverobject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObject+serverobject.m"; sourceTree = "<group>"; };
-		349A62FC164A0FD400C9EFDD /* NSManagedObject+sync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObject+sync.h"; sourceTree = "<group>"; };
-		349A62FD164A0FD400C9EFDD /* NSManagedObject+sync.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObject+sync.m"; sourceTree = "<group>"; };
-		349A62FE164A0FD400C9EFDD /* NARestObjectProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NARestObjectProtocol.h; sourceTree = "<group>"; };
+		349A62FC164A0FD400C9EFDD /* NSManagedObject+restapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObject+restapi.h"; sourceTree = "<group>"; };
+		349A62FD164A0FD400C9EFDD /* NSManagedObject+restapi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObject+restapi.m"; sourceTree = "<group>"; };
 		349A6300164A0FD400C9EFDD /* restmodel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = restmodel.xcdatamodel; sourceTree = "<group>"; };
+		349A630D164A4B0C00C9EFDD /* coredata_rest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = coredata_rest.h; sourceTree = "<group>"; };
+		349A6311164A4CAE00C9EFDD /* NSManagedObject+syncer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObject+syncer.h"; sourceTree = "<group>"; };
+		349A6312164A4CAE00C9EFDD /* NSManagedObject+syncer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObject+syncer.m"; sourceTree = "<group>"; };
+		349A6314164A4F7600C9EFDD /* NARestMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NARestMapper.h; sourceTree = "<group>"; };
+		349A6315164A4F7600C9EFDD /* NARestMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NARestMapper.m; sourceTree = "<group>"; };
+		349A6317164A535400C9EFDD /* coredata_sync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = coredata_sync.h; sourceTree = "<group>"; };
+		349A631A164A539C00C9EFDD /* NARestSyncMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NARestSyncMapper.h; sourceTree = "<group>"; };
+		349A631B164A539C00C9EFDD /* NARestSyncMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NARestSyncMapper.m; sourceTree = "<group>"; };
 		8C49B853B1ED4754A49AD589 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -556,26 +560,12 @@
 		349A62D8164A0FCE00C9EFDD /* coredata_sync */ = {
 			isa = PBXGroup;
 			children = (
-				349A62D9164A0FCE00C9EFDD /* drivers */,
-				349A62DA164A0FCE00C9EFDD /* helpers */,
+				349A6310164A4C7D00C9EFDD /* drivers */,
 				349A62DB164A0FCE00C9EFDD /* models */,
+				349A6317164A535400C9EFDD /* coredata_sync.h */,
 			);
 			name = coredata_sync;
 			path = ../../coredata_sync;
-			sourceTree = "<group>";
-		};
-		349A62D9164A0FCE00C9EFDD /* drivers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = drivers;
-			sourceTree = "<group>";
-		};
-		349A62DA164A0FCE00C9EFDD /* helpers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = helpers;
 			sourceTree = "<group>";
 		};
 		349A62DB164A0FCE00C9EFDD /* models */ = {
@@ -614,6 +604,8 @@
 				349A62EA164A0FD400C9EFDD /* NADefaultRestDriver.h */,
 				349A62EB164A0FD400C9EFDD /* NADefaultRestDriver.m */,
 				349A62EC164A0FD400C9EFDD /* NARestDriverProtocol.h */,
+				349A6314164A4F7600C9EFDD /* NARestMapper.h */,
+				349A6315164A4F7600C9EFDD /* NARestMapper.m */,
 			);
 			path = drivers;
 			sourceTree = "<group>";
@@ -633,8 +625,8 @@
 			isa = PBXGroup;
 			children = (
 				349A62F3164A0FD400C9EFDD /* categories */,
-				349A62FE164A0FD400C9EFDD /* NARestObjectProtocol.h */,
 				349A62FF164A0FD400C9EFDD /* restmodel.xcdatamodeld */,
+				349A630D164A4B0C00C9EFDD /* coredata_rest.h */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -642,18 +634,25 @@
 		349A62F3164A0FD400C9EFDD /* categories */ = {
 			isa = PBXGroup;
 			children = (
-				349A62F4164A0FD400C9EFDD /* NSManagedObject+reciever.h */,
-				349A62F5164A0FD400C9EFDD /* NSManagedObject+reciever.m */,
-				349A62F6164A0FD400C9EFDD /* NSManagedObject+rest.h */,
-				349A62F7164A0FD400C9EFDD /* NSManagedObject+rest.m */,
+				349A62F6164A0FD400C9EFDD /* NSManagedObject+restdriver.h */,
+				349A62F7164A0FD400C9EFDD /* NSManagedObject+restdriver.m */,
 				349A62F8164A0FD400C9EFDD /* NSManagedObject+restobject.h */,
 				349A62F9164A0FD400C9EFDD /* NSManagedObject+restobject.m */,
-				349A62FA164A0FD400C9EFDD /* NSManagedObject+serverobject.h */,
-				349A62FB164A0FD400C9EFDD /* NSManagedObject+serverobject.m */,
-				349A62FC164A0FD400C9EFDD /* NSManagedObject+sync.h */,
-				349A62FD164A0FD400C9EFDD /* NSManagedObject+sync.m */,
+				349A62FC164A0FD400C9EFDD /* NSManagedObject+restapi.h */,
+				349A62FD164A0FD400C9EFDD /* NSManagedObject+restapi.m */,
 			);
 			path = categories;
+			sourceTree = "<group>";
+		};
+		349A6310164A4C7D00C9EFDD /* drivers */ = {
+			isa = PBXGroup;
+			children = (
+				349A6311164A4CAE00C9EFDD /* NSManagedObject+syncer.h */,
+				349A6312164A4CAE00C9EFDD /* NSManagedObject+syncer.m */,
+				349A631A164A539C00C9EFDD /* NARestSyncMapper.h */,
+				349A631B164A539C00C9EFDD /* NARestSyncMapper.m */,
+			);
+			path = drivers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -822,12 +821,13 @@
 				349A6301164A0FD400C9EFDD /* NADefaultRestDriver.m in Sources */,
 				349A6302164A0FD400C9EFDD /* NARestHelper.m in Sources */,
 				349A6303164A0FD400C9EFDD /* NARestQueryObject.m in Sources */,
-				349A6304164A0FD400C9EFDD /* NSManagedObject+reciever.m in Sources */,
-				349A6305164A0FD400C9EFDD /* NSManagedObject+rest.m in Sources */,
+				349A6305164A0FD400C9EFDD /* NSManagedObject+restdriver.m in Sources */,
 				349A6306164A0FD400C9EFDD /* NSManagedObject+restobject.m in Sources */,
-				349A6307164A0FD400C9EFDD /* NSManagedObject+serverobject.m in Sources */,
-				349A6308164A0FD400C9EFDD /* NSManagedObject+sync.m in Sources */,
+				349A6308164A0FD400C9EFDD /* NSManagedObject+restapi.m in Sources */,
 				349A6309164A0FD400C9EFDD /* restmodel.xcdatamodeld in Sources */,
+				349A6313164A4CAE00C9EFDD /* NSManagedObject+syncer.m in Sources */,
+				349A6316164A4F7600C9EFDD /* NARestMapper.m in Sources */,
+				349A631C164A539C00C9EFDD /* NARestSyncMapper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

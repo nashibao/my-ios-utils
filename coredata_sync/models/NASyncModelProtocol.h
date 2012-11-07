@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-
 typedef enum NASyncModelGUIDType : NSInteger{
     NASyncModelGUIDTypeNotInServer = -1,
 } NASyncModelGUIDType;

@@ -6,7 +6,7 @@
 //  Copyright (c) 2012年 s-cubism. All rights reserved.
 //
 
-#import "NASyncHelper.h"
+#import "NARestHelper.h"
 
 #import "NANetworkOperation.h"
 
@@ -18,13 +18,13 @@
 
 #import "NSURLRequest+na.h"
 
-@implementation NASyncHelper
+@implementation NARestHelper
 
 /*
  call when network is ended.
  */
 + (void)_successByRestType:(NARestType)restType
-                     query:(NASyncQueryObject *)query
+                     query:(NARestQueryObject *)query
                 identifier:identifier
                   response:(NSURLResponse *)resp
                       data:(id)data{
@@ -80,7 +80,7 @@
  call when network is errored.
  */
 + (void)_errorByRestType:(NARestType)restType
-                   query:(NASyncQueryObject *)query
+                   query:(NARestQueryObject *)query
               identifier:identifier
                 response:(NSURLResponse *)resp
                    error:(NSError *)error{
@@ -121,7 +121,7 @@
 /*
  base function
  */
-+ (void)syncBaseByType:(NARestType)type query:(NASyncQueryObject *)query{
++ (void)syncBaseByType:(NARestType)type query:(NARestQueryObject *)query{
     query.restType = type;
     NSDictionary *option = nil;
     if(query.rpcName){
@@ -147,7 +147,7 @@
     }];
 }
 
-+ (void)syncByRestType:(NARestType)restType query:(NASyncQueryObject *)query{
++ (void)syncByRestType:(NARestType)restType query:(NARestQueryObject *)query{
     switch (restType) {
         case NARestTypeCREATE:
             [self syncCreate:query];
@@ -178,26 +178,26 @@
     }
 }
 
-+ (void)syncFilter:(NASyncQueryObject *)query{
++ (void)syncFilter:(NARestQueryObject *)query{
     [self syncBaseByType:NARestTypeFILTER query:query];
 }
 
-+ (void)syncGet:(NASyncQueryObject *)query{
++ (void)syncGet:(NARestQueryObject *)query{
     [self syncBaseByType:NARestTypeGET query:query];
 }
 
-+ (void)syncCreate:(NASyncQueryObject *)query{
++ (void)syncCreate:(NARestQueryObject *)query{
     [self syncBaseByType:NARestTypeCREATE query:query];
 }
 
-+ (void)syncUpdate:(NASyncQueryObject *)query{
++ (void)syncUpdate:(NARestQueryObject *)query{
     [self syncBaseByType:NARestTypeUPDATE query:query];
 }
 
-+ (void)syncDelete:(NASyncQueryObject *)query{
++ (void)syncDelete:(NARestQueryObject *)query{
     [self syncBaseByType:NARestTypeDELETE query:query];
 }
-+ (void)syncRPC:(NASyncQueryObject *)query{
++ (void)syncRPC:(NARestQueryObject *)query{
     [self syncBaseByType:NARestTypeRPC query:query];
 }
 

@@ -1,33 +1,30 @@
 //
-//  NASyncModelRestProtocol.h
-//  SK3
+//  NSManagedObject+reciever.h
+//  naiostest
 //
-//  Created by nashibao on 2012/10/26.
-//  Copyright (c) 2012年 s-cubism. All rights reserved.
+//  Created by nashibao on 2012/11/07.
+//  Copyright (c) 2012年 nashibao. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
 
-#import "NASyncHelper.h"
+#import "NASyncModelProtocol.h"
 
-#import "NASyncQueryObject.h"
+#import "NARestObjectProtocol.h"
 
-@interface NSObject(NASyncModelRestProtocol)
-
-+ (NSInteger)primaryKeyInServerItemData:(id)itemData;
-+ (NSDate *)modifiedDateInServerItemData:(id)itemData;
+@interface NSManagedObject (reciever)
 
 + (NASyncModelSyncError)updateByServerData:(id)data
                                   restType:(NARestType)restType
                                  inContext:(NSManagedObjectContext *)context
-                                     query:(NASyncQueryObject *)query
+                                     query:(NARestQueryObject *)query
                         network_identifier:(NSString *)network_identifier
                   network_cache_identifier:(NSString *)network_cache_identifier;
 
 + (NSError *)isErrorByServerData:(id)data
                         restType:(NARestType)restType
                        inContext:(NSManagedObjectContext *)context
-                           query:(NASyncQueryObject *)query
+                           query:(NARestQueryObject *)query
               network_identifier:(NSString *)network_identifier
         network_cache_identifier:(NSString *)network_cache_identifier;
 
@@ -35,21 +32,16 @@
                                          data:(id)data
                                      restType:(NARestType)restType
                                     inContext:(NSManagedObjectContext *)context
-                                        query:(NASyncQueryObject *)query
+                                        query:(NARestQueryObject *)query
                            network_identifier:(NSString *)network_identifier
                      network_cache_identifier:(NSString *)network_cache_identifier;
 
-+ (id<NARestDriverProtocol>) restDriver;
-+ (NSString *)restName;
+- (void)resolveConflictByOption:(NASyncModelConflictOption)conflictOption
+                           data:(id)data
+                       restType:(NARestType)restType
+                      inContext:(NSManagedObjectContext *)context
+                          query:(NARestQueryObject *)query;
 
-+ (NSString *)restModelName;
-+ (NSString *)restEndpoint;
-+ (NSString *)restEntityName;
-+ (NSString *)restCallbackName;
-
-+ (NASyncModelConflictOption)conflictOption;
-
-+ (void)syncing_on:(NSManagedObjectID *)objectID;
-+ (void)syncing_off:(NSManagedObjectID *)objectID;
+- (BOOL)conflictedToServerItemData:(id)itemData;
 
 @end

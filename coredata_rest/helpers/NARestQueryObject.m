@@ -6,17 +6,17 @@
 //  Copyright (c) 2012年 s-cubism. All rights reserved.
 //
 
-#import "NASyncQueryObject.h"
+#import "NARestQueryObject.h"
 
-@implementation NASyncQueryObject
+@implementation NARestQueryObject
 
-+ (NASyncQueryObject *)query:(NSDictionary *)query
++ (NARestQueryObject *)query:(NSDictionary *)query
                           pk:(NSInteger)pk
                     objectID:(NSManagedObjectID *)objectID
                        model:(Class)model
                      options:(NSDictionary *)options
              completeHandler:(COMPLETE_HANDLER)completeHandler{
-    NASyncQueryObject *qo = [[NASyncQueryObject alloc] init];
+    NARestQueryObject *qo = [[NARestQueryObject alloc] init];
     qo.query = query;
     qo.pk = pk;
     qo.objectID = objectID;
@@ -27,7 +27,7 @@
 }
 
 #warning -1を何か定数に置き換える？
-+ (NASyncQueryObject *)query:(NSDictionary *)query
++ (NARestQueryObject *)query:(NSDictionary *)query
                        model:(Class)model
                      options:(NSDictionary *)options
              completeHandler:(COMPLETE_HANDLER)completeHandler{

@@ -12,7 +12,7 @@
 
 typedef void(^COMPLETE_HANDLER)(NSError *err);
 
-@interface NASyncQueryObject : NSObject
+@interface NARestQueryObject : NSObject
 @property (strong, nonatomic) NSDictionary *query;
 @property (nonatomic) NSInteger pk;
 @property (strong, nonatomic) NSManagedObjectID *objectID;
@@ -22,14 +22,14 @@ typedef void(^COMPLETE_HANDLER)(NSError *err);
 @property (strong, nonatomic) NSString *rpcName;
 @property (nonatomic) NARestType restType;
 
-+ (NASyncQueryObject *)query:(NSDictionary *)query
++ (NARestQueryObject *)query:(NSDictionary *)query
                           pk:(NSInteger)pk
                     objectID:(NSManagedObjectID *)objectID
                        model:(Class)model
                      options:(NSDictionary *)options
              completeHandler:(COMPLETE_HANDLER)completeHandler;
 
-+ (NASyncQueryObject *)query:(NSDictionary *)query
++ (NARestQueryObject *)query:(NSDictionary *)query
                        model:(Class)model
                      options:(NSDictionary *)options
              completeHandler:(COMPLETE_HANDLER)completeHandler;

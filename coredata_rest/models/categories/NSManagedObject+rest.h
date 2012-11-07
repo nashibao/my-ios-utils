@@ -12,7 +12,7 @@
 
 #import "NASyncModelProtocol.h"
 
-#import "NASyncModelRestProtocol.h"
+#import "NARestObjectProtocol.h"
 
 #import "NSManagedObject+sync.h"
 

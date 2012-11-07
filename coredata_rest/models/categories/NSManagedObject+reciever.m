@@ -18,7 +18,7 @@
 + (NASyncModelSyncError)updateByServerData:(id)data
                                   restType:(NARestType)restType
                                  inContext:(NSManagedObjectContext *)context
-                                     query:(NASyncQueryObject *)query
+                                     query:(NARestQueryObject *)query
                         network_identifier:(NSString *)network_identifier
                   network_cache_identifier:(NSString *)network_cache_identifier{
     
@@ -82,7 +82,7 @@
 + (NSError *)isErrorByServerData:(id)data
                         restType:(NARestType)restType
                        inContext:(NSManagedObjectContext *)context
-                           query:(NASyncQueryObject *)query
+                           query:(NARestQueryObject *)query
               network_identifier:(NSString *)network_identifier
         network_cache_identifier:(NSString *)network_cache_identifier{
     return nil;
@@ -92,7 +92,7 @@
                                          data:(id)data
                                      restType:(NARestType)restType
                                     inContext:(NSManagedObjectContext *)context
-                                        query:(NASyncQueryObject *)query
+                                        query:(NARestQueryObject *)query
                            network_identifier:(NSString *)network_identifier
                      network_cache_identifier:(NSString *)network_cache_identifier{
 #warning useralert, retryはまだ実装してない．．出来ればSVProgressと同じように処理したい．singleton??
@@ -130,7 +130,7 @@
                     }];
                 }
                 [alertView addButtonWithTitle:@"リトライ" handler:^{
-                    [NASyncHelper syncByRestType:restType query:query];
+                    [NARestHelper syncByRestType:restType query:query];
                 }];
                 [alertView show];
                 
@@ -148,7 +148,7 @@
                            data:(id)data
                        restType:(NARestType)restType
                       inContext:(NSManagedObjectContext *)context
-                          query:(NASyncQueryObject *)query{
+                          query:(NARestQueryObject *)query{
     switch (conflictOption) {
         case NASyncModelConflictOptionServerPriority:
             //            server priority
@@ -174,7 +174,7 @@
                                             query:query];
                 }];
                 [alertView addButtonWithTitle:@"リトライ" handler:^{
-                    [NASyncHelper syncByRestType:restType query:query];
+                    [NARestHelper syncByRestType:restType query:query];
                 }];
                 [alertView show];
             });

@@ -16,15 +16,15 @@
 
 #import "NSManagedObject+rest.h"
 
-#import "NASyncModelRestProtocol.h"
+#import "NARestObjectProtocol.h"
 
-#import "NASyncQueryObject.h"
+#import "NARestQueryObject.h"
 
 /*
  実際のsyncmodelでのrestAPIの実装はこちら
  直接使うことももちろん出来る
  */
-@interface NASyncHelper : NSObject
+@interface NARestHelper : NSObject
 
 + (void)cancel:(NARestType)restType
        rpcname:(NSString *)rpcname
@@ -37,18 +37,18 @@
                         modelkls:(Class)modelkls
                          options:(NSDictionary *)options;
 
-+ (void)syncByRestType:(NARestType)restType query:(NASyncQueryObject *)query;
++ (void)syncByRestType:(NARestType)restType query:(NARestQueryObject *)query;
 
-+ (void)syncFilter:(NASyncQueryObject *)query;
++ (void)syncFilter:(NARestQueryObject *)query;
 
-+ (void)syncGet:(NASyncQueryObject *)query;
++ (void)syncGet:(NARestQueryObject *)query;
 
-+ (void)syncCreate:(NASyncQueryObject *)query;
++ (void)syncCreate:(NARestQueryObject *)query;
 
-+ (void)syncUpdate:(NASyncQueryObject *)query;
++ (void)syncUpdate:(NARestQueryObject *)query;
 
-+ (void)syncDelete:(NASyncQueryObject *)query;
++ (void)syncDelete:(NARestQueryObject *)query;
 
-+ (void)syncRPC:(NASyncQueryObject *)query;
++ (void)syncRPC:(NARestQueryObject *)query;
 
 @end

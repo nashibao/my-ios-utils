@@ -43,10 +43,7 @@
 		343BD70D16494A8A009E70BE /* library_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 343BD64D16494A8A009E70BE /* library_background.png */; };
 		343BD70E16494A8A009E70BE /* title_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 343BD64E16494A8A009E70BE /* title_background.png */; };
 		343BD70F16494A8A009E70BE /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 343BD64F16494A8A009E70BE /* index.html */; };
-		343BD71016494A8A009E70BE /* make_help.sh in Resources */ = {isa = PBXBuildFile; fileRef = 343BD65016494A8A009E70BE /* make_help.sh */; };
 		343BD71116494A8A009E70BE /* NSDictionaryTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 343BD65316494A8A009E70BE /* NSDictionaryTransformer.m */; };
-		343BD71216494A8A009E70BE /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 343BD65416494A8A009E70BE /* README.md */; };
-		343BD71316494A8A009E70BE /* SingletonMactors.m in Sources */ = {isa = PBXBuildFile; fileRef = 343BD65616494A8A009E70BE /* SingletonMactors.m */; };
 		343BD71416494A8A009E70BE /* NADefaultRestDriver.m in Sources */ = {isa = PBXBuildFile; fileRef = 343BD65A16494A8A009E70BE /* NADefaultRestDriver.m */; };
 		343BD71516494A8A009E70BE /* NASyncHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 343BD65E16494A8A009E70BE /* NASyncHelper.m */; };
 		343BD71616494A8A009E70BE /* NASyncQueryObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 343BD66016494A8A009E70BE /* NASyncQueryObject.m */; };
@@ -54,8 +51,6 @@
 		343BD71816494A8A009E70BE /* NSManagedObject+rest.m in Sources */ = {isa = PBXBuildFile; fileRef = 343BD66716494A8A009E70BE /* NSManagedObject+rest.m */; };
 		343BD71916494A8A009E70BE /* NSManagedObject+sync.m in Sources */ = {isa = PBXBuildFile; fileRef = 343BD66916494A8A009E70BE /* NSManagedObject+sync.m */; };
 		343BD71A16494A8A009E70BE /* syncmodel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 343BD66A16494A8A009E70BE /* syncmodel.xcdatamodeld */; };
-		343BD71B16494A8A009E70BE /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 343BD66C16494A8A009E70BE /* README.md */; };
-		343BD71C16494A8A009E70BE /* SYNC.md in Resources */ = {isa = PBXBuildFile; fileRef = 343BD66D16494A8A009E70BE /* SYNC.md */; };
 		343BD71D16494A8A009E70BE /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 343BD66F16494A8A009E70BE /* README.md */; };
 		343BD71E16494A8A009E70BE /* NAFRCDelegateTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 343BD67316494A8A009E70BE /* NAFRCDelegateTableViewController.m */; };
 		343BD71F16494A8A009E70BE /* NAFRCTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 343BD67516494A8A009E70BE /* NAFRCTableViewController.m */; };
@@ -153,6 +148,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		341898061649FB01007A767A /* SingletonMactors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingletonMactors.h; sourceTree = "<group>"; };
+		341898091649FB30007A767A /* AccessorMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccessorMacros.h; sourceTree = "<group>"; };
 		343BD61A16494A8A009E70BE /* NSFetchRequest+na.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFetchRequest+na.h"; sourceTree = "<group>"; };
 		343BD61B16494A8A009E70BE /* NSFetchRequest+na.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFetchRequest+na.m"; sourceTree = "<group>"; };
 		343BD61C16494A8A009E70BE /* NSManagedObject+na.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObject+na.h"; sourceTree = "<group>"; };
@@ -194,12 +191,8 @@
 		343BD64D16494A8A009E70BE /* library_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = library_background.png; sourceTree = "<group>"; };
 		343BD64E16494A8A009E70BE /* title_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = title_background.png; sourceTree = "<group>"; };
 		343BD64F16494A8A009E70BE /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
-		343BD65016494A8A009E70BE /* make_help.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = make_help.sh; sourceTree = "<group>"; };
 		343BD65216494A8A009E70BE /* NSDictionaryTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDictionaryTransformer.h; sourceTree = "<group>"; };
 		343BD65316494A8A009E70BE /* NSDictionaryTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDictionaryTransformer.m; sourceTree = "<group>"; };
-		343BD65416494A8A009E70BE /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
-		343BD65516494A8A009E70BE /* SingletonMactors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingletonMactors.h; sourceTree = "<group>"; };
-		343BD65616494A8A009E70BE /* SingletonMactors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingletonMactors.m; sourceTree = "<group>"; };
 		343BD65916494A8A009E70BE /* NADefaultRestDriver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NADefaultRestDriver.h; sourceTree = "<group>"; };
 		343BD65A16494A8A009E70BE /* NADefaultRestDriver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NADefaultRestDriver.m; sourceTree = "<group>"; };
 		343BD65B16494A8A009E70BE /* NARestDriverProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NARestDriverProtocol.h; sourceTree = "<group>"; };
@@ -216,8 +209,6 @@
 		343BD66816494A8A009E70BE /* NSManagedObject+sync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObject+sync.h"; sourceTree = "<group>"; };
 		343BD66916494A8A009E70BE /* NSManagedObject+sync.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObject+sync.m"; sourceTree = "<group>"; };
 		343BD66B16494A8A009E70BE /* syncmodel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = syncmodel.xcdatamodel; sourceTree = "<group>"; };
-		343BD66C16494A8A009E70BE /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
-		343BD66D16494A8A009E70BE /* SYNC.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SYNC.md; sourceTree = "<group>"; };
 		343BD66F16494A8A009E70BE /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		343BD67216494A8A009E70BE /* NAFRCDelegateTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAFRCDelegateTableViewController.h; sourceTree = "<group>"; };
 		343BD67316494A8A009E70BE /* NAFRCDelegateTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAFRCDelegateTableViewController.m; sourceTree = "<group>"; };
@@ -365,9 +356,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		341898051649FB01007A767A /* macro */ = {
+			isa = PBXGroup;
+			children = (
+				341898061649FB01007A767A /* SingletonMactors.h */,
+				341898091649FB30007A767A /* AccessorMacros.h */,
+			);
+			name = macro;
+			path = ../../macro;
+			sourceTree = "<group>";
+		};
 		343BD61616494A64009E70BE /* lib */ = {
 			isa = PBXGroup;
 			children = (
+				341898051649FB01007A767A /* macro */,
 				343BD61816494A8A009E70BE /* coredata */,
 				343BD65716494A8A009E70BE /* coredata_sync */,
 				343BD66E16494A8A009E70BE /* coredata_ui */,
@@ -386,11 +388,7 @@
 				343BD61916494A8A009E70BE /* categories */,
 				343BD62216494A8A009E70BE /* controllers */,
 				343BD62516494A8A009E70BE /* help */,
-				343BD65016494A8A009E70BE /* make_help.sh */,
 				343BD65116494A8A009E70BE /* models */,
-				343BD65416494A8A009E70BE /* README.md */,
-				343BD65516494A8A009E70BE /* SingletonMactors.h */,
-				343BD65616494A8A009E70BE /* SingletonMactors.m */,
 			);
 			name = coredata;
 			path = ../../coredata;
@@ -561,8 +559,6 @@
 				343BD65816494A8A009E70BE /* drivers */,
 				343BD65C16494A8A009E70BE /* helpers */,
 				343BD66116494A8A009E70BE /* models */,
-				343BD66C16494A8A009E70BE /* README.md */,
-				343BD66D16494A8A009E70BE /* SYNC.md */,
 			);
 			name = coredata_sync;
 			path = ../../coredata_sync;
@@ -1118,10 +1114,6 @@
 				343BD70D16494A8A009E70BE /* library_background.png in Resources */,
 				343BD70E16494A8A009E70BE /* title_background.png in Resources */,
 				343BD70F16494A8A009E70BE /* index.html in Resources */,
-				343BD71016494A8A009E70BE /* make_help.sh in Resources */,
-				343BD71216494A8A009E70BE /* README.md in Resources */,
-				343BD71B16494A8A009E70BE /* README.md in Resources */,
-				343BD71C16494A8A009E70BE /* SYNC.md in Resources */,
 				343BD71D16494A8A009E70BE /* README.md in Resources */,
 				343BD72D16494A8A009E70BE /* Info.plist in Resources */,
 				343BD72E16494A8A009E70BE /* docSet.dsidx in Resources */,
@@ -1218,7 +1210,6 @@
 				343BD6EF16494A8A009E70BE /* NSPredicate+na.m in Sources */,
 				343BD6F016494A8A009E70BE /* NAModelController.m in Sources */,
 				343BD71116494A8A009E70BE /* NSDictionaryTransformer.m in Sources */,
-				343BD71316494A8A009E70BE /* SingletonMactors.m in Sources */,
 				343BD71416494A8A009E70BE /* NADefaultRestDriver.m in Sources */,
 				343BD71516494A8A009E70BE /* NASyncHelper.m in Sources */,
 				343BD71616494A8A009E70BE /* NASyncQueryObject.m in Sources */,
@@ -1319,6 +1310,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = naiosunittest;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1340,6 +1332,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PRODUCT_NAME = naiosunittest;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};

@@ -24,3 +24,12 @@ UI用モジュール
 各種マクロを入れておくモジュール
  - na_ios/ocunit
 非同期でocunitで単体テストするためのモジュール
+
+# setup
+
+na_ios自体はcloneしてきて/test/ディレクトリ以外は単純にプロジェクトのターゲットに加えれば使用できます．
+一部モジュールは[BlocksKit](https://github.com/zwaldowski/BlocksKit)や[SVProgressHUD](https://github.com/samvermette/SVProgressHUD)、[Reachability](https://github.com/tonymillion/Reachability)などに依存しています．[cocoapods](http://cocoapods.org/)用のインストールファイル（Podfile）が含まれているので、これをプロジェクトのルートディレクトリ(hoge.xcodeproが入っているディレクトリ)にコピーし、
+```
+> pod install
+```
+とすれば完了です．cocoapodsの使い方については、リンク先を参照して下さい．

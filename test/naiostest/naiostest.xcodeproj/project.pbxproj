@@ -67,7 +67,6 @@
 		349A6306164A0FD400C9EFDD /* NSManagedObject+restobject.m in Sources */ = {isa = PBXBuildFile; fileRef = 349A62F9164A0FD400C9EFDD /* NSManagedObject+restobject.m */; };
 		349A6308164A0FD400C9EFDD /* NSManagedObject+restapi.m in Sources */ = {isa = PBXBuildFile; fileRef = 349A62FD164A0FD400C9EFDD /* NSManagedObject+restapi.m */; };
 		349A6309164A0FD400C9EFDD /* restmodel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 349A62FF164A0FD400C9EFDD /* restmodel.xcdatamodeld */; };
-		349A6313164A4CAE00C9EFDD /* NSManagedObject+syncer.m in Sources */ = {isa = PBXBuildFile; fileRef = 349A6312164A4CAE00C9EFDD /* NSManagedObject+syncer.m */; };
 		349A6316164A4F7600C9EFDD /* NARestMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 349A6315164A4F7600C9EFDD /* NARestMapper.m */; };
 		349A631C164A539C00C9EFDD /* NARestSyncMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 349A631B164A539C00C9EFDD /* NARestSyncMapper.m */; };
 /* End PBXBuildFile section */
@@ -195,8 +194,6 @@
 		349A62FD164A0FD400C9EFDD /* NSManagedObject+restapi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObject+restapi.m"; sourceTree = "<group>"; };
 		349A6300164A0FD400C9EFDD /* restmodel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = restmodel.xcdatamodel; sourceTree = "<group>"; };
 		349A630D164A4B0C00C9EFDD /* coredata_rest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = coredata_rest.h; sourceTree = "<group>"; };
-		349A6311164A4CAE00C9EFDD /* NSManagedObject+syncer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObject+syncer.h"; sourceTree = "<group>"; };
-		349A6312164A4CAE00C9EFDD /* NSManagedObject+syncer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObject+syncer.m"; sourceTree = "<group>"; };
 		349A6314164A4F7600C9EFDD /* NARestMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NARestMapper.h; sourceTree = "<group>"; };
 		349A6315164A4F7600C9EFDD /* NARestMapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NARestMapper.m; sourceTree = "<group>"; };
 		349A6317164A535400C9EFDD /* coredata_sync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = coredata_sync.h; sourceTree = "<group>"; };
@@ -647,8 +644,6 @@
 		349A6310164A4C7D00C9EFDD /* drivers */ = {
 			isa = PBXGroup;
 			children = (
-				349A6311164A4CAE00C9EFDD /* NSManagedObject+syncer.h */,
-				349A6312164A4CAE00C9EFDD /* NSManagedObject+syncer.m */,
 				349A631A164A539C00C9EFDD /* NARestSyncMapper.h */,
 				349A631B164A539C00C9EFDD /* NARestSyncMapper.m */,
 			);
@@ -825,7 +820,6 @@
 				349A6306164A0FD400C9EFDD /* NSManagedObject+restobject.m in Sources */,
 				349A6308164A0FD400C9EFDD /* NSManagedObject+restapi.m in Sources */,
 				349A6309164A0FD400C9EFDD /* restmodel.xcdatamodeld in Sources */,
-				349A6313164A4CAE00C9EFDD /* NSManagedObject+syncer.m in Sources */,
 				349A6316164A4F7600C9EFDD /* NARestMapper.m in Sources */,
 				349A631C164A539C00C9EFDD /* NARestSyncMapper.m in Sources */,
 			);

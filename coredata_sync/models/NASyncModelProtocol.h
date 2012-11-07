@@ -25,9 +25,13 @@ typedef enum NASyncModelSyncState : NSInteger{
  コンフリクト時の戦略
  */
 typedef enum NASyncModelConflictOption: NSUInteger{
+	// サーバ優先
     NASyncModelConflictOptionServerPriority,
+	// ローカル優先
     NASyncModelConflictOptionLocalPriority,
+	// ユーザによる選択
     NASyncModelConflictOptionUserAlert,
+	// 自動マージ（testing)
     NASyncModelConflictOptionAutoMerge,
 } NASyncModelConflictOption;
 

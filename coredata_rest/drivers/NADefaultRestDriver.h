@@ -17,7 +17,13 @@
 
 + (NSString *)domain;
 
-- (NSString *)URLByType:(NARestType)type model:(NSString*)modelname endpoint:(NSString *)endpoint pk:(NSInteger)pk option:(NSDictionary *)option;
-- (NANetworkProtocol)ProtocolByType:(NARestType)type model:(NSString*)modelname;
+- (NSString *)URLByType:(NARestType)type
+                  model:(NSString*)modelname
+               endpoint:(NSString *)endpoint
+                     pk:(NSInteger)pk
+                 option:(NSDictionary *)option;
+
+- (NANetworkProtocol)ProtocolByType:(NARestType)type
+                              model:(NSString*)modelname;
 
 @end

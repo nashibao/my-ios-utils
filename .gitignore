@@ -22,3 +22,5 @@ profile
 /test/back/
 /test/na_ios_unit_test/Pods/
 /test/na_ios_unit_test/Podfile.lock
+*Podfile.lock
+*Pods

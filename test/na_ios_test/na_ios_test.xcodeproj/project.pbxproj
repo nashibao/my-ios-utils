@@ -7,40 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		34048ED316441C19008E5E32 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 34048D1D16441C19008E5E32 /* .gitignore */; };
-		34048ED816441C19008E5E32 /* NSDictionaryTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 34048D2B16441C19008E5E32 /* NSDictionaryTransformer.m */; };
-		34048EDD16441C19008E5E32 /* NADefaultRestDriver.m in Sources */ = {isa = PBXBuildFile; fileRef = 34048D3816441C19008E5E32 /* NADefaultRestDriver.m */; };
-		34048EDE16441C19008E5E32 /* NASyncHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 34048D3C16441C19008E5E32 /* NASyncHelper.m */; };
-		34048EDF16441C19008E5E32 /* NASyncQueryObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 34048D3E16441C19008E5E32 /* NASyncQueryObject.m */; };
-		34048EE016441C19008E5E32 /* NASyncModel+rest.m in Sources */ = {isa = PBXBuildFile; fileRef = 34048D4116441C19008E5E32 /* NASyncModel+rest.m */; };
-		34048EE116441C19008E5E32 /* NASyncModel+sync.m in Sources */ = {isa = PBXBuildFile; fileRef = 34048D4316441C19008E5E32 /* NASyncModel+sync.m */; };
-		34048EE216441C19008E5E32 /* NASyncModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 34048D4516441C19008E5E32 /* NASyncModel.m */; };
-		34048EE316441C19008E5E32 /* syncmodel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 34048D4816441C19008E5E32 /* syncmodel.xcdatamodeld */; };
-		34048EE416441C19008E5E32 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 34048D4A16441C19008E5E32 /* README.md */; };
-		34048EE516441C19008E5E32 /* NAValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 34048D4D16441C19008E5E32 /* NAValidator.m */; };
-		34048EE616441C19008E5E32 /* NAFormValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 34048D5016441C19008E5E32 /* NAFormValue.m */; };
-		34048EE716441C19008E5E32 /* NAMultipleFormValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 34048D5216441C19008E5E32 /* NAMultipleFormValue.m */; };
-		34048EE816441C19008E5E32 /* NAMultipleSelectFormValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 34048D5416441C19008E5E32 /* NAMultipleSelectFormValue.m */; };
-		34048EE916441C19008E5E32 /* NASelectFormValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 34048D5616441C19008E5E32 /* NASelectFormValue.m */; };
-		34048EEA16441C19008E5E32 /* NAFormCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 34048D5A16441C19008E5E32 /* NAFormCell.m */; };
-		34048EEB16441C19008E5E32 /* NAFormPushCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 34048D5C16441C19008E5E32 /* NAFormPushCell.m */; };
-		34048EEC16441C19008E5E32 /* NAFormTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 34048D5E16441C19008E5E32 /* NAFormTextFieldCell.m */; };
-		34048EED16441C19008E5E32 /* NAFormTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34048D6016441C19008E5E32 /* NAFormTableViewController.m */; };
-		34048EEE16441C19008E5E32 /* NAMultipleSelectFormTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34048D6216441C19008E5E32 /* NAMultipleSelectFormTableViewController.m */; };
-		34048EEF16441C19008E5E32 /* NASelectFormTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34048D6416441C19008E5E32 /* NASelectFormTableViewController.m */; };
-		34048EF016441C19008E5E32 /* NANetworkGCDHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 34048D6816441C19008E5E32 /* NANetworkGCDHelper.m */; };
-		34048F0E16441C19008E5E32 /* NANetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 34048D9316441C19008E5E32 /* NANetworkActivityIndicatorManager.m */; };
-		34048F0F16441C19008E5E32 /* NANetworkConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 34048D9516441C19008E5E32 /* NANetworkConfig.m */; };
-		34048F1016441C19008E5E32 /* NABaseNetworkOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 34048D9816441C19008E5E32 /* NABaseNetworkOperation.m */; };
-		34048F1116441C19008E5E32 /* NANetworkOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 34048D9A16441C19008E5E32 /* NANetworkOperation.m */; };
-		34048F1216441C19008E5E32 /* NSOperationQueue+na.m in Sources */ = {isa = PBXBuildFile; fileRef = 34048D9C16441C19008E5E32 /* NSOperationQueue+na.m */; };
-		34048F1316441C19008E5E32 /* NAAsyncOCUnit.m in Sources */ = {isa = PBXBuildFile; fileRef = 34048D9F16441C19008E5E32 /* NAAsyncOCUnit.m */; };
-		34048F6D16441C19008E5E32 /* NATheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 34048EC016441C19008E5E32 /* NATheme.m */; };
-		34048F6E16441C19008E5E32 /* NAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34048EC316441C19008E5E32 /* NAViewController.m */; };
-		34048F6F16441C19008E5E32 /* NATableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 34048EC816441C19008E5E32 /* NATableViewCell.m */; };
-		34048F7016441C19008E5E32 /* NATextLabelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 34048ECA16441C19008E5E32 /* NATextLabelCell.m */; };
-		34048F7116441C19008E5E32 /* NAArrayTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34048ECC16441C19008E5E32 /* NAArrayTableViewController.m */; };
-		34048F7216441C19008E5E32 /* NATableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34048ECE16441C19008E5E32 /* NATableViewController.m */; };
 		3413F75C163E443800A6B3ED /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3413F75B163E443800A6B3ED /* UIKit.framework */; };
 		3413F75E163E443800A6B3ED /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3413F75D163E443800A6B3ED /* Foundation.framework */; };
 		3413F760163E443800A6B3ED /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3413F75F163E443800A6B3ED /* CoreGraphics.framework */; };
@@ -57,17 +23,7 @@
 		3413F781163E443800A6B3ED /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3413F75D163E443800A6B3ED /* Foundation.framework */; };
 		3413F782163E443800A6B3ED /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3413F761163E443800A6B3ED /* CoreData.framework */; };
 		3413F78A163E443800A6B3ED /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3413F788163E443800A6B3ED /* InfoPlist.strings */; };
-		346C5D0116479A490036531E /* NSURLRequest+na.m in Sources */ = {isa = PBXBuildFile; fileRef = 346C5D0016479A490036531E /* NSURLRequest+na.m */; };
-		346C5D671647A3A20036531E /* NSFetchRequest+na.m in Sources */ = {isa = PBXBuildFile; fileRef = 346C5D601647A3A20036531E /* NSFetchRequest+na.m */; };
-		346C5D681647A3A20036531E /* NSManagedObject+na.m in Sources */ = {isa = PBXBuildFile; fileRef = 346C5D621647A3A20036531E /* NSManagedObject+na.m */; };
-		346C5D691647A3A20036531E /* NSManagedObjectContext+na.m in Sources */ = {isa = PBXBuildFile; fileRef = 346C5D641647A3A20036531E /* NSManagedObjectContext+na.m */; };
-		346C5D6A1647A3A20036531E /* NSPredicate+na.m in Sources */ = {isa = PBXBuildFile; fileRef = 346C5D661647A3A20036531E /* NSPredicate+na.m */; };
-		346C5D741647A67B0036531E /* NAFRCDelegateTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 346C5D6F1647A67B0036531E /* NAFRCDelegateTableViewController.m */; };
-		346C5D751647A67B0036531E /* NAFRCTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 346C5D711647A67B0036531E /* NAFRCTableViewController.m */; };
-		346C5D761647A67B0036531E /* NAFRCTableWithAppendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 346C5D731647A67B0036531E /* NAFRCTableWithAppendViewController.m */; };
-		346C5D7A1647A6A90036531E /* NAModelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 346C5D791647A6A90036531E /* NAModelController.m */; };
 		346C5D7B1647B8300036531E /* NSManagedObjectContextNaCategoryTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 34868C71163F62200032BF6D /* NSManagedObjectContextNaCategoryTest.m */; };
-		3482C9101648AB69001B1BB1 /* SingletonMactors.m in Sources */ = {isa = PBXBuildFile; fileRef = 3482C90F1648AB69001B1BB1 /* SingletonMactors.m */; };
 		34868C65163F56C20032BF6D /* testmodel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 34868C63163F56C20032BF6D /* testmodel.xcdatamodeld */; };
 		34868C6C163F58C90032BF6D /* TestParent.m in Sources */ = {isa = PBXBuildFile; fileRef = 34868C6B163F58C90032BF6D /* TestParent.m */; };
 		34868C6F163F58C90032BF6D /* TestChild.m in Sources */ = {isa = PBXBuildFile; fileRef = 34868C6E163F58C90032BF6D /* TestChild.m */; };
@@ -81,43 +37,54 @@
 		34B740A91648FB29008142AB /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 34B740A81648FB29008142AB /* Default@2x.png */; };
 		34B740AB1648FB29008142AB /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 34B740AA1648FB29008142AB /* Default-568h@2x.png */; };
 		34B740AE1648FB29008142AB /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34B740AC1648FB29008142AB /* MainStoryboard.storyboard */; };
-		34B740DB1648FBBD008142AB /* Event+na.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B740D01648FBBD008142AB /* Event+na.m */; };
-		34B740DC1648FBBD008142AB /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B740D21648FBBD008142AB /* Event.m */; };
-		34B740DD1648FBBD008142AB /* EventModelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B740D41648FBBD008142AB /* EventModelController.m */; };
-		34B740DE1648FBBD008142AB /* table.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 34B740D51648FBBD008142AB /* table.xcdatamodeld */; };
-		34B740DF1648FBBD008142AB /* EventFRCTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B740D91648FBBD008142AB /* EventFRCTableViewController.m */; };
-		34B740E01648FC09008142AB /* NAFRCDelegateTableViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 346C5D6E1647A67B0036531E /* NAFRCDelegateTableViewController.h */; };
-		34B740E11648FC09008142AB /* NAFRCDelegateTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 346C5D6F1647A67B0036531E /* NAFRCDelegateTableViewController.m */; };
-		34B740E21648FC09008142AB /* NAFRCTableViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 346C5D701647A67B0036531E /* NAFRCTableViewController.h */; };
-		34B740E31648FC09008142AB /* NAFRCTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 346C5D711647A67B0036531E /* NAFRCTableViewController.m */; };
-		34B740E41648FC09008142AB /* NAFRCTableWithAppendViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 346C5D721647A67B0036531E /* NAFRCTableWithAppendViewController.h */; };
-		34B740E51648FC09008142AB /* NAFRCTableWithAppendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 346C5D731647A67B0036531E /* NAFRCTableWithAppendViewController.m */; };
-		34B740E61648FC10008142AB /* NAModelController.h in Sources */ = {isa = PBXBuildFile; fileRef = 346C5D781647A6A90036531E /* NAModelController.h */; };
-		34B740E71648FC10008142AB /* NAModelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 346C5D791647A6A90036531E /* NAModelController.m */; };
-		34B740E81648FC18008142AB /* NSFetchRequest+na.h in Sources */ = {isa = PBXBuildFile; fileRef = 346C5D5F1647A3A20036531E /* NSFetchRequest+na.h */; };
-		34B740E91648FC18008142AB /* NSFetchRequest+na.m in Sources */ = {isa = PBXBuildFile; fileRef = 346C5D601647A3A20036531E /* NSFetchRequest+na.m */; };
-		34B740EA1648FC18008142AB /* NSManagedObject+na.h in Sources */ = {isa = PBXBuildFile; fileRef = 346C5D611647A3A20036531E /* NSManagedObject+na.h */; };
-		34B740EB1648FC18008142AB /* NSManagedObject+na.m in Sources */ = {isa = PBXBuildFile; fileRef = 346C5D621647A3A20036531E /* NSManagedObject+na.m */; };
-		34B740EC1648FC18008142AB /* NSManagedObjectContext+na.h in Sources */ = {isa = PBXBuildFile; fileRef = 346C5D631647A3A20036531E /* NSManagedObjectContext+na.h */; };
-		34B740ED1648FC18008142AB /* NSManagedObjectContext+na.m in Sources */ = {isa = PBXBuildFile; fileRef = 346C5D641647A3A20036531E /* NSManagedObjectContext+na.m */; };
-		34B740EE1648FC18008142AB /* NSPredicate+na.h in Sources */ = {isa = PBXBuildFile; fileRef = 346C5D651647A3A20036531E /* NSPredicate+na.h */; };
-		34B740EF1648FC18008142AB /* NSPredicate+na.m in Sources */ = {isa = PBXBuildFile; fileRef = 346C5D661647A3A20036531E /* NSPredicate+na.m */; };
-		34B740F01648FC18008142AB /* NSDictionaryTransformer.h in Sources */ = {isa = PBXBuildFile; fileRef = 34048D2A16441C19008E5E32 /* NSDictionaryTransformer.h */; };
-		34B740F11648FC18008142AB /* NSDictionaryTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 34048D2B16441C19008E5E32 /* NSDictionaryTransformer.m */; };
-		34B740F21648FC18008142AB /* SingletonMactors.h in Sources */ = {isa = PBXBuildFile; fileRef = 3482C90E1648AB69001B1BB1 /* SingletonMactors.h */; };
-		34B740F31648FC18008142AB /* SingletonMactors.m in Sources */ = {isa = PBXBuildFile; fileRef = 3482C90F1648AB69001B1BB1 /* SingletonMactors.m */; };
 		34B740F41648FC33008142AB /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3413F761163E443800A6B3ED /* CoreData.framework */; };
-		34B740F51648FC5A008142AB /* NAViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 34048EC216441C19008E5E32 /* NAViewController.h */; };
-		34B740F61648FC5A008142AB /* NAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34048EC316441C19008E5E32 /* NAViewController.m */; };
-		34B740F71648FC5A008142AB /* NAViewControllerProtocol.h in Sources */ = {isa = PBXBuildFile; fileRef = 34048EC416441C19008E5E32 /* NAViewControllerProtocol.h */; };
-		34B740F81648FC5A008142AB /* NATableViewCell.h in Sources */ = {isa = PBXBuildFile; fileRef = 34048EC716441C19008E5E32 /* NATableViewCell.h */; };
-		34B740F91648FC5A008142AB /* NATableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 34048EC816441C19008E5E32 /* NATableViewCell.m */; };
-		34B740FA1648FC5A008142AB /* NATextLabelCell.h in Sources */ = {isa = PBXBuildFile; fileRef = 34048EC916441C19008E5E32 /* NATextLabelCell.h */; };
-		34B740FB1648FC5A008142AB /* NATextLabelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 34048ECA16441C19008E5E32 /* NATextLabelCell.m */; };
-		34B740FC1648FC5A008142AB /* NAArrayTableViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 34048ECB16441C19008E5E32 /* NAArrayTableViewController.h */; };
-		34B740FD1648FC5A008142AB /* NAArrayTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34048ECC16441C19008E5E32 /* NAArrayTableViewController.m */; };
-		34B740FE1648FC5A008142AB /* NATableViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 34048ECD16441C19008E5E32 /* NATableViewController.h */; };
-		34B740FF1648FC5A008142AB /* NATableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34048ECE16441C19008E5E32 /* NATableViewController.m */; };
+		34B74319164943E6008142AB /* NSFetchRequest+na.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B74106164943E6008142AB /* NSFetchRequest+na.m */; };
+		34B7431A164943E6008142AB /* NSManagedObject+na.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B74108164943E6008142AB /* NSManagedObject+na.m */; };
+		34B7431B164943E6008142AB /* NSManagedObjectContext+na.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B7410A164943E6008142AB /* NSManagedObjectContext+na.m */; };
+		34B7431C164943E6008142AB /* NSPredicate+na.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B7410C164943E6008142AB /* NSPredicate+na.m */; };
+		34B7431D164943E6008142AB /* NAModelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B7410F164943E6008142AB /* NAModelController.m */; };
+		34B7433E164943E6008142AB /* NSDictionaryTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B7413E164943E6008142AB /* NSDictionaryTransformer.m */; };
+		34B74340164943E6008142AB /* SingletonMactors.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B74141164943E6008142AB /* SingletonMactors.m */; };
+		34B74341164943E6008142AB /* NADefaultRestDriver.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B74145164943E6008142AB /* NADefaultRestDriver.m */; };
+		34B74342164943E6008142AB /* NASyncHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B74149164943E6008142AB /* NASyncHelper.m */; };
+		34B74343164943E6008142AB /* NASyncQueryObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B7414B164943E6008142AB /* NASyncQueryObject.m */; };
+		34B74344164943E6008142AB /* NASyncModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B7414E164943E6008142AB /* NASyncModel.m */; };
+		34B74345164943E6008142AB /* NSManagedObject+rest.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B74152164943E6008142AB /* NSManagedObject+rest.m */; };
+		34B74346164943E6008142AB /* NSManagedObject+sync.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B74154164943E6008142AB /* NSManagedObject+sync.m */; };
+		34B74347164943E6008142AB /* syncmodel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 34B74155164943E6008142AB /* syncmodel.xcdatamodeld */; };
+		34B7434B164943E6008142AB /* NAFRCDelegateTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B7415E164943E6008142AB /* NAFRCDelegateTableViewController.m */; };
+		34B7434C164943E6008142AB /* NAFRCTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B74160164943E6008142AB /* NAFRCTableViewController.m */; };
+		34B7434D164943E6008142AB /* NAFRCTableWithAppendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B74162164943E6008142AB /* NAFRCTableWithAppendViewController.m */; };
+		34B7434E164943E6008142AB /* NAValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B74165164943E6008142AB /* NAValidator.m */; };
+		34B7434F164943E6008142AB /* NAFormValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B74168164943E6008142AB /* NAFormValue.m */; };
+		34B74350164943E6008142AB /* NAMultipleFormValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B7416A164943E6008142AB /* NAMultipleFormValue.m */; };
+		34B74351164943E6008142AB /* NAMultipleSelectFormValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B7416C164943E6008142AB /* NAMultipleSelectFormValue.m */; };
+		34B74352164943E6008142AB /* NASelectFormValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B7416E164943E6008142AB /* NASelectFormValue.m */; };
+		34B74353164943E6008142AB /* NAFormCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B74172164943E6008142AB /* NAFormCell.m */; };
+		34B74354164943E6008142AB /* NAFormPushCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B74174164943E6008142AB /* NAFormPushCell.m */; };
+		34B74355164943E6008142AB /* NAFormTextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B74176164943E6008142AB /* NAFormTextFieldCell.m */; };
+		34B74356164943E6008142AB /* NAFormTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B74178164943E6008142AB /* NAFormTableViewController.m */; };
+		34B74357164943E6008142AB /* NAMultipleSelectFormTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B7417A164943E6008142AB /* NAMultipleSelectFormTableViewController.m */; };
+		34B74358164943E6008142AB /* NASelectFormTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B7417C164943E6008142AB /* NASelectFormTableViewController.m */; };
+		34B74359164943E6008142AB /* NANetworkGCDHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B74180164943E6008142AB /* NANetworkGCDHelper.m */; };
+		34B74380164943E6008142AB /* NANetworkActivityIndicatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B741B6164943E6008142AB /* NANetworkActivityIndicatorManager.m */; };
+		34B74381164943E6008142AB /* NANetworkConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B741B8164943E6008142AB /* NANetworkConfig.m */; };
+		34B74382164943E6008142AB /* NSURLRequest+na.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B741BA164943E6008142AB /* NSURLRequest+na.m */; };
+		34B74383164943E6008142AB /* NABaseNetworkOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B741BD164943E6008142AB /* NABaseNetworkOperation.m */; };
+		34B74384164943E6008142AB /* NANetworkOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B741BF164943E6008142AB /* NANetworkOperation.m */; };
+		34B74385164943E6008142AB /* NSOperationQueue+na.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B741C1164943E6008142AB /* NSOperationQueue+na.m */; };
+		34B74387164943E6008142AB /* NAAsyncOCUnit.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B741C5164943E6008142AB /* NAAsyncOCUnit.m */; };
+		34B743EE164943E6008142AB /* NATheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B74305164943E6008142AB /* NATheme.m */; };
+		34B743EF164943E6008142AB /* NAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B74308164943E6008142AB /* NAViewController.m */; };
+		34B743F0164943E6008142AB /* NATableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B7430D164943E6008142AB /* NATableViewCell.m */; };
+		34B743F1164943E6008142AB /* NATextLabelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B7430F164943E6008142AB /* NATextLabelCell.m */; };
+		34B743F2164943E6008142AB /* NAArrayTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B74311164943E6008142AB /* NAArrayTableViewController.m */; };
+		34B743F3164943E6008142AB /* NATableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B74313164943E6008142AB /* NATableViewController.m */; };
+		34B7440916494492008142AB /* Event+na.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B743FE16494492008142AB /* Event+na.m */; };
+		34B7440A16494492008142AB /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B7440016494492008142AB /* Event.m */; };
+		34B7440B16494492008142AB /* EventModelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B7440216494492008142AB /* EventModelController.m */; };
+		34B7440C16494492008142AB /* table.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 34B7440316494492008142AB /* table.xcdatamodeld */; };
+		34B7440D16494492008142AB /* EventFRCTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 34B7440716494492008142AB /* EventFRCTableViewController.m */; };
 		7FC45350278542F5B9CB72A9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D571E5B3F2EC41BB97B08A6C /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -132,75 +99,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		34048D1D16441C19008E5E32 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		34048D2A16441C19008E5E32 /* NSDictionaryTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDictionaryTransformer.h; sourceTree = "<group>"; };
-		34048D2B16441C19008E5E32 /* NSDictionaryTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDictionaryTransformer.m; sourceTree = "<group>"; };
-		34048D3716441C19008E5E32 /* NADefaultRestDriver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NADefaultRestDriver.h; sourceTree = "<group>"; };
-		34048D3816441C19008E5E32 /* NADefaultRestDriver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NADefaultRestDriver.m; sourceTree = "<group>"; };
-		34048D3916441C19008E5E32 /* NARestDriverProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NARestDriverProtocol.h; sourceTree = "<group>"; };
-		34048D3B16441C19008E5E32 /* NASyncHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NASyncHelper.h; sourceTree = "<group>"; };
-		34048D3C16441C19008E5E32 /* NASyncHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NASyncHelper.m; sourceTree = "<group>"; };
-		34048D3D16441C19008E5E32 /* NASyncQueryObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NASyncQueryObject.h; sourceTree = "<group>"; };
-		34048D3E16441C19008E5E32 /* NASyncQueryObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NASyncQueryObject.m; sourceTree = "<group>"; };
-		34048D4016441C19008E5E32 /* NASyncModel+rest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NASyncModel+rest.h"; sourceTree = "<group>"; };
-		34048D4116441C19008E5E32 /* NASyncModel+rest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NASyncModel+rest.m"; sourceTree = "<group>"; };
-		34048D4216441C19008E5E32 /* NASyncModel+sync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NASyncModel+sync.h"; sourceTree = "<group>"; };
-		34048D4316441C19008E5E32 /* NASyncModel+sync.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NASyncModel+sync.m"; sourceTree = "<group>"; };
-		34048D4416441C19008E5E32 /* NASyncModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NASyncModel.h; sourceTree = "<group>"; };
-		34048D4516441C19008E5E32 /* NASyncModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NASyncModel.m; sourceTree = "<group>"; };
-		34048D4616441C19008E5E32 /* NASyncModelProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NASyncModelProtocol.h; sourceTree = "<group>"; };
-		34048D4716441C19008E5E32 /* NASyncModelRestProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NASyncModelRestProtocol.h; sourceTree = "<group>"; };
-		34048D4916441C19008E5E32 /* syncmodel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = syncmodel.xcdatamodel; sourceTree = "<group>"; };
-		34048D4A16441C19008E5E32 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
-		34048D4C16441C19008E5E32 /* NAValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAValidator.h; sourceTree = "<group>"; };
-		34048D4D16441C19008E5E32 /* NAValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAValidator.m; sourceTree = "<group>"; };
-		34048D4F16441C19008E5E32 /* NAFormValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAFormValue.h; sourceTree = "<group>"; };
-		34048D5016441C19008E5E32 /* NAFormValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAFormValue.m; sourceTree = "<group>"; };
-		34048D5116441C19008E5E32 /* NAMultipleFormValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAMultipleFormValue.h; sourceTree = "<group>"; };
-		34048D5216441C19008E5E32 /* NAMultipleFormValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAMultipleFormValue.m; sourceTree = "<group>"; };
-		34048D5316441C19008E5E32 /* NAMultipleSelectFormValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAMultipleSelectFormValue.h; sourceTree = "<group>"; };
-		34048D5416441C19008E5E32 /* NAMultipleSelectFormValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAMultipleSelectFormValue.m; sourceTree = "<group>"; };
-		34048D5516441C19008E5E32 /* NASelectFormValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NASelectFormValue.h; sourceTree = "<group>"; };
-		34048D5616441C19008E5E32 /* NASelectFormValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NASelectFormValue.m; sourceTree = "<group>"; };
-		34048D5916441C19008E5E32 /* NAFormCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAFormCell.h; sourceTree = "<group>"; };
-		34048D5A16441C19008E5E32 /* NAFormCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAFormCell.m; sourceTree = "<group>"; };
-		34048D5B16441C19008E5E32 /* NAFormPushCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAFormPushCell.h; sourceTree = "<group>"; };
-		34048D5C16441C19008E5E32 /* NAFormPushCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAFormPushCell.m; sourceTree = "<group>"; };
-		34048D5D16441C19008E5E32 /* NAFormTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAFormTextFieldCell.h; sourceTree = "<group>"; };
-		34048D5E16441C19008E5E32 /* NAFormTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAFormTextFieldCell.m; sourceTree = "<group>"; };
-		34048D5F16441C19008E5E32 /* NAFormTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAFormTableViewController.h; sourceTree = "<group>"; };
-		34048D6016441C19008E5E32 /* NAFormTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAFormTableViewController.m; sourceTree = "<group>"; };
-		34048D6116441C19008E5E32 /* NAMultipleSelectFormTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAMultipleSelectFormTableViewController.h; sourceTree = "<group>"; };
-		34048D6216441C19008E5E32 /* NAMultipleSelectFormTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAMultipleSelectFormTableViewController.m; sourceTree = "<group>"; };
-		34048D6316441C19008E5E32 /* NASelectFormTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NASelectFormTableViewController.h; sourceTree = "<group>"; };
-		34048D6416441C19008E5E32 /* NASelectFormTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NASelectFormTableViewController.m; sourceTree = "<group>"; };
-		34048D6716441C19008E5E32 /* NANetworkGCDHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NANetworkGCDHelper.h; sourceTree = "<group>"; };
-		34048D6816441C19008E5E32 /* NANetworkGCDHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NANetworkGCDHelper.m; sourceTree = "<group>"; };
-		34048D9216441C19008E5E32 /* NANetworkActivityIndicatorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NANetworkActivityIndicatorManager.h; sourceTree = "<group>"; };
-		34048D9316441C19008E5E32 /* NANetworkActivityIndicatorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NANetworkActivityIndicatorManager.m; sourceTree = "<group>"; };
-		34048D9416441C19008E5E32 /* NANetworkConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NANetworkConfig.h; sourceTree = "<group>"; };
-		34048D9516441C19008E5E32 /* NANetworkConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NANetworkConfig.m; sourceTree = "<group>"; };
-		34048D9716441C19008E5E32 /* NABaseNetworkOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NABaseNetworkOperation.h; sourceTree = "<group>"; };
-		34048D9816441C19008E5E32 /* NABaseNetworkOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NABaseNetworkOperation.m; sourceTree = "<group>"; };
-		34048D9916441C19008E5E32 /* NANetworkOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NANetworkOperation.h; sourceTree = "<group>"; };
-		34048D9A16441C19008E5E32 /* NANetworkOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NANetworkOperation.m; sourceTree = "<group>"; };
-		34048D9B16441C19008E5E32 /* NSOperationQueue+na.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSOperationQueue+na.h"; sourceTree = "<group>"; };
-		34048D9C16441C19008E5E32 /* NSOperationQueue+na.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSOperationQueue+na.m"; sourceTree = "<group>"; };
-		34048D9E16441C19008E5E32 /* NAAsyncOCUnit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAAsyncOCUnit.h; sourceTree = "<group>"; };
-		34048D9F16441C19008E5E32 /* NAAsyncOCUnit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAAsyncOCUnit.m; sourceTree = "<group>"; };
-		34048EBF16441C19008E5E32 /* NATheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NATheme.h; sourceTree = "<group>"; };
-		34048EC016441C19008E5E32 /* NATheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NATheme.m; sourceTree = "<group>"; };
-		34048EC216441C19008E5E32 /* NAViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAViewController.h; sourceTree = "<group>"; };
-		34048EC316441C19008E5E32 /* NAViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAViewController.m; sourceTree = "<group>"; };
-		34048EC416441C19008E5E32 /* NAViewControllerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAViewControllerProtocol.h; sourceTree = "<group>"; };
-		34048EC716441C19008E5E32 /* NATableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NATableViewCell.h; sourceTree = "<group>"; };
-		34048EC816441C19008E5E32 /* NATableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NATableViewCell.m; sourceTree = "<group>"; };
-		34048EC916441C19008E5E32 /* NATextLabelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NATextLabelCell.h; sourceTree = "<group>"; };
-		34048ECA16441C19008E5E32 /* NATextLabelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NATextLabelCell.m; sourceTree = "<group>"; };
-		34048ECB16441C19008E5E32 /* NAArrayTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAArrayTableViewController.h; sourceTree = "<group>"; };
-		34048ECC16441C19008E5E32 /* NAArrayTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAArrayTableViewController.m; sourceTree = "<group>"; };
-		34048ECD16441C19008E5E32 /* NATableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NATableViewController.h; sourceTree = "<group>"; };
-		34048ECE16441C19008E5E32 /* NATableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NATableViewController.m; sourceTree = "<group>"; };
 		3413F757163E443800A6B3ED /* na_ios_test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = na_ios_test.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3413F75B163E443800A6B3ED /* UIKit.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		3413F75D163E443800A6B3ED /* Foundation.framework */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -221,26 +119,6 @@
 		3413F787163E443800A6B3ED /* na_ios_testTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "na_ios_testTests-Info.plist"; sourceTree = "<group>"; };
 		3413F789163E443800A6B3ED /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3455C4F31644224700B053AF /* na_ios_testTests.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = na_ios_testTests.pch; sourceTree = "<group>"; };
-		346C5CFF16479A490036531E /* NSURLRequest+na.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLRequest+na.h"; sourceTree = "<group>"; };
-		346C5D0016479A490036531E /* NSURLRequest+na.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLRequest+na.m"; sourceTree = "<group>"; };
-		346C5D5F1647A3A20036531E /* NSFetchRequest+na.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFetchRequest+na.h"; sourceTree = "<group>"; };
-		346C5D601647A3A20036531E /* NSFetchRequest+na.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFetchRequest+na.m"; sourceTree = "<group>"; };
-		346C5D611647A3A20036531E /* NSManagedObject+na.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObject+na.h"; sourceTree = "<group>"; };
-		346C5D621647A3A20036531E /* NSManagedObject+na.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObject+na.m"; sourceTree = "<group>"; };
-		346C5D631647A3A20036531E /* NSManagedObjectContext+na.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObjectContext+na.h"; sourceTree = "<group>"; };
-		346C5D641647A3A20036531E /* NSManagedObjectContext+na.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObjectContext+na.m"; sourceTree = "<group>"; };
-		346C5D651647A3A20036531E /* NSPredicate+na.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSPredicate+na.h"; sourceTree = "<group>"; };
-		346C5D661647A3A20036531E /* NSPredicate+na.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSPredicate+na.m"; sourceTree = "<group>"; };
-		346C5D6E1647A67B0036531E /* NAFRCDelegateTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAFRCDelegateTableViewController.h; sourceTree = "<group>"; };
-		346C5D6F1647A67B0036531E /* NAFRCDelegateTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAFRCDelegateTableViewController.m; sourceTree = "<group>"; };
-		346C5D701647A67B0036531E /* NAFRCTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAFRCTableViewController.h; sourceTree = "<group>"; };
-		346C5D711647A67B0036531E /* NAFRCTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAFRCTableViewController.m; sourceTree = "<group>"; };
-		346C5D721647A67B0036531E /* NAFRCTableWithAppendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAFRCTableWithAppendViewController.h; sourceTree = "<group>"; };
-		346C5D731647A67B0036531E /* NAFRCTableWithAppendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAFRCTableWithAppendViewController.m; sourceTree = "<group>"; };
-		346C5D781647A6A90036531E /* NAModelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAModelController.h; sourceTree = "<group>"; };
-		346C5D791647A6A90036531E /* NAModelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAModelController.m; sourceTree = "<group>"; };
-		3482C90E1648AB69001B1BB1 /* SingletonMactors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingletonMactors.h; sourceTree = "<group>"; };
-		3482C90F1648AB69001B1BB1 /* SingletonMactors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingletonMactors.m; sourceTree = "<group>"; };
 		3484D21D163E6F0500C80E42 /* NANetworkOperationTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NANetworkOperationTest.h; sourceTree = "<group>"; };
 		3484D21E163E6F0500C80E42 /* NANetworkOperationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NANetworkOperationTest.m; sourceTree = "<group>"; };
 		34868C64163F56C20032BF6D /* testmodel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = testmodel.xcdatamodel; sourceTree = "<group>"; };
@@ -263,15 +141,102 @@
 		34B740A81648FB29008142AB /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		34B740AA1648FB29008142AB /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		34B740AD1648FB29008142AB /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		34B740CF1648FBBD008142AB /* Event+na.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Event+na.h"; sourceTree = "<group>"; };
-		34B740D01648FBBD008142AB /* Event+na.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Event+na.m"; sourceTree = "<group>"; };
-		34B740D11648FBBD008142AB /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
-		34B740D21648FBBD008142AB /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
-		34B740D31648FBBD008142AB /* EventModelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventModelController.h; sourceTree = "<group>"; };
-		34B740D41648FBBD008142AB /* EventModelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventModelController.m; sourceTree = "<group>"; };
-		34B740D61648FBBD008142AB /* table.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = table.xcdatamodel; sourceTree = "<group>"; };
-		34B740D81648FBBD008142AB /* EventFRCTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventFRCTableViewController.h; sourceTree = "<group>"; };
-		34B740D91648FBBD008142AB /* EventFRCTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventFRCTableViewController.m; sourceTree = "<group>"; };
+		34B74105164943E6008142AB /* NSFetchRequest+na.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSFetchRequest+na.h"; sourceTree = "<group>"; };
+		34B74106164943E6008142AB /* NSFetchRequest+na.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSFetchRequest+na.m"; sourceTree = "<group>"; };
+		34B74107164943E6008142AB /* NSManagedObject+na.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObject+na.h"; sourceTree = "<group>"; };
+		34B74108164943E6008142AB /* NSManagedObject+na.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObject+na.m"; sourceTree = "<group>"; };
+		34B74109164943E6008142AB /* NSManagedObjectContext+na.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObjectContext+na.h"; sourceTree = "<group>"; };
+		34B7410A164943E6008142AB /* NSManagedObjectContext+na.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObjectContext+na.m"; sourceTree = "<group>"; };
+		34B7410B164943E6008142AB /* NSPredicate+na.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSPredicate+na.h"; sourceTree = "<group>"; };
+		34B7410C164943E6008142AB /* NSPredicate+na.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSPredicate+na.m"; sourceTree = "<group>"; };
+		34B7410E164943E6008142AB /* NAModelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAModelController.h; sourceTree = "<group>"; };
+		34B7410F164943E6008142AB /* NAModelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAModelController.m; sourceTree = "<group>"; };
+		34B7413D164943E6008142AB /* NSDictionaryTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDictionaryTransformer.h; sourceTree = "<group>"; };
+		34B7413E164943E6008142AB /* NSDictionaryTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDictionaryTransformer.m; sourceTree = "<group>"; };
+		34B74140164943E6008142AB /* SingletonMactors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingletonMactors.h; sourceTree = "<group>"; };
+		34B74141164943E6008142AB /* SingletonMactors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingletonMactors.m; sourceTree = "<group>"; };
+		34B74144164943E6008142AB /* NADefaultRestDriver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NADefaultRestDriver.h; sourceTree = "<group>"; };
+		34B74145164943E6008142AB /* NADefaultRestDriver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NADefaultRestDriver.m; sourceTree = "<group>"; };
+		34B74146164943E6008142AB /* NARestDriverProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NARestDriverProtocol.h; sourceTree = "<group>"; };
+		34B74148164943E6008142AB /* NASyncHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NASyncHelper.h; sourceTree = "<group>"; };
+		34B74149164943E6008142AB /* NASyncHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NASyncHelper.m; sourceTree = "<group>"; };
+		34B7414A164943E6008142AB /* NASyncQueryObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NASyncQueryObject.h; sourceTree = "<group>"; };
+		34B7414B164943E6008142AB /* NASyncQueryObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NASyncQueryObject.m; sourceTree = "<group>"; };
+		34B7414D164943E6008142AB /* NASyncModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NASyncModel.h; sourceTree = "<group>"; };
+		34B7414E164943E6008142AB /* NASyncModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NASyncModel.m; sourceTree = "<group>"; };
+		34B7414F164943E6008142AB /* NASyncModelProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NASyncModelProtocol.h; sourceTree = "<group>"; };
+		34B74150164943E6008142AB /* NASyncModelRestProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NASyncModelRestProtocol.h; sourceTree = "<group>"; };
+		34B74151164943E6008142AB /* NSManagedObject+rest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObject+rest.h"; sourceTree = "<group>"; };
+		34B74152164943E6008142AB /* NSManagedObject+rest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObject+rest.m"; sourceTree = "<group>"; };
+		34B74153164943E6008142AB /* NSManagedObject+sync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObject+sync.h"; sourceTree = "<group>"; };
+		34B74154164943E6008142AB /* NSManagedObject+sync.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObject+sync.m"; sourceTree = "<group>"; };
+		34B74156164943E6008142AB /* syncmodel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = syncmodel.xcdatamodel; sourceTree = "<group>"; };
+		34B7415D164943E6008142AB /* NAFRCDelegateTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAFRCDelegateTableViewController.h; sourceTree = "<group>"; };
+		34B7415E164943E6008142AB /* NAFRCDelegateTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAFRCDelegateTableViewController.m; sourceTree = "<group>"; };
+		34B7415F164943E6008142AB /* NAFRCTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAFRCTableViewController.h; sourceTree = "<group>"; };
+		34B74160164943E6008142AB /* NAFRCTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAFRCTableViewController.m; sourceTree = "<group>"; };
+		34B74161164943E6008142AB /* NAFRCTableWithAppendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAFRCTableWithAppendViewController.h; sourceTree = "<group>"; };
+		34B74162164943E6008142AB /* NAFRCTableWithAppendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAFRCTableWithAppendViewController.m; sourceTree = "<group>"; };
+		34B74164164943E6008142AB /* NAValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAValidator.h; sourceTree = "<group>"; };
+		34B74165164943E6008142AB /* NAValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAValidator.m; sourceTree = "<group>"; };
+		34B74167164943E6008142AB /* NAFormValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAFormValue.h; sourceTree = "<group>"; };
+		34B74168164943E6008142AB /* NAFormValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAFormValue.m; sourceTree = "<group>"; };
+		34B74169164943E6008142AB /* NAMultipleFormValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAMultipleFormValue.h; sourceTree = "<group>"; };
+		34B7416A164943E6008142AB /* NAMultipleFormValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAMultipleFormValue.m; sourceTree = "<group>"; };
+		34B7416B164943E6008142AB /* NAMultipleSelectFormValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAMultipleSelectFormValue.h; sourceTree = "<group>"; };
+		34B7416C164943E6008142AB /* NAMultipleSelectFormValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAMultipleSelectFormValue.m; sourceTree = "<group>"; };
+		34B7416D164943E6008142AB /* NASelectFormValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NASelectFormValue.h; sourceTree = "<group>"; };
+		34B7416E164943E6008142AB /* NASelectFormValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NASelectFormValue.m; sourceTree = "<group>"; };
+		34B74171164943E6008142AB /* NAFormCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAFormCell.h; sourceTree = "<group>"; };
+		34B74172164943E6008142AB /* NAFormCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAFormCell.m; sourceTree = "<group>"; };
+		34B74173164943E6008142AB /* NAFormPushCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAFormPushCell.h; sourceTree = "<group>"; };
+		34B74174164943E6008142AB /* NAFormPushCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAFormPushCell.m; sourceTree = "<group>"; };
+		34B74175164943E6008142AB /* NAFormTextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAFormTextFieldCell.h; sourceTree = "<group>"; };
+		34B74176164943E6008142AB /* NAFormTextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAFormTextFieldCell.m; sourceTree = "<group>"; };
+		34B74177164943E6008142AB /* NAFormTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAFormTableViewController.h; sourceTree = "<group>"; };
+		34B74178164943E6008142AB /* NAFormTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAFormTableViewController.m; sourceTree = "<group>"; };
+		34B74179164943E6008142AB /* NAMultipleSelectFormTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAMultipleSelectFormTableViewController.h; sourceTree = "<group>"; };
+		34B7417A164943E6008142AB /* NAMultipleSelectFormTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAMultipleSelectFormTableViewController.m; sourceTree = "<group>"; };
+		34B7417B164943E6008142AB /* NASelectFormTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NASelectFormTableViewController.h; sourceTree = "<group>"; };
+		34B7417C164943E6008142AB /* NASelectFormTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NASelectFormTableViewController.m; sourceTree = "<group>"; };
+		34B7417F164943E6008142AB /* NANetworkGCDHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NANetworkGCDHelper.h; sourceTree = "<group>"; };
+		34B74180164943E6008142AB /* NANetworkGCDHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NANetworkGCDHelper.m; sourceTree = "<group>"; };
+		34B741B5164943E6008142AB /* NANetworkActivityIndicatorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NANetworkActivityIndicatorManager.h; sourceTree = "<group>"; };
+		34B741B6164943E6008142AB /* NANetworkActivityIndicatorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NANetworkActivityIndicatorManager.m; sourceTree = "<group>"; };
+		34B741B7164943E6008142AB /* NANetworkConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NANetworkConfig.h; sourceTree = "<group>"; };
+		34B741B8164943E6008142AB /* NANetworkConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NANetworkConfig.m; sourceTree = "<group>"; };
+		34B741B9164943E6008142AB /* NSURLRequest+na.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLRequest+na.h"; sourceTree = "<group>"; };
+		34B741BA164943E6008142AB /* NSURLRequest+na.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLRequest+na.m"; sourceTree = "<group>"; };
+		34B741BC164943E6008142AB /* NABaseNetworkOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NABaseNetworkOperation.h; sourceTree = "<group>"; };
+		34B741BD164943E6008142AB /* NABaseNetworkOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NABaseNetworkOperation.m; sourceTree = "<group>"; };
+		34B741BE164943E6008142AB /* NANetworkOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NANetworkOperation.h; sourceTree = "<group>"; };
+		34B741BF164943E6008142AB /* NANetworkOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NANetworkOperation.m; sourceTree = "<group>"; };
+		34B741C0164943E6008142AB /* NSOperationQueue+na.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSOperationQueue+na.h"; sourceTree = "<group>"; };
+		34B741C1164943E6008142AB /* NSOperationQueue+na.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSOperationQueue+na.m"; sourceTree = "<group>"; };
+		34B741C4164943E6008142AB /* NAAsyncOCUnit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAAsyncOCUnit.h; sourceTree = "<group>"; };
+		34B741C5164943E6008142AB /* NAAsyncOCUnit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAAsyncOCUnit.m; sourceTree = "<group>"; };
+		34B74304164943E6008142AB /* NATheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NATheme.h; sourceTree = "<group>"; };
+		34B74305164943E6008142AB /* NATheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NATheme.m; sourceTree = "<group>"; };
+		34B74307164943E6008142AB /* NAViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAViewController.h; sourceTree = "<group>"; };
+		34B74308164943E6008142AB /* NAViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAViewController.m; sourceTree = "<group>"; };
+		34B74309164943E6008142AB /* NAViewControllerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAViewControllerProtocol.h; sourceTree = "<group>"; };
+		34B7430C164943E6008142AB /* NATableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NATableViewCell.h; sourceTree = "<group>"; };
+		34B7430D164943E6008142AB /* NATableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NATableViewCell.m; sourceTree = "<group>"; };
+		34B7430E164943E6008142AB /* NATextLabelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NATextLabelCell.h; sourceTree = "<group>"; };
+		34B7430F164943E6008142AB /* NATextLabelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NATextLabelCell.m; sourceTree = "<group>"; };
+		34B74310164943E6008142AB /* NAArrayTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAArrayTableViewController.h; sourceTree = "<group>"; };
+		34B74311164943E6008142AB /* NAArrayTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAArrayTableViewController.m; sourceTree = "<group>"; };
+		34B74312164943E6008142AB /* NATableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NATableViewController.h; sourceTree = "<group>"; };
+		34B74313164943E6008142AB /* NATableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NATableViewController.m; sourceTree = "<group>"; };
+		34B743FD16494492008142AB /* Event+na.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Event+na.h"; sourceTree = "<group>"; };
+		34B743FE16494492008142AB /* Event+na.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Event+na.m"; sourceTree = "<group>"; };
+		34B743FF16494492008142AB /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
+		34B7440016494492008142AB /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
+		34B7440116494492008142AB /* EventModelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventModelController.h; sourceTree = "<group>"; };
+		34B7440216494492008142AB /* EventModelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventModelController.m; sourceTree = "<group>"; };
+		34B7440416494492008142AB /* table.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = table.xcdatamodel; sourceTree = "<group>"; };
+		34B7440616494492008142AB /* EventFRCTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventFRCTableViewController.h; sourceTree = "<group>"; };
+		34B7440716494492008142AB /* EventFRCTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventFRCTableViewController.m; sourceTree = "<group>"; };
 		34CA1B20163E583B0005F09E /* NANetworkGCDHelperTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NANetworkGCDHelperTest.h; sourceTree = "<group>"; };
 		34CA1B21163E583B0005F09E /* NANetworkGCDHelperTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NANetworkGCDHelperTest.m; sourceTree = "<group>"; };
 		91A8E345710D4C69B7CBAA84 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
@@ -316,238 +281,10 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		34048D1C16441C19008E5E32 /* na_ios */ = {
-			isa = PBXGroup;
-			children = (
-				346C5D6B1647A67B0036531E /* coredata_ui */,
-				34048D1D16441C19008E5E32 /* .gitignore */,
-				34048D1E16441C19008E5E32 /* coredata */,
-				34048D3516441C19008E5E32 /* coredata_sync */,
-				34048D4B16441C19008E5E32 /* form */,
-				34048D6516441C19008E5E32 /* network */,
-				34048D9D16441C19008E5E32 /* ocunit */,
-				34048EBE16441C19008E5E32 /* theme */,
-				34048EC116441C19008E5E32 /* ui */,
-			);
-			name = na_ios;
-			path = ../..;
-			sourceTree = "<group>";
-		};
-		34048D1E16441C19008E5E32 /* coredata */ = {
-			isa = PBXGroup;
-			children = (
-				346C5D771647A6A90036531E /* controllers */,
-				346C5D5E1647A3A20036531E /* categories */,
-				34048D2916441C19008E5E32 /* models */,
-				3482C90E1648AB69001B1BB1 /* SingletonMactors.h */,
-				3482C90F1648AB69001B1BB1 /* SingletonMactors.m */,
-			);
-			path = coredata;
-			sourceTree = "<group>";
-		};
-		34048D2916441C19008E5E32 /* models */ = {
-			isa = PBXGroup;
-			children = (
-				34048D2A16441C19008E5E32 /* NSDictionaryTransformer.h */,
-				34048D2B16441C19008E5E32 /* NSDictionaryTransformer.m */,
-			);
-			path = models;
-			sourceTree = "<group>";
-		};
-		34048D3516441C19008E5E32 /* coredata_sync */ = {
-			isa = PBXGroup;
-			children = (
-				34048D3616441C19008E5E32 /* drivers */,
-				34048D3A16441C19008E5E32 /* helpers */,
-				34048D3F16441C19008E5E32 /* models */,
-				34048D4A16441C19008E5E32 /* README.md */,
-			);
-			path = coredata_sync;
-			sourceTree = "<group>";
-		};
-		34048D3616441C19008E5E32 /* drivers */ = {
-			isa = PBXGroup;
-			children = (
-				34048D3716441C19008E5E32 /* NADefaultRestDriver.h */,
-				34048D3816441C19008E5E32 /* NADefaultRestDriver.m */,
-				34048D3916441C19008E5E32 /* NARestDriverProtocol.h */,
-			);
-			path = drivers;
-			sourceTree = "<group>";
-		};
-		34048D3A16441C19008E5E32 /* helpers */ = {
-			isa = PBXGroup;
-			children = (
-				34048D3B16441C19008E5E32 /* NASyncHelper.h */,
-				34048D3C16441C19008E5E32 /* NASyncHelper.m */,
-				34048D3D16441C19008E5E32 /* NASyncQueryObject.h */,
-				34048D3E16441C19008E5E32 /* NASyncQueryObject.m */,
-			);
-			path = helpers;
-			sourceTree = "<group>";
-		};
-		34048D3F16441C19008E5E32 /* models */ = {
-			isa = PBXGroup;
-			children = (
-				34048D4016441C19008E5E32 /* NASyncModel+rest.h */,
-				34048D4116441C19008E5E32 /* NASyncModel+rest.m */,
-				34048D4216441C19008E5E32 /* NASyncModel+sync.h */,
-				34048D4316441C19008E5E32 /* NASyncModel+sync.m */,
-				34048D4416441C19008E5E32 /* NASyncModel.h */,
-				34048D4516441C19008E5E32 /* NASyncModel.m */,
-				34048D4616441C19008E5E32 /* NASyncModelProtocol.h */,
-				34048D4716441C19008E5E32 /* NASyncModelRestProtocol.h */,
-				34048D4816441C19008E5E32 /* syncmodel.xcdatamodeld */,
-			);
-			path = models;
-			sourceTree = "<group>";
-		};
-		34048D4B16441C19008E5E32 /* form */ = {
-			isa = PBXGroup;
-			children = (
-				34048D4C16441C19008E5E32 /* NAValidator.h */,
-				34048D4D16441C19008E5E32 /* NAValidator.m */,
-				34048D4E16441C19008E5E32 /* objects */,
-				34048D5716441C19008E5E32 /* views */,
-			);
-			path = form;
-			sourceTree = "<group>";
-		};
-		34048D4E16441C19008E5E32 /* objects */ = {
-			isa = PBXGroup;
-			children = (
-				34048D4F16441C19008E5E32 /* NAFormValue.h */,
-				34048D5016441C19008E5E32 /* NAFormValue.m */,
-				34048D5116441C19008E5E32 /* NAMultipleFormValue.h */,
-				34048D5216441C19008E5E32 /* NAMultipleFormValue.m */,
-				34048D5316441C19008E5E32 /* NAMultipleSelectFormValue.h */,
-				34048D5416441C19008E5E32 /* NAMultipleSelectFormValue.m */,
-				34048D5516441C19008E5E32 /* NASelectFormValue.h */,
-				34048D5616441C19008E5E32 /* NASelectFormValue.m */,
-			);
-			path = objects;
-			sourceTree = "<group>";
-		};
-		34048D5716441C19008E5E32 /* views */ = {
-			isa = PBXGroup;
-			children = (
-				34048D5816441C19008E5E32 /* cells */,
-				34048D5F16441C19008E5E32 /* NAFormTableViewController.h */,
-				34048D6016441C19008E5E32 /* NAFormTableViewController.m */,
-				34048D6116441C19008E5E32 /* NAMultipleSelectFormTableViewController.h */,
-				34048D6216441C19008E5E32 /* NAMultipleSelectFormTableViewController.m */,
-				34048D6316441C19008E5E32 /* NASelectFormTableViewController.h */,
-				34048D6416441C19008E5E32 /* NASelectFormTableViewController.m */,
-			);
-			path = views;
-			sourceTree = "<group>";
-		};
-		34048D5816441C19008E5E32 /* cells */ = {
-			isa = PBXGroup;
-			children = (
-				34048D5916441C19008E5E32 /* NAFormCell.h */,
-				34048D5A16441C19008E5E32 /* NAFormCell.m */,
-				34048D5B16441C19008E5E32 /* NAFormPushCell.h */,
-				34048D5C16441C19008E5E32 /* NAFormPushCell.m */,
-				34048D5D16441C19008E5E32 /* NAFormTextFieldCell.h */,
-				34048D5E16441C19008E5E32 /* NAFormTextFieldCell.m */,
-			);
-			path = cells;
-			sourceTree = "<group>";
-		};
-		34048D6516441C19008E5E32 /* network */ = {
-			isa = PBXGroup;
-			children = (
-				34048D6616441C19008E5E32 /* gcds */,
-				346C5CFF16479A490036531E /* NSURLRequest+na.h */,
-				346C5D0016479A490036531E /* NSURLRequest+na.m */,
-				34048D9216441C19008E5E32 /* NANetworkActivityIndicatorManager.h */,
-				34048D9316441C19008E5E32 /* NANetworkActivityIndicatorManager.m */,
-				34048D9416441C19008E5E32 /* NANetworkConfig.h */,
-				34048D9516441C19008E5E32 /* NANetworkConfig.m */,
-				34048D9616441C19008E5E32 /* operations */,
-			);
-			path = network;
-			sourceTree = "<group>";
-		};
-		34048D6616441C19008E5E32 /* gcds */ = {
-			isa = PBXGroup;
-			children = (
-				34048D6716441C19008E5E32 /* NANetworkGCDHelper.h */,
-				34048D6816441C19008E5E32 /* NANetworkGCDHelper.m */,
-			);
-			path = gcds;
-			sourceTree = "<group>";
-		};
-		34048D9616441C19008E5E32 /* operations */ = {
-			isa = PBXGroup;
-			children = (
-				34048D9716441C19008E5E32 /* NABaseNetworkOperation.h */,
-				34048D9816441C19008E5E32 /* NABaseNetworkOperation.m */,
-				34048D9916441C19008E5E32 /* NANetworkOperation.h */,
-				34048D9A16441C19008E5E32 /* NANetworkOperation.m */,
-				34048D9B16441C19008E5E32 /* NSOperationQueue+na.h */,
-				34048D9C16441C19008E5E32 /* NSOperationQueue+na.m */,
-			);
-			path = operations;
-			sourceTree = "<group>";
-		};
-		34048D9D16441C19008E5E32 /* ocunit */ = {
-			isa = PBXGroup;
-			children = (
-				34048D9E16441C19008E5E32 /* NAAsyncOCUnit.h */,
-				34048D9F16441C19008E5E32 /* NAAsyncOCUnit.m */,
-			);
-			path = ocunit;
-			sourceTree = "<group>";
-		};
-		34048EBE16441C19008E5E32 /* theme */ = {
-			isa = PBXGroup;
-			children = (
-				34048EBF16441C19008E5E32 /* NATheme.h */,
-				34048EC016441C19008E5E32 /* NATheme.m */,
-			);
-			path = theme;
-			sourceTree = "<group>";
-		};
-		34048EC116441C19008E5E32 /* ui */ = {
-			isa = PBXGroup;
-			children = (
-				34048EC216441C19008E5E32 /* NAViewController.h */,
-				34048EC316441C19008E5E32 /* NAViewController.m */,
-				34048EC416441C19008E5E32 /* NAViewControllerProtocol.h */,
-				34048EC516441C19008E5E32 /* table */,
-			);
-			path = ui;
-			sourceTree = "<group>";
-		};
-		34048EC516441C19008E5E32 /* table */ = {
-			isa = PBXGroup;
-			children = (
-				34048EC616441C19008E5E32 /* cell */,
-				34048ECB16441C19008E5E32 /* NAArrayTableViewController.h */,
-				34048ECC16441C19008E5E32 /* NAArrayTableViewController.m */,
-				34048ECD16441C19008E5E32 /* NATableViewController.h */,
-				34048ECE16441C19008E5E32 /* NATableViewController.m */,
-			);
-			path = table;
-			sourceTree = "<group>";
-		};
-		34048EC616441C19008E5E32 /* cell */ = {
-			isa = PBXGroup;
-			children = (
-				34048EC716441C19008E5E32 /* NATableViewCell.h */,
-				34048EC816441C19008E5E32 /* NATableViewCell.m */,
-				34048EC916441C19008E5E32 /* NATextLabelCell.h */,
-				34048ECA16441C19008E5E32 /* NATextLabelCell.m */,
-			);
-			path = cell;
-			sourceTree = "<group>";
-		};
 		3413F74C163E443800A6B3ED = {
 			isa = PBXGroup;
 			children = (
-				34048D1C16441C19008E5E32 /* na_ios */,
+				34B74101164943E6008142AB /* na_ios */,
 				3413F763163E443800A6B3ED /* na_ios_test */,
 				3413F785163E443800A6B3ED /* na_ios_testTests */,
 				34B7409A1648FB29008142AB /* frctabletest */,
@@ -629,59 +366,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		346C5D5E1647A3A20036531E /* categories */ = {
-			isa = PBXGroup;
-			children = (
-				346C5D5F1647A3A20036531E /* NSFetchRequest+na.h */,
-				346C5D601647A3A20036531E /* NSFetchRequest+na.m */,
-				346C5D611647A3A20036531E /* NSManagedObject+na.h */,
-				346C5D621647A3A20036531E /* NSManagedObject+na.m */,
-				346C5D631647A3A20036531E /* NSManagedObjectContext+na.h */,
-				346C5D641647A3A20036531E /* NSManagedObjectContext+na.m */,
-				346C5D651647A3A20036531E /* NSPredicate+na.h */,
-				346C5D661647A3A20036531E /* NSPredicate+na.m */,
-			);
-			path = categories;
-			sourceTree = "<group>";
-		};
-		346C5D6B1647A67B0036531E /* coredata_ui */ = {
-			isa = PBXGroup;
-			children = (
-				346C5D6C1647A67B0036531E /* table */,
-			);
-			path = coredata_ui;
-			sourceTree = "<group>";
-		};
-		346C5D6C1647A67B0036531E /* table */ = {
-			isa = PBXGroup;
-			children = (
-				346C5D6D1647A67B0036531E /* cell */,
-				346C5D6E1647A67B0036531E /* NAFRCDelegateTableViewController.h */,
-				346C5D6F1647A67B0036531E /* NAFRCDelegateTableViewController.m */,
-				346C5D701647A67B0036531E /* NAFRCTableViewController.h */,
-				346C5D711647A67B0036531E /* NAFRCTableViewController.m */,
-				346C5D721647A67B0036531E /* NAFRCTableWithAppendViewController.h */,
-				346C5D731647A67B0036531E /* NAFRCTableWithAppendViewController.m */,
-			);
-			path = table;
-			sourceTree = "<group>";
-		};
-		346C5D6D1647A67B0036531E /* cell */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = cell;
-			sourceTree = "<group>";
-		};
-		346C5D771647A6A90036531E /* controllers */ = {
-			isa = PBXGroup;
-			children = (
-				346C5D781647A6A90036531E /* NAModelController.h */,
-				346C5D791647A6A90036531E /* NAModelController.m */,
-			);
-			path = controllers;
-			sourceTree = "<group>";
-		};
 		34B73F5A1648F4A5008142AB /* apps */ = {
 			isa = PBXGroup;
 			children = (
@@ -692,7 +376,7 @@
 		34B7409A1648FB29008142AB /* frctabletest */ = {
 			isa = PBXGroup;
 			children = (
-				34B740CC1648FBBD008142AB /* apps */,
+				34B743FA16494492008142AB /* apps */,
 				34B740A31648FB29008142AB /* AppDelegate.h */,
 				34B740A41648FB29008142AB /* AppDelegate.m */,
 				34B740AC1648FB29008142AB /* MainStoryboard.storyboard */,
@@ -715,48 +399,327 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		34B740CC1648FBBD008142AB /* apps */ = {
+		34B74101164943E6008142AB /* na_ios */ = {
 			isa = PBXGroup;
 			children = (
-				34B740CD1648FBBD008142AB /* app */,
+				34B74103164943E6008142AB /* coredata */,
+				34B74142164943E6008142AB /* coredata_sync */,
+				34B74159164943E6008142AB /* coredata_ui */,
+				34B74163164943E6008142AB /* form */,
+				34B7417D164943E6008142AB /* network */,
+				34B741C3164943E6008142AB /* ocunit */,
+				34B74303164943E6008142AB /* theme */,
+				34B74306164943E6008142AB /* ui */,
 			);
-			path = apps;
+			name = na_ios;
+			path = ../..;
 			sourceTree = "<group>";
 		};
-		34B740CD1648FBBD008142AB /* app */ = {
+		34B74103164943E6008142AB /* coredata */ = {
 			isa = PBXGroup;
 			children = (
-				34B740CE1648FBBD008142AB /* models */,
-				34B740D71648FBBD008142AB /* viewcontrollers */,
-				34B740DA1648FBBD008142AB /* views */,
+				34B74104164943E6008142AB /* categories */,
+				34B7410D164943E6008142AB /* controllers */,
+				34B7413C164943E6008142AB /* models */,
+				34B74140164943E6008142AB /* SingletonMactors.h */,
+				34B74141164943E6008142AB /* SingletonMactors.m */,
 			);
-			path = app;
+			path = coredata;
 			sourceTree = "<group>";
 		};
-		34B740CE1648FBBD008142AB /* models */ = {
+		34B74104164943E6008142AB /* categories */ = {
 			isa = PBXGroup;
 			children = (
-				34B740CF1648FBBD008142AB /* Event+na.h */,
-				34B740D01648FBBD008142AB /* Event+na.m */,
-				34B740D11648FBBD008142AB /* Event.h */,
-				34B740D21648FBBD008142AB /* Event.m */,
-				34B740D31648FBBD008142AB /* EventModelController.h */,
-				34B740D41648FBBD008142AB /* EventModelController.m */,
-				34B740D51648FBBD008142AB /* table.xcdatamodeld */,
+				34B74105164943E6008142AB /* NSFetchRequest+na.h */,
+				34B74106164943E6008142AB /* NSFetchRequest+na.m */,
+				34B74107164943E6008142AB /* NSManagedObject+na.h */,
+				34B74108164943E6008142AB /* NSManagedObject+na.m */,
+				34B74109164943E6008142AB /* NSManagedObjectContext+na.h */,
+				34B7410A164943E6008142AB /* NSManagedObjectContext+na.m */,
+				34B7410B164943E6008142AB /* NSPredicate+na.h */,
+				34B7410C164943E6008142AB /* NSPredicate+na.m */,
+			);
+			path = categories;
+			sourceTree = "<group>";
+		};
+		34B7410D164943E6008142AB /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				34B7410E164943E6008142AB /* NAModelController.h */,
+				34B7410F164943E6008142AB /* NAModelController.m */,
+			);
+			path = controllers;
+			sourceTree = "<group>";
+		};
+		34B7413C164943E6008142AB /* models */ = {
+			isa = PBXGroup;
+			children = (
+				34B7413D164943E6008142AB /* NSDictionaryTransformer.h */,
+				34B7413E164943E6008142AB /* NSDictionaryTransformer.m */,
 			);
 			path = models;
 			sourceTree = "<group>";
 		};
-		34B740D71648FBBD008142AB /* viewcontrollers */ = {
+		34B74142164943E6008142AB /* coredata_sync */ = {
 			isa = PBXGroup;
 			children = (
-				34B740D81648FBBD008142AB /* EventFRCTableViewController.h */,
-				34B740D91648FBBD008142AB /* EventFRCTableViewController.m */,
+				34B74143164943E6008142AB /* drivers */,
+				34B74147164943E6008142AB /* helpers */,
+				34B7414C164943E6008142AB /* models */,
+			);
+			path = coredata_sync;
+			sourceTree = "<group>";
+		};
+		34B74143164943E6008142AB /* drivers */ = {
+			isa = PBXGroup;
+			children = (
+				34B74144164943E6008142AB /* NADefaultRestDriver.h */,
+				34B74145164943E6008142AB /* NADefaultRestDriver.m */,
+				34B74146164943E6008142AB /* NARestDriverProtocol.h */,
+			);
+			path = drivers;
+			sourceTree = "<group>";
+		};
+		34B74147164943E6008142AB /* helpers */ = {
+			isa = PBXGroup;
+			children = (
+				34B74148164943E6008142AB /* NASyncHelper.h */,
+				34B74149164943E6008142AB /* NASyncHelper.m */,
+				34B7414A164943E6008142AB /* NASyncQueryObject.h */,
+				34B7414B164943E6008142AB /* NASyncQueryObject.m */,
+			);
+			path = helpers;
+			sourceTree = "<group>";
+		};
+		34B7414C164943E6008142AB /* models */ = {
+			isa = PBXGroup;
+			children = (
+				34B7414D164943E6008142AB /* NASyncModel.h */,
+				34B7414E164943E6008142AB /* NASyncModel.m */,
+				34B7414F164943E6008142AB /* NASyncModelProtocol.h */,
+				34B74150164943E6008142AB /* NASyncModelRestProtocol.h */,
+				34B74151164943E6008142AB /* NSManagedObject+rest.h */,
+				34B74152164943E6008142AB /* NSManagedObject+rest.m */,
+				34B74153164943E6008142AB /* NSManagedObject+sync.h */,
+				34B74154164943E6008142AB /* NSManagedObject+sync.m */,
+				34B74155164943E6008142AB /* syncmodel.xcdatamodeld */,
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
+		34B74159164943E6008142AB /* coredata_ui */ = {
+			isa = PBXGroup;
+			children = (
+				34B7415B164943E6008142AB /* table */,
+			);
+			path = coredata_ui;
+			sourceTree = "<group>";
+		};
+		34B7415B164943E6008142AB /* table */ = {
+			isa = PBXGroup;
+			children = (
+				34B7415C164943E6008142AB /* cell */,
+				34B7415D164943E6008142AB /* NAFRCDelegateTableViewController.h */,
+				34B7415E164943E6008142AB /* NAFRCDelegateTableViewController.m */,
+				34B7415F164943E6008142AB /* NAFRCTableViewController.h */,
+				34B74160164943E6008142AB /* NAFRCTableViewController.m */,
+				34B74161164943E6008142AB /* NAFRCTableWithAppendViewController.h */,
+				34B74162164943E6008142AB /* NAFRCTableWithAppendViewController.m */,
+			);
+			path = table;
+			sourceTree = "<group>";
+		};
+		34B7415C164943E6008142AB /* cell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = cell;
+			sourceTree = "<group>";
+		};
+		34B74163164943E6008142AB /* form */ = {
+			isa = PBXGroup;
+			children = (
+				34B74164164943E6008142AB /* NAValidator.h */,
+				34B74165164943E6008142AB /* NAValidator.m */,
+				34B74166164943E6008142AB /* objects */,
+				34B7416F164943E6008142AB /* views */,
+			);
+			path = form;
+			sourceTree = "<group>";
+		};
+		34B74166164943E6008142AB /* objects */ = {
+			isa = PBXGroup;
+			children = (
+				34B74167164943E6008142AB /* NAFormValue.h */,
+				34B74168164943E6008142AB /* NAFormValue.m */,
+				34B74169164943E6008142AB /* NAMultipleFormValue.h */,
+				34B7416A164943E6008142AB /* NAMultipleFormValue.m */,
+				34B7416B164943E6008142AB /* NAMultipleSelectFormValue.h */,
+				34B7416C164943E6008142AB /* NAMultipleSelectFormValue.m */,
+				34B7416D164943E6008142AB /* NASelectFormValue.h */,
+				34B7416E164943E6008142AB /* NASelectFormValue.m */,
+			);
+			path = objects;
+			sourceTree = "<group>";
+		};
+		34B7416F164943E6008142AB /* views */ = {
+			isa = PBXGroup;
+			children = (
+				34B74170164943E6008142AB /* cells */,
+				34B74177164943E6008142AB /* NAFormTableViewController.h */,
+				34B74178164943E6008142AB /* NAFormTableViewController.m */,
+				34B74179164943E6008142AB /* NAMultipleSelectFormTableViewController.h */,
+				34B7417A164943E6008142AB /* NAMultipleSelectFormTableViewController.m */,
+				34B7417B164943E6008142AB /* NASelectFormTableViewController.h */,
+				34B7417C164943E6008142AB /* NASelectFormTableViewController.m */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
+		34B74170164943E6008142AB /* cells */ = {
+			isa = PBXGroup;
+			children = (
+				34B74171164943E6008142AB /* NAFormCell.h */,
+				34B74172164943E6008142AB /* NAFormCell.m */,
+				34B74173164943E6008142AB /* NAFormPushCell.h */,
+				34B74174164943E6008142AB /* NAFormPushCell.m */,
+				34B74175164943E6008142AB /* NAFormTextFieldCell.h */,
+				34B74176164943E6008142AB /* NAFormTextFieldCell.m */,
+			);
+			path = cells;
+			sourceTree = "<group>";
+		};
+		34B7417D164943E6008142AB /* network */ = {
+			isa = PBXGroup;
+			children = (
+				34B7417E164943E6008142AB /* gcds */,
+				34B741B5164943E6008142AB /* NANetworkActivityIndicatorManager.h */,
+				34B741B6164943E6008142AB /* NANetworkActivityIndicatorManager.m */,
+				34B741B7164943E6008142AB /* NANetworkConfig.h */,
+				34B741B8164943E6008142AB /* NANetworkConfig.m */,
+				34B741B9164943E6008142AB /* NSURLRequest+na.h */,
+				34B741BA164943E6008142AB /* NSURLRequest+na.m */,
+				34B741BB164943E6008142AB /* operations */,
+			);
+			path = network;
+			sourceTree = "<group>";
+		};
+		34B7417E164943E6008142AB /* gcds */ = {
+			isa = PBXGroup;
+			children = (
+				34B7417F164943E6008142AB /* NANetworkGCDHelper.h */,
+				34B74180164943E6008142AB /* NANetworkGCDHelper.m */,
+			);
+			path = gcds;
+			sourceTree = "<group>";
+		};
+		34B741BB164943E6008142AB /* operations */ = {
+			isa = PBXGroup;
+			children = (
+				34B741BC164943E6008142AB /* NABaseNetworkOperation.h */,
+				34B741BD164943E6008142AB /* NABaseNetworkOperation.m */,
+				34B741BE164943E6008142AB /* NANetworkOperation.h */,
+				34B741BF164943E6008142AB /* NANetworkOperation.m */,
+				34B741C0164943E6008142AB /* NSOperationQueue+na.h */,
+				34B741C1164943E6008142AB /* NSOperationQueue+na.m */,
+			);
+			path = operations;
+			sourceTree = "<group>";
+		};
+		34B741C3164943E6008142AB /* ocunit */ = {
+			isa = PBXGroup;
+			children = (
+				34B741C4164943E6008142AB /* NAAsyncOCUnit.h */,
+				34B741C5164943E6008142AB /* NAAsyncOCUnit.m */,
+			);
+			path = ocunit;
+			sourceTree = "<group>";
+		};
+		34B74303164943E6008142AB /* theme */ = {
+			isa = PBXGroup;
+			children = (
+				34B74304164943E6008142AB /* NATheme.h */,
+				34B74305164943E6008142AB /* NATheme.m */,
+			);
+			path = theme;
+			sourceTree = "<group>";
+		};
+		34B74306164943E6008142AB /* ui */ = {
+			isa = PBXGroup;
+			children = (
+				34B74307164943E6008142AB /* NAViewController.h */,
+				34B74308164943E6008142AB /* NAViewController.m */,
+				34B74309164943E6008142AB /* NAViewControllerProtocol.h */,
+				34B7430A164943E6008142AB /* table */,
+			);
+			path = ui;
+			sourceTree = "<group>";
+		};
+		34B7430A164943E6008142AB /* table */ = {
+			isa = PBXGroup;
+			children = (
+				34B7430B164943E6008142AB /* cell */,
+				34B74310164943E6008142AB /* NAArrayTableViewController.h */,
+				34B74311164943E6008142AB /* NAArrayTableViewController.m */,
+				34B74312164943E6008142AB /* NATableViewController.h */,
+				34B74313164943E6008142AB /* NATableViewController.m */,
+			);
+			path = table;
+			sourceTree = "<group>";
+		};
+		34B7430B164943E6008142AB /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				34B7430C164943E6008142AB /* NATableViewCell.h */,
+				34B7430D164943E6008142AB /* NATableViewCell.m */,
+				34B7430E164943E6008142AB /* NATextLabelCell.h */,
+				34B7430F164943E6008142AB /* NATextLabelCell.m */,
+			);
+			path = cell;
+			sourceTree = "<group>";
+		};
+		34B743FA16494492008142AB /* apps */ = {
+			isa = PBXGroup;
+			children = (
+				34B743FB16494492008142AB /* app */,
+			);
+			path = apps;
+			sourceTree = "<group>";
+		};
+		34B743FB16494492008142AB /* app */ = {
+			isa = PBXGroup;
+			children = (
+				34B743FC16494492008142AB /* models */,
+				34B7440516494492008142AB /* viewcontrollers */,
+				34B7440816494492008142AB /* views */,
+			);
+			path = app;
+			sourceTree = "<group>";
+		};
+		34B743FC16494492008142AB /* models */ = {
+			isa = PBXGroup;
+			children = (
+				34B743FD16494492008142AB /* Event+na.h */,
+				34B743FE16494492008142AB /* Event+na.m */,
+				34B743FF16494492008142AB /* Event.h */,
+				34B7440016494492008142AB /* Event.m */,
+				34B7440116494492008142AB /* EventModelController.h */,
+				34B7440216494492008142AB /* EventModelController.m */,
+				34B7440316494492008142AB /* table.xcdatamodeld */,
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
+		34B7440516494492008142AB /* viewcontrollers */ = {
+			isa = PBXGroup;
+			children = (
+				34B7440616494492008142AB /* EventFRCTableViewController.h */,
+				34B7440716494492008142AB /* EventFRCTableViewController.m */,
 			);
 			path = viewcontrollers;
 			sourceTree = "<group>";
 		};
-		34B740DA1648FBBD008142AB /* views */ = {
+		34B7440816494492008142AB /* views */ = {
 			isa = PBXGroup;
 			children = (
 			);
@@ -907,8 +870,6 @@
 				3413F770163E443800A6B3ED /* Default.png in Resources */,
 				3413F772163E443800A6B3ED /* Default@2x.png in Resources */,
 				3413F774163E443800A6B3ED /* Default-568h@2x.png in Resources */,
-				34048ED316441C19008E5E32 /* .gitignore in Resources */,
-				34048EE416441C19008E5E32 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1000,48 +961,6 @@
 				3413F76A163E443800A6B3ED /* main.m in Sources */,
 				3413F76E163E443800A6B3ED /* AppDelegate.m in Sources */,
 				3413F777163E443800A6B3ED /* na_ios_test.xcdatamodeld in Sources */,
-				34048ED816441C19008E5E32 /* NSDictionaryTransformer.m in Sources */,
-				34048EDD16441C19008E5E32 /* NADefaultRestDriver.m in Sources */,
-				34048EDE16441C19008E5E32 /* NASyncHelper.m in Sources */,
-				34048EDF16441C19008E5E32 /* NASyncQueryObject.m in Sources */,
-				34048EE016441C19008E5E32 /* NASyncModel+rest.m in Sources */,
-				34048EE116441C19008E5E32 /* NASyncModel+sync.m in Sources */,
-				34048EE216441C19008E5E32 /* NASyncModel.m in Sources */,
-				34048EE316441C19008E5E32 /* syncmodel.xcdatamodeld in Sources */,
-				34048EE516441C19008E5E32 /* NAValidator.m in Sources */,
-				34048EE616441C19008E5E32 /* NAFormValue.m in Sources */,
-				34048EE716441C19008E5E32 /* NAMultipleFormValue.m in Sources */,
-				34048EE816441C19008E5E32 /* NAMultipleSelectFormValue.m in Sources */,
-				34048EE916441C19008E5E32 /* NASelectFormValue.m in Sources */,
-				34048EEA16441C19008E5E32 /* NAFormCell.m in Sources */,
-				34048EEB16441C19008E5E32 /* NAFormPushCell.m in Sources */,
-				34048EEC16441C19008E5E32 /* NAFormTextFieldCell.m in Sources */,
-				34048EED16441C19008E5E32 /* NAFormTableViewController.m in Sources */,
-				34048EEE16441C19008E5E32 /* NAMultipleSelectFormTableViewController.m in Sources */,
-				34048EEF16441C19008E5E32 /* NASelectFormTableViewController.m in Sources */,
-				34048EF016441C19008E5E32 /* NANetworkGCDHelper.m in Sources */,
-				34048F0E16441C19008E5E32 /* NANetworkActivityIndicatorManager.m in Sources */,
-				34048F0F16441C19008E5E32 /* NANetworkConfig.m in Sources */,
-				34048F1016441C19008E5E32 /* NABaseNetworkOperation.m in Sources */,
-				34048F1116441C19008E5E32 /* NANetworkOperation.m in Sources */,
-				34048F1216441C19008E5E32 /* NSOperationQueue+na.m in Sources */,
-				34048F1316441C19008E5E32 /* NAAsyncOCUnit.m in Sources */,
-				34048F6D16441C19008E5E32 /* NATheme.m in Sources */,
-				34048F6E16441C19008E5E32 /* NAViewController.m in Sources */,
-				34048F6F16441C19008E5E32 /* NATableViewCell.m in Sources */,
-				34048F7016441C19008E5E32 /* NATextLabelCell.m in Sources */,
-				34048F7116441C19008E5E32 /* NAArrayTableViewController.m in Sources */,
-				34048F7216441C19008E5E32 /* NATableViewController.m in Sources */,
-				346C5D0116479A490036531E /* NSURLRequest+na.m in Sources */,
-				346C5D671647A3A20036531E /* NSFetchRequest+na.m in Sources */,
-				346C5D681647A3A20036531E /* NSManagedObject+na.m in Sources */,
-				346C5D691647A3A20036531E /* NSManagedObjectContext+na.m in Sources */,
-				346C5D6A1647A3A20036531E /* NSPredicate+na.m in Sources */,
-				346C5D741647A67B0036531E /* NAFRCDelegateTableViewController.m in Sources */,
-				346C5D751647A67B0036531E /* NAFRCTableViewController.m in Sources */,
-				346C5D761647A67B0036531E /* NAFRCTableWithAppendViewController.m in Sources */,
-				346C5D7A1647A6A90036531E /* NAModelController.m in Sources */,
-				3482C9101648AB69001B1BB1 /* SingletonMactors.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1060,44 +979,55 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				34B740F51648FC5A008142AB /* NAViewController.h in Sources */,
-				34B740F61648FC5A008142AB /* NAViewController.m in Sources */,
-				34B740F71648FC5A008142AB /* NAViewControllerProtocol.h in Sources */,
-				34B740F81648FC5A008142AB /* NATableViewCell.h in Sources */,
-				34B740F91648FC5A008142AB /* NATableViewCell.m in Sources */,
-				34B740FA1648FC5A008142AB /* NATextLabelCell.h in Sources */,
-				34B740FB1648FC5A008142AB /* NATextLabelCell.m in Sources */,
-				34B740FC1648FC5A008142AB /* NAArrayTableViewController.h in Sources */,
-				34B740FD1648FC5A008142AB /* NAArrayTableViewController.m in Sources */,
-				34B740FE1648FC5A008142AB /* NATableViewController.h in Sources */,
-				34B740FF1648FC5A008142AB /* NATableViewController.m in Sources */,
-				34B740E81648FC18008142AB /* NSFetchRequest+na.h in Sources */,
-				34B740E91648FC18008142AB /* NSFetchRequest+na.m in Sources */,
-				34B740EA1648FC18008142AB /* NSManagedObject+na.h in Sources */,
-				34B740EB1648FC18008142AB /* NSManagedObject+na.m in Sources */,
-				34B740EC1648FC18008142AB /* NSManagedObjectContext+na.h in Sources */,
-				34B740ED1648FC18008142AB /* NSManagedObjectContext+na.m in Sources */,
-				34B740EE1648FC18008142AB /* NSPredicate+na.h in Sources */,
-				34B740EF1648FC18008142AB /* NSPredicate+na.m in Sources */,
-				34B740F01648FC18008142AB /* NSDictionaryTransformer.h in Sources */,
-				34B740F11648FC18008142AB /* NSDictionaryTransformer.m in Sources */,
-				34B740F21648FC18008142AB /* SingletonMactors.h in Sources */,
-				34B740F31648FC18008142AB /* SingletonMactors.m in Sources */,
-				34B740E61648FC10008142AB /* NAModelController.h in Sources */,
-				34B740E71648FC10008142AB /* NAModelController.m in Sources */,
-				34B740E01648FC09008142AB /* NAFRCDelegateTableViewController.h in Sources */,
-				34B740E11648FC09008142AB /* NAFRCDelegateTableViewController.m in Sources */,
-				34B740E21648FC09008142AB /* NAFRCTableViewController.h in Sources */,
-				34B740E31648FC09008142AB /* NAFRCTableViewController.m in Sources */,
-				34B740E41648FC09008142AB /* NAFRCTableWithAppendViewController.h in Sources */,
-				34B740E51648FC09008142AB /* NAFRCTableWithAppendViewController.m in Sources */,
 				34B740A11648FB29008142AB /* main.m in Sources */,
 				34B740A51648FB29008142AB /* AppDelegate.m in Sources */,
-				34B740DB1648FBBD008142AB /* Event+na.m in Sources */,
-				34B740DC1648FBBD008142AB /* Event.m in Sources */,
-				34B740DD1648FBBD008142AB /* EventModelController.m in Sources */,
-				34B740DE1648FBBD008142AB /* table.xcdatamodeld in Sources */,
-				34B740DF1648FBBD008142AB /* EventFRCTableViewController.m in Sources */,
+				34B74319164943E6008142AB /* NSFetchRequest+na.m in Sources */,
+				34B7431A164943E6008142AB /* NSManagedObject+na.m in Sources */,
+				34B7431B164943E6008142AB /* NSManagedObjectContext+na.m in Sources */,
+				34B7431C164943E6008142AB /* NSPredicate+na.m in Sources */,
+				34B7431D164943E6008142AB /* NAModelController.m in Sources */,
+				34B7433E164943E6008142AB /* NSDictionaryTransformer.m in Sources */,
+				34B74340164943E6008142AB /* SingletonMactors.m in Sources */,
+				34B74341164943E6008142AB /* NADefaultRestDriver.m in Sources */,
+				34B74342164943E6008142AB /* NASyncHelper.m in Sources */,
+				34B74343164943E6008142AB /* NASyncQueryObject.m in Sources */,
+				34B74344164943E6008142AB /* NASyncModel.m in Sources */,
+				34B74345164943E6008142AB /* NSManagedObject+rest.m in Sources */,
+				34B74346164943E6008142AB /* NSManagedObject+sync.m in Sources */,
+				34B74347164943E6008142AB /* syncmodel.xcdatamodeld in Sources */,
+				34B7434B164943E6008142AB /* NAFRCDelegateTableViewController.m in Sources */,
+				34B7434C164943E6008142AB /* NAFRCTableViewController.m in Sources */,
+				34B7434D164943E6008142AB /* NAFRCTableWithAppendViewController.m in Sources */,
+				34B7434E164943E6008142AB /* NAValidator.m in Sources */,
+				34B7434F164943E6008142AB /* NAFormValue.m in Sources */,
+				34B74350164943E6008142AB /* NAMultipleFormValue.m in Sources */,
+				34B74351164943E6008142AB /* NAMultipleSelectFormValue.m in Sources */,
+				34B74352164943E6008142AB /* NASelectFormValue.m in Sources */,
+				34B74353164943E6008142AB /* NAFormCell.m in Sources */,
+				34B74354164943E6008142AB /* NAFormPushCell.m in Sources */,
+				34B74355164943E6008142AB /* NAFormTextFieldCell.m in Sources */,
+				34B74356164943E6008142AB /* NAFormTableViewController.m in Sources */,
+				34B74357164943E6008142AB /* NAMultipleSelectFormTableViewController.m in Sources */,
+				34B74358164943E6008142AB /* NASelectFormTableViewController.m in Sources */,
+				34B74359164943E6008142AB /* NANetworkGCDHelper.m in Sources */,
+				34B74380164943E6008142AB /* NANetworkActivityIndicatorManager.m in Sources */,
+				34B74381164943E6008142AB /* NANetworkConfig.m in Sources */,
+				34B74382164943E6008142AB /* NSURLRequest+na.m in Sources */,
+				34B74383164943E6008142AB /* NABaseNetworkOperation.m in Sources */,
+				34B74384164943E6008142AB /* NANetworkOperation.m in Sources */,
+				34B74385164943E6008142AB /* NSOperationQueue+na.m in Sources */,
+				34B74387164943E6008142AB /* NAAsyncOCUnit.m in Sources */,
+				34B743EE164943E6008142AB /* NATheme.m in Sources */,
+				34B743EF164943E6008142AB /* NAViewController.m in Sources */,
+				34B743F0164943E6008142AB /* NATableViewCell.m in Sources */,
+				34B743F1164943E6008142AB /* NATextLabelCell.m in Sources */,
+				34B743F2164943E6008142AB /* NAArrayTableViewController.m in Sources */,
+				34B743F3164943E6008142AB /* NATableViewController.m in Sources */,
+				34B7440916494492008142AB /* Event+na.m in Sources */,
+				34B7440A16494492008142AB /* Event.m in Sources */,
+				34B7440B16494492008142AB /* EventModelController.m in Sources */,
+				34B7440C16494492008142AB /* table.xcdatamodeld in Sources */,
+				34B7440D16494492008142AB /* EventFRCTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1199,7 +1129,6 @@
 		};
 		3413F791163E443800A6B3ED /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 91A8E345710D4C69B7CBAA84 /* Pods.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1213,7 +1142,6 @@
 		};
 		3413F792163E443800A6B3ED /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 91A8E345710D4C69B7CBAA84 /* Pods.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1330,16 +1258,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		34048D4816441C19008E5E32 /* syncmodel.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				34048D4916441C19008E5E32 /* syncmodel.xcdatamodel */,
-			);
-			currentVersion = 34048D4916441C19008E5E32 /* syncmodel.xcdatamodel */;
-			path = syncmodel.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
 		3413F775163E443800A6B3ED /* na_ios_test.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
@@ -1360,12 +1278,22 @@
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
-		34B740D51648FBBD008142AB /* table.xcdatamodeld */ = {
+		34B74155164943E6008142AB /* syncmodel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				34B740D61648FBBD008142AB /* table.xcdatamodel */,
+				34B74156164943E6008142AB /* syncmodel.xcdatamodel */,
 			);
-			currentVersion = 34B740D61648FBBD008142AB /* table.xcdatamodel */;
+			currentVersion = 34B74156164943E6008142AB /* syncmodel.xcdatamodel */;
+			path = syncmodel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		34B7440316494492008142AB /* table.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				34B7440416494492008142AB /* table.xcdatamodel */,
+			);
+			currentVersion = 34B7440416494492008142AB /* table.xcdatamodel */;
 			path = table.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

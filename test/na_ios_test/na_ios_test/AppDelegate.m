@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 
-#import "TestFRCTableViewController.h"
+//#import "TestFRCTableViewController.h"
 
 @implementation AppDelegate
 

@@ -1,5 +1,5 @@
 //
-// Prefix header for all source files of the 'na_ios_test' target in the 'na_ios_test' project
+// Prefix header for all source files of the 'na_ios_unit_test' target in the 'na_ios_unit_test' project
 //
 
 #import <Availability.h>
@@ -12,4 +12,5 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
     #import <CoreData/CoreData.h>
+    #import <BlocksKit/BlocksKit.h>
 #endif

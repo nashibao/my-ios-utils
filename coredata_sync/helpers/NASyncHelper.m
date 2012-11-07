@@ -10,9 +10,9 @@
 
 #import "NANetworkOperation.h"
 
-#import "NASyncModel+sync.h"
+#import "NSManagedObject+sync.h"
 
-#import "NASyncModel+rest.h"
+#import "NSManagedObject+rest.h"
 
 #import "NANetworkActivityIndicatorManager.h"
 

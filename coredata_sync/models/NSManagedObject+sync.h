@@ -6,15 +6,13 @@
 //  Copyright (c) 2012年 s-cubism. All rights reserved.
 //
 
-#import "NASyncModel.h"
-
 #import "NSManagedObject+na.h"
 
 #import "NASyncModelProtocol.h"
 
 #import "NARestDriverProtocol.h"
 
-@interface NASyncModel (sync)
+@interface NSManagedObject (sync)
 
 
 #pragma mark ベースモデルの説明
@@ -36,29 +34,52 @@
 /*
  class methods
  */
-+ (void)sync_filter:(NSDictionary *)query options:(NSDictionary *)options complete:(void(^)(NSError *err))complete;
-+ (void)sync_get:(NSInteger)pk options:(NSDictionary *)options complete:(void(^)(NSError *err))complete;
-+ (void)sync_create:(NSDictionary *)query options:(NSDictionary *)options complete:(void(^)(NSError *err))complete;
-+ (void)sync_update:(NSInteger)pk query:(NSDictionary *)query options:(NSDictionary *)options complete:(void(^)(NSError *err))complete;
-+ (void)sync_delete:(NSInteger)pk options:(NSDictionary *)options complete:(void(^)(NSError *err))complete;
-+ (void)sync_rpc:(NSDictionary *)query rpcname:(NSString *)rpcname options:(NSDictionary *)options complete:(void(^)(NSError *err))complete;
++ (void)sync_filter:(NSDictionary *)query
+            options:(NSDictionary *)options
+           complete:(void(^)(NSError *err))complete;
++ (void)sync_get:(NSInteger)pk
+         options:(NSDictionary *)options
+        complete:(void(^)(NSError *err))complete;
++ (void)sync_create:(NSDictionary *)query
+            options:(NSDictionary *)options
+           complete:(void(^)(NSError *err))complete;
++ (void)sync_update:(NSInteger)pk
+              query:(NSDictionary *)query
+            options:(NSDictionary *)options
+           complete:(void(^)(NSError *err))complete;
++ (void)sync_delete:(NSInteger)pk
+            options:(NSDictionary *)options
+           complete:(void(^)(NSError *err))complete;
++ (void)sync_rpc:(NSDictionary *)query
+         rpcname:(NSString *)rpcname
+         options:(NSDictionary *)options
+        complete:(void(^)(NSError *err))complete;
 
 /*
  bulk commands
  単純だが、callbackが扱えない
  */
-+ (void)sync_bulk_update_or_create:(NSDictionary *)query options:(NSDictionary *)options;
-+ (void)sync_bulk_delete:(NSDictionary *)query options:(NSDictionary *)options;
-+ (void)sync:(NSDictionary *)query options:(NSDictionary *)options;
++ (void)sync_bulk_update_or_create:(NSDictionary *)query
+                           options:(NSDictionary *)options;
++ (void)sync_bulk_delete:(NSDictionary *)query
+                 options:(NSDictionary *)options;
++ (void)sync:(NSDictionary *)query
+     options:(NSDictionary *)options;
 
 /*
  instance methods
  */
-- (void)sync_get:(NSDictionary *)options complete:(void(^)(NSError *err))complete;
-- (void)sync_create:(NSDictionary *)options complete:(void(^)(NSError *err))complete;
-- (void)sync_update:(NSDictionary *)query options:(NSDictionary *)options complete:(void(^)(NSError *err))complete;
-- (void)sync_update:(NSDictionary *)options complete:(void(^)(NSError *err))complete;
-- (void)sync_delete:(NSDictionary *)options complete:(void(^)(NSError *err))complete;
+- (void)sync_get:(NSDictionary *)options
+        complete:(void(^)(NSError *err))complete;
+- (void)sync_create:(NSDictionary *)options
+           complete:(void(^)(NSError *err))complete;
+- (void)sync_update:(NSDictionary *)query
+            options:(NSDictionary *)options
+           complete:(void(^)(NSError *err))complete;
+- (void)sync_update:(NSDictionary *)options
+           complete:(void(^)(NSError *err))complete;
+- (void)sync_delete:(NSDictionary *)options
+           complete:(void(^)(NSError *err))complete;
 
 /*
  instance methods without sync

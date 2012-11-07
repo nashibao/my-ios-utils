@@ -6,7 +6,7 @@
 //  Copyright (c) 2012年 s-cubism. All rights reserved.
 //
 
-#import "NASyncModel+sync.h"
+#import "NSManagedObject+sync.h"
 
 #import "NASyncHelper.h"
 
@@ -14,9 +14,11 @@
 
 #import <objc/runtime.h>
 
-#import "NASyncModel+rest.h"
+#import "NSManagedObject+rest.h"
 
-@implementation NASyncModel (sync)
+#import "NSManagedObject+syncobject.h"
+
+@implementation NSManagedObject (sync)
 
 /*
  class methods
@@ -63,12 +65,12 @@
     }else{
         newQuery = @{@"sync_state": @(NASyncModelSyncStateEDITED)};
     }
-    NSArray *sms = [self filter:newQuery options:nil];
-    for (NASyncModel *sm in sms) {
-        if(sm.pk != NASyncModelGUIDTypeNotInServer){
-            [sm sync_update:options complete:nil];
+    NSArray *mos = [self filter:newQuery options:nil];
+    for (NSManagedObject *mo in mos) {
+        if(mo.guid_for_sync != NASyncModelGUIDTypeNotInServer){
+            [mo sync_update:options complete:nil];
         }else{
-            [sm sync_create:options complete:nil];
+            [mo sync_create:options complete:nil];
         }
     }
 }
@@ -82,12 +84,12 @@
     }else{
         newQuery = @{@"sync_state": @(NASyncModelSyncStateEDITED)};
     }
-    NSArray *sms = [self filter:newQuery options:nil];
-    for (NASyncModel *sm in sms) {
-        if(sm.pk != NASyncModelGUIDTypeNotInServer){
-            [sm sync_delete:options complete:nil];
+    NSArray *mos = [self filter:newQuery options:nil];
+    for (NSManagedObject *mo in mos) {
+        if(mo.guid_for_sync != NASyncModelGUIDTypeNotInServer){
+            [mo sync_delete:options complete:nil];
         }else{
-            [sm local_delete:options];
+            [mo local_delete:options];
         }
     }
 }
@@ -102,7 +104,7 @@
  instance methods
  */
 - (void)sync_get:(NSDictionary *)options complete:(void(^)(NSError *err))complete{
-    [NASyncHelper syncGet:[NASyncQueryObject query:nil pk:[self pk] objectID:self.objectID model:[self class] options:options completeHandler:complete]];
+    [NASyncHelper syncGet:[NASyncQueryObject query:nil pk:[self guid_for_sync] objectID:self.objectID model:[self class] options:options completeHandler:complete]];
 }
 
 - (void)sync_create:(NSDictionary *)options complete:(void(^)(NSError *err))complete{
@@ -113,38 +115,38 @@
 - (void)sync_update:(NSDictionary *)query options:(NSDictionary *)options complete:(void(^)(NSError *err))complete{
     [self local_delete:query];
     query = [self getQuery];
-    [NASyncHelper syncUpdate:[NASyncQueryObject query:query pk:[self pk] objectID:self.objectID model:[self class] options:options completeHandler:complete]];
+    [NASyncHelper syncUpdate:[NASyncQueryObject query:query pk:[self guid_for_sync] objectID:self.objectID model:[self class] options:options completeHandler:complete]];
 }
 
 - (void)sync_update:(NSDictionary *)options complete:(void(^)(NSError *err))complete{
     NSDictionary *query = [self getQuery];
-    [NASyncHelper syncUpdate:[NASyncQueryObject query:query pk:[self pk] objectID:self.objectID model:[self class] options:options completeHandler:complete]];
+    [NASyncHelper syncUpdate:[NASyncQueryObject query:query pk:[self guid_for_sync] objectID:self.objectID model:[self class] options:options completeHandler:complete]];
 }
 
 - (void)sync_delete:(NSDictionary *)options complete:(void(^)(NSError *err))complete{
-    [NASyncHelper syncDelete:[NASyncQueryObject query:nil pk:[self pk] objectID:self.objectID model:[self class] options:options completeHandler:complete]];
+    [NASyncHelper syncDelete:[NASyncQueryObject query:nil pk:[self guid_for_sync] objectID:self.objectID model:[self class] options:options completeHandler:complete]];
 }
 
 /*
  instance methods without sync
  */
 - (void)local_update:(NSDictionary *)query options:(NSDictionary *)options{
-    NSDictionary *old_edited_data = [self edited_data];
+    NSDictionary *old_edited_data = [self edited_data_for_sync];
     NSDictionary *new_edited_data = query;
     if(old_edited_data){
         NSMutableDictionary *temp = [old_edited_data mutableCopy];
         [temp addEntriesFromDictionary:query];
         new_edited_data = temp;
     }
-    self.edited_data = new_edited_data;
+    self.edited_data_for_sync = new_edited_data;
 }
 
 - (void)local_delete:(NSDictionary *)options{
-    if([self pk] == NASyncModelGUIDTypeNotInServer){
+    if([self guid_for_sync] == NASyncModelGUIDTypeNotInServer){
         [self delete:nil];
     }else{
-        if([self sync_state_] != NASyncModelSyncStateDELETED){
-            self.sync_state_ = NASyncModelSyncStateDELETED;
+        if([self sync_state_for_sync] != NASyncModelSyncStateDELETED){
+            self.sync_state_for_sync = NASyncModelSyncStateDELETED;
         }
     }
 }
@@ -214,8 +216,8 @@
             }
         }
         if(bl){
-            if(self.sync_state_ == NASyncModelSyncStateSYNCED){
-                self.sync_state_ = NASyncModelSyncStateEDITED;
+            if(self.sync_state_for_sync == NASyncModelSyncStateSYNCED){
+                self.sync_state_for_sync = NASyncModelSyncStateEDITED;
             }
         }
     }

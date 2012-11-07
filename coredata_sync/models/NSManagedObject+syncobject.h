@@ -8,6 +8,20 @@
 
 #import <CoreData/CoreData.h>
 
-@interface NSManagedObject (getmapper)
+#import "NASyncModelProtocol.h"
+
+#import "NSManagedObject+restobject.h"
+
+/** 
+ */
+@interface NSManagedObject (syncobject)
+
+@property(nonatomic, readonly)NSString *modified_date_for_sync_key;
+@property(nonatomic, readonly)NSString *sync_state_for_sync_key;
+@property(nonatomic, readonly)NSString *sync_error_for_sync_key;
+
+@property(nonatomic, readwrite)NSDate *modified_date_for_sync;
+@property(nonatomic, readwrite)NASyncModelSyncState sync_state_for_sync;
+@property(nonatomic, readwrite)NASyncModelSyncError sync_error_for_sync;
 
 @end

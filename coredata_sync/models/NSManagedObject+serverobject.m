@@ -6,8 +6,16 @@
 //  Copyright (c) 2012年 nashibao. All rights reserved.
 //
 
-#import "NSManagedObject+setmapper.h"
+#import "NSManagedObject+serverobject.h"
 
-@implementation NSManagedObject (setmapper)
+@implementation NSManagedObject (serverobject)
+
++ (NSInteger)primaryKeyInServerItemData:(id)itemData{
+    return [itemData[@"id"] integerValue];
+}
+
++ (NSDate *)modifiedDateInServerItemData:(id)itemData{
+    return itemData[@"modified_data"];
+}
 
 @end

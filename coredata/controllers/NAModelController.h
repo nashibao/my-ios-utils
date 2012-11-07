@@ -10,8 +10,6 @@
 
 #import "NSPredicate+na.h"
 
-#import "NASyncModel+sync.h"
-
 #import "NSManagedObjectContext+na.h"
 
 #import "NSFetchRequest+na.h"

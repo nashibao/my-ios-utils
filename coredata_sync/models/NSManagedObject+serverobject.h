@@ -8,6 +8,9 @@
 
 #import <CoreData/CoreData.h>
 
-@interface NSManagedObject (setmapper)
+@interface NSManagedObject (serverobject)
+
++ (NSInteger)primaryKeyInServerItemData:(id)itemData;
++ (NSDate *)modifiedDateInServerItemData:(id)itemData;
 
 @end

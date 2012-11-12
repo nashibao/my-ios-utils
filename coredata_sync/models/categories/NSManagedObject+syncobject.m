@@ -13,15 +13,15 @@
 @implementation NSManagedObject (syncobject)
 
 - (NSString *)modified_date_for_sync_key{
-    return @"modified_date_";
+    return @"modified_date";
 }
 
 - (NSString *)sync_state_for_sync_key{
-    return @"sync_state_";
+    return @"sync_state";
 }
 
 - (NSString *)sync_error_for_sync_key{
-    return @"sync_error_";
+    return @"sync_error";
 }
 
 INTEGER_ACCESSOR(sync_state_for_sync, setSync_state_for_sync, [self sync_state_for_sync_key], NASyncModelSyncState)

@@ -13,23 +13,23 @@
 @implementation NSManagedObject (restobject)
 
 - (NSString *)guid_for_sync_key{
-    return @"pk_";
+    return @"pk";
 }
 
 - (NSString *)data_for_sync_key{
-    return @"data_";
+    return @"data";
 }
 
 - (NSString *)edited_data_for_sync_key{
-    return @"edited_data_";
+    return @"edited_data";
 }
 
 - (NSString *)cache_index_for_sync_key{
-    return @"cache_index_";
+    return @"cache_index";
 }
 
 - (NSString *)cache_identifier_for_sync_key{
-    return @"cache_identifier_";
+    return @"cache_identifier";
 }
 
 
@@ -67,5 +67,6 @@ INTEGER_ACCESSOR(cache_index_for_sync, setCache_index_for_sync, [self cache_inde
 + (NSInteger)primaryKeyInServerItemData:(id)itemData{
     return [itemData[@"id"] integerValue];
 }
+
 
 @end

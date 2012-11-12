@@ -8,4 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-#import "NSManagedObject+syncer"
+#import "coredata_rest.h"
+
+#import "NASyncModelProtocol.h"
+
+#import "NSManagedObject+syncobject.h"

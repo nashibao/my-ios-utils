@@ -35,7 +35,7 @@
     int cnt = 0;
     NSMutableArray *objs = [@[] mutableCopy];
     for(NSDictionary *d in items){
-        NSManagedObject *mo = [context getOrCreateObject:[query.modelkls restEntityName] props:@{@"pk": @([query.modelkls primaryKeyInServerItemData:d])}];
+        NSManagedObject *mo = [context getOrCreateObject:[query.modelkls restEntityName] props:@{[query.modelkls guid_for_sync_key]: @([query.modelkls primaryKeyInServerItemData:d])}];
         id obj = [self _updateByServerItemData:d mo:mo];
         //        エラーを吐いたobjectを把握
         if(obj)

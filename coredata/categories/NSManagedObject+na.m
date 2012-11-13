@@ -118,7 +118,7 @@ static NSManagedObjectContext * __main_context__ = nil;
     NSFetchRequest *req = [self requestWithEqualProps:equalProps sorts:sorts options:options];
     if(!context)
         context = [self mainContext];
-    NSFetchedResultsController *frc = [[NSFetchedResultsController alloc] initWithFetchRequest:req managedObjectContext:context sectionNameKeyPath:nil cacheName:nil];
+    NSFetchedResultsController *frc = [[NSFetchedResultsController alloc] initWithFetchRequest:req managedObjectContext:context sectionNameKeyPath:options[@"sectionNameKeyPath"] cacheName:nil];
     return frc;
 }
 

@@ -139,6 +139,19 @@
             }
             break;
         }
+        case NASyncModelErrorOptionResignAndAlert:{
+            if(mo){
+                mo.edited_data_for_sync = nil;
+                mo.sync_state_for_sync = NASyncModelSyncStateSYNCED;
+            }
+            dispatch_async(dispatch_get_main_queue(), ^{
+                UIAlertView *alertView = [UIAlertView alertViewWithTitle:@"ネットワークエラー" message:error.domain];
+                [alertView setCancelButtonWithTitle:@"閉じる" handler:^{
+                }];
+                [alertView show];
+            });
+            break;
+        }
         case NASyncModelErrorOptionRetry:{
             break;
         }

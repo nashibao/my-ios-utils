@@ -10,11 +10,17 @@
 
 @interface NSManagedObject (restobject)
 
-@property(nonatomic, readonly)NSString *guid_for_sync_key;
-@property(nonatomic, readonly)NSString *data_for_sync_key;
-@property(nonatomic, readonly)NSString *edited_data_for_sync_key;
-@property(nonatomic, readonly)NSString *cache_index_for_sync_key;
-@property(nonatomic, readonly)NSString *cache_identifier_for_sync_key;
++ (NSString *)guid_for_sync_key;
++ (NSString *)data_for_sync_key;
++ (NSString *)edited_data_for_sync_key;
++ (NSString *)cache_index_for_sync_key;
++ (NSString *)cache_identifier_for_sync_key;
+
+//@property(nonatomic, readonly)NSString *guid_for_sync_key;
+//@property(nonatomic, readonly)NSString *data_for_sync_key;
+//@property(nonatomic, readonly)NSString *edited_data_for_sync_key;
+//@property(nonatomic, readonly)NSString *cache_index_for_sync_key;
+//@property(nonatomic, readonly)NSString *cache_identifier_for_sync_key;
 
 @property(nonatomic, readwrite)NSInteger guid_for_sync;
 @property(nonatomic, readwrite)NSDictionary *data_for_sync;

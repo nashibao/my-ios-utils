@@ -29,13 +29,11 @@
 
 - (void)formCell:(NAFormCell *)cell inTableViewController:(UITableViewController *)tableViewController
     modifiedData:(id)modifiedData
-       formValue:(NAFormValue *)formValue
-       indexPath:(NSIndexPath *)indexPath;
+       formValue:(NAFormValue *)formValue;
 
 - (void)formCell:(NAFormCell *)cell inTableViewController:(UITableViewController *)tableViewController
     nextFocus:(BOOL)focus
-       formValue:(NAFormValue *)formValue
-       indexPath:(NSIndexPath *)indexPath;
+       formValue:(NAFormValue *)formValue;
 
 
 @end

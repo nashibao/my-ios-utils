@@ -12,15 +12,25 @@
 
 #import "NAValidator.h"
 
+NSString * const NAFormCellIdentifierSwitch = @"NAFormCellIdentifierSwitch";
+NSString * const NAFormCellIdentifierPushSelect = @"NAFormCellIdentifierPushSelect";
+NSString * const NAFormCellIdentifierPush = @"NAFormCellIdentifierPush";
+NSString * const NAFormCellIdentifierTextField = @"NAFormCellIdentifierTextField";
+NSString * const NAFormCellIdentifierSecureTextField = @"NAFormCellIdentifierSecureTextField";
+NSString * const NAFormCellIdentifierLabel = @"NAFormCellIdentifierLabel";
+NSString * const NAFormCellIdentifierButton = @"NAFormCellIdentifierButton";
+
 @implementation NAFormValue
 
-- (id)initWithValue:(id)value label:(NSString *)label name:(NSString *)name validateRules:(NSDictionary *)validateRules options:(NSDictionary *)options{
+- (id)initWithValue:(id)value label:(NSString *)label name:(NSString *)name validateRules:(NSDictionary *)validateRules options:(NSDictionary *)options cellIdentifier:(NSString *)cellIdentifier actionType:(NAFormTableSelectActionType)actionType{
     self = [self init];
     self.value = value;
     self.label = label;
     self.name = name;
     self.validatRules = validateRules;
     self.options = options;
+    self.cellIdentifier = cellIdentifier;
+    self.actionType = actionType;
     return self;
 }
 

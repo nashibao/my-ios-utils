@@ -26,21 +26,22 @@
     return section[@"rows"];
 }
 
-- (id)rowData:(id)row{
-    return row[@"data"];
-}
-
-- (id)rowAction:(id)row{
-    return row[@"action"];
-}
-
-- (id)rowActionBackBlock:(id)row{
-    return row[@"backBlock"];
+//- 
+- (NAFormTableSelectActionType)rowActionType:(id)row{
+    if([row isKindOfClass:[NAFormValue class]]){
+        NAFormValue *formValue = (NAFormValue *)row;
+        return formValue.actionType;
+    }
+    return [row[@"actionType"] integerValue];
 }
 
 - (NSString *)rowCellIdentifier:(id)row{
+    if([row isKindOfClass:[NAFormValue class]]){
+        NAFormValue *formValue = (NAFormValue *)row;
+        return formValue.cellIdentifier;
+    }
     if(row)
-        return row[@"cell"];
+        return row[@"cellIdentifier"];
     return nil;
 }
 
@@ -81,14 +82,14 @@
     }
     
     if([cell isKindOfClass:[NATableViewCell class]]){
-        id data = [self rowData:row];
+        id data = row;
         [(NATableViewCell *)cell setData:data];
     }
     
-    void (^updateCellBlock)(UITableViewCell *, NSIndexPath *) = row[@"updateCell"];
-    if(updateCellBlock){
-        updateCellBlock(cell, indexPath);
-    }
+//    void (^updateCellBlock)(UITableViewCell *, NSIndexPath *) = row[@"updateCell"];
+//    if(updateCellBlock){
+//        updateCellBlock(cell, indexPath);
+//    }
     
     [self updateCell:cell atIndexPath:indexPath row:row];
     
@@ -106,20 +107,22 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [super tableView:tableView didSelectRowAtIndexPath:indexPath];
     id row = [self rowAtIndexPath:indexPath];
-    void (^action_block)(UITableView*, NSIndexPath*) = [self rowAction:row];
-    if(action_block){
-        action_block(tableView, indexPath);
-    }
+    [self willSelectByRow:row];
+}
+
+- (void)willSelectByRow:(id)row{
+    
 }
 
 - (void)willActionBacked:(UITableViewController *)controller{
     if(self.selectedIndexPath){
         id row = [self rowAtIndexPath:self.selectedIndexPath];
-        void(^backBlock)(id) = [self rowActionBackBlock:row];
-        if(backBlock){
-            backBlock([self rowData:row]);
-        }
+        [self willActionBackedByRow:row];
     }
+}
+
+- (void)willActionBackedByRow:(id)row{
+    
 }
 
 @end

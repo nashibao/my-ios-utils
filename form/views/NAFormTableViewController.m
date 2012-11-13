@@ -22,14 +22,9 @@
 
 - (void)formCell:(NAFormCell *)cell inTableViewController:(UITableViewController *)tableViewController
     modifiedData:(id)modifiedData
-       formValue:(NAFormValue *)formValue
-       indexPath:(NSIndexPath *)indexPath{
+       formValue:(NAFormValue *)formValue{
     [self changeFormValue:formValue newValue:modifiedData];
-    id row = [self rowAtIndexPath:indexPath];
-    void(^backBlock)(id) = [self rowActionBackBlock:row];
-    if(backBlock){
-        backBlock([self rowData:row]);
-    }
+    [self willActionBackedByRow:formValue];
 }
 
 /** keyboardのNextでfocus移動が出来るかどうかなど．
@@ -39,7 +34,7 @@
     return YES;
 }
 
-- (void)formCell:(NAFormCell *)cell inTableViewController:(UITableViewController *)tableViewController nextFocus:(BOOL)focus formValue:(NAFormValue *)formValue indexPath:(NSIndexPath *)indexPath{
+- (void)formCell:(NAFormCell *)cell inTableViewController:(UITableViewController *)tableViewController nextFocus:(BOOL)focus formValue:(NAFormValue *)formValue{
     if([self enableNextFocus]){
         NAFormValue *nextFormValue = [self nextFormValue:formValue];
         if(nextFormValue)
@@ -52,11 +47,11 @@
 }
 
 - (void)updateCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath row:(id)row{
-    id data = [self rowData:row];
+    id data = row;
     if([cell isKindOfClass:[NAFormCell class]]){
         NAFormCell *fcell = (NAFormCell *)cell;
         [fcell setDelegate:self];
-        [fcell setIndexPath:indexPath];
+//        [fcell setIndexPath:indexPath];
         if([data isKindOfClass:[NAFormValue class]]){
             [fcell setFormValue:(NAFormValue *)data];
         }
@@ -69,7 +64,7 @@
     for (id section in self.sections) {
         NSArray *rows = [self sectionRows:section];
         for (id row in rows) {
-            id data = [self rowData:row];
+            id data = row;
             if([data isKindOfClass:[NAFormValue class]]){
                 if(_formValue){
                     nextFormValue = data;
@@ -88,19 +83,26 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [super tableView:tableView didSelectRowAtIndexPath:indexPath];
     id row = [self rowAtIndexPath:indexPath];
-    if(row[@"actionType"]){
+    NAFormTableSelectActionType actionType = NAFormTableSelectActionTypeNone;
+    if ([row isKindOfClass:[NAFormValue class]]) {
+        NAFormValue *formValue = (NAFormValue *)row;
+        actionType = formValue.actionType;
+    }else{
+        actionType = [row[@"actionType"] integerValue];
+    }
+    if(actionType){
 //        ここを上書きすれば、新しいアクションを追加できる
-        switch ([row[@"actionType"] integerValue]) {
-            case FormTableSelectActionTypeOpenSelectTable:{
+        switch (actionType) {
+            case NAFormTableSelectActionTypeOpenSelectTable:{
                 NASelectFormTableViewController *selectTableViewController = [[NASelectFormTableViewController alloc] initWithStyle:UITableViewStylePlain];
-                selectTableViewController.formValue = [self rowData:row];
+                selectTableViewController.formValue = row;
                 [selectTableViewController setParentTableViewController:self];
                 [self.navigationController pushViewController:selectTableViewController animated:YES];
                 break;
             }
-            case FormTableSelectActionTypeOpenMultipleSelectTable:{
+            case NAFormTableSelectActionTypeOpenMultipleSelectTable:{
                 NAMultipleSelectFormTableViewController *selectTableViewController = [[NAMultipleSelectFormTableViewController alloc] initWithStyle:UITableViewStylePlain];
-                selectTableViewController.formValue = [self rowData:row];
+                selectTableViewController.formValue = row;
                 [selectTableViewController setParentTableViewController:self];
                 [self.navigationController pushViewController:selectTableViewController animated:YES];
                 break;

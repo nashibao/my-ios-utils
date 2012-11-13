@@ -8,20 +8,24 @@
 
 #import "NATableViewController.h"
 
+#import "NAFormValue.h"
+
 @interface NAArrayTableViewController : NATableViewController
 
 @property (strong, nonatomic) NSArray *sections;
 
 - (NSArray *)sectionRows:(id)section;
-- (id)rowData:(id)row;
-- (id)rowAction:(id)row;
-#warning 名前付けがおかしすぎる didSelectEndとか、willSelectStartに変更する
-- (id)rowActionBackBlock:(id)row;
+//- (id)rowData:(id)row;
+- (NAFormTableSelectActionType)rowActionType:(id)row;
+//- (id)rowActionBackBlock:(id)row;
 - (id)rowAtIndexPath:(NSIndexPath *)indexPath;
 
 - (void)initializeCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath reuseIdentifier:(NSString *)reuseIdentifier row:(id)row;
 - (void)updateCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath row:(id)row;
 
+- (void)willSelectByRow:(id)row;
+
 - (void)willActionBacked:(UITableViewController *)controller;
+- (void)willActionBackedByRow:(id)row;
 
 @end

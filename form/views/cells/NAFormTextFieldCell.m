@@ -29,7 +29,7 @@
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     if(self.delegate){
-        [self.delegate formCell:self inTableViewController:self.tableViewController nextFocus:YES formValue:self.formValue indexPath:self.indexPath];
+        [self.delegate formCell:self inTableViewController:self.tableViewController nextFocus:YES formValue:self.formValue];
     }
     [textField resignFirstResponder];
     return YES;
@@ -38,7 +38,7 @@
 - (void)textFieldDidEndEditing:(UITextField *)textField{
     NSString *modifiedData = [self.textField text];
     if(self.delegate){
-        [self.delegate formCell:self inTableViewController:self.tableViewController modifiedData:modifiedData formValue:self.formValue indexPath:self.indexPath];
+        [self.delegate formCell:self inTableViewController:self.tableViewController modifiedData:modifiedData formValue:self.formValue];
     }
 }
 

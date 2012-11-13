@@ -34,7 +34,7 @@
     NSNumber *modifiedData = @(self.swch.on);
     self.formValue.value = modifiedData;
     if(self.delegate){
-        [self.delegate formCell:self inTableViewController:self.tableViewController modifiedData:modifiedData formValue:self.formValue indexPath:self.indexPath];
+        [self.delegate formCell:self inTableViewController:self.tableViewController modifiedData:modifiedData formValue:self.formValue];
     }
     
 }

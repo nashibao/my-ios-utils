@@ -10,13 +10,7 @@
 
 #import "NAFormCell.h"
 
-typedef enum FormTableSelectActionType : NSUInteger {
-    FormTableSelectActionTypeOpenSelectTable,
-    FormTableSelectActionTypeOpenMultipleSelectTable,
-} FormTableSelectActionType;
-
 @interface NAFormTableViewController : NAArrayTableViewController <NAFormCellDelegate>
-
 
 - (BOOL)enableNextFocus;
 

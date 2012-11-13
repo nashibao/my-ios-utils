@@ -10,7 +10,7 @@
 
 @interface NATableViewCell : UITableViewCell
 
-@property (strong, nonatomic) NSIndexPath *indexPath;
+//@property (strong, nonatomic) NSIndexPath *indexPath;
 @property (weak, nonatomic) UITableViewController *tableViewController;
 @property (strong, nonatomic) UIColor *defaultBackgroundColor;
 

@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NAFormActionType : NSObject
+typedef enum NAFormTableSelectActionType : NSUInteger {
+    NAFormTableSelectActionTypeNone,
+    NAFormTableSelectActionTypeOpenSelectTable,
+    NAFormTableSelectActionTypeOpenMultipleSelectTable,
+} NAFormTableSelectActionType;
 
-@end

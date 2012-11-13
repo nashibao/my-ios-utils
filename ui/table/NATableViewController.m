@@ -67,7 +67,7 @@
      */
     if([cell isKindOfClass:[NATableViewCell class]]){
         NATableViewCell *ncell = (NATableViewCell *)cell;
-        ncell.indexPath = indexPath;
+//        ncell.indexPath = indexPath;
         ncell.tableViewController = self;
     }
 }

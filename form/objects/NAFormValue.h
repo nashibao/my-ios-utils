@@ -8,6 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
+#import "NAFormActionType.h"
+
+
+extern NSString * const NAFormCellIdentifierSwitch;
+extern NSString * const NAFormCellIdentifierPushSelect;
+extern NSString * const NAFormCellIdentifierPush;
+extern NSString * const NAFormCellIdentifierTextField;
+extern NSString * const NAFormCellIdentifierSecureTextField;
+extern NSString * const NAFormCellIdentifierLabel;
+extern NSString * const NAFormCellIdentifierButton;
+
 @protocol NAFormValuTargetViewDelegate;
 
 @interface NAFormValue : NSObject
@@ -34,11 +45,16 @@
 
 @property (readonly, nonatomic) NSDictionary *query;
 
+
+//表示周りに必要なところ
+@property (strong, nonatomic) NSString *cellIdentifier;
+@property (nonatomic) NAFormTableSelectActionType actionType;
+
 #pragma mark TODO: このindexPath無くしたい
 //indexPathはtableView用．．微妙か．
-@property (strong, nonatomic) NSIndexPath *indexPath;
+//@property (strong, nonatomic) NSIndexPath *indexPath;
 
-- (id)initWithValue:(id)value label:(NSString *)label name:(NSString *)name validateRules:(NSDictionary *)validateRules options:(NSDictionary *)options;
+- (id)initWithValue:(id)value label:(NSString *)label name:(NSString *)name validateRules:(NSDictionary *)validateRules options:(NSDictionary *)options cellIdentifier:(NSString *)cellIdentifier actionType:(NAFormTableSelectActionType)actionType;
 
 - (BOOL)validate;
 

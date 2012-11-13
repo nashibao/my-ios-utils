@@ -15,6 +15,7 @@
 //maxLength, minLength
 + (NSString *)validateMaxLength:(id)object options:(id)options;
 + (NSString *)validateMinLength:(id)object options:(id)options;
++ (NSString *)validateNumber:(id)object options:(id)options;
 + (NSString *)validateEqual:(id)object options:(id)options;
 //pattern
 + (NSString *)validatePattern:(id)object options:(id)options;

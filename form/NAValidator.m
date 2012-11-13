@@ -28,7 +28,10 @@ static NSDictionary *validate_settings = nil;
         @"message": @"長すぎます．",
     },
     @"minLength" : @{
-        @"message": @"短すぎます．",
+    @"message": @"短すぎます．",
+    },
+    @"number" : @{
+    @"message": @"数字で入力して下さい．",
     },
     @"pattern" : @{
     @"message": @"フォーマットが違います．",
@@ -80,6 +83,15 @@ static NSDictionary *validate_settings = nil;
             return [self errorMessage:@"minLength" options:options];
         }
         return nil;
+    }
+    return nil;
+}
+
++ (NSString *)validateNumber:(id)object options:(id)options{
+    if(!object){
+        return nil;
+    }else{
+        return [self _validatePattern:@"number" pattern:@"[1-9][0-9]*" object:object options:options];
     }
     return nil;
 }

@@ -113,7 +113,7 @@
 }
 
 - (void)sync_update:(NSDictionary *)query options:(NSDictionary *)options complete:(void(^)(NSError *err))complete{
-    [self local_delete:query];
+    [self local_update:query options:options];
     query = [self getQuery];
     [NARestHelper syncUpdate:[NARestQueryObject query:query pk:[self guid_for_sync] objectID:self.objectID model:[self class] options:options completeHandler:complete]];
 }
@@ -203,25 +203,28 @@
     return YES;
 }
 
+
+#warning didChangeValueForKeyはカテゴリだと無理
 /*
  変更の検知はここで行う．
+ これカテゴリだと無理だな！！
  */
-- (void)didChangeValueForKey:(NSString *)key{
-    if([[self class] is_auto_change_sync_state_management]){
-        BOOL bl = NO;
-        for(NSString *ex_key in [[self class] is_auto_change_sync_state_management_keys]){
-            if([key isEqualToString:ex_key]){
-                bl = YES;
-                break;
-            }
-        }
-        if(bl){
-            if(self.sync_state_for_sync == NASyncModelSyncStateSYNCED){
-                self.sync_state_for_sync = NASyncModelSyncStateEDITED;
-            }
-        }
-    }
-    [super didChangeValueForKey:key];
-}
+//- (void)didChangeValueForKey:(NSString *)key{
+//    if([[self class] is_auto_change_sync_state_management]){
+//        BOOL bl = NO;
+//        for(NSString *ex_key in [[self class] is_auto_change_sync_state_management_keys]){
+//            if([key isEqualToString:ex_key]){
+//                bl = YES;
+//                break;
+//            }
+//        }
+//        if(bl){
+//            if(self.sync_state_for_sync == NASyncModelSyncStateSYNCED){
+//                self.sync_state_for_sync = NASyncModelSyncStateEDITED;
+//            }
+//        }
+//    }
+//    [super didChangeValueForKey:key];
+//}
 
 @end

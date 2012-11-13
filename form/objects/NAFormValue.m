@@ -55,7 +55,7 @@
     if(_targetViewDelegate){
         [_targetViewDelegate formValueDidValidate:self];
     }
-    return [self.errors count] > 0;
+    return [self.errors count] == 0;
 }
 
 - (NSString *)shortErrorMessage{

@@ -19,6 +19,9 @@
     }else{
         [self.textField setText:@""];
     }
+    if(formValue.validatRules[@"number"]){
+        [self.textField setKeyboardType:UIKeyboardTypeNumberPad];
+    }
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField{
@@ -48,10 +51,10 @@
 }
 
 - (void)formValueWillValidate:(NAFormValue *)formValue{
-    NSString *modifiedData = [self.textField text];
-    if(self.delegate){
-        [self.delegate formCell:self inTableViewController:self.tableViewController modifiedData:modifiedData formValue:self.formValue indexPath:self.indexPath];
-    }
+//    NSString *modifiedData = [self.textField text];
+//    if(self.delegate){
+//        [self.delegate formCell:self inTableViewController:self.tableViewController modifiedData:modifiedData formValue:self.formValue indexPath:self.indexPath];
+//    }
 }
 
 @end

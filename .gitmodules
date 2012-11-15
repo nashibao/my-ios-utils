@@ -4,3 +4,6 @@
 [submodule "ocunit"]
 	path = ocunit
 	url = git@github.com:scubism/na_ios_ocunit.git
+[submodule "coredata"]
+	path = coredata
+	url = git@github.com:nashibao/na_ios_coredata.git

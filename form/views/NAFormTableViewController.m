@@ -14,6 +14,12 @@
 
 #import "NAMultipleSelectFormTableViewController.h"
 
+#import "UIView+na.h"
+
+#import "NAFormDateViewController.h"
+
+#import "NAFormDatePickerViewController.h"
+
 @interface NAFormTableViewController ()
 
 @end
@@ -107,11 +113,49 @@
                 [self.navigationController pushViewController:selectTableViewController animated:YES];
                 break;
             }
+            case NAFormTableSelectActionTypeOpenDateTimePicker:{
+                NAFormDateViewController * dateFormViewController = [[NAFormDateViewController alloc] initWithNibName];
+                self.customModelViewController = dateFormViewController;
+                dateFormViewController.delegate = self;
+                dateFormViewController.formValue = row;
+                
+                [self.view.superview addSubview:self.customModelViewController.view];
+#warning auto layoutがうまくいかねーーーーーーーーーーー！！
+//                [self.customModelViewController.view setTop:self.navigationController.navigationBar.bottom];
+//                [self.customModelViewController.view setTranslatesAutoresizingMaskIntoConstraints:NO];
+//                UIView *customView = self.customModelViewController.view;
+//                NSDictionary *viewsDictionary = NSDictionaryOfVariableBindings(customView);
+//                NSArray *constraints = nil;
+//                constraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|[customView]|" options:NSLayoutFormatAlignAllBaseline metrics:nil views:viewsDictionary];
+//                [self.view addConstraints:constraints];
+//                constraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|[customView]|" options:NSLayoutFormatAlignAllBaseline metrics:nil views:viewsDictionary];
+//                [self.view addConstraints:constraints];
+                
+//                
+//                [self.customModelViewController.view setTop:self.navigationController.view.bottom];
+//                __weak NAFormTableViewController *wself = self;
+//                [UIView animateWithDuration:0.3f animations:^{
+//                    [wself.customModelViewController.view setTop:wself.navigationController.view.top+20];
+//                }];
+                break;
+            }
             default:
                 break;
         }
     }
 }
 
+- (void)closeCustomModelViewController:(UIViewController *)controller formValue:(NAFormValue *)formValue{
+    NSIndexPath *ip = [self indexPathOfRow:formValue];
+    if(ip)
+        [self.tableView reloadRowsAtIndexPaths:@[ip] withRowAnimation:UITableViewRowAnimationNone];
+    __weak NAFormTableViewController *wself = self;
+    [UIView animateWithDuration:0.3f animations:^{
+        [wself.customModelViewController.view setTop:wself.navigationController.view.bottom];
+    } completion:^(BOOL finished) {
+        [wself.customModelViewController.view removeFromSuperview];
+        wself.customModelViewController = nil;
+    }];
+}
 
 @end

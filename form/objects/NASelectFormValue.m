@@ -45,6 +45,9 @@
             _selectedIndexPath = nil;
         
         }
+    }else{
+        _selectedLabel = nil;
+        _selectedIndexPath = nil;
     }
 }
 

@@ -15,8 +15,10 @@ extern NSString * const NAFormCellIdentifierSwitch;
 extern NSString * const NAFormCellIdentifierPushSelect;
 extern NSString * const NAFormCellIdentifierPush;
 extern NSString * const NAFormCellIdentifierTextField;
+extern NSString * const NAFormCellIdentifierTextArea;
 extern NSString * const NAFormCellIdentifierSecureTextField;
 extern NSString * const NAFormCellIdentifierLabel;
+extern NSString * const NAFormCellIdentifierDate;
 extern NSString * const NAFormCellIdentifierButton;
 
 @protocol NAFormValuTargetViewDelegate;

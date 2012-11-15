@@ -11,6 +11,7 @@
 typedef enum NAFormTableSelectActionType : NSUInteger {
     NAFormTableSelectActionTypeNone,
     NAFormTableSelectActionTypeOpenSelectTable,
+    NAFormTableSelectActionTypeOpenDateTimePicker,
     NAFormTableSelectActionTypeOpenMultipleSelectTable,
 } NAFormTableSelectActionType;
 

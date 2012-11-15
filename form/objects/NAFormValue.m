@@ -16,8 +16,10 @@ NSString * const NAFormCellIdentifierSwitch = @"NAFormCellIdentifierSwitch";
 NSString * const NAFormCellIdentifierPushSelect = @"NAFormCellIdentifierPushSelect";
 NSString * const NAFormCellIdentifierPush = @"NAFormCellIdentifierPush";
 NSString * const NAFormCellIdentifierTextField = @"NAFormCellIdentifierTextField";
+NSString * const NAFormCellIdentifierTextArea = @"NAFormCellIdentifierTextArea";
 NSString * const NAFormCellIdentifierSecureTextField = @"NAFormCellIdentifierSecureTextField";
 NSString * const NAFormCellIdentifierLabel = @"NAFormCellIdentifierLabel";
+NSString * const NAFormCellIdentifierDate = @"NAFormCellIdentifierDate";
 NSString * const NAFormCellIdentifierButton = @"NAFormCellIdentifierButton";
 
 @implementation NAFormValue

@@ -15,7 +15,7 @@
 @implementation NAKeyboardHeaderViewController
 
 
-- (void)setTextControl:(UIControl *)textControl{
+- (void)setTextControl:(UIResponder *)textControl{
     if([textControl isKindOfClass:[UITextField class]]){
         UITextField *textField = (UITextField *)textControl;
         textField.inputAccessoryView = self.view;

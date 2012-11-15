@@ -10,7 +10,7 @@
 
 @interface NAKeyboardHeaderViewController : UIViewController
 
-@property (weak, nonatomic) UIControl *textControl;
+@property (weak, nonatomic) UIResponder *textControl;
 
 - (IBAction)close:(id)sender;
 

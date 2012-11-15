@@ -19,6 +19,7 @@
 - (NAFormTableSelectActionType)rowActionType:(id)row;
 //- (id)rowActionBackBlock:(id)row;
 - (id)rowAtIndexPath:(NSIndexPath *)indexPath;
+- (id)indexPathOfRow:(id)row;
 
 - (void)initializeCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath reuseIdentifier:(NSString *)reuseIdentifier row:(id)row;
 - (void)updateCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath row:(id)row;

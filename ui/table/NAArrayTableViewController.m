@@ -49,6 +49,21 @@
     return [self sectionRows:self.sections[indexPath.section]][indexPath.row];
 }
 
+- (id)indexPathOfRow:(id)row{
+    NSIndexPath *ipth = nil;
+    NSInteger sectionidx = 0;
+    for (NSDictionary *section in self.sections) {
+        NSArray *rows = [self sectionRows:section];
+        NSInteger rowidx = [rows indexOfObject:row];
+        if(rowidx!=NSNotFound){
+            ipth = [NSIndexPath indexPathForRow:rowidx inSection:sectionidx];
+            break;
+        }
+        sectionidx += 1;
+    }
+    return ipth;
+}
+
 #pragma mark tableview delegate
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{

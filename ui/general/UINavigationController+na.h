@@ -12,4 +12,6 @@
 
 - (void)popViewController;
 
+- (void)pushStoryBoardWithName:(NSString *)storyBoardName animated:(BOOL)animated;
+
 @end

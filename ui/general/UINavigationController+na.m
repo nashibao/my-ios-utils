@@ -14,4 +14,8 @@
     [self popViewControllerAnimated:YES];
 }
 
+- (void)pushStoryBoardWithName:(NSString *)storyBoardName animated:(BOOL)animated{
+    [self pushViewController:[[UIStoryboard storyboardWithName:storyBoardName bundle:[NSBundle mainBundle]] instantiateInitialViewController] animated:animated];
+}
+
 @end

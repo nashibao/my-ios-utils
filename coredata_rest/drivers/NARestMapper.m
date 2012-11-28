@@ -56,6 +56,9 @@
 - (id)_updateByServerItemData:(NSDictionary *)data mo:(NSManagedObject *)mo{
     mo.data_for_sync = data;
     mo.edited_data_for_sync = nil;
+    if([[mo class] enabled_auto_delete_management]){
+        mo.is_deleted_for_sync = [[mo class] isDeletedKeyInServerItemData:data];
+    }
     [mo updateByServerItemData:data];
     return nil;
 }

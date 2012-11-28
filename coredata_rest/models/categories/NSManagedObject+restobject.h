@@ -10,11 +10,19 @@
 
 @interface NSManagedObject (restobject)
 
+
+/**
+ 削除を自動でマネージメントするかどうか．
+ デフォルト: off
+ */
++ (BOOL)enabled_auto_delete_management;
+
 + (NSString *)guid_for_sync_key;
 + (NSString *)data_for_sync_key;
 + (NSString *)edited_data_for_sync_key;
 + (NSString *)cache_index_for_sync_key;
 + (NSString *)cache_identifier_for_sync_key;
++ (NSString *)is_deleted_for_sync_key;
 
 //@property(nonatomic, readonly)NSString *guid_for_sync_key;
 //@property(nonatomic, readonly)NSString *data_for_sync_key;
@@ -27,8 +35,11 @@
 @property(nonatomic, readwrite)NSDictionary *edited_data_for_sync;
 @property(nonatomic, readwrite)NSInteger cache_index_for_sync;
 @property(nonatomic, readwrite)NSString *cache_identifier_for_sync;
+@property(nonatomic, readwrite)BOOL is_deleted_for_sync;
 
 + (NSInteger)primaryKeyInServerItemData:(id)itemData;
+
++ (BOOL)isDeletedKeyInServerItemData:(id)itemData;
 
 - (NSDictionary *)getQuery;
 

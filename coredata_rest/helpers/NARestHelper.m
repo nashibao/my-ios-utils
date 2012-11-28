@@ -51,7 +51,10 @@
                 [[NANetworkActivityIndicatorManager sharedManager] insert:identifier error:err.domain option:query.options];
             }
             
-            [context save:nil];
+            [context save:&err];
+            if(err){
+                NSLog(@"%s|%@", __PRETTY_FUNCTION__, err);
+            }
         }@catch (NSException *exception) {
             NSLog(@"%s|%@", __PRETTY_FUNCTION__, exception);
             NSError *err = [NSError errorWithDomain:exception.reason code:0 userInfo:nil];

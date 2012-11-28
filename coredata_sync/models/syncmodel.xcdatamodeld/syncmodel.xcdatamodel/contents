@@ -5,6 +5,7 @@
         <attribute name="cache_index" optional="YES" transient="YES" attributeType="Integer 32" defaultValueString="0" indexed="YES" syncable="YES"/>
         <attribute name="data" optional="YES" attributeType="Transformable" valueTransformerName="NSDictionaryTransformer" syncable="YES"/>
         <attribute name="edited_data" optional="YES" attributeType="Transformable" valueTransformerName="NSDictionaryTransformer" syncable="YES"/>
+        <attribute name="is_deleted" optional="YES" attributeType="Boolean" defaultValueString="NO" indexed="YES" syncable="YES"/>
         <attribute name="is_syncing" optional="YES" transient="YES" attributeType="Boolean" defaultValueString="NO" indexed="YES" syncable="YES"/>
         <attribute name="modified_date" optional="YES" attributeType="Date" indexed="YES" syncable="YES"/>
         <attribute name="pk" optional="YES" attributeType="Integer 32" defaultValueString="-1" indexed="YES" syncable="YES"/>
@@ -12,6 +13,6 @@
         <attribute name="sync_state" optional="YES" attributeType="Integer 32" defaultValueString="0" indexed="YES" syncable="YES"/>
     </entity>
     <elements>
-        <element name="NASyncModel" positionX="-2205" positionY="-405" width="198" height="180"/>
+        <element name="NASyncModel" positionX="-2205" positionY="-405" width="198" height="195"/>
     </elements>
 </model>

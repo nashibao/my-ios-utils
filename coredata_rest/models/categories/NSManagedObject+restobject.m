@@ -12,6 +12,10 @@
 
 @implementation NSManagedObject (restobject)
 
++ (BOOL)enabled_auto_delete_management{
+    return NO;
+}
+
 + (NSString *)guid_for_sync_key{
     return @"pk";
 }
@@ -32,9 +36,14 @@
     return @"cache_identifier";
 }
 
++ (NSString *)is_deleted_for_sync_key{
+    return @"is_deleted";
+}
+
 
 INTEGER_ACCESSOR(guid_for_sync, setGuid_for_sync, [[self class] guid_for_sync_key], NSInteger)
 INTEGER_ACCESSOR(cache_index_for_sync, setCache_index_for_sync, [[self class] cache_index_for_sync_key], NSInteger)
+INTEGER_ACCESSOR(is_deleted_for_sync, setIs_deleted_for_sync, [[self class] is_deleted_for_sync_key], BOOL)
 
 - (NSDictionary *)data_for_sync{
     return [self valueForKey:[[self class] data_for_sync_key]];
@@ -66,6 +75,10 @@ INTEGER_ACCESSOR(cache_index_for_sync, setCache_index_for_sync, [[self class] ca
 
 + (NSInteger)primaryKeyInServerItemData:(id)itemData{
     return [itemData[@"id"] integerValue];
+}
+
++ (BOOL)isDeletedKeyInServerItemData:(id)itemData{
+    return [itemData[@"is_deleted"] boolValue];
 }
 
 

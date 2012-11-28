@@ -78,6 +78,9 @@
             mo.data_for_sync = data;
             mo.modified_date_for_sync = [[mo class] modifiedDateInServerItemData:data];
             mo.edited_data_for_sync = nil;
+            if([[mo class] enabled_auto_delete_management]){
+                mo.is_deleted_for_sync = [[mo class] isDeletedKeyInServerItemData:data];
+            }
             [mo updateByServerItemData:data];
         }else{
             if([[mo modified_date_for_sync] compare:[[mo class] modifiedDateInServerItemData:data]] == NSOrderedAscending){

@@ -17,6 +17,10 @@
 @implementation NATableViewController
 
 
+- (BOOL)enableCellSelectAnimation{
+    return NO;
+}
+
 //initialization -------------------------
 - (void)initialize{
     self.isStaticTable = NO;
@@ -74,6 +78,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+#warning 削除が起きた時にself.selectedIndexpathをclearしなければならない．
     NSIndexPath *oldIndexPath = self.selectedIndexPath;
     NSArray *temp = nil;
     if(oldIndexPath && (oldIndexPath.section != indexPath.section || oldIndexPath.row != indexPath.row)){
@@ -83,7 +88,9 @@
     }
     self.selectedIndexPath = indexPath;
     if(!self.isStaticTable){
-        [tableView reloadRowsAtIndexPaths:temp withRowAnimation:UITableViewRowAnimationAutomatic];
+        if(self.enableCellSelectAnimation){
+            [tableView reloadRowsAtIndexPaths:temp withRowAnimation:UITableViewRowAnimationAutomatic];
+        }
     }
 }
 

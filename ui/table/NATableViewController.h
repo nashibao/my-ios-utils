@@ -28,6 +28,8 @@
 
 @property (nonatomic) UITableViewCellAccessoryType cellAccessoryType;
 
+@property (readonly, nonatomic)BOOL enableCellSelectAnimation;
+
 - (void)initializeCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath reuseIdentifier:(NSString *)reuseIdentifier;
 - (void)updateCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
 

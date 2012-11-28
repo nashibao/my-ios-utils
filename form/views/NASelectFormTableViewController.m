@@ -22,6 +22,10 @@
     self.cellStyle = UITableViewCellStyleDefault;
 }
 
+- (BOOL)enableCellSelectAnimation{
+    return YES;
+}
+
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     if([self.formValue selectedIndexPath]){

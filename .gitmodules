@@ -7,3 +7,6 @@
 [submodule "coredata"]
 	path = coredata
 	url = git@github.com:nashibao/na_ios_coredata.git
+[submodule "boilerplate"]
+	path = boilerplate
+	url = git@github.com:nashibao/na_ios_boilerplate.git

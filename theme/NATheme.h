@@ -20,4 +20,8 @@
 
 - (UIColor *)cellErrorHighlightBackgroundColor;
 
+- (UIColor *)labelFontColor;
+
+- (UIColor *)labelDisabledFontColor;
+
 @end

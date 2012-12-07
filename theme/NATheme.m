@@ -27,4 +27,12 @@ NATheme *__current_theme__ = nil;
     return [UIColor colorWithRed:1.000 green:0.973 blue:0.894 alpha:1.000];
 }
 
+- (UIColor *)labelFontColor{
+    return [UIColor blackColor];
+}
+
+- (UIColor *)labelDisabledFontColor{
+    return [UIColor lightGrayColor];
+}
+
 @end

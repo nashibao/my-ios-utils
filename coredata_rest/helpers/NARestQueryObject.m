@@ -34,4 +34,11 @@
     return [self query:query pk:-1 objectID:nil model:model options:options completeHandler:completeHandler];
 }
 
+- (BOOL)nomap{
+    if(self.options && self.options[@"nomap"] && [self.options[@"nomap"] boolValue]){
+        return YES;
+    }
+    return NO;
+}
+
 @end

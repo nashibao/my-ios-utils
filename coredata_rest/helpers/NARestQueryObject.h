@@ -22,6 +22,8 @@ typedef void(^COMPLETE_HANDLER)(NSError *err);
 @property (strong, nonatomic) NSString *rpcName;
 @property (nonatomic) NARestType restType;
 
+@property(nonatomic, readonly)BOOL nomap;
+
 + (NARestQueryObject *)query:(NSDictionary *)query
                           pk:(NSInteger)pk
                     objectID:(NSManagedObjectID *)objectID

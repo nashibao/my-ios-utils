@@ -62,6 +62,7 @@
             [fcell setFormValue:(NAFormValue *)data];
         }
     }
+    [super updateCell:cell atIndexPath:indexPath row:row];
 }
 
 - (NAFormValue *)nextFormValue:(NAFormValue *)formValue{

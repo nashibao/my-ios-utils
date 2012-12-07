@@ -12,6 +12,12 @@
 
 + (NSDate *)dateWithString:(NSString *)str;
 
++ (NSDate *)dateWithString:(NSString *)str withFormats:(NSArray *)formats;
+
+- (NSString *)string;
+
+- (NSString *)stringWithFormat:(NSString *)format;
+
 - (NSDate *)dateWithOnlyDay;
 
 @end

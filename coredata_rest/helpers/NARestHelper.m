@@ -27,6 +27,11 @@
                   response:(NSURLResponse *)resp
                       data:(id)data{
     __block NSError *err = nil;
+    if(query.nomap){
+        if(query.completeHandler)
+            query.completeHandler(nil);
+        return;
+    }
     [[query.modelkls mainContext] performBlockOutOfOwnThread:^(NSManagedObjectContext *context){
         
         NSString *network_identifier = @"";
@@ -81,6 +86,11 @@
                 response:(NSURLResponse *)resp
                    error:(NSError *)error{
     __block NSError *err = error;
+    if(query.nomap){
+        if(query.completeHandler)
+            query.completeHandler(err);
+        return;
+    }
     [[query.modelkls mainContext] performBlockOutOfOwnThread:^(NSManagedObjectContext *context) {
         NSLog(@"%s|%@", __PRETTY_FUNCTION__, error);
         [[query.modelkls restMapper] deupdateByServerError:error data:nil restType:restType inContext:context query:query network_identifier:nil network_cache_identifier:nil];
@@ -189,6 +199,9 @@
 }
 + (void)syncRPC:(NARestQueryObject *)query{
     [self syncBaseByType:NARestTypeRPC query:query];
+}
++ (void)syncEachRPC:(NARestQueryObject *)query{
+    [self syncBaseByType:NARestTypeEachRPC query:query];
 }
 
 @end

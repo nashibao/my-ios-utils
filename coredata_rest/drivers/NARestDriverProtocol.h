@@ -17,6 +17,7 @@ typedef enum NARestType: NSUInteger{
     NARestTypeUPDATE,
     NARestTypeDELETE,
     NARestTypeRPC,
+    NARestTypeEachRPC,
 } NARestType;
 
 @protocol NARestDriverProtocol <NSObject>

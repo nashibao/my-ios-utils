@@ -127,6 +127,15 @@
     [NARestHelper syncDelete:[NARestQueryObject query:nil pk:[self guid_for_sync] objectID:self.objectID model:[self class] options:options completeHandler:complete]];
 }
 
+- (void)sync_rpc:(NSDictionary *)query
+         rpcname:(NSString *)rpcname
+         options:(NSDictionary *)options
+        complete:(void(^)(NSError *err))complete{
+    NARestQueryObject *qo = [NARestQueryObject query:query pk:[self guid_for_sync] objectID:self.objectID model:[self class] options:options completeHandler:complete];
+    [qo setRpcName:rpcname];
+    [NARestHelper syncEachRPC:qo];
+}
+
 /*
  instance methods without sync
  */

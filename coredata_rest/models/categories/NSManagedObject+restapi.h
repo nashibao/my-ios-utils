@@ -78,6 +78,10 @@
            complete:(void(^)(NSError *err))complete;
 - (void)sync_delete:(NSDictionary *)options
            complete:(void(^)(NSError *err))complete;
+- (void)sync_rpc:(NSDictionary *)query
+         rpcname:(NSString *)rpcname
+         options:(NSDictionary *)options
+        complete:(void(^)(NSError *err))complete;
 
 /*
  instance methods without sync

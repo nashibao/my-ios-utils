@@ -46,6 +46,10 @@
             return [NSString stringWithFormat:@"%@%@rpc/%@/%@/", [[self class] domain], endpoint, modelname, option[@"rpc_name"]];
             break;
             
+        case NARestTypeEachRPC:
+            return [NSString stringWithFormat:@"%@%@rpc/%@/%d/%@/", [[self class] domain], endpoint, modelname, pk, option[@"rpc_name"]];
+            break;
+            
         default:
             break;
     }
@@ -54,24 +58,16 @@
 - (NANetworkProtocol)ProtocolByType:(NARestType)type model:(NSString*)modelname{
     switch (type) {
         case NARestTypeGET:
-            return NANetworkProtocolGET;
-            break;
         case NARestTypeFILTER:
+        case NARestTypeRPC:
+        case NARestTypeEachRPC:
             return NANetworkProtocolGET;
             break;
         case NARestTypeCREATE:
-            return NANetworkProtocolPOST;
-            break;
         case NARestTypeUPDATE:
-            return NANetworkProtocolPOST;
-            break;
         case NARestTypeDELETE:
             return NANetworkProtocolPOST;
             break;
-        case NARestTypeRPC:
-            return NANetworkProtocolGET;
-            break;
-            
         default:
             break;
     }

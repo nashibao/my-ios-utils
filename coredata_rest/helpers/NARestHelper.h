@@ -47,4 +47,6 @@
 
 + (void)syncRPC:(NARestQueryObject *)query;
 
++ (void)syncEachRPC:(NARestQueryObject *)query;
+
 @end

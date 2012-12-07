@@ -10,16 +10,13 @@
 
 #import "NATableViewCell.h"
 
+#import "UITableView+na.h"
+
 @interface NATableViewController ()
 
 @end
 
 @implementation NATableViewController
-
-
-- (BOOL)enableCellSelectAnimation{
-    return NO;
-}
 
 //initialization -------------------------
 - (void)initialize{
@@ -78,29 +75,32 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-#warning 削除が起きた時にself.selectedIndexpathをclearしなければならない．
     NSIndexPath *oldIndexPath = self.selectedIndexPath;
     NSArray *temp = nil;
-    if(oldIndexPath && (oldIndexPath.section != indexPath.section || oldIndexPath.row != indexPath.row)){
+    if(oldIndexPath
+       &&
+       (oldIndexPath.section != indexPath.section || oldIndexPath.row != indexPath.row)
+       &&
+       [self.tableView hasIndexPath:oldIndexPath]
+       ){
         temp = @[oldIndexPath, indexPath];
     }else{
         temp = @[indexPath];
     }
     self.selectedIndexPath = indexPath;
     if(!self.isStaticTable){
-        if(self.enableCellSelectAnimation){
-            [tableView reloadRowsAtIndexPaths:temp withRowAnimation:UITableViewRowAnimationAutomatic];
-        }
+        [tableView reloadRowsAtIndexPaths:temp withRowAnimation:UITableViewRowAnimationAutomatic];
     }
 }
 
+#warning SK3[16650:907] *** Terminating app due to uncaught exception 'NSInternalInconsistencyException', reason: 'Invalid update: invalid number of sections.  The number of sections contained in the table view after the update (2) must be equal to the number of sections contained in the table view before the update (3), plus or minus the number of sections inserted or deleted (0 inserted, 0 deleted).'
 #pragma mark TODO: 汎用化したい, 基本的にはbackボタンで戻ってきたときの処理．
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    if(self.selectedIndexPath){
-        [self.tableView deselectRowAtIndexPath:self.selectedIndexPath animated:animated];
-        [self.tableView reloadRowsAtIndexPaths:@[self.selectedIndexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-    }
+//    if(self.selectedIndexPath){
+//        [self.tableView deselectRowAtIndexPath:self.selectedIndexPath animated:animated];
+//        [self.tableView reloadRowsAtIndexPaths:@[self.selectedIndexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+//    }
 }
 
 #pragma mark - Table view delegate

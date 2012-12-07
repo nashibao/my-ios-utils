@@ -12,4 +12,6 @@
 
 - (void)scrollToBottomWithAnimated:(BOOL)animated;
 
+- (BOOL)hasIndexPath:(NSIndexPath *)indexPath;
+
 @end

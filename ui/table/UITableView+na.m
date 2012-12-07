@@ -17,4 +17,10 @@
     }
 }
 
+- (BOOL)hasIndexPath:(NSIndexPath *)indexPath{
+    if([self numberOfSections] > indexPath.section && [self numberOfRowsInSection:indexPath.section] > indexPath.row)
+        return YES;
+    return NO;
+}
+
 @end

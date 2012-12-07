@@ -116,6 +116,10 @@
 }
 
 - (void)updateCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath row:(id)row{
+    if([cell isKindOfClass:[NATableViewCell class]]){
+        NATableViewCell *nacell = (NATableViewCell *)cell;
+        nacell.data = row;
+    }
     [self updateCell:cell atIndexPath:indexPath];
 }
 
@@ -137,7 +141,7 @@
 }
 
 - (void)willActionBackedByRow:(id)row{
-    
+    [self.tableView reloadData];
 }
 
 @end

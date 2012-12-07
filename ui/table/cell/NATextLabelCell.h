@@ -11,5 +11,6 @@
 @interface NATextLabelCell : NATableViewCell
 
 - (NSString *)textFieldKey;
+- (NSString *)detailTextFieldKey;
 
 @end

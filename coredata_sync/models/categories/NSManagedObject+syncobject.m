@@ -10,6 +10,8 @@
 
 #import "AccessorMacros.h"
 
+#import "NSDate+na.h"
+
 @implementation NSManagedObject (syncobject)
 
 - (NSString *)modified_date_for_sync_key{
@@ -36,7 +38,7 @@ INTEGER_ACCESSOR(sync_error_for_sync, setSync_error_for_sync, [self sync_error_f
 }
 
 + (NSDate *)modifiedDateInServerItemData:(id)itemData{
-    return itemData[@"modified_data"];
+    return [NSDate dateWithString:itemData[@"modified_data"]];
 }
 
 + (NASyncModelConflictOption)conflictOption{

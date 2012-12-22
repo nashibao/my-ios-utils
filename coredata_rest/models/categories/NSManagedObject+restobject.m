@@ -7,6 +7,8 @@
 //
 
 #import "NSManagedObject+restobject.h"
+#import "NSManagedObject+restdriver.h"
+#import "NSManagedObjectContext+na.h"
 
 #import "AccessorMacros.h"
 
@@ -81,5 +83,9 @@ INTEGER_ACCESSOR(is_deleted_for_sync, setIs_deleted_for_sync, [[self class] is_d
     return [itemData[@"is_deleted"] boolValue];
 }
 
++ (id)getOrCreateObjectByData:(id)data inContext:(NSManagedObjectContext *)context{
+    NSManagedObject *mo = [context getOrCreateObject:[self restEntityName] props:@{[self guid_for_sync_key]: @([self primaryKeyInServerItemData:data])}];
+    return mo;
+}
 
 @end

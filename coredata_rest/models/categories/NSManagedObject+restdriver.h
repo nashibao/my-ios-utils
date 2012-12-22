@@ -29,6 +29,6 @@
 
 + (NSString *)restCallbackName;
 
-- (void)updateByServerItemData:(id)itemData;
+- (void)updateByServerItemData:(id)itemData context:(NSManagedObjectContext *)context;
 
 @end

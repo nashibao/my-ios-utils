@@ -43,4 +43,6 @@
 
 - (NSDictionary *)getQuery;
 
++ (id)getOrCreateObjectByData:(id)data inContext:(NSManagedObjectContext *)context;
+
 @end

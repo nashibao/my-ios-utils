@@ -9,7 +9,8 @@
 #import <Foundation/Foundation.h>
 
 
-#define isnull(val) !val && (id)val != [NSNull null]
+#define isnull(val) !val || (id)val == [NSNull null]
+#define isnotnull(val) YES && val && (id)val != [NSNull null]
 
 @interface NSNull (na)
 

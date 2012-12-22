@@ -138,6 +138,7 @@
         obj = self.postAppendRows[_indexPath.section][_indexPath.row];
     }
     [cell.textLabel setText:[NSString stringWithFormat:@"%@", obj]];
+    [cell.detailTextLabel setText:@""];
     return cell;
 }
 

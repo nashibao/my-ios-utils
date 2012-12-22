@@ -36,6 +36,8 @@ extern NSString * const NAFormCellIdentifierButton;
 @property (strong, nonatomic) NSDictionary *errors;
 //エラーメッセージのカスタマイズ
 @property (strong, nonatomic) NSString *errorMessage;
+//ヘルプテキスト
+@property (strong, nonatomic) NSString *helpText;
 //表示用value
 @property (strong, nonatomic) NSString *stringValue;
 //表示用valueのキャッシュ

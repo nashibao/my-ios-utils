@@ -28,6 +28,11 @@
     }else{
         [self setBackgroundColor:[[NATheme currentTheme] cellBackgroundColor]];
     }
+    [self update];
+}
+
+- (void)update{
+    
 }
 
 - (void)formValue:(NAFormValue *)formValue isUploading:(BOOL)isUploading{

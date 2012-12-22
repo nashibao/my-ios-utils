@@ -21,6 +21,8 @@
 
 - (BOOL)focusEnabled;
 
+- (void)update;
+
 @end
 
 @protocol NAFormCellDelegate <NSObject>

@@ -53,11 +53,15 @@ static NSDictionary *validate_settings = nil;
 
 + (NSString *)validateRequired:(id)object options:(id)options{
     if([object isKindOfClass:[NSString class]]){
-        if(!object || [object length] == 0){
+        if([object length] == 0){
             return [self errorMessage:@"required" options:options];
         }
         return nil;
-    }else if(!object){
+    }else if([object isKindOfClass:[NSArray class]]){
+        if([object count] == 0){
+            return [self errorMessage:@"required" options:options];
+        }
+    }else if(isnull(object)){
         return [self errorMessage:@"required" options:options];
     }
     return nil;

@@ -12,15 +12,31 @@
 
 - (void)setFormValue:(NAFormValue *)formValue{
     [super setFormValue:formValue];
-    [self.textField setPlaceholder:formValue.label];
+    [self update];
+}
+
+- (void)update{
+    [self.textField setPlaceholder:self.formValue.label];
     NSString *val = self.formValue.stringValue;
     if(val && [val length]>0){
         [self.textField setText:val];
     }else{
         [self.textField setText:@""];
     }
-    if(formValue.validatRules[@"number"]){
+    if(self.formValue.validatRules[@"number"]){
         [self.textField setKeyboardType:UIKeyboardTypeNumberPad];
+    }
+    NSString *errorMessage = [self.formValue shortErrorMessage];
+    if(errorMessage){
+        [self.helpLabel setText:errorMessage];
+        [self.helpLabel setTextColor:[UIColor redColor]];
+    }else{
+        [self.helpLabel setTextColor:[UIColor lightGrayColor]];
+        if(self.formValue.helpText){
+            [self.helpLabel setText:self.formValue.helpText];
+        }else{
+            [self.helpLabel setText:@""];
+        }
     }
 }
 

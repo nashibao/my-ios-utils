@@ -18,4 +18,8 @@
     [self pushViewController:[[UIStoryboard storyboardWithName:storyBoardName bundle:[NSBundle mainBundle]] instantiateInitialViewController] animated:animated];
 }
 
+- (void)presentStoryBoardWithName:(NSString *)storyBoardName animated:(BOOL)animated completion:(void(^)(void))completion{
+    [self presentViewController:[[UIStoryboard storyboardWithName:storyBoardName bundle:[NSBundle mainBundle]] instantiateInitialViewController] animated:animated completion:completion];
+}
+
 @end

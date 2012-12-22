@@ -14,4 +14,6 @@
 
 - (void)pushStoryBoardWithName:(NSString *)storyBoardName animated:(BOOL)animated;
 
+- (void)presentStoryBoardWithName:(NSString *)storyBoardName animated:(BOOL)animated completion:(void(^)(void))completion;
+
 @end

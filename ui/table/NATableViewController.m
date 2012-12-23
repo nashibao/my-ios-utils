@@ -93,6 +93,32 @@
     }
 }
 
+- (void)viewDidLoad{
+    [super viewDidLoad];
+    if(self.enableRefleshControl){
+        self.refreshControl = [[UIRefreshControl alloc] init];
+        [self.refreshControl addTarget:self action:@selector(refreshed:) forControlEvents:UIControlEventValueChanged];
+    }
+}
+
+- (void)preLoadHandler{
+    [self.tableView reloadData];
+    [self.refreshControl beginRefreshing];
+}
+
+- (void)postLoadHandlerWithError:(NSError *)err{
+    [self.tableView reloadData];
+    [self.refreshControl endRefreshing];
+}
+
+- (void)load{
+    [self preLoadHandler];
+}
+
+- (void)refreshed:(UIRefreshControl *)control{
+    [self load];
+}
+
 #warning SK3[16650:907] *** Terminating app due to uncaught exception 'NSInternalInconsistencyException', reason: 'Invalid update: invalid number of sections.  The number of sections contained in the table view after the update (2) must be equal to the number of sections contained in the table view before the update (3), plus or minus the number of sections inserted or deleted (0 inserted, 0 deleted).'
 #pragma mark TODO: 汎用化したい, 基本的にはbackボタンで戻ってきたときの処理．
 - (void)viewWillAppear:(BOOL)animated{

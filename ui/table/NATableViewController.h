@@ -26,9 +26,17 @@
 
 @property (strong, nonatomic) NSIndexPath *selectedIndexPath;
 
+@property (nonatomic) BOOL enableRefleshControl;
+
 @property (nonatomic) UITableViewCellAccessoryType cellAccessoryType;
 
 - (void)initializeCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath reuseIdentifier:(NSString *)reuseIdentifier;
 - (void)updateCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
+
+
+- (void)preLoadHandler;
+- (void)postLoadHandlerWithError:(NSError *)err;
+- (void)load;
+- (void)refreshed:(UIRefreshControl *)control;
 
 @end

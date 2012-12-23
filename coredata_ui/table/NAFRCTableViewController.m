@@ -64,4 +64,28 @@
     [cell.textLabel setText:[NSString stringWithFormat:@"%@",mo]];
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.fetchedResultsController performFetch:nil];
+    [self.tableView reloadData];
+}
+
+- (void)preLoadHandler{
+    [self.fetchedResultsController performFetch:nil];
+    [super preLoadHandler];
+}
+
+- (void)postLoadHandlerWithError:(NSError *)err{
+    [self.fetchedResultsController performFetch:nil];
+    [super postLoadHandlerWithError:err];
+    if(err){
+        UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:@"データの取得に失敗しました．"];
+        [sheet addButtonWithTitle:@"再取得" handler:^{
+            [self load];
+        }];
+        [sheet setCancelButtonWithTitle:@"何もしない．" handler:nil];
+        [sheet showInView:self.view];
+    }
+}
+
 @end

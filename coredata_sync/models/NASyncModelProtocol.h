@@ -40,6 +40,7 @@ typedef enum NASyncModelConflictOption: NSUInteger{
  */
 typedef enum NASyncModelErrorOption: NSUInteger{
     // 放置
+    // デフォルト
     NASyncModelErrorOptionLeave,
     // あきらめる．POSTならローカル時のデータを破棄
     NASyncModelErrorOptionResign,
@@ -47,7 +48,6 @@ typedef enum NASyncModelErrorOption: NSUInteger{
     // リトライ
     NASyncModelErrorOptionRetry,
     // ユーザによる選択(リトライか破棄か放置）
-    // デフォルト
     NASyncModelErrorOptionUserAlert,
 } NASyncModelErrorOption;
 

@@ -46,7 +46,7 @@ INTEGER_ACCESSOR(sync_error_for_sync, setSync_error_for_sync, [self sync_error_f
 }
 
 + (NASyncModelErrorOption)errorOption{
-    return NASyncModelErrorOptionUserAlert;
+    return NASyncModelErrorOptionLeave;
 }
 
 - (BOOL)conflictedToServerItemData:(id)itemData{

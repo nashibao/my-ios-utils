@@ -13,3 +13,12 @@
 [submodule "table"]
 	path = table
 	url = git@github.com:nashibao/na_ios_table.git
+[submodule "utils"]
+	path = utils
+	url = git@github.com:nashibao/na_ios_utils.git
+[submodule "coredata_rest"]
+	path = coredata_rest
+	url = git@github.com:nashibao/na_ios_coredata_rest.git
+[submodule "coredata_sync"]
+	path = coredata_sync
+	url = git@github.com:nashibao/na_ios_coredata_sync.git

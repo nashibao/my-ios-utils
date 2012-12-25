@@ -10,3 +10,6 @@
 [submodule "boilerplate"]
 	path = boilerplate
 	url = git@github.com:nashibao/na_ios_boilerplate.git
+[submodule "table"]
+	path = table
+	url = git@github.com:nashibao/na_ios_table.git

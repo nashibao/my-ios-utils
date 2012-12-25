@@ -1,0 +1,26 @@
+# Xcode
+build/*
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+*.xcworkspace
+!default.xcworkspace
+xcuserdata
+profile
+*.moved-aside
+.DS_Store
+
+/test/Pods/
+/test/Podfile.lock
+/test/na_ios_test/Pods/
+/test/na_ios_test/Podfile.lock
+/test/back/
+/test/na_ios_unit_test/Pods/
+/test/na_ios_unit_test/Podfile.lock
+*Podfile.lock
+*Pods

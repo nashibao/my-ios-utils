@@ -1,51 +1,35 @@
-# `na_ios/coredata_ui`
+# na_ios
 
-`na_ios/coredata_ui`では、`NSFetchedResultsController`を簡単に扱えるような`UITableViewController`のサブクラスを提供します．
+ios開発において基盤となるパターンをパッケージにしました．
 
-`NAFRCTableViewController`を継承して、初期化の部分で`frc`をアタッチして下さい．
+***一つ目の特徴***は、パフォーマンス、バグの両方においてネックとなりやすいNetwork IOとDisc IO(coredata)における非同期プログラミングです．UIのスレッドをいかにしてブロックしないようにするか、は近年のクライアントサイドプログラムにおいて最も重要な課題の一つです．`na_ios`ではスレッド処理を隠蔽し、一環したmain thread上でのコールバックスタイルを取る事により、バグの混入しやすい部分をパッケージ側に任せることが出来ます．特にcoredataのマルチスレッドは難しい問題です．これらのデータをテーブルやフォームで扱うためのモジュールも含んでいます．
 
-```objective-c
-#import "NAFRCTableViewController.h"
-@interface EventFRCTableViewController : NAFRCTableViewController
-@end
+***二つ目の特徴***は、RESTを介したデータベースの同期システムです．サーバ-マルチデバイス構成でのデータベースの同期はios環境においては、ニーズが高く、それに比例して難易度が高い問題です．この部分をパターン化してモジュールに切り出しました．この部分についても、マルチスレッドを有効活用することで、パフォーマンスを最大に担保するように気をつけています．
 
-#import "EventFRCTableViewController.h"
-#import "NSManagedObject+na.h"
-#import "Event.h"
-@implementation EventFRCTableViewController
+具体的な使い方については、個々のモジュールのドキュメントを参考にして下さい．
 
-- (void)initialize{
-    [super initialize];
-    
-//    frcの設定
-    NSFetchedResultsController *frc = [Event controllerWithEqualProps:@{}
-                                                                sorts:@[@"date"]
-                                                              context:nil o
-                                                               ptions:nil];
-    [frc performFetch:nil];
-    self.fetchedResultsController = frc;
-}
+ - [na_ios/network](https://github.com/nashibao/na_ios/tree/master/network)
+ネットワークを扱うためのモジュール
+ - [na_ios/coredata](https://github.com/nashibao/na_ios/tree/master/coredata)
+コアデータを扱うためのモジュール
+ - [na_ios/coredata_ui](https://github.com/nashibao/na_ios/tree/master/coredata_ui)
+コアデータをUI上で扱うためのモジュール
+ - [na_ios/coredata_sync](https://github.com/nashibao/na_ios/tree/master/coredata_sync)
+RESTを介してサーバ側と通信するモジュール
+ - na_ios/ui
+UI用モジュール
+ - na_ios/form
+フォーム用モジュール
+ - na_ios/macros
+各種マクロを入れておくモジュール
+ - na_ios/ocunit
+非同期でocunitで単体テストするためのモジュール
 
-@end
+# setup
 
+na_ios自体はcloneしてきて/test/ディレクトリ以外は単純にプロジェクトのターゲットに加えれば使用できます．
+一部モジュールは[BlocksKit](https://github.com/zwaldowski/BlocksKit)や[SVProgressHUD](https://github.com/samvermette/SVProgressHUD)、[Reachability](https://github.com/tonymillion/Reachability)などに依存しています．[cocoapods](http://cocoapods.org/)用のインストールファイル（Podfile）が含まれているので、これをプロジェクトのルートディレクトリ(hoge.xcodeproが入っているディレクトリ)にコピーし、
 ```
-
-たったこれだけです！
-コアデータに変更を加えた場合は、`frc`と`tableview`を更新して下さい．
-
-```objective-c
-
-@implementation EventFRCTableViewController
-…
-…
-- (IBAction)addEvent:(id)sender{
-    [Event create:@{@"date": [NSDate date]} options:nil complete:^(id mo) {
-        //        ここで更新(メインスレッド)
-        [self.fetchedResultsController performFetch:nil];
-        [self.tableView reloadData];
-    }];
-}
-
-@end
-
+> pod install
 ```
+とすれば完了です．cocoapodsの使い方については、リンク先を参照して下さい．

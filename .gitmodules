@@ -1,0 +1,12 @@
+[submodule "network"]
+	path = network
+	url = git@github.com:scubism/na_ios_network.git
+[submodule "ocunit"]
+	path = ocunit
+	url = git@github.com:scubism/na_ios_ocunit.git
+[submodule "coredata"]
+	path = coredata
+	url = git@github.com:nashibao/na_ios_coredata.git
+[submodule "boilerplate"]
+	path = boilerplate
+	url = git@github.com:nashibao/na_ios_boilerplate.git

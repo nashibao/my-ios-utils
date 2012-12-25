@@ -52,6 +52,9 @@
     return [self restName];
 }
 
++ (void)prepareData:(id)data context:(NSManagedObjectContext *)context{
+}
+
 - (void)updateByServerItemData:(id)itemData context:(NSManagedObjectContext *)context{
 //    それぞれのマッピング
 }

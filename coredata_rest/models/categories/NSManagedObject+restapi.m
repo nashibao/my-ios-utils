@@ -23,32 +23,79 @@
 /*
  class methods
  */
-+ (void)sync_filter:(NSDictionary *)query options:(NSDictionary *)options complete:(void(^)(NSError *err))complete{
-    [NARestHelper syncFilter:[NARestQueryObject query:query model:self options:options completeHandler:complete]];
++ (void)sync_filter:(NSDictionary *)query
+           maskType:(NAProgressHUDMaskType)maskType
+            options:(NSDictionary *)options
+           complete:(void(^)(NSError *err))complete{
+    [NARestHelper syncFilter:[NARestQueryObject query:query model:self maskType:maskType options:options completeHandler:complete]];
 }
 
-+ (void)sync_get:(NSInteger)pk options:(NSDictionary *)options complete:(void(^)(NSError *err))complete{
-    [NARestHelper syncGet:[NARestQueryObject query:nil pk:pk objectID:nil model:self options:options completeHandler:complete]];
++ (void)sync_get:(NSInteger)pk
+        maskType:(NAProgressHUDMaskType)maskType
+         options:(NSDictionary *)options
+        complete:(void(^)(NSError *err))complete{
+    [NARestHelper syncGet:[NARestQueryObject query:nil pk:pk objectID:nil model:self maskType:maskType options:options completeHandler:complete]];
 }
 
-+ (void)sync_create:(NSDictionary *)query options:(NSDictionary *)options complete:(void(^)(NSError *err))complete{
-    [NARestHelper syncCreate:[NARestQueryObject query:query model:self options:options completeHandler:complete]];
++ (void)sync_create:(NSDictionary *)query
+           maskType:(NAProgressHUDMaskType)maskType
+            options:(NSDictionary *)options
+           complete:(void(^)(NSError *err))complete{
+    [NARestHelper syncCreate:[NARestQueryObject query:query model:self maskType:maskType options:options completeHandler:complete]];
 }
 
-+ (void)sync_update:(NSInteger)pk query:(NSDictionary *)query options:(NSDictionary *)options complete:(void(^)(NSError *err))complete{
-    [NARestHelper syncUpdate:[NARestQueryObject query:query pk:pk objectID:nil model:self options:options completeHandler:complete]];
++ (void)sync_update:(NSInteger)pk
+              query:(NSDictionary *)query
+           maskType:(NAProgressHUDMaskType)maskType
+            options:(NSDictionary *)options
+           complete:(void(^)(NSError *err))complete{
+    [NARestHelper syncUpdate:[NARestQueryObject query:query pk:pk objectID:nil model:self maskType:maskType options:options completeHandler:complete]];
 }
 
 
-+ (void)sync_delete:(NSInteger)pk options:(NSDictionary *)options complete:(void(^)(NSError *err))complete{
-    [NARestHelper syncDelete:[NARestQueryObject query:nil pk:pk objectID:nil model:self options:options completeHandler:complete]];
++ (void)sync_delete:(NSInteger)pk
+           maskType:(NAProgressHUDMaskType)maskType
+            options:(NSDictionary *)options
+           complete:(void(^)(NSError *err))complete{
+    [NARestHelper syncDelete:[NARestQueryObject query:nil pk:pk objectID:nil model:self maskType:maskType options:options completeHandler:complete]];
 }
 
 
-+ (void)sync_rpc:(NSDictionary *)query rpcname:(NSString *)rpcname options:(NSDictionary *)options complete:(void(^)(NSError *err))complete{
-    NARestQueryObject *qo = [NARestQueryObject query:query model:self options:options completeHandler:complete];
++ (void)sync_rpc:(NSDictionary *)query
+         rpcname:(NSString *)rpcname
+        maskType:(NAProgressHUDMaskType)maskType
+         options:(NSDictionary *)options
+        complete:(void(^)(NSError *err))complete{
+    NARestQueryObject *qo = [NARestQueryObject query:query model:self maskType:maskType options:options completeHandler:complete];
     [qo setRpcName:rpcname];
     [NARestHelper syncRPC:qo];
+}
+
++ (void)sync_filter:(NSDictionary *)query
+           complete:(void(^)(NSError *err))complete{
+    [self sync_filter:query maskType:NAProgressHUDMaskTypeDefault options:nil complete:complete];
+}
++ (void)sync_get:(NSInteger)pk
+        complete:(void(^)(NSError *err))complete{
+    [self sync_get:pk maskType:NAProgressHUDMaskTypeDefault options:nil complete:complete];
+}
++ (void)sync_create:(NSDictionary *)query
+           complete:(void(^)(NSError *err))complete{
+    [self sync_create:query maskType:NAProgressHUDMaskTypeDefault options:nil complete:complete];
+}
++ (void)sync_update:(NSInteger)pk
+              query:(NSDictionary *)query
+           complete:(void(^)(NSError *err))complete{
+    [self sync_update:pk query:query maskType:NAProgressHUDMaskTypeDefault options:nil complete:complete];
+}
++ (void)sync_delete:(NSInteger)pk
+           complete:(void(^)(NSError *err))complete{
+    [self sync_delete:pk maskType:NAProgressHUDMaskTypeDefault options:nil complete:complete];
+}
++ (void)sync_rpc:(NSDictionary *)query
+         rpcname:(NSString *)rpcname
+        complete:(void(^)(NSError *err))complete{
+    [self sync_rpc:query rpcname:rpcname maskType:NAProgressHUDMaskTypeDefault options:nil complete:complete];
 }
 
 
@@ -56,7 +103,9 @@
  bulk commands
  */
 
-+ (void)sync_bulk_update_or_create:(NSDictionary *)query options:(NSDictionary *)options{
++ (void)sync_bulk_update_or_create:(NSDictionary *)query
+                          maskType:(NAProgressHUDMaskType)maskType
+                           options:(NSDictionary *)options{
     NSDictionary *newQuery = nil;
     if(query){
         NSMutableDictionary *temp = [query mutableCopy];
@@ -68,14 +117,16 @@
     NSArray *mos = [self filter:newQuery options:nil];
     for (NSManagedObject *mo in mos) {
         if(mo.guid_for_sync != NASyncModelGUIDTypeNotInServer){
-            [mo sync_update:options complete:nil];
+            [mo sync_update:maskType options:options complete:nil];
         }else{
-            [mo sync_create:options complete:nil];
+            [mo sync_create:maskType options:options complete:nil];
         }
     }
 }
 
-+ (void)sync_bulk_delete:(NSDictionary *)query options:(NSDictionary *)options{
++ (void)sync_bulk_delete:(NSDictionary *)query
+                maskType:(NAProgressHUDMaskType)maskType
+                 options:(NSDictionary *)options{
     NSDictionary *newQuery = nil;
     if(query){
         NSMutableDictionary *temp = [query mutableCopy];
@@ -87,54 +138,101 @@
     NSArray *mos = [self filter:newQuery options:nil];
     for (NSManagedObject *mo in mos) {
         if(mo.guid_for_sync != NASyncModelGUIDTypeNotInServer){
-            [mo sync_delete:options complete:nil];
+            [mo sync_delete:maskType options:options complete:nil];
         }else{
             [mo local_delete:options];
         }
     }
 }
 
-+ (void)sync:(NSDictionary *)query options:(NSDictionary *)options{
-    [self sync_bulk_update_or_create:query options:options];
-    [self sync_bulk_delete:query options:options];
-    [self sync_filter:query options:options complete:nil];
++ (void)sync:(NSDictionary *)query
+    maskType:(NAProgressHUDMaskType)maskType
+     options:(NSDictionary *)options{
+    [self sync_bulk_update_or_create:query maskType:maskType options:options];
+    [self sync_bulk_delete:query maskType:maskType options:options];
+    [self sync_filter:query maskType:maskType options:options complete:nil];
+}
+
++ (void)sync_bulk_update_or_create:(NSDictionary *)query{
+    [self sync_bulk_update_or_create:query maskType:NAProgressHUDMaskTypeDefault options:nil];
+}
++ (void)sync_bulk_delete:(NSDictionary *)query{
+    [self sync_bulk_delete:query maskType:NAProgressHUDMaskTypeDefault options:nil];
+}
++ (void)sync:(NSDictionary *)query{
+    [self sync:query maskType:NAProgressHUDMaskTypeDefault options:nil];
 }
 
 /*
  instance methods
  */
-- (void)sync_get:(NSDictionary *)options complete:(void(^)(NSError *err))complete{
-    [NARestHelper syncGet:[NARestQueryObject query:nil pk:[self guid_for_sync] objectID:self.objectID model:[self class] options:options completeHandler:complete]];
+- (void)sync_get:(NAProgressHUDMaskType)maskType
+         options:(NSDictionary *)options
+        complete:(void(^)(NSError *err))complete{
+    [NARestHelper syncGet:[NARestQueryObject query:nil pk:[self guid_for_sync] objectID:self.objectID model:[self class] maskType:maskType options:options completeHandler:complete]];
 }
 
-- (void)sync_create:(NSDictionary *)options complete:(void(^)(NSError *err))complete{
+- (void)sync_create:(NAProgressHUDMaskType)maskType
+            options:(NSDictionary *)options
+           complete:(void(^)(NSError *err))complete{
     NSDictionary *query = [self getQuery];
-    [NARestHelper syncCreate:[NARestQueryObject query:query model:[self class] options:options completeHandler:complete]];
+    [NARestHelper syncCreate:[NARestQueryObject query:query model:[self class] maskType:maskType options:options completeHandler:complete]];
 }
 
-- (void)sync_update:(NSDictionary *)query options:(NSDictionary *)options complete:(void(^)(NSError *err))complete{
+- (void)sync_update:(NSDictionary *)query
+           maskType:(NAProgressHUDMaskType)maskType
+            options:(NSDictionary *)options complete:(void(^)(NSError *err))complete{
     [self local_update:query options:options];
     query = [self getQuery];
-    [NARestHelper syncUpdate:[NARestQueryObject query:query pk:[self guid_for_sync] objectID:self.objectID model:[self class] options:options completeHandler:complete]];
+    [NARestHelper syncUpdate:[NARestQueryObject query:query pk:[self guid_for_sync] objectID:self.objectID model:[self class] maskType:maskType options:options completeHandler:complete]];
 }
 
-- (void)sync_update:(NSDictionary *)options complete:(void(^)(NSError *err))complete{
+- (void)sync_update:(NAProgressHUDMaskType)maskType
+            options:(NSDictionary *)options
+           complete:(void(^)(NSError *err))complete{
     NSDictionary *query = [self getQuery];
-    [NARestHelper syncUpdate:[NARestQueryObject query:query pk:[self guid_for_sync] objectID:self.objectID model:[self class] options:options completeHandler:complete]];
+    [NARestHelper syncUpdate:[NARestQueryObject query:query pk:[self guid_for_sync] objectID:self.objectID model:[self class] maskType:maskType options:options completeHandler:complete]];
 }
 
-- (void)sync_delete:(NSDictionary *)options complete:(void(^)(NSError *err))complete{
-    [NARestHelper syncDelete:[NARestQueryObject query:nil pk:[self guid_for_sync] objectID:self.objectID model:[self class] options:options completeHandler:complete]];
+- (void)sync_delete:(NAProgressHUDMaskType)maskType
+            options:(NSDictionary *)options
+           complete:(void(^)(NSError *err))complete{
+    [NARestHelper syncDelete:[NARestQueryObject query:nil pk:[self guid_for_sync] objectID:self.objectID model:[self class] maskType:maskType options:options completeHandler:complete]];
 }
 
 - (void)sync_rpc:(NSDictionary *)query
          rpcname:(NSString *)rpcname
+        maskType:(NAProgressHUDMaskType)maskType
          options:(NSDictionary *)options
         complete:(void(^)(NSError *err))complete{
-    NARestQueryObject *qo = [NARestQueryObject query:query pk:[self guid_for_sync] objectID:self.objectID model:[self class] options:options completeHandler:complete];
+    NARestQueryObject *qo = [NARestQueryObject query:query pk:[self guid_for_sync] objectID:self.objectID model:[self class] maskType:maskType options:options completeHandler:complete];
     [qo setRpcName:rpcname];
     [NARestHelper syncEachRPC:qo];
 }
+
+//easy alias
+- (void)sync_get:(void(^)(NSError *err))complete{
+    [self sync_get:0 options:nil complete:complete];
+}
+- (void)sync_create:(void(^)(NSError *err))complete{
+    [self sync_create:0 options:nil complete:complete];
+}
+- (void)sync_update:(NSDictionary *)query
+           complete:(void(^)(NSError *err))complete{
+    [self sync_update:query maskType:NAProgressHUDMaskTypeDefault options:nil complete:complete];
+}
+- (void)sync_update:(void(^)(NSError *err))complete{
+    [self sync_update:0 options:nil complete:complete];
+}
+- (void)sync_delete:(void(^)(NSError *err))complete{
+    [self sync_delete:0 options:nil complete:complete];
+}
+- (void)sync_rpc:(NSDictionary *)query
+         rpcname:(NSString *)rpcname
+        complete:(void(^)(NSError *err))complete{
+    [self sync_rpc:query rpcname:rpcname maskType:NAProgressHUDMaskTypeDefault options:nil complete:complete];
+}
+
 
 /*
  instance methods without sync
@@ -167,13 +265,13 @@
  threadが気になるので外だしする
  */
 + (void)syncing_on:(NSManagedObjectID *)objectID{
-//    NASyncModel *sm = (NASyncModel *)[[[self class] mainContext] objectWithID:objectID];
-//    sm.is_syncing_ = YES;
+    //    NASyncModel *sm = (NASyncModel *)[[[self class] mainContext] objectWithID:objectID];
+    //    sm.is_syncing_ = YES;
 }
 
 + (void)syncing_off:(NSManagedObjectID *)objectID{
-//    NASyncModel *sm = (NASyncModel *)[[[self class] mainContext] objectWithID:objectID];
-//    sm.is_syncing_ = NO;
+    //    NASyncModel *sm = (NASyncModel *)[[[self class] mainContext] objectWithID:objectID];
+    //    sm.is_syncing_ = NO;
 }
 
 

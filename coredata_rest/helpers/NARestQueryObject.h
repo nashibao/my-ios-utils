@@ -21,6 +21,7 @@ typedef void(^COMPLETE_HANDLER)(NSError *err);
 @property (nonatomic, copy) COMPLETE_HANDLER completeHandler;
 @property (strong, nonatomic) NSString *rpcName;
 @property (nonatomic) NARestType restType;
+@property (nonatomic) NAProgressHUDMaskType maskType;
 
 @property(nonatomic, readonly)BOOL nomap;
 
@@ -28,11 +29,13 @@ typedef void(^COMPLETE_HANDLER)(NSError *err);
                           pk:(NSInteger)pk
                     objectID:(NSManagedObjectID *)objectID
                        model:(Class)model
+                    maskType:(NAProgressHUDMaskType)maskType
                      options:(NSDictionary *)options
              completeHandler:(COMPLETE_HANDLER)completeHandler;
 
 + (NARestQueryObject *)query:(NSDictionary *)query
                        model:(Class)model
+                    maskType:(NAProgressHUDMaskType)maskType
                      options:(NSDictionary *)options
              completeHandler:(COMPLETE_HANDLER)completeHandler;
 

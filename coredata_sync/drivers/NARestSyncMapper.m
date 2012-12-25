@@ -30,7 +30,7 @@
         case NASyncModelConflictOptionLocalPriority:
             //            local priority
             mo.modified_date_for_sync = [[mo class] modifiedDateInServerItemData:data];
-            [mo sync_update:nil complete:nil];
+            [mo sync_update:query.maskType options:nil complete:nil];
             break;
         case NASyncModelConflictOptionUserAlert:{
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -57,7 +57,7 @@
             mo.data_for_sync = newData;
             mo.modified_date_for_sync = [[mo class] modifiedDateInServerItemData:data];
             [mo updateByServerItemData:data context:context];
-            [mo sync_update:nil complete:nil];
+            [mo sync_update:query.maskType options:nil complete:nil];
             break;
         }
         default:

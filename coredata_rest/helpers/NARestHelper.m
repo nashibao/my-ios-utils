@@ -135,7 +135,17 @@
     if(query.objectID)
         [query.modelkls syncing_on:query.objectID];
 #warning queueはsyncmodel用に別個用意するか？？今はglobalBackgroundQueue.
-    [NANetworkOperation sendJsonAsynchronousRequest:req jsonOption:NSJSONReadingAllowFragments returnEncoding:[query.modelkls restDriver].returnEncoding returnMain:NO queue:nil identifier:identifier identifierMaxCount:1 options:query.options queueingOption:NANetworkOperationQueingOptionDefault successHandler:^(NANetworkOperation *op, id data) {
+    [NANetworkOperation sendJsonAsynchronousRequest:req
+                                         jsonOption:NSJSONReadingAllowFragments
+                                     returnEncoding:[query.modelkls restDriver].returnEncoding
+                                         returnMain:NO
+                                              queue:nil
+                                         identifier:identifier
+                                 identifierMaxCount:1
+                                           maskType:query.maskType
+                                            options:query.options
+                                     queueingOption:NANetworkOperationQueingOptionDefault
+                                     successHandler:^(NANetworkOperation *op, id data) {
 #warning そもそもここにかかずに_success, _error内で処理すべきだな．．
         if(query.objectID)
             [query.modelkls syncing_off:query.objectID];
@@ -144,7 +154,7 @@
         if(query.objectID)
             [query.modelkls syncing_off:query.objectID];
         [self _errorByRestType:type query:query identifier:identifier response:nil error:err];
-    }];
+    } completeHandler:nil];
 }
 
 + (void)syncByRestType:(NARestType)restType query:(NARestQueryObject *)query{

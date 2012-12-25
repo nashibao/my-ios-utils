@@ -109,6 +109,14 @@
 - (void)postLoadHandlerWithError:(NSError *)err{
     [self.tableView reloadData];
     [self.refreshControl endRefreshing];
+    if(err){
+        UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:@"データの取得に失敗しました．"];
+        [sheet addButtonWithTitle:@"再取得" handler:^{
+            [self load];
+        }];
+        [sheet setCancelButtonWithTitle:@"何もしない．" handler:nil];
+        [sheet showInView:self.view];
+    }
 }
 
 - (void)load{
@@ -119,14 +127,9 @@
     [self load];
 }
 
-#warning SK3[16650:907] *** Terminating app due to uncaught exception 'NSInternalInconsistencyException', reason: 'Invalid update: invalid number of sections.  The number of sections contained in the table view after the update (2) must be equal to the number of sections contained in the table view before the update (3), plus or minus the number of sections inserted or deleted (0 inserted, 0 deleted).'
 #pragma mark TODO: 汎用化したい, 基本的にはbackボタンで戻ってきたときの処理．
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-//    if(self.selectedIndexPath){
-//        [self.tableView deselectRowAtIndexPath:self.selectedIndexPath animated:animated];
-//        [self.tableView reloadRowsAtIndexPaths:@[self.selectedIndexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-//    }
 }
 
 #pragma mark - Table view delegate

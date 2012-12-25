@@ -78,14 +78,6 @@
 - (void)postLoadHandlerWithError:(NSError *)err{
     [self.fetchedResultsController performFetch:nil];
     [super postLoadHandlerWithError:err];
-    if(err){
-        UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:@"データの取得に失敗しました．"];
-        [sheet addButtonWithTitle:@"再取得" handler:^{
-            [self load];
-        }];
-        [sheet setCancelButtonWithTitle:@"何もしない．" handler:nil];
-        [sheet showInView:self.view];
-    }
 }
 
 @end

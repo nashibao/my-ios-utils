@@ -24,6 +24,11 @@ typedef enum NAFRCTableWithAppendSectionType: NSUInteger{
 @property (strong, nonatomic) NSArray *preAppendRows;
 @property (strong, nonatomic) NSArray *postAppendRows;
 
+@property (strong, nonatomic) Class preCellClass;
+@property (strong, nonatomic) Class postCellClass;
+@property (strong, nonatomic) NSString *preCellIdentifier;
+@property (strong, nonatomic) NSString *postCellIdentifier;
+
 - (NSArray *)appendSectionTypeAt:(NSInteger)section;
 
 - (NSString *)appendTableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)_section pre:(BOOL)pre;

@@ -126,9 +126,22 @@
 }
 
 - (UITableViewCell *)appendTableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)_indexPath pre:(BOOL)pre{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:self.cellIdentifier];
+    NSString *cellIdentifier = self.cellIdentifier;
+    Class cellClass = self.cellClass;
+    if(pre){
+        if(self.preCellIdentifier)
+            cellIdentifier = self.preCellIdentifier;
+        if(self.preCellClass)
+            cellClass = self.preCellClass;
+    }else{
+        if(self.postCellIdentifier)
+            cellIdentifier = self.postCellIdentifier;
+        if(self.postCellClass)
+            cellClass = self.postCellClass;
+    }
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if(!cell){
-        cell = [[self.cellClass alloc] initWithStyle:self.cellStyle reuseIdentifier:self.cellIdentifier];
+        cell = [[cellClass alloc] initWithStyle:self.cellStyle reuseIdentifier:cellIdentifier];
         [cell setAccessoryType:self.cellAccessoryType];
     }
     id obj = nil;

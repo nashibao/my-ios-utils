@@ -10,8 +10,6 @@
 
 #import "NSManagedObjectContext+na.h"
 
-#import "AccessorMacros.h"
-
 @implementation NSManagedObject (restdriver)
 
 + (id<NARestDriverProtocol>)restDriver{

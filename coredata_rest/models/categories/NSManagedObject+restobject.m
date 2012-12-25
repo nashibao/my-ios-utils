@@ -10,8 +10,6 @@
 #import "NSManagedObject+restdriver.h"
 #import "NSManagedObjectContext+na.h"
 
-#import "AccessorMacros.h"
-
 @implementation NSManagedObject (restobject)
 
 + (BOOL)enabled_auto_delete_management{

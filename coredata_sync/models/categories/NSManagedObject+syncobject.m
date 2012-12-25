@@ -8,10 +8,6 @@
 
 #import "NSManagedObject+syncobject.h"
 
-#import "AccessorMacros.h"
-
-#import "NSDate+na.h"
-
 @implementation NSManagedObject (syncobject)
 
 - (NSString *)modified_date_for_sync_key{

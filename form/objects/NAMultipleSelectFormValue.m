@@ -134,14 +134,6 @@
     }else{
         [self addIndexPath:indexPath];
     }
-    
-    NSIndexPath *target = nil;
-    for (NSIndexPath *ip in _selectedIndexPaths) {
-        if(ip.section == indexPath.section && ip.row == indexPath.row){
-            target = ip;
-            break;
-        }
-    }
 }
 
 - (BOOL)hasIndexPath:(NSIndexPath *)indexPath{

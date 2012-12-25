@@ -8,8 +8,6 @@
 
 #import "NATextField.h"
 
-#import "ViewMacros.h"
-
 @implementation NATextField
 
 COMMON_INITIAL_SETTINGS()

@@ -20,3 +20,14 @@
     [self didAccessValueForKey:keyName]; \
     return b; \
 } \
+
+#define SHARED_CONTROLLER(classname) \
++ (classname *)sharedController{ \
+    static classname *__instance__ = nil; \
+    static dispatch_once_t onceToken; \
+    dispatch_once(&onceToken, ^{ \
+        __instance__ = [[classname alloc] init]; \
+    }); \
+    return __instance__; \
+} \
+

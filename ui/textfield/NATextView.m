@@ -8,8 +8,6 @@
 
 #import "NATextView.h"
 
-#import "ViewMacros.h"
-
 @implementation NATextView
 
 COMMON_INITIAL_SETTINGS()

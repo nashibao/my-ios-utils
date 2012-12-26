@@ -25,8 +25,12 @@
 - (void)formValue:(NAFormValue *)formValue highlighted:(BOOL)highlighted{
     if(highlighted){
         [self setBackgroundColor:[[NATheme currentTheme] cellErrorHighlightBackgroundColor]];
+        [self.textLabel setBackgroundColor:[[NATheme currentTheme] cellErrorHighlightBackgroundColor]];
+        [self.detailTextLabel setBackgroundColor:[[NATheme currentTheme] cellErrorHighlightBackgroundColor]];
     }else{
         [self setBackgroundColor:[[NATheme currentTheme] cellBackgroundColor]];
+        [self.textLabel setBackgroundColor:[[NATheme currentTheme] cellBackgroundColor]];
+        [self.detailTextLabel setBackgroundColor:[[NATheme currentTheme] cellBackgroundColor]];
     }
     [self update];
 }

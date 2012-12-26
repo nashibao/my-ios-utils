@@ -8,22 +8,20 @@ ios開発において基盤となるパターンをパッケージにしまし�
 
 具体的な使い方については、個々のモジュールのドキュメントを参考にして下さい．
 
- - [na_ios/network](https://github.com/nashibao/na_ios/tree/master/network)
+ - [na_ios_network](https://github.com/nashibao/na_ios_network)
 ネットワークを扱うためのモジュール
- - [na_ios/coredata](https://github.com/nashibao/na_ios/tree/master/coredata)
+ - [na_ios_coredata](https://github.com/nashibao/na_ios_coredata)
 コアデータを扱うためのモジュール
- - [na_ios/coredata_ui](https://github.com/nashibao/na_ios/tree/master/coredata_ui)
-コアデータをUI上で扱うためのモジュール
- - [na_ios/coredata_sync](https://github.com/nashibao/na_ios/tree/master/coredata_sync)
+ - [na_ios_coredata_rest](https://github.com/nashibao/na_ios_coredata_rest)
 RESTを介してサーバ側と通信するモジュール
- - na_ios/ui
-UI用モジュール
+ - [na_ios_coredata_sync](https://github.com/nashibao/na_ios_coredata_sync)
+同期モジュール
+ - [na_ios_table](https://github.com/nashibao/na_ios_table)
+コアデータでテーブルを扱うモジュール
  - na_ios/form
-フォーム用モジュール
- - na_ios/macros
-各種マクロを入れておくモジュール
- - na_ios/ocunit
-非同期でocunitで単体テストするためのモジュール
+フォーム用モジュール(作成中)
+ - [na_ios_utils](https://github.com/nashibao/na_ios_utils)
+各種カテゴリやマクロ
 
 # setup
 

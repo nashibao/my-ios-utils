@@ -22,6 +22,8 @@ RESTを介してサーバ側と通信するモジュール
 フォーム用モジュール(作成中)
  - [na_ios_utils](https://github.com/nashibao/na_ios_utils)
 各種カテゴリやマクロ
+ - [na_ios_boilerplate](https://github.com/nashibao/na_ios_boilerplate)
+汎用コンポーネント集
 
 # setup
 

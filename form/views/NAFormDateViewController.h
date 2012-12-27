@@ -6,13 +6,11 @@
 //  Copyright (c) 2012年 s-cubism. All rights reserved.
 //
 
-#import "NAViewController.h"
-
 #import "NAFormValue.h"
 
 #import "NAFormTableViewController.h"
 
-@interface NAFormDateViewController : NAViewController
+@interface NAFormDateViewController : UIViewController
 
 @property (strong, nonatomic) NAFormValue *formValue;
 

@@ -16,8 +16,8 @@
 
 #pragma mark - Table view data source
 
-- (void)initialize{
-    [super initialize];
+- (void)setupTableViewController{
+    [super setupTableViewController];
     self.cellStyle = UITableViewCellStyleDefault;
 }
 

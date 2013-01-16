@@ -133,7 +133,7 @@ static NSDictionary *validate_settings = nil;
 }
 
 + (NSString *)validateMail:(id)object options:(id)options{
-    return [self _validatePattern:@"mail" pattern:@"^[^@]+@[^.@]+.[^.@]+$" object:object options:options];
+    return [self _validatePattern:@"mail" pattern:@"^[^@]+@[^@]+.[^.@]+$" object:object options:options];
 }
 
 // blockで指定する場合

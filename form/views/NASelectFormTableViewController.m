@@ -48,6 +48,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [_formValue setSelectedIndexPath:indexPath];
     [super tableView:tableView didSelectRowAtIndexPath:indexPath];
+    if(self.navigationController)
+        [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)updateCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath{
@@ -58,5 +60,11 @@
         [cell setAccessoryType:UITableViewCellAccessoryNone];
     }
 }
+
+- (void)initializeCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath reuseIdentifier:(NSString *)reuseIdentifier{
+    cell.textLabel.adjustsFontSizeToFitWidth = YES;
+    cell.textLabel.minimumFontSize = 12.0f;
+}
+
 
 @end
